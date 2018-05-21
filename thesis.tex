@@ -1,0 +1,738 @@
+% Custom commands
+% * <s.k.wallace@bath.ac.uk> 2018-03-23T13:26:34.502Z:
+%
+% ^.
+\newcommand{\bournonite}{CuPbSbS$_3$}
+\newcommand{\enargite}{Cu$_3$AsS$_4$}
+\newcommand{\stephanite}{Ag$_5$SbS$_4$}
+\newcommand{\CZTS}{Cu$_2$ZnSnS$_4$}
+
+\documentclass[11pt, twoside]{report}
+% remove the twoside option for single sided printing
+
+% Custom packages
+\usepackage[numbers]{natbib}
+\usepackage{etaremune}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={black!50!black},
+    citecolor={black!50!black},
+    urlcolor={black!80!black}
+}
+
+\usepackage{baththesis, amssymb, graphicx, parskip}
+% Options for TOC
+%\usepackage{hyperref}
+%\usepackage[linktocpage=true]{hyperref}
+
+\usepackage{pdfpages}
+
+\title{Overcoming the efficiency bottleneck of metal sulfide solar cells}
+\author{Suzanne K. Wallace}
+\degree{Doctor of Philosophy}
+\department{Department of Chemistry}
+\degreemonthyear{October 2018}
+\faculty{Faculty of Science}
+
+%%uncomment for sans-serif font
+%\renewcommand\familydefault{\sfdefault}
+
+\begin{document}
+
+\maketitle
+% * <s.k.wallace@bath.ac.uk> 2018-03-23T13:26:36.081Z:
+%
+% ^.
+
+\pagenumbering{roman}
+\section*{Acknowledgments}
+See thesis plan word doc.
+
+
+\begin{abstract}
+Write last, ideas:
+\begin{itemize}
+\item Highlight impact of solar (and better solar cells) on society
+\item Theory and simulation to predict material properties, e.g. application of new solar cell tech
+\item Introduce two major contributions simulation can make to new PV tech: improve knowledge and understanding of material for performance bottlenecks to inform synthesis routes for improvement and secondly discovery and design of new materials for specific applications
+\item Touch upon benefit of metal sulfides for PV: many have desirable optical properties for application and often earth-abundant and non-toxic constituent elements
+\item Introduce {\CZTS} (earth-abundant, non-toxic) and performance limitations for commercialisation
+\item Introduce motivations for identifying candidate photoferroic materials for PV (known materials not ideal Eg, but could provide alternative route to improve performance, `polarisation-driven charge carrier separation')
+\item Highlight defect physics as key property for PV absorber materials and link to above two points?
+\end{itemize}
+\end{abstract}
+
+\section*{Publications during the course of the PhD}
+\begin{etaremune}
+\item Sulfosalts defects paper?
+\item Photoferroic materials project screening with Lee?
+\item Defects benchmark study?
+\item Dielectric function review with Jacob?
+\item Sulfosalts band alignment paper?
+\item Thermodynamically limited Cu-Zn order in {\CZTS} from Monte Carlo simulations
+\item Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite, and bournonite\\
+SK Wallace, KL Svane, WP Huhn, T Zhu, DB Mitzi, V Blum, A Walsh\\ Sustainable Energy \& Fuels  (6), 1339-1350 (2017)
+\item The steady rise of Kesterite solar cells\\ SK Wallace, DB Mitzi, A Walsh\\ ACS Energy Letters 2 (4), 776-779 (2017)
+\item Vibrational spectra and lattice thermal conductivity of kesterite-structured Cu2ZnSnS4 and Cu2ZnSnSe4\\ JM Skelton, AJ Jackson, M Dimitrievska, SK Wallace, A Walsh\\ APL Materials 3 (4), 041102 (2015)
+\item Don't include???\\ Facet-dependent electron trapping in TiO2 nanocrystals\\ SK Wallace, KP Mckenna\\ The Journal of Physical Chemistry C 119 (4), 1913-1920 (2015)
+\end{etaremune}
+
+
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{The case for new absorber materials for solar cell devices}
+
+\subsection{Terawatt-scale power production from renewable resources}
+
+It is now widely accepted that the world is heading towards a major energy crisis with the current major sources of energy, namely fossil fuels, eventually being unable to meet increasing global demand for energy. Furthermore, there is the ever present worry of climate change linked to increased carbon dioxide emissions from the burning of fossil fuels. Renewable, low-carbon alternatives, such as solar power, are therefore clearly desirable. 
+Recent years have seen a rapid increase in the installed solar generation capacity, with the global grid-connected PV capacity growing from 1.3 GW in 2000 to 139 GW in 2014 \cite{pathways_129}, with approximately a doubling in the cumulative installed capacity every two years \cite{pathways}. Creative business models have spurred investment in residential solar systems \cite{MIT} and great improvements in technology, price and performance have helped to facilitate this growth. However, solar energy still only provides a minor fraction of the world's energy. In 2013 solar power only provided 0.87\% of the worlds electricity \cite{pathways_130}.
+
+Solar power is by far the largest source of energy available to us and it is also the most widely geographically distributed \cite{inorg_pv}. The Sun supplies $3 \times 10^{24}$ J of energy to the Earth each year, which is around $10^4$ times more than mankind's current annual energy consumption. 
+Assuming a fairly modest module efficiency of 20\% and 50\% losses related to storage and secondary conversion, 1.6\% of the Earth’s land area would be required for solar-generated power to meet current world energy needs \cite{newPVrev}. Although this would be a fairly large area, it would not be completely unrealistic. For instance, this area would be less than 5\% of the area used for agriculture worldwide \cite{newPVrev}. The area required could also be reduced further through improvements in the efficiency of photovoltaic (PV) modules and by making use of building-integrated PV (BIPV) innovations, largely made possible by newer, flexible, thin-film PV technologies which are discussed further in section \ref{current_tech}.
+Additionally, BIPV allows for more subtle or aesthetically-pleasing means of solar energy generation. This may seem like a minor consideration when using terms such as `energy crisis' and `global warming', however, in certain residential or touristic areas (even without constraints related to historical preservation) solar panels are not permitted due to their detrimental visual impact\footnote{Conwy Marina Village Management Co. Ltd., personal communication, April 17, 2018}.
+
+We must also consider the economic feasibility of current solar cell technologies for large-scale projects.
+Many countries are now making considerable efforts to increase the percentage of their energy supplied from renewable resources. Germany, for example, introduced feed-in tariffs (FiTs) to encourage investment in solar power.
+FiTs set the rate a utility company must pay for renewable generated energy and guarantee the provider of renewable energy a specific rate for a long period of time, typically fifteen to twenty years. As this cost is higher than fossil-fuel-based electricity, the higher price is then passed on to all customers of the utility company to spread out the higher costs. This resulted in an increase of 6\% on the average electricity bill \cite{Germany_Oregon}. The social implications of such a cost increase must also be considered in assessing the viability and sustainability of a particular power source.
+%Further advances in solar cell technologies are required to enable a dramatic increase in the contribution from solar power at socially acceptable costs \cite{MIT}. 
+Ultimately, solar power-generation technologies must become cost-competitive with conventional fossil-fuel based power sources.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{figures/LCOE.png}
+    \caption{Levelised cost of electricity (LCOE) of renewable energy technologies and conventional power plants at locations in Germany in 2013.  Specific investments are taken into account with a minimum and maximum value for each technology. Figure taken from reference \citenum{LCOE}.}
+  \label{LCOE}
+\end{figure}
+
+%However if solar power, in combination with proper energy transport, storage and secondary conversion into heat and fuels, could be made to be economically feasible; it is a realistic candidate for replacing fossil fuels as a major supply of global energy. 
+
+Levelised cost of energy, or electricity, (LCOE) is a common way to assess how cost competitive renewable energy sources are with their non-renewable counterparts. LCOE allows for the measurement of the performance of different power generating technologies, which may have unequal lifetimes and differing capacities. It is calculated by summing all costs incurred during the lifetime of the technology and dividing this value by the units of energy produced during the lifetime, with units of energy expressed as dollars per kilowatt hour (\$/kWhr) \cite{LCOE2}. This measure is also used as the key selling point for a number of commercial solar cell manufacturers such as First Solar Inc., who market their product as being able to generate electricity at an average of \$0.63 per Watt as stated in their 2013  Annual Report \cite{first_solar}. Using the LCOE, comparisons of grid competitiveness for renewable energy sources can be made \cite{LCOE2}. Figure \ref{LCOE} shows the LCOE of renewable energy technologies and conventional power plants at locations in Germany in 2013, enabling an assessment of the cost-competitiveness of PV power generation at this location, accounting for, for example, typical solar irradiation at the given locations \cite{LCOE}. As the figure shows, both small-scale and large-scale utility solar power are still not cost competitive with the cheapest non-renewable resources. In the next section, both commercial solar cell technologies that are currently available and emerging technologies are discussed to understand why solar power is currently not cost competitive, and how emerging technologies may be able to improve the status quo for global solar power generation.
+
+%Germany is an example of a country making considerable efforts to increase the percentage of their energy supplied by solar power. 
+%On the 9\textsuperscript{th} of June 2014 Germany even generated over 50\% of its electricity demand from solar for the first time \cite{Germany_guardian_news}. Although on average the country is not able to produce such a large portion from solar power, with solar-generated power providing approximately 7.5\% of net electricity consumption in 2015 \cite{Germany_PV}. 
+%To facilitate the growth of the solar power capacity in Germany a number of schemes and financial incentives to encourage investment were introduced, such as feed-in tariffs (FiTs).
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.65\textwidth]{figures/global_energy.png}
+%    \caption{Illustration of power available annually from various renewable energy resources, annual world energy consumption and total reserves of various non-renewable energy resources. Figure taken from reference \citenum{global_energy_fig}.}
+%  \label{global_energy}
+%\end{figure}
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.65\textwidth]{figures/BIPV.jpg}
+%    \caption{A building integrated photovoltaics (BIPV) project fitted in the United States by BISEM-USA \cite{BIPV}.}
+%  \label{BIPV}
+%\end{figure}
+
+
+\subsection{Current commercial solar cell technologies and limitations}\label{current_tech}
+It was first observed in 1839 by Edmond Becquerel that sunlight could be used to generate electricity. Becquerel discovered that if  silver chloride was placed in an acidic solution, connected to platinum electrodes and exposed to sunlight, an electric current flowed. However the effect was small and poorly understood before Albert Einstein's discovery of the photoelectric effect and explanation of the phenomena by the quantum nature of light in 1904 \cite{PV_history1}. Even then, it was not until the development of semiconductor technology during the silicon revolution of the 1950's that solar cells were fabricated which were able to generate significant amounts of electricity. The first silicon solar cell was created in 1954 in the Bell Laboratories with cells achieving efficiencies of 6\%. 
+Originally solar cells were developed for terrestrial energy generation, such as the 108 solar cells used to supply energy to the Vanguard satellite in 1958 \cite{PV_history1}. The first oil crisis in 1973 however highlighted the dependency of many economies on fossil fuels and the need to address the security of energy supply,  in particular for Japan and West Germany which had few of their own resources. As a consequence, solar cell research was no longer limited to only high-cost crystalline silicon devices for terrestrial applications, but also into creating cheaper, commercial, thin-film solar cell technologies using absorber materials such as amorphous silicon, cadmium telluride and copper indium diselenide  \cite{PV_history2}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.75\textwidth]{figures/SQ_new.png}
+    \caption{Theoretical Shockley-Queisser detailed-balance efficiency limit \cite{SQ_1961} as a function of band gap (highest black line) for AM1.5 solar spectrum. The record efficiencies for different materials are plotted for the corresponding band gaps, where materials below the lower two grey lines are achieving conversion efficiencies less than 75\% and 50\% of their theoretical efficiency limit respectively. Figure taken from reference \citenum{newPVrev}.}
+  \label{SQ}
+\end{figure}
+
+Crystalline silicon is still the dominant solar cell technology with mono- and poly-crystalline silicon photovoltaic cells comprising up to 90\% of all the solar cells produced in 2008  \cite{Si_rev}. Silicon is the second most abundant element in the Earth's crust \cite{Si_abundance}. When considering this aspect alone, it seems to be a plausible material to use in large-scale solar power generation. Over 60 years of development have seen device efficiencies increase from 6\% to 25\% for the highest quality research devices and 15-18\% for the more common industrial cells \cite{Si_rev}. As can be seen from figure \ref{SQ}, the best performing silicon devices are now very close to achieving conversion efficiencies close to their theoretical limit, as predicted by Shockley-Quiesser \cite{SQ_1961}. More dramatic however is the fall in manufacturing costs which have halved since 2008 and are more than a hundred times lower than they were in 1977, as shown in figure \ref{Si_cost}. This development was largely aided by progress in semiconductor technology driven by the silicon chip industry, with the solar industry benefiting from advances in silicon manufacturing processes and even making use of waste silicon produced that was not of a high enough grade for silicon chips \cite{PV_history1}. Although the development of silicon-based technologies has clearly revolutionized the modern computer, the optical properties of silicon do not make it ideal for use as a solar absorber material in a photovoltaic device and despite the dramatic reduction in manufacturing costs, the technology is still not able to be cost-competitive with fossil-fuel power generation, as was shown in figure \ref{LCOE}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{figures/Si_cost.jpg}
+    \caption{Average cost of solar panels composed of a crystalline silicon absorber layer. Figure taken from reference \citenum{PV_chart}.}
+  \label{Si_cost}
+\end{figure}
+
+The primary issue with silicon is that its band gap of 1.1 eV is indirect. The importance of the electronic band gap in relation to PV performance will be discussed further in section \ref{PV_properties}. For now, it is just noted that the key consequence of the indirect nature of the band gap of silicon is that it is not a very strong absorber of sunlight (compared to for instance newer, thin-film technologies which are discussed next), resulting in a low optical absorption coefficient  compared to these newer technologies. To absorb the same amount of sunlight with a silicon solar cell requires a thicker layer of the material than in thin-film technologies. Photovoltaic devices are very sensitive to defects and impurities. This point is discussed further in section \ref{defects_impact}, but the consequence for a thick layer of silicon is that very high quality, non-defective material is necessary to enable charge carrier collection before electron-hole recombination occurs, which results in high manufacturing costs. The devices are made from flat sheets of crystalline or multi-crystalline silicon called wafers that consist of very high quality silicon (99.999999\% pure) 
+\cite{sus_book_5}.
+The production processes of silicon wafers have been thoroughly optimised, but are still very energy-intensive, time-consuming and complex \cite{emerging_pv}.
+%and this is reflected by the position of this type of technology on the plot of efficiency versus cost shown in figure \ref{PV_generations}. 
+Despite decades of development, commercial silicon solar panels are still too expensive to compete with fossil-fuel based power sources \cite{FE_PV_rev1_5}. 
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.75\textwidth]{figures/PV_generations.png}
+%    \caption{Efficiency and cost projections for first-, second- and third-generation photovoltaic technologies, which are comprised of silicon wafer, thin-film and advanced thin-film technology respectively. Figure  taken from reference \citenum{sus_book}.}
+%  \label{PV_generations}
+%\end{figure}
+
+The `holy grail' of research into new materials for photovoltaic devices would be to find materials that are strong absorbers of sunlight, could be produced cost-effectively and composed of materials that are abundant enough for large-scale fabrication of the devices. 
+%Such a drive has resulted in the development of what are considered three generations of solar energy technology. These are shown in figure \ref{PV_generations}, where highly efficient crystalline silicon devices with high associated manufacturing costs are considered the first generation of solar cell technology.
+Thin-film solar cell devices make use of materials that are much more optically thick than silicon (i.e. stronger absorbers of sunlight with direct optical band gaps and higher optical absorption coefficients), which require less material to absorb the same amount of sunlight. %Figure \ref{thin_films} shows a comparison between the thickness of the aborber layer in some commercial second-generation PV devices to that of first-generation silicon wafers. 
+The consequence of the reduction in the thickness of the absorber layer is that it is then less important for the material to be of as high-quality as in crystalline silicon devices, which enables the use of low-cost and low-energy fabrication methods \cite{emerging_pv}. Many thin-film technologies are also light-weight and flexible, allowing for more options for innovative deployment of the modules, such as building integrated photovoltaics (BIPV) and portable devices.
+
+%Typically the efficiencies of second-generation solar cells are less than that of the best performing first-generation devices. 
+Examples of commercial thin-film technologies include CIGS (Cu(In,Ga)(S,Se)$_2$) and CdTe. 
+In the case of thin-film CuInSe$_2$ devices, it has even been found that the `lower quality' poly-crystalline material has a higher performance than its single crystal counterpart \cite{CIS1_3, CIS1_4}. Theoretical studies of the electronic properties of the grain boundaries in CuInSe$_2$ have provided an explanation for this unusual observation based on beneficial band offsets at the grain boundaries \cite{CIS1, CIS2}. This effect is a special case for this material, but it embodies the general ideology of thin-film technology well - namely to produce materials able to convert sunlight into electricity as efficiently as possible, with the simplest synthesis techniques possible.
+Other innovations in PV technology include the use of multiple energy threshold devices to overcome the Shockley-Quiesser limit \cite{SQ_1961} for a single band gap solar cell, such as in tandem solar cells where semiconductor p-n junctions of increasing band gap are placed on top of each other in order to capture more of the solar spectrum. Typically these more complicated device architectures result in higher fabrication costs. Research efforts are therefore largely focused on reducing the fabrication cost of multi-junction devices \cite{3rd_gen}.
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.9\textwidth]{figures/thin_films2.png}
+%    \caption{Typical structures of a commercial wafer-based PV device (first left) and commercial thin-film photovoltaic devices, as well as a CZTS thin-film device (right). The absorber layers are labelled in white and thickness is shown to scale. Figure adapted from reference \citenum{pathways}.}
+%  \label{thin_films}
+%\end{figure}
+
+Current mainstream solar cell technologies, such as Si wafers and thin-film CdTe and CIGS solar cells, are unlikely to be able to provide solar electricity at the terawatt scale due to the scarcity of Te and In and the relatively long energy payback time for crystalline Si due to the cost and energy intensive fabrication of Si wafers \cite{CZTS_vs_MAPI}. 
+Models have quantified such statements with a predicted In-constrained growth potential of power generation from CIGS PV technology of ~20 GW per year in 2020 due to competing applications of In, such as in liquid crystal displays \cite{culprit_5_3}.
+To significantly increase the contribution of solar power to the global power supply, it is therefore necessary to develop more economically viable earth-abundant materials for sustainable PV electricity generation. Furthermore, there must be considerable technological breakthroughs that would enable low-cost manufacturing of highly efficient devices with enough of a cost benefit to outweigh the initial cost outlay in optimising the manufacturing process of the whole device as has been done for silicon over the past 60 years. For this purpose, there is a drive for solar absorber materials with more optimal properties, such as a direct and sunlight matched band gap (as in thin-film technologies such as CdTe and CIGS), but also for materials that are composed of only earth-abundant components.\\
+
+** Add data on elemental abundance here and comment on in text **
+
+\subsection{Examples of emerging metal sulfide solar absorbers}
+
+The magnitude of the optical band gap is the most fundamental, necessary property of a semiconductor in order to have the potential to produce a high-efficiency solar cell device. Other important material properties for the absorber material in a PV device are discussed in section \ref{PV_properties}, but for now it is just noted that to maximise the energy harvesting potential of the PV device, a band gap for the absorber that is direct in nature and closely matched to the major component of the solar spectrum is desirable, this corresponds to a range of approximately 1.0 to 1.7 eV \cite{PV_E_range}. The optical band gap is the most fundamental and obvious screening criteria to use when selecting new candidate absorber materials for photovoltaic devices. The band structure of semiconductors will be discussed further in section \ref{BandTheorySection}, but for now it will just be noted that metal tellurides, selenides and sulfides typically have band gaps within the optimal energy range for PV applications due to the chalcognide p-orbital (which is usually the dominant component of the valence band maximum) being higher in energy than, for instance, the oxygen p-orbitals in metal oxides, which typically have band gaps that are too wide for PV applications. Of metal tellurides, selenides and sulfides, sulfur stands out in the interests of abundance and minimising toxicity.
+
+SnS is an example of a non-toxic and earth-abundant metal sulfide that has received research interest for solar cell applications. SnS has a direct band gap within the optimal range for sunlight absorption of between 1.30 eV \cite{Lee_thesis_59} and 1.43 eV \cite{Lee_thesis_60}. However, record power conversion efficiencies (PCE) of PV devices are at around just 4\% \cite{SnS_record}. The low-performance of SnS devices has been attributed to several factors including the defect physics \cite{Lee_SnS_defects}, non-optimal band alignment in devices \cite{Lee_SnS_band} and phase impurity \cite{Lee_SnS_phases} of the material.
+Kesterite-structured {\CZTS} (CZTS) has also received a large amount of research interest for PV applications, also due to the highly desirable earth-abundance and non-toxicity of its constituent elements, along with promising optical properties. The band gap of CZTS has been predicted \cite{CZTS_bandgap_theory} and measured \cite{CZTS_bandgap_exp} to be direct with a magnitude of 1.5 eV. 
+The record device efficiencies are more than double that of SnS-based solar cells. However, CZTS solar cells still fall far short of their theoretical maximum PCE of 28\% predicted from the Shockley-Quiesser limit based on the optical band gap. The current confirmed record device efficiency of a sulfide-selenide alloy is 12.6\% \cite{Mitzi2017_rev_21}, while that of the pure sulfide material lags even further behind at behind at 9.1\% \cite{CZTS_record}. A large component of this work seeks to investigate possible origins of the performance deficit of CZTS solar cells. The other major component of this work looks to identify photoactive ferroelectric (or `photoferroic') materials so that alternative routes to high-efficiency solar cells may be explored by exploiting novel PV phenomena observed in ferroelectric materials. This is discussed in more detail in section \ref{ferroPVsection}. 
+
+
+\section{The role of computational modeling in material design and optimisation}
+The discovery of new functional materials by experimental methods is largely hindered by high costs and the optimisation of time-consuming synthesis procedures \cite{high_tp}.
+However, with the rapid increase in computational processing power and the availability of large-scale supercomputers, we are entering a very exciting era in computational materials design \cite{WMD_material_design_review}. 
+There are two main contributions that computational simulations could make towards the technological breakthroughs needed for economically-viable, large-scale solar energy generation. Firstly, by predicting relevant properties of materials that are not currently utilised in solar cells and screening for certain desirable properties, materials simulations are able to aid in the discovery of new materials that may be capable of out-performing current solar cell technologies. Secondly, material simulations are able to provide valuable, atomistic insight to improve fundamental understanding of known photovoltaic materials, which may enable improvements in existing solar cell technologies.
+
+In this work, materials modeling techniques are developed and applied to make both types of contribution to the field. A model is developed to improve current atomic-scale understanding of the candidate earth-abundant, non-toxic solar absorber material {\CZTS} (CZTS) and to provide a tool for assessing possible origins of the under-performance of this particular solar cell technology. This is the subject of \autoref{chap:CZTS}. Materials modeling is also used to predict the relevant properties of candidate photoferroic absorbers that are not currently utilised in solar cell technologies to identify those that are most likely to be worthy of further study. In \autoref{chap:screening}, the screening criteria and methodologies used in this study for identifying candidate photoferroic absorbers are discussed and some relevant calculated material properties for the candidates are presented. In \autoref{chap:insights}, the use of material simulations and theoretical insights to assess the likely performance of a material in a solar cell device is discussed further. In particular, knowledge gained from previous studies on more mature PV technologies is drawn upon when examining the potential of the candidate photoferroic materials for solar cell applications.
+
+\section{Format of thesis}
+Statement about incorporating papers into thesis (and which sections correspond to papers)? Need a statement about personal contributions? - especially Eris adapted by Jarv from original starrynight code, materials screening with Lee and defects benchmark study with various collaborators and development with FHI-aims developers
+
+\chapter{Theoretical background} 
+
+\section{Models of perfect periodic solids}\label{crystal_models}
+%Refer to: pg 28 29 35 \cite{thin_film_Boer}\\
+To relate the properties observed for a material to its underlying atomic and electronic structure, and also to predict properties that have not yet been measured, it is necessary to have a suitable model for the material. Theoretical models of crystalline solids are based around the existence of translational symmetry in a crystal lattice such that the lattice can be constructed by periodically repeating a unit cell of atoms. The Bravais lattice specifies the periodic array in which the repeated units of the crystal are arranged. A crystal lattice can therefore be described by its underlying Bravais lattice and the arrangement of atoms, ions or molecules within a particular unit cell, i.e. the basis \cite{AshcroftMermin2}. This principle is also used in electronic calculations of solid state systems through the implementation of periodic boundary conditions to simulate an infinite, bulk system using only a finite unit cell. Methodologies used in electronic structure calculations will be discussed further in section \ref{elec_struc}.
+ 
+Another important concept in the theoretical modeling of periodic structures is reciprocal space and the reciprocal lattice. 
+Converting to reciprocal space enables the description of periodic features with a longer-range periodicity than the unit cell in real space, such as the motion of electrons in a crystal and phonons.
+%In the same way that any quantity that varies with time can be described as a sum of Fourier components in the frequency domain; 
+The spatial properties of a crystal can be described as a sum of components in Fourier space, otherwise known as reciprocal space or \textit{k}-space. The reciprocal lattice of a perfect single crystal is an infinite periodic 3D array of points whose spacings are inversely proportional to the distances between the planes in the lattice in real space. Vectors in real space have dimensions of length, whereas vectors in reciprocal space have dimensions of length$^{-1}$. This can therefore be compared directly to the wavevector $ \left(k  = \frac{2\pi}{\lambda} \right)$ of an excitation such as a phonon or a moving electron and multiplication of each coordinate of the reciprocal lattice by $\hbar$ converts reciprocal space into momentum space as for a quantised wave $\mathbf{p} = \hbar \mathbf{k}$ \cite{Blakemore1}. 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{figures/Wigner-Seitz.png}
+    \caption{The Wigner-Seitz cell for the body-centred cubic Bravais lattice where there is a lattice point at its centre and on each vertex (a) and the face-centred cubic Bravais lattice (b). 
+    %The hexagonal faces bisect the lines joining the central point to the points on the vertices. The square faces bisect the lines joining the central point to the central points in each of the six neighbouring cubic cells. 
+    Figure taken from reference \citenum{AshcroftMermin2}.}
+  \label{Wigner-Seitz}
+\end{figure}
+
+The Wigner-Seitz primitive cell is the most common choice of primitive cell with the full symmetry of the Bravais lattice. It represents the region of space around a lattice point  that is closer to that point than to any other lattice point. For example, figure \ref{Wigner-Seitz}a shows the truncated octahedron that is the Wigner-Seitz cell for a body-centred cubic (bcc) lattice \cite{AshcroftMermin2}.
+The first Brillouin zone is the Wigner-Seitz primitive cell of the reciprocal lattice. The reciprocal of the bcc lattice is face-centred cubic (fcc), therefore the first Brillouin zone of the bcc lattice is the fcc Wigner-Seitz primitive cell as shown in figure \ref{Wigner-Seitz}b \cite{AshcroftMermin3}. As the full symmetry of the reciprocal lattice is contained within the first Brillouin zone, it is only necessary to sample \textit{k}-points within this single unit cell of the reciprocal lattice when calculating the electronic ground state of a periodic structure.
+
+
+
+\section{Electronic band structure of semiconductors}\label{BandTheorySection}
+%Refer to: pg 18 \cite{fund_semi}, pg 105 112 128 131 137 \cite{thin_film_Boer}, pg 111 + 119 \cite{phys_semicond}\\
+%** Highlight link to PV and indication of PV performance from band structure + check against Nelson CH3\\
+%The band theory of solids provides a means to explain the difference in the electrical conductivity of conductors, semiconductors and insulators. 
+Electrons bound to an atom in atomic orbitals have a number of possible discrete energy levels. When a pair of atoms are brought together to form a molecule, the atomic orbitals combine to form pairs of molecular orbitals arranged with energy levels slightly higher and slightly lower in energy than the original energy levels. When a large number of atoms are brought together to form a solid the 
+%it becomes impossible to assign individual electrons to individual atoms. Instead, the electrons are considered to be shared amongst the atomic nuclei. A consequence of this sharing would be a large number of electrons occupying the same energy state, which violates the Pauli Exclusion Principle. The 
+original discrete energy levels are broadened into new energy levels that are so closely spaced that they are considered to be a quasi-continuous band of allowed energies. This is illustrated in Fig. \ref{band_Elevels}. The energy distribution of the bands depends upon the electronic properties of the constituent atoms of the crystal and the strength of the bonds between them. Bands are occupied if the original molecular orbitals were occupied. The highest occupied band (containing the valence electrons) is the valence band (VB). The lowest unoccupied band is the conduction band (CB). If the VB is only partially filled or if it overlaps in energy with the CB, then the solid is a metal. The availability of empty states at energies close to that of the occupied states facilitates easy scattering of valence electrons into neighbouring states, thereby allowing for the transport of heat and charge. Hence metals conduct both heat and electric current. In a semiconductor or insulator, the VB is completely full and separated from the next unoccupied CB by an energy gap called the optical band gap, E$_g$ \cite{Nelson3}. In the simplest model, the CB is separated from the VB by a constant band gap. This is called the flat band model and is often shown in schematics of junctions for PV device architectures, which will be discussed in section \ref{PV_architecture}. In real structures, the band architecture is more complicated than this simple model, like the band structures shown later in figure \ref{Si_and_GaAs} \cite{Tilley}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.7\textwidth]{figures/band_Elevels.png}
+    \caption{Electron energy levels of a single atom (left) and the formation of a quasi-continuous band of allowed energies in a solid crystal when many atoms are brought close together (right). Figure taken from \citenum{mat_prop1}.}
+  \label{band_Elevels}
+\end{figure}
+
+To understand the behaviour of electrons in solids, the electron is considered as a wave propagating in a periodic structure \cite{small_semiconductor1}. As for electrons in atoms and molecules, the Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
+The energy of a single electron in a perfect crystal is described by the one-electron Schr{\"o}dinger equation, shown in equation \ref{single_SE}. The first term in equation \ref{single_SE} is the kinetic energy of the electron, V(\textbf{r}) is the effective periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and $\epsilon$ is the eigenenergy of the electron.
+\begin{equation} \label{single_SE}
+\left[ \left(-\frac{\hbar^2}{2m}\right)\nabla^2 + V(\mathbf{r})\right]\psi = \epsilon \psi 
+\end{equation}
+For a solid the infinite array of atomic potentials making up the crystal must be accounted for, as opposed to just the few associated with a molecule. For this purpose, the periodicity of crystalline solids outlined in section \ref{crystal_models} is exploited to determine the probability distribution of electrons in an infinite solid \cite{Nelson3}. 
+The spatial dependence of the potential experienced by an outer electron in a crystal for multi-electron systems was considered by Felix Bloch. Bloch determined that the total potential is the sum of two parts. Firstly, the electrostatic potential due to the array of atomic cores. For a perfect lattice this should have the translational periodicity of the lattice. Secondly, the potential due to all other electrons. Bloch assumed that the charge density would have the same long-term average value in every unit cell of the crystal and therefore would be periodic \cite{fund_semi}.
+The periodicity of the crystal lattice means that the probability distribution of the electrons must also be periodic, with no preference for an electron to occupy a particular site within one unit cell than any others. Furthermore, as the lattice is infinite, electrons in a periodic solid should form delocalised states which extend throughout the crystal in a similar manner to an electron in free space.
+Bloch's theorem states that the wavefunction which satisfies equation \ref{single_SE}, subject to a periodic potential, should be of the form shown in Eq. \ref{bloch}. This Bloch wavefunction is a product of a function $U_{i\mathbf{k}}(\mathbf{r})$, which possesses the periodicity of the lattice, and a plane wave part, where \textbf{k} is the wavevector of an electron propagating in the crystal bands i \cite{Nelson3}.
+\begin{equation} \label{bloch}
+\phi_k(\mathbf{r}) = U_{i\mathbf{k}}(\mathbf{r}) e^{i\mathbf{k \cdot r}} 
+\end{equation}
+\begin{equation} \label{bloch_sum}
+\psi_k(\mathbf{r}) = \sum_k A_k \phi_k(\mathbf{r}) = \sum_k A_{i\mathbf{k}}U_{i\mathbf{k}}(\mathbf{r}) e^{i\mathbf{k \cdot r}} 
+\end{equation}
+Due to the translational symmetry of a crystal lattice, an eigenfunction of the one-electron Schr{\"o}dinger equation can be expressed as a sum of Bloch functions such as that shown in equation \ref{bloch}, to give Eq. \ref{bloch_sum}. The one-electron wavefunctions can be indexed by constants \textbf{k} and i \cite{fund_semi}. 
+$U_{i\mathbf{k}}(\mathbf{r})$ and electron eigenenergies, $\epsilon(\mathbf{k})$, from Eq. \ref{single_SE} are found by solving the SE for each band i and for each \textbf{k} \cite{Nelson3}.
+A plot of $\epsilon(\textbf{k})$ versus \textbf{k} is known as the energy dispersion relation or electronic band structure of the crystal \cite{fund_semi}.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/bs1_2.png}
+    \caption{Energy-wave vector diagrams: (a) the free electron parabola, (b) modification due to a periodic crystal lattice. Figures a and b taken from Ref. \citenum{small_semiconductor1}, figure c taken from Ref. \citenum{Nelson3}.}
+  \label{bs1}
+\end{figure}
+
+The impact of a medium with a discrete structure, such as a crystal lattice, on the energy dispersion relation of a free electron can be seen by comparing Fig \ref{bs1}a to Fig. \ref{bs1}b.
+The band structure, E(\textbf{k}), of a material is usually plotted against $|\textbf{k}|$ just for the most important directions in the crystal, such as that shown in Fig. \ref{bs1}c. A periodic medium does not suppress the propagation of waves, as would be expected in disordered or amorphous structures, but introduces limiting frequencies and wavelengths for the propagation. 
+The parabola of the free electron is modified in a periodic crystal by the introduction of discontinuities at values of $|\textbf{k}|$ corresponding to multiples of $\frac{\pi}{a}$, as shown by Fig. \ref{bs1}b \cite{small_semiconductor2}. The point $|\textbf{k}| = \frac{\pi}{a}$ is the Brillouin zone boundary. At these points the electron wavefunction is a standing wave and the gradient of E(\textbf{k}) disappears \cite{Nelson3}.
+The lower limit of the wavelength is set by the lattice spacing, giving an upper limit of the wave vector, $|\textbf{k}|$, of $\frac{\pi}{a}$, where a is the spacing of the planes of atoms in the direction E(\textbf{k}) has been plotted.  The appearance of such energy gaps implies that electrons in a periodic crystal may only have kinetic energies corresponding to certain bands, whilst being free to propagate in the lattice \cite{small_semiconductor2}. 
+Due to the periodicity of the crystal lattice, $|\textbf{k}|$  that differ by multiples of $\frac{2\pi}{a}$ cannot be distinguished and E(\textbf{k}) repeats for $|\textbf{k}| > \frac{\pi}{a}$. For most crystals for $|\textbf{k}| < 0$, E(\textbf{k}) is identical to E(\textbf{-k}) since states with positive and negative $|\textbf{k}|$ are degenerate. Therefore all information for the energy dispersion relation, E(\textbf{k}) vs. $|\textbf{k}|$, of the material is contained in the range $0 < |\textbf{k}| < \frac{\pi}{a}$ and so only this region needs to be plotted, as in Fig \ref{bs1}c \cite{Nelson3}. 
+
+A useful concept used to simplify the dynamics of an electron in a crystal lattice in the band theory of solids is that of effective mass. The effective mass is a convenient parameter determined by the curvature of of the maxima and minima of the VB and CB respectively to account for the influence of a periodic lattice on a free carrier, enabling an electron in a periodic crystal to be treated as though it were a free particle but with a different mass in calculations of charge transport \cite{small_semiconductor2}.
+%$U_{i\textbf{k}}(\mathbf{r})$ depends weakly on \textbf{k}, but this dependence is neglected in the effective mass approximation \cite{Nelson3}.
+The influence of the effective mass of charge carriers in a solar absorber material on the efficiency of a PV device composed of that material will be discussed in section \ref{PV_properties}.
+
+%The concept of the energy band model of a solid emerges from considering the behaviour of electrons in a periodic crystal lattice, but cannot be understood in terms of classical physics alone. Instead, the electron must be considered in terms of wave-mechanical terms as a wave propagating in a periodic structure with diffraction and interference effects  \cite{small_semiconductor1}.
+%In the band theory of solids, the energy of a single electron in a perfect crystal is described by the one-electron Schr{\"o}dinger equation, shown in equation \ref{single_SE}. The first term in equation \ref{single_SE} is the kinetic energy of the electron, V(\textbf{r}) is the effective non-zero periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and  $\epsilon$ is the eigenenergy of the electron. In band theory, it is assumed that for any electron, everything else in the crystal can be represented by the effective potential energy, V(\textbf{r}) \cite{Blakemore2}.
+%\begin{equation} \label{single_SE}
+%\left[ \left(-\frac{\hbar^2}{2m}\right)\nabla^2 + V(\mathbf{r})\right]\psi = \epsilon \psi 
+%\end{equation}
+%The spatial dependence of the potential experienced by an outer electron in a crystal for multi-electron systems was considered by Felix Bloch. Bloch determined that the total potential is the sum of two parts. Firstly, the electrostatic potential due to the array of atomic cores. For a perfect lattice this should have the translational periodicity of the lattice. Secondly, the potential due to all other electrons. Bloch assumed that the charge density would have the same long-term average value in every unit cell of the crystal and therefore would be periodic. Bloch's theorem states that the wavefunction which satisfies equation \ref{single_SE} subject to a periodic potential should be of the form shown in equation \ref{bloch}, where $U_k(\mathbf{r})$ is some function 
+%(depending on the value of the wavevector, \textbf{k}) that also has the complete periodicity of the lattice and \textbf{k} is confined to the first Brillouin zone \cite{Blakemore2}.
+%\begin{equation} \label{bloch}
+%\phi_k(\mathbf{r}) = U_k(\mathbf{r}) e^{i\mathbf{k \cdot r}} 
+%\end{equation}
+%\begin{equation} \label{bloch_sum}
+%\psi_k(\mathbf{r}) = \sum_k A_k \phi_k(\mathbf{r}) = \sum_k A_kU_k(\mathbf{r}) e^{i\mathbf{k \cdot r}} 
+%\end{equation}
+%Due to the translational symmetry of a crystal lattice, an eigenfunction of the one-electron Schr{\"o}dinger equation can be expressed as a sum of Bloch functions such as that shown in equation \ref{bloch}, to give equation \ref{bloch_sum}. The one-electron wavefunctions therefore can be indexed by constants \textbf{k}, which are the wave vectors of the plane waves forming the `backbone' of the Bloch function. A plot of the electron eigenenergies from equation \ref{single_SE} versus \textbf{k} is known as the electronic band structure of the crystal \cite{fund_semi}.
+
+The band theory of a semiconductor can also be used to understand the electrical conductivity of the material. At 0 K, electrons have no kinetic energy and therefore occupy the lowest energy states available, where the energy of the highest energy state filled is called the Fermi energy, E$_F$. However at finite-temperatures, electrons may have sufficient kinetic energy to access higher energy states above E$_F$, leaving behind some empty states below E$_F$. The distribution for electrons in thermal equilibrium at finite-temperatures is described by Fermi-Dirac statistics, where Eq. \ref{fermi-dirac} gives the probability that an electronic state of energy E will be occupied at some temperature T, where k$_B$ is the Boltzmann constant \cite{Nelson3}.
+\begin{equation}\label{fermi-dirac}
+f(E) = \frac{1}{e^{(E-E_F)/k_BT}+1}
+\end{equation}
+In a semiconductor at 0 K, the VB is fully occupied by electrons and the CB is completely unoccupied and so electrical conduction is not possible. However as temperature is increased it may become possible for electrons to access unoccupied states in the CB if they have sufficient energy to overcome the band gap, allowing for some electrical conduction. Typically, the band gap of an electrical insulator is too large for this to occur. It is also possible for the energy gap to be decreased by defects and doping \cite{Nelson3}, which will be mentioned in the context of impact on PV performance in section \ref{defects_impact}. The band gap of a semiconductor, and in particular the magnitude of the band gap, is also an important property for the photovoltaic effect where electrons are optically excited across this energy gap by incident photons, which will be outlined in the next section.
+
+%Values of effective mass in semiconductors usually vary between 0.01 and 1 times the mass of a free electron and it is determined by the curvature of the energy graph in \textit{k}-vector space \cite{small_semiconductor2}. The effective mass is a parameter that can influence the efficiency of a solar cell. The mobility of charge carriers is inversely proportional to the effective mass and the mobility of charge carriers in a PV material is important for efficient charge collection \cite{transport}.\\
+
+%Each electron occupies a state of definite $\mathbf{k}$. Therefore, an infinite number of electrons within the solid would result in an infinite number of \textit{k}-points. At each \textit{k}-point, only a finite number of the available energy levels will be occupied. Therefore only a finite number of electrons need to be considered but at an infinite number of \textit{k}-points. In practise, all of these \textit{k}-points are not considered. 
+%Electron wavefunctions will be almost identical for values of $\mathbf{k}$ that are sufficiently close, so the wavefunctions over a region of reciprocal space can be represented by considering the wavefunction at a single \textit{k}-point. It is therefore sufficient to consider the electronic states at a finite number of \textit{k}-points in order to determine the ground state energy of the solid. This approximation is illustrated in figure \ref{energy_dispersion}. Using Bloch's Theorem therefore has enabled the ground state energy to be determined by considering only the number of electrons in the unit cell at a finite number of \textit{k}-points, which are chosen to sample the Brillouin zone appropriately. The choice here is a balance between more \textit{k}-points for a more accurate representation of the Brillouin zone and fewer \textit{k}-points to reduce the computational expense of the calculation \cite{bloch-thesis}.
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.4\textwidth]{figures/energy_dispersion.png}
+%    \caption{The energy dispersion relation for electrons moving in a crystal, illustrating how the function can be approximately represented by a finite number of \textit{k}-points, which form an equally-spaced mesh. Figure adapted from reference \citenum{vasp-slides}.}
+%  \label{energy_dispersion}
+%\end{figure}
+
+
+\section{Solar cell device physics}\label{PV_architecture}
+
+\subsection{The photovoltaic effect}
+A solar cell device converts solar energy directly into electrical energy. Solar energy can be described as either a spectrum of electromagnetic radiation in the classical-wave theory of light or as a flux of packets of energy (photons) in the quantum theory of light. Electrical energy is a flow of charge carriers able to do work in an external circuit \cite{spatial_resolved_book}. Voltage is generated in a solar cell device by the photovoltaic effect (PVE). The terms `solar cell' and `photovoltaic (PV) cell' are therefore often used interchangeably. The explanation for the photovoltaic effect uses ideas from the quantum theory of light \cite{Nelson1}.
+
+Semiconducting materials are usually used as the absorber layer in a PV device, the presence of an optical band gap in the electronic structure of the material is vital for the PVE. In the case of a perfectly pure semiconductor, only photons with energies higher than the intrinsic optical band gap can be absorbed to excite an electron from the valence band into the conduction band to produce an electron-hole pair as shown in Fig. \ref{PV_schematic}a. In order for this process to be induced by sunlight, the magnitude of the optical band gap must be within the range of the photon energies that make up the solar spectrum, which as shown in Fig. \ref{PV_schematic}b. The optical band gap of a semiconductor is also necessary in order for electrons that have been optically excited to gain extra potential energy, which provides the potential difference or electromotive force that will later drive electrons through a load in an external circuit to do electrical work. If electrons are instead promoted through a continuum of energy levels, as in a metal, excited electrons would quickly decay back to the ground state via intermediate energy levels, thus dissipating the potential energy gained. In the conventional PV effect, the band gap of the material sets the upper limit for the maximum voltage that can be generated. The voltage at open circuit (and hence when current is zero), V$_{OC}$, is the maximum possible potential difference across the terminals of the solar cell. However in order for the cell to do any electrical work both voltage, V and current, I (and hence power, P) must be non-zero when a load is connected in the external circuit \cite{Nelson3}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/PV_schematic.png}
+    \caption{Schematic of the photovoltaic effect: a semiconductor under illumination with some built-in electrical asymmetry to drive the separation of charge carriers to be fed into an external circuit and an external load to do electrical work (a). The AM1.5G solar spectrum, indicating the major component that is in the energy range of visible light (b). Fig. b taken from Ref. \citenum{PV_spectrum}.}
+  \label{PV_schematic}
+\end{figure}
+
+In the absence of a driving force to separate the photoexcited electron and hole, the pair would quickly recombine and relax back to the ground state of the material with the emission of a photon of an energy equal to the energy of the electronic transition that has just occurred. However in a PV device, there is a `built-in' electrical asymmetry that provides an electric field to pull electrons away before they can relax and drive them towards electrical contacts to be fed into an external circuit. An electric field is effective for charge separation because it drives p and n carriers in opposite directions \cite{Nelson5}. There are various ways to provide the electrical asymmetry, such as: through connecting a metal and a semiconductor to form a Schottky barrier junction and connecting a p-type semiconductor to an n-type semiconductor to form a p-n junction. These types of device architectures are outlined in the next section. In section \ref{ferroPVsection} novel PV phenomena in bulk materials with internal electric fields will be outlined and a search for candidate `photoferroic' materials is presented in \autoref{chap:screening}. The motivation of this investigation was to find materials where it may be possible to exploit the internal electric fields of polar crystals for enhanced local charge carrier separation.
+
+
+
+\subsection{Solar cell junctions and device architectures}\label{junctions}
+\begin{itemize}
+\item Also see: https://kashanu.ac.ir/Files/Content/Handbook.pdf
+\item See PV section of Kirchartz review to PVE and architectures section? (para starting In general, a metal or metal oxide contact with low workfunction…) \cite{FE-PV_kirchartz}
+\item Check references to schematic in text below are consistent with a, b, c, d labels, etc.
+\item  **band bending (c.f. spike/ cliff and check paper write up) **
+\end{itemize}
+
+As discussed in the previous section, an electrical asymmetry is vital for the PVE. A light absorber material must be connected to an external circuit by paths of different resistance for positive and negative charge carriers, i.e. for holes and electrons. This can be provided by spatial variation in the electronic environment, such as the junction between two electronically distinct materials.
+An electrostatic field can be established by creating a junction with a gradient in the work function $\Phi_W$, electron affinity (EA) or band gap ($E_g$), which are depicted in Fig. \ref{Schottky_schematic}. However the fields established by gradients in EA or $E_g$ are usually small, whereas more substantial electric fields can be achieved by a gradient in $\Phi_W$ \cite{Nelson5}.
+The work function, ($\Phi_W$), is the energy required to remove the least tightly bound electron from a material and is given in Eq. \ref{workfunction} where $E_{vac}$ is the energy of the vacuum level and $E_F$ is the Fermi level, which are both indicated in Fig \ref{Schottky_schematic}. 
+\begin{equation}\label{workfunction}
+\Phi_W = E_{vac} - E_F
+\end{equation}
+For a metal, $\Phi_W$ is defined by the electron affinity (EA) (indicated in Fig. \ref{Schottky_schematic}). For a semiconductor, $\Phi_W$ is controlled by the doping of the material, since $E_F$ within the band gap is dependant upon the doping. For instance, a semiconductor doped n-type will have $E_F$ closer to the CB and has a smaller $\Phi_W$ than if it was doped p-type. The potential difference across the junction is then the difference in the work functions of the two materials \cite{Nelson5}.
+In early PV devices, the asymmetric junction was a Schottky barrier contact between a metal and a semiconductor but now more effective p-n junctions are used in solar cells, which are formed by joining together p-type and n-type semiconductors \cite{Nelson1}.
+In both types of junction, the photovoltage generated is related to the difference in $\Phi_W$ of the two materials either side of the junction and the junction will develop a photovoltage provided that it presents a barrier to majority carrier currents \cite{Nelson5}. In the next sections the formation of an electrical asymmetry at a metal-semiconductor is outlined, the limitations of this type of junction in a solar cell is explained and then the formation of an electrical asymmetry at a semiconductor-semiconductor junction is outlined.
+
+\subsubsection{Equilibrium electrical asymmetry at a metal-semiconductor junction}
+** Add Schottky schematic - formation of barrier highlighting band bending + quasi Fermi level splitting under illumination, adapted from Ref. \citenum{Nelson5}. **\\
+
+When two materials are isolated, their $E_F$ are independent. However when they are brought into electrical contact and allowed to reach equilibrium,  $E_F$ must be constant across the junction, i.e. the levels must line up, as shown in Fig. \ref{Schottky_schematic}. If the two materials have different $\Phi_W$, the vacuum level must then change between the two materials by an amount equal to the difference in $\Phi_W$ between the two materials. The electrostatic field created by a gradient in the vacuum level energy is $\frac{1}{q} \nabla E_{vac}$.
+To achieve this gradient, free carriers at the junction redistribute themselves. In the case of a junction between a metal and an n-type semiconductor, if the metal has a larger $\Phi_W$ than the n-type semiconductor, electrons flow from the semiconductor to the metal, leaving a layer of fixed positive charge behind in the semiconductor and a negative charge on the metal until a charge gradient builds up that is large enough to prevent any further transport of charge carriers. An electric field that still exists in a material in equilibrium is called a `built-in' electric field \cite{Nelson5}. In this case, the field would drive any excess electrons towards the positively charged side of the junction (the n-type semiconductor) and holes towards the metal side, i.e. it will provide a barrier to the flow of majority n-type carriers from the semiconductor to the metal.
+
+As can be seen in Fig. \ref{Schottky_schematic}c, once the semiconductor-metal junction has formed, the CB of the bulk semiconductor is lower than that at the interface, resulting in a spatial variation in electrostatic potential towards the semiconductor-metal interface. This is the region where $E_{vac}$ is changing, the materials possess a net charge and it is called the space charge region. The potential is distributed across the two materials at the interface but drops off further from the interface and the electric field falls to zero.  As metals do not store charge as in a semiconductor, this distance is vanishingly small on the metal side of the junction, but on the semiconductor side this region is typically around 1 micron. The $E_g$ and EA of the semiconductor do not vary, therefore the VB and CB levels change in parallel with $E_{vac}$ at the interface, this effect is called `band bending' and the amount the bands bend is called the `built-in bias', $V_{bi}$.
+In the case of a junction between a p-type semiconductor and a metal, if the metal has a smaller $\Phi_W$ than the semiconductor, the semiconductor band instead bends downwards at the interface and presents a barrier to the flow of holes from the semiconductor into the metal, which are now the majority carriers.
+If instead $\Phi_W$ of the metal is larger than that of a p-type semiconductor or smaller than that of an n-type semiconductor, the bands will instead bend in such a way as to encourage majority carrier transport across the junction. Majority carriers therefore do not accummulate at the interface to develop the potential difference at the interface necessary for the PVE. This is an Ohmic contact, as opposed to a barrier. 
+%Under illumination, photoexcited charge carriers pass easily across the junction and the photovoltage measured at the terminals will be negligible. 
+
+If incident photons have an energy greater than the $E_g$ of the semiconductor in a Schottky barrier junction, then an electron-hole pair will be photoexcited (as depicted in Fig. \ref{PV_schematic}a). The system is now no longer in equilibrium. The space charge region of the junction will cause the photoexcited electron-hole pair to be separated. In the case of a junction between an n-type semiconductor and a metal, electrons will accumulate in the semiconductor and holes in the metal. The semiconductor will become negatively charged and the potential difference across the junction will be reduced. $E_F$ in the semiconductor will now be different for electrons and holes, it has been split into a `quasi Fermi level' for electrons. Far from the junction the electron quasi $E_F$ will now be larger than in the metal and larger than it was in the semiconductor before illumination, as shown in Fig. \ref{Schottky_schematic}b. The illumination has generated a photovoltage equal to the difference in the Fermi level in the metal and the semiconductor \cite{Nelson5}.  A Schottky barrier junction can therefore facilitate photovoltaic energy conversion, but it suffers from certain limitations which impact the maximum achievable photovoltages. For example, a barrier height greater than approximately half of the band gap of the semiconductor will cause minority carriers to outnumber majority carriers close to the interface region, causing an inversion layer. The junction then becomes carrier rich and cannot sustain a photovoltage. Also if the barrier region at the junction is small and the semiconductor layer is highly doped, tunneling of majority carriers across the junction may occur, reducing the effectiveness of the barrier. Many of these problems can be overcome by using a semiconductor-semiconductor p-n junction, outlined next.
+
+\subsubsection{Equilibrium electrical asymmetry at a semiconductor p-n junction}
+** Add p-n schematic: p-n junc under illumination from Nelson Ch5 and JC slides (a) + Si layers (b) + CIGS layers (c) **\\
+
+For certain semiconductors such as Si, it is possible for the material to be doped both n- and p-type depending on the valence of the dopant species relative to the host lattice, i.e. it is ambipolar. In this case, it is possible to form a junction between electrically distinct p-type and n-type semiconductors by doping different regions of the same material differently forming a 'homojunction'. Since $\Phi_W$ of the p-type is larger than that of the n-type region, an electric field is established at the junction due to the difference in electrostatic potential, as shown in Fig. \ref{p-n_schematic}a, will drive electrons towards the n-type layer and holes towards the p-type layer. The junction region is depleted of both electrons and holes \cite{Nelson5}.
+
+%In real, non-ideal, solar cell devices power is dissipated through parasitic resistances in the device, including current leakage and resistance from the electrical contacts \cite{Nelson1}. In the case of the p-n junction architecture shown schematically in Fig \ref{PV_architecture}b, there can be series resistance of the p and n layers to the flow of majority carriers, resulting in a reduction in the potential between the junction and the terminal. There can also be resistance at the contact layers in the device, such as those indicated in Fig. \ref{PV_architecture}c and \ref{PV_architecture}d \cite{Nelson6}. The open circuit voltage (V$_{OC}$) of a device can be reduced by non-ideal alignment of the electronic bands of the different layers within the device. 
+For many of the materials being studied for use as absorber layers in thin-film solar cells, such as chalcogenide-based materials like the device shown in Fig. \ref{p-n_schematic}c, it is not possible, or is very difficult, to achieve ambipolar doping \cite{band_alignment_review, Zhang_doping_limits}. Therefore to achieve a p-n junction for many thin-film PV devices it is necessary to form an interface between two different materials with different energy gaps, lattice constants and even slightly different crystal structures. Due to such mismatches, defects are expected to be more prevalent at heterojunction interfaces than at homojunction interfaces. In section \ref{sulfosalt_band_alignment} band alignments that have been proposed for reducing the impact of defects at p-n heterojunctions will be discussed and suggestions for the contact materials for the candidate photoferroic solar absorber materials are presented.
+
+
+\section{Material properties of absorber layers for efficient solar cells}\label{PV_properties}
+The most fundamental, necessary requirement for a solar absorber material in a PV device is that it possesses a band gap across which an electron can be excited. As discussed in the previous section, the magnitude of this band gap must also be somewhere within the energy range of the solar spectrum so that sunlight can induce this excitation. The next most fundamental requirement of a solar absorber material is that it must allow for the transport of charge carriers out of the absorber material layer, into a collection electrode and on to an external circuit in order to do electrical work. Provided these necessary conditions are met and some sort of spatial asymmetry (outlined above) is present to drive electrons away from their point of promotion, the material should exhibit the PVE \cite{Nelson2}. However, how well it will actually peform in a solar cell is determined by more stringent criteria and other material properties. 
+
+Firstly the actual value of the band gap within the range of the solar spectrum (shown in Fig. \ref{PV_schematic}b) is of importance. It is ideal for the value to be as close as possible to the region of photon energies that make up the majority of the solar spectrum. The optimal range for the band gap under typical radiation conditions is approximately 1.0 to 1.7 eV \cite{PV_E_range}. The upper limit of the power conversion efficiency (PCE) of incident photon energy into electrical energy by a device made from a particular absorber material based on its band gap was first calculated by Shockley and Quiesser in 1961 \cite{SQ_1961}. A plot of theoretical efficiency limit as a function of band gap was shown in figure \ref{SQ}, as well as the record efficiencies of various PV technologies.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/Si_and_GaAs.png}
+    \caption{The band structure of silicon and a schematic of the absorption process in an indirect band gap semiconductor (top). The band structure of GaAs and schematic of the absorption process in a direct gap semiconductor. Figures adapted from \citenum{phys_semicond} and \citenum{PV_bands_book}.}
+  \label{Si_and_GaAs}
+\end{figure}
+
+However, it is not only the value of the band gap that is of importance. More intricate details of the band structure of the material can also impact on the performance of a solar cell device made from the material. Whether the band structure shows a band gap that is direct or indirect can have an impact on the performance of a solar cell made from the material. Figure \ref{Si_and_GaAs} shows the band structures of Si and GaAs, where Si possesses an indirect band gap and GaAs possesses a direct band gap, i.e. the extrema of the VB and CB occur at the same value of \textbf{k} for the latter but not for the former. The excitation of an electron from the valence band maximum to the conduction band minimum is called fundamental absorption, as there are several other optical absorption transitions that can occur in a semiconducting material, especially in a defective material, and this point will be discussed more in section \ref{defects_impact}. Both the total energy and momentum of all particles involved in the absorption process must be conserved. Photons do possess momentum ($\frac{h}{\lambda}$), however this is very small compared to the range of crystal momenta and so the electron momentum is effectively conserved during photon absorption. For a direct transition, the absorption coefficient of a material for a given photon energy $h \nu$ is proportional to the probability, p$_{12}$, of the transition of an electron from the initial state E$_1$ to the final state E$_2$, the density of electrons in the initial state, $g_{v}(E_1)$, and the density of available final states, $g_{c}(E_2)$. This is then summed over all possible transitions between states where $E_2 - E_1 = h\nu$. Since the electron momentum is conserved during a direct transition, the crystal momentum in the valence band is approximately the same as that of the final state in the conduction band at energy $E_2$ \cite{PV_bands_book}.
+
+However for an indirect band gap semiconductor, such as silicon shown at the top of figure \ref{Si_and_GaAs}, the valence band maximum occurs at a different crystal momentum to that of the conduction band minimum. As discussed earlier, the momentum of a photon is far less than that of crystal momenta. In order to conserve the momentum of an electron during an optical transition across an indirect band gap, momentum must be either provided by the lattice or released to the lattice usually in the form of the particle representation of a lattice vibration, known as a phonon, as indicated in the top right schematic of figure \ref{Si_and_GaAs}. Since both a phonon and an electron are needed to make an indirect transition possible, the optical absorption coefficient, $\alpha$, depends not only on the density of states of the electrons, as for a direct transition, but also on the availability of emitted or absorbed phonons with the required momentum. Therefore, $\alpha$ for an indirect transition compared to a direct transition is typically relatively small and more heavily dependent on temperature \cite{Nelson3}. 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{figures/absorption_fig2.png}
+    \caption{A comparison of the absorption coefficients of the indirect band gap semiconductor Si and the direct band gap semiconductor GaAs across a range of incident photon energies. Figure taken from reference \citenum{PV_bands_book}.}
+  \label{absorption_fig2}
+\end{figure}
+
+$\alpha$ of a material determines the penetration depth, $\frac{1}{\alpha}$, of light incident on the material \cite{absorption_coeff_book1}. Fig. \ref{absorption_fig2} shows the absorption coefficients of different semiconductors across a range of wavelengths. The figure shows a less steep onset of absorption for silicon, which as discussed earlier possesses an indirect band gap, compared to that of GaAs for which the absorption corresponds to a direct band-to-band transition. 
+The implication of the differing $\alpha$ and therefore different optical penetration depths of absorber layers is that materials which are stronger absorbers require less material to absorb the light. This forms the basis of thin-film solar cell technologies.
+On the other hand materials with a weaker onset of absorption, as is often the case for materials with an indirect band gap such as Si, a thicker layer of absorber material is required to absorb the same amount of light \cite{PV_bands_book}. This is undesirable if the particular material contains rare or expensive components and also results in higher demands on material quality as charge carriers must be transported through the absorber material in order to be collected.
+Thin-film PV technologies typically require a less high-quality and defect-free absorber layer as charge carriers do not have to travel through as much of the material in order to reach a collection electrode. However, defects in the absorber layer do still play a decisive role in determining the device performance of thin-film film PV technology, and this point is discussed much more in section \ref{defects_impact}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.2\textwidth]{figures/heavy_holes.png}
+    \caption{Schematic of a the band structure of a photoexcited semiconductor with electrons near the bottom of the conduction band, holes near the top of the valence band, where the particular material has both heavy- and light-hole bands (labelled H.H and L.H in the figure respectively). Figure taken from reference \citenum{heavy_holes}.}
+  \label{heavy_holes}
+\end{figure}
+
+As mentioned in section \ref{BandTheorySection}, another property of importance that can be derived from the band structure of a material is the effective mass, m*. m* is related to the curvature of the band at the top of the valence band (for holes) or at the bottom of the conduction band (for electrons). The m* of electrons or holes are the masses they seem to carry for transport properties \cite{dielectric_const1}. For example, in ZnSnO$_3$ the hole m* has been calculated to be large, indicating that hole mobility will be poor in this material. Poor mobility will make carrier extraction difficult, which has been linked to the low photocurrents observed in this material \cite{effective_mass1}. m* are calculated by fitting a formula to the band extrema when using the parabolic approximation. However, just from a quick inspection of the band structure of a material, a more steeply curved shape to the band extrema indicates a lower effective mass and therefore satisfies a necessary condition for higher carrier mobility. Fig. \ref{heavy_holes} shows a schematic of the band structure of a direct band gap semiconductor that has both heavy- and light-hole bands at the valence band extremum, where the flatter band corresponds to the heavy-hole band.
+%Although certain thin-film technologies, which will be discussed towards the end of section \ref{current_tech}, reduce the amount of absorber material the charge carrier must travel through before being collected. So although carriers must still travel through the material, effective mass could be considered less of a crucial parameter for this technology. 
+However m* should just be considered as a necessary but not a sufficient condition for good carrier mobility as the effect of the effective mass on the transport properties could be overshadowed by scattering of charge carriers by defects in a real, non-ideal material. 
+
+\section{Impact of defects in absorber layers on solar cell performance}\label{defects_impact}
+%Refer to: pg 160 \cite{fund_semi}, pg 51, 52, 64 \cite{thin_film_Boer}, pg 63 + 65 \cite{phys_semicond}\\
+Although the main framework for modeling solid-state systems (as outlined at the start of this chapter) is built around perfect, periodic systems; in reality absolutely perfect systems do not exist. Deviations from the perfect crystal lattice structure (i.e. defects) can strongly influence the performance of electronic devices. There is an energy cost associated with the creation of a defect, but in many cases the free energy of a system can be lowered by the incorporation of a certain concentration of defects due to an increase in the configurational entropy of the system \cite{AshcroftMermin_general}. Methods for modeling defects in solids are discussed in section \ref{defects_methods}, but here the impact of defects in the absorber layers on the performance of solar cells is discussed.
+
+There are many different possible types of crystal defect. If a defect does not involve any atoms that are foreign to the host crystal, then the defect is called an intrinsic or native defect. Defects involving foreign atoms, or impurities, are referred to as extrinsic defects. Fig. \ref{defects}b and \ref{defects}c show some examples of extrinsic and intrinsic defects. This work is primarily interested in the fundamental material properties of candidate solar absorber materials, so only intrinsic defects are considered. In real systems however, impurities are sometimes unintentionally present in the growth or processing environment.
+Defects are usually classified as point or extended defects. Point defects usually involve isolated atoms in localised regions of a host crystal, such as those shown in Fig. \ref{defects}b and \ref{defects}c. There are a number of different possible point defects, such as: vacancies, interstitials and antisites, which correspond to the removal, insertion or substitution of species from the perfect host lattice respectively. Extended defects may involve rows of atoms, such as a dislocation defect. An example of a line defect is shown in figure \ref{defects}a. Another possible type of defect is a defect complex, which is composed of a small number of point defects.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/defects.png}
+    \caption{An example of a line defect (a) and both intrinsic (b) and extrinsic (c) point defects. Figures taken from references \citenum{defects_fig1} and \citenum{defects_fig2} respectively.}
+  \label{defects}
+\end{figure}
+
+The electrical properties of semiconductors can be modified significantly by the incorporation of very small amounts of impurities or defects. It is often the case that less than one defect per million of host atoms is sufficient to alter the properties of a semiconductor \cite{fund_semi}. This sensitivity to defects is one of the reasons why semiconductors find many uses in device applications. For example, luminescence centres in wide-band-gap materials can be used to emit light at specific wavelengths or single-spin centres provided by defects can act as artificial atoms and serve as a qubit in a quantum computer \cite{defects_tutorial}. In order to control the electrical properties of a material by introducing defects, typically processes must first be developed to produce a fairly defect-free material, before intentionally introducing particular defects \cite{fund_semi}. In the case of solar cell devices, however, the presence of defects can be detrimental depending on the nature of the defect \cite{Aron_defect_tolerance}, which will be discussed next. 
+
+Certain point defects result in additional energy levels in between the valance-band maximum (VBM) and conduction-band minimum (CBM), i.e. within the band gap of the material. Electrically active defects have at least one charge state for the defect that produces a defect level in the band gap. This level then has an associated defect wavefunction, a state to which the electron is added to or removed when the charge state of the defect changes. If the defect level is positioned close enough to the band edges such that the defect is likely to be thermally ionised at room temperature, then the defect is conventionally referred to as a `shallow'. If the defect produces a level in the band gap and far from the band-edge, it is a referred to as `deep'.  Another way of defining a defect as `shallow' or `deep' is based on the degree of localisation of the wavefunction. If a defect wavefunction is delocalised (on the order of many lattice constants) then the defect has the characteristics of a shallow defect. If the wavefunction is instead localised on the length scale of an atomic bond then this indicates a deep level defect \cite{defects_tutorial}. 
+
+Typically deep levels are thought to be the most detrimental to solar cell device performance \cite{Stoneham_killer_defects}. 
+Defects that produce mid-gap states act as Shockley-Read-Hall recombination sites \cite{SRH}, which is regarded as the most important recombination process in real, non-perfect semiconductors. It is a form of non-radiative recombination where a charge carrier is trapped in the defect state before recombining with a charge carrier of opposite polarity. This type of recombination is known to be detrimental to device performance as, essentially, it results in energy input from sunlight not being converted into electricity \cite{Nelson4}.
+In the case of {\CZTS}, predictions for the defect formation energy and defect levels in reference \citenum{defects_Chen} suggest that defects which would be expected to produce a deep defect level, also have a high formation energy so would be expected to be less likely to form.
+However, a recent theoretical study has revisited the defect physics of {\CZTS} to demonstrate that similar detrimental effects may also be possible with some shallower defects \cite{Sunghyun_killer_defects}.
+
+The energy band model described in section \ref{BandTheorySection} has been successful in explaining many aspects of the behaviour of solids and a large amount of experimental data has supported the theoretical predictions made using the model. Its main drawback however is that it assumes a perfect, or nearly perfect, crystal lattice. It applies well to single crystals and polycrystalline substances, but omits important physical characteristics when used to study materials that are amorphous or heavily disordered so that the structure deviates significantly from the periodicity of the crystal \cite{small_semiconductor1}.
+Low concentrations of impurities and defects can be modeled by considering, for example, the introduction of distinct additional donor and acceptor energy levels within the band gap of a material and the scattering of electrons and holes in the solid. However, in {\CZTS} the presence of a large extent of disorder amongst Cu and Zn, and hence high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites, has been inferred from calculations of defect formation energy \cite{defects_Chen} and confirmed from experiment \cite{Schorr, CZTS_Xray, CZTS_TEM}. 
+At higher defect concentrations, defect levels interact to form a band. For example, for high n-type doping the impurity band merges with the conduction band, causing a rigid shift of the conduction band towards the valence band \cite{Pankove}. The band profile can be modified with increasing donor density as shown in figure \ref{bs2}a-c. 
+%to give rise to conductivity even at temperatures that are too low to produce excitation of carriers into the free conduction bands, called impurity band conduction \cite{small_semiconductor2}.
+In heavily-doped semiconductors it is possible to observe a phenomena called `band tailing', where the valence and conduction bands are shifted towards each other resulting in a narrowing of the band gap, as shown in figure \ref{bs2}d \cite{Pankove}. The heavy-doping effects then result in a different emitted spectrum which can be detected by techniques such as photoluminescence (PL) spectroscopy. 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/bs2+pankove.png}
+    \caption{The influence of increased donor impurity density on the conduction band profile showing low (a), medium (b) and high (c) densities of impurities. Figure taken from reference \citenum{small_semiconductor2}. (d) Schematic of band tailing. $\zeta_{n,p}$ are the quasi-Fermi level for electrons and holes respectively. The narrow line denotes the unperturbed density of states (DOS), while the heavy line depicts the DOS modified by heavy-doping effects. Both valence and conduction bands are shifted towards each other to give a narrowing of the band gap and the DOS is distorted, showing band tails. Figure taken from reference \citenum{Pankove}.}
+  \label{bs2}
+\end{figure}
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.4\textwidth]{figures/pankove_band_tailing.png}
+%    \caption{Schematic of the laser operation at T=0 K in GaAs. $\zeta_{n,p}$ are the quasi-Fermi level for electrons and holes respectively. The narrow line denotes the unperturbed density of states (DOS), while the heavy line depicts the DOS modified by heavy-doping effects. Both valence and conduction bands are shifted towards each other to give a narrowing of the band gap and the DOS is distorted, showing band tails. Heavy doping effects result in a different emitted spectrum. Figure taken from reference \citenum{Pankove}. **CONDENSE FIGURES**}
+%  \label{pankove_band_tailing}
+%\end{figure}
+
+In a PL experiment, photons with energies larger than that of the band gap excite electrons from the valence band to the conduction band, as shown in figure \ref{PL_transitions}a. In addition, electrons can be excited from or to defect levels, as shown in figure \ref{PL_transitions}b. When the excited electrons transition to lower energy levels, they can emit light to conserve energy, resulting in a peak in the PL spectrum. In a photoluminescence excitation (PLE) experiment, the PL intensity is measured as a function of excitation photon energy. This gives an absorption profile for the defect. PL measurements are able to pick up optical signatures of defects even if they are only present at low concentrations with high resolution. PL measurements alone however cannot be used to identify the character of a defect, this is an area where first-principles defect calculations can provide some insight \cite{defects_tutorial}. 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{figures/PL_transitions.png}
+    \caption{Basic optical transitions involved in a measurement during photoluminescence spectroscopy (a). Common emission transitions detected during photoluminescence measurements, including transitions involving defect levels (b). Figures taken from reference \citenum{PL_transitions} and \citenum{Pankove} respectively.}
+  \label{PL_transitions}
+\end{figure}
+
+Several PL studies have been performed on kesterite-structured samples of {\CZTS}, Cu$_2$ZnSnSe$_4$ and alloys of the two. PL measurements have been performed on both full devices and polycrystalline thin-films \cite{band_tail, Gershon, Gershon_ref18, Romero, Miyamoto, Unold} and single crystals \cite{Halliday, Levcenko, Hones}. Reference \citenum{Halliday} compares the PL spectra for varying compositions of the sample, whereas in reference \citenum{band_tail} measurements on both CIGSSe and record-efficiency CZTSSe thin films are performed in an attempt to account for the difference in the performance of these two technologies by comparing their defect-influenced PL emission spectra. Polycrystalline samples are more similar to those likely to be used in thin-film CZTS photovoltaic devices, however comparison between those measurements with single crystal measurements could enable the isolation of recombination at grain boundaries and interfaces from those due to defects in the bulk of the absorber layer. 
+%Also measurements performed on single crystals as close to perfectly stoichiometric {\CZTS} as possible are likely to be the most directly relatable to our simulations on bulk systems. 
+One feature common to all of the PL spectra from studies on kesterite samples is clear evidence of defects and disorder from the observed band tailing. 
+Fig. \ref{CZTS+CIGS_PL} shows photoluminescence (PL) spectroscopy measurements performed on CZTSSe thin films by Gokmen et al \cite{band_tail}. The figure shows that there is a shift in the PL peak to lower energies (red-shifting), below the value of the band gap obtained from internal quantum efficiency (IQE) measurements performed on the same thin films. It is also noted in this study when comparing the PL spectra of CZTSSe films to that of CIGSSe films that the PL peak for CZTSSe thin films is broader and that the red-shifting was roughly twice as severe. This effect is referred to as the `band-edge tailing', where photons of energies less than the band gap of the material are emitted following photoexcitation and subsequent relaxation back to the ground state. 
+%This effect is known to be detrimental for device performance as emitted photons may then not have sufficient energy for subsequent photoexcitations in the absorber layer, the energy of the original photon may then not be converted into electricity if the photoexcited electron-hole pair recombine before the charge is collected \cite{Nelson4}.
+%The PL spectra of kesterite samples usually features a much broader peak than that observed in CIGSSe samples, such as that shown in figure \ref{CZTS+CIGS_PL}. The energy of the maximum PL peaks of kesterite samples is also usually considerably red-shifted compared to the energy of the band gap. These two features are usually attributed to band tailing caused by either spatial band gap variations or electrostatic potential fluctuations in the absorber material.  Both effects lead to a non-zero density of states (DOS) within the band gap \cite{culprit, band_tail}. 
+Measurements performed in reference \citenum{band_tail} found the tailing in CZTSSe to be roughly twice as severe as that observed in higher-performing CIGSSe devices.
+
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{figures/CZTS+CIGS_PL.png}
+    \caption{The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV). Figure taken from reference \citenum{band_tail}.}
+  \label{CZTS+CIGS_PL}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.75\textwidth]{figures/Voc.png}
+    \caption{V$_{OC}$ versus band gap of high performance CZTSSe devices ($>$9\% efficiency) indicated by circles with best devices based on other photovoltaic materials shown for comparison by diamond symbols: Methyl-ammonium lead iodide (MAPI), amorphous silicon (a-Si), organic photovoltaic films (OPV), crystalline silicon (c-Si) and polycrystalline silicon (pc-Si). The oblique lines give a constant V$_{OC}$ deficit from 0.8 V to 0 V. The green points correspond to CZTSSe films that are partially ordered (PO) or partially disordered (PD) due to disorder amongst Cu and Zn. Figure taken from reference \citenum{culprit}.}
+  \label{Voc}
+\end{figure}
+
+The low open circuit voltage (V$_{OC}$) relative to the band gap has been recognised as the key limiting factor on the performance of {\CZTS} solar cells \cite{culprit}. 
+The measured current density-voltage (J-V) curve of a solar cell is used to determine the solar to electric power conversion efficiency (PCE), $\eta$. The PCE of a solar cell is the ratio of power output from the solar cell ($P_{MP}$) to the power input from the Sun ($P_{in}$). This is shown in Eq. \ref{PV_efficiency}. $P_{MP}$ is given in terms of the V$_{OC}$ (the voltage from the J-V curve of the solar cell at J = 0) and the short-circuit current density, $J_{SC}$, (the current density on the J-V curve at V = 0) in Eq. \ref{P_MP}.
+For an efficient solar cell, it is desirable to have a high $J_{SC}$, a high $V_{OC}$ and a FF that is as close to 1 as possible.
+\begin{equation} \label{P_MP}
+P_{MP} = FFV_{OC}J_{SC}
+\end{equation}
+\begin{equation} \label{PV_efficiency}
+\eta = \frac{P_{MP}}{P_{in}} = \frac{FFV_{OC}J_{SC}}{P_{in}}
+\end{equation}
+As can be seen from the position of CZTSSe devices on the plot in figure \ref{Voc}, the open circuit voltages measured for these devices are considerably less than that of the higher-performing CIGS devices, which have a similar value for the band gap of the material.
+In general, the main cause of V$_{OC}$ deficit in a PV device is the recombination of photogenerated charge carriers in the bulk material or at surfaces \cite{culprit}. In {\CZTS} one explanation that has been put forward is band tailing in the bulk \cite{band_tail}.
+
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.6\textwidth]{figures/pankove_elec_fluc.png}
+    \caption{The perturbation of the band edges by Coulomb interaction with inhomogeneously distributed impurities (left), leading to the formation of tail states (right). Dashed lined show the distribution of states in the unperturbed case. Figure taken from reference \citenum{Pankove} and adapted.}
+  \label{pankove_elec_fluc}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{figures/pankove_band_fluc.png}
+    \caption{Energy banding of allowed levels in diamond as a function of spacing between atoms (a). Compressional strain induced in a crystal lattice by the incorporation of a large impurity atom (b). Deformation potential in the band structure due to compressional and dilational strain from an edge dislocation defect (c). Figures taken from reference \citenum{Pankove} and adapted.}
+  \label{pankove_band_fluc}
+\end{figure}
+
+Observed band tailing can be caused by either spatial band gap variations or electrostatic potential fluctuations in the material \cite{band_tail}. In the case of the latter, it is the inhomogeneous distribution of ionised defects that cause the fluctuations. An ionised donor exerts and attractive force on conduction electrons and a repulsive force on valence holes. As the defects are distributed randomly, the local interaction varies depending on the crowding of the defects. In this case the energy gap between the valence band and conduction band is maintained, as shown in figure \ref{pankove_elec_fluc} and the states of each tail are spatially separated \cite{Pankove}. Defects can also result in fluctuations in the band gap of a material. For example, if an impurity atom is of a different size to the atoms of the host lattice, then this can result in a local mechanical strain, as shown in figure \ref{pankove_band_fluc}b which results in a deformation potential, such as that shown in figure \ref{pankove_band_fluc}c for an edge dislocation defect. Local strains can alter the separation of atoms in the crystal and, as figure \ref{pankove_band_fluc}a shows, the atomic separation within a crystal has a significant impact on the band structure. Additionally, due to the narrow region of phase stability for {\CZTS}, it is also possible there may be compositional inhomogeneity and secondary phases present \cite{SandS}, which could also produce local band gap fluctuations. 
+
+In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow for the investigation of the possible contribution to band tailing in {\CZTS} from the potential fluctuations of high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites. In section \ref{sulfosalt_defects} we perform electronic structure calculations to investigate the defects physics of candidate `photoferroic' solar absorber materials for which no experimental measurements have yet been made.
+
+
+\section{Photoferroic phenomena and prospects for solar cells}\label{ferroPVsection}
+% ** Cite Rappe about shift current (+BPE?) possible in any crystal that lacks centre of inversion symmetry, not just FE materials
+A ferroelectric material possesses a spontaneous electric polarisation that can be switched between two or more states using an electric field \cite{new_FE_PV_1}. Many interesting PV phenomena have been observed in ferroelectric (FE) materials such as the bulk photovoltaic effect (BPE) and the anomalous photovoltaic effect (APE) \cite{keith}. 
+%Ferroelectric materials usually have a high dielectric constant (which was mentioned in section \ref{PV_properties} as an important parameter for a photovoltaic material) and they possess a spontaneous electric polarization that can be switched between two or more states using an electric field \cite{new_FE_PV_1}.
+The BPE was first recorded in 1956 in BaTiO$_3$ \cite{keith_46}, where photovoltages were measured in un-doped single crystals \cite{keith}.
+The BPE effect is distinctly different from the typical PV effect in semiconductor
+p-n junctions outlined in section \ref{PV_architecture} as the driving force for the photocurrent is provided by the internal electric polarisation of the crystal \cite{FE_PV_rev1}. 
+The APE was first observed in PbS films in 1946 \cite{keith_54} and has since been reported in polycrystalline CdTe, ZnTe, InP \cite{keith_55, keith_56, keith_57}, where photovoltages output along the polarisation direction can be significantly larger than the band gap of the material \cite{FE_PV_rev1}, which is usually the limit for a semiconductor PV material \cite{keith}. 
+The Shockley-Queisser limit \cite{SQ_1961}, which prevents any single p-n junction solar cell from converting more than 33.7\% of the incident light into electricity, has not been predicted to apply for these photovoltaic phenomena. An upper limit for the theoretical power conversion efficiency (PCE) from this photovoltaic mechanism seems to still be an open question \cite{ FE-PV_kirchartz, new_FE_PV}, although an ultimate maximum efficiency of any single-band gap absorber of 44\% has been set by thermodynamic considerations \cite{SQ_1961}. 
+
+The identification, understanding and utilisation of such phenomena discussed above may open up the possibility of more efficient PV devices constructed from photoactive-ferroelectric, i.e. `photoferroic', materials.
+In addition to the above novel PV effects, it has been proposed that the presence of electric polarisation in a PV absorber material may allow for efficient polarisation-driven charge carrier separation \cite{Jarv, FE-PV_lett} and also that ferroelectric materials in solar cells may allow for control over the internal electric fields and carrier injection barriers, which play a central role in the PV mechanism \cite{FE-PV_kirchartz}.
+However, most of the commonly used ferroelectric materials such as LiNbO$_3$ and BaTiO$_3$ have band gaps larger than 3 eV and can therefore only absorb sunlight in the UV range to convert into electricity, which accounts for only around 3.5\% of the solar spectrum. Research efforts have sought to adjust the optical absorption of ferroelectric materials without influencing the ferroelectric properties through chemical doping or alloying \cite{FE_PV_rev1}. In Bi$_4$Ti$_3$O$_{12}$ the optical band gap has been tuned in such a way, resulting in a decrease from 3.6 eV to 2.7 eV \cite{FE_PV_rev1_83}, although this is still considerably larger than the optimal range for a PV absorber material, as discussed in section \ref{PV_properties}. A recent study has demonstrated a more substantial reduction in the optical band gap of BaTiO$_3$  to 1.66 eV, whilst maintaining 70\% of the original polarisation \cite{FE-PV_lett}, however the PV performance of the modified material was not demonstrated in this study. 
+
+This then leads on to the second component of this study: to identify new candidate solar absorber materials that may exhibit ferroelectricity and have band gaps within the optimal range for the absorption of sunlight. The screening criteria used to identify these candidate absorber layers will be outlined further in \autoref{chap:screening}, but the basic principles are as follows: by starting from a dataset of naturally occurring minerals, it could be assumed that all candidates are likely to be thermodynamically stable. Secondly, necessary (although not sufficient) conditions are used to screen for candidate photoferroic materials. A dark streak colour for the mineral implies that the magnitude of the optical band gap may be somewhere within the visible spectrum and therefore within the ideal range for a PV absorber layer. A polar space group is a necessary, but again not sufficient, condition for a material to exhibit ferroelectricity. Even in the absence of switchable ferroelectric states, the internal crystal polarisation may be beneficial for a PV material, as mentioned earlier.
+The optoelectronic properties of the candidate materials are then investigated further to assess the likely performance of solar cells made from these absorber materials to determine those worthy of further experimental study. The identification of stable materials with a large polarisation and strong optical absorption could provide more test systems for further experimental investigation and, ideally, the development of control of the novel FE-PV phenomena outlined at the start of this section.
+
+
+\chapter{Methodology}
+\section{Electronic structure calculations}\label{elec_struc}
+\subsection{Fundamentals}
+Ab initio fundamentals (H-F, etc.)
+\subsection{Density functional theory (DFT)}
+Starting point: http://iopscience.iop.org/article/10.1238/Physica.Topical.109a00009/pdf
+\subsection{Alternative basis sets in DFT}
+Alternative representations of wavefunctions: expressing basis sets as plane waves (VASP) or numeric atom centred orbitals (FHI-aims) or localised gaussian basis sets for molecules. See aims workshop slides (https://th.fhi-berlin.mpg.de/sitesub/meetings/dft-workshop-2015/index.php?n=Meeting.Program). State that both plane waves within the VASP code and NACO within FHI-aims are used in this work.
+
+\subsection{Hybrid-DFT}
+
+\section{Models of imperfect solids}\label{defects_methods}
+When a solid forms a regular crystal, the energies of the bands, i.e. band structure, as outlined in section \ref{BandTheorySection} can be predicted exactly from electronic structure calculations \ref{Nelson3}. However...
+
+Nod to different types of defects and disorder here (on different scales - 1D, 2D, 3D, etc.) (point, line, pinholes). Maybe also take line from theory section on perfect solids not existing due to entropy?
+
+\subsection{Defects in the dilute limit}
+(Reuse theory from DefectsBenchmark write up) Outline supercell method as one (but not only) method to simulate defects in the dilute limit (see defects JC talk). In this case, use a unit cell larger than the primitive unit cell discussed in section \ref{crystal_models}.\\
+
+Also nod to MC method in next section as a means for considering defects and concentrations larger than the dilute limit (see transfer report with graph of Cu-Zn defect conc as justification for above dilute limit and interacting defects).
+
+\subsection{Finite-size corrections to defect supercells}
+(Reuse theory from DefectsBenchmark write up) Outline need (PBCs in material simulation, defect-defect interaction, etc.). Discuss different correction steps (see pylada paper) and different schemes (see Komsa paper?). + see JC talk slides\\
+
+Mention importance of band gap error in standard DFT for defect calculations (see Lany defects review)
+
+\subsection{All-electron defect calculations}
+Outline methodology for pa with FHI-aims ($V_{es}^{at}(0)$) (take from paper methodology? - write last) \\
+
+Possibly different treatment for `jellium' than VASP and hence different correction? no pa??
+
+
+
+\section{The Monte Carlo method}
+\begin{itemize}
+\item Introduce general method (see transfer report + textbooks)
+\item Outline Eris model of Cu-Zn disorder in CZTS (see transfer report)
+\item Introduce as one method for simulating defects and disorder on scales much larger than possible with electronic structure calculations, but we also explore various levels of DFT-parameterisation in our model (just dielectric const from DFT then also Cu-Zn defect formation E, find former more suitable for reproducing correct transition T)
+\end{itemize}
+
+\subsection{Fundamentals}
+\subsection{Application to thermodynamic substitutional cation disorder}
+Include stuff from transfer report showing expected defect concentrations of Cu and Zn antisites in CZTS $>$ dilute limit (and hence need for MC model), Eris visuals, etc.
+
+
+\chapter{Performance bottlenecks of {\CZTS} solar cells}\label{chap:CZTS}
+\section{Motivations and challenges for {\CZTS} solar cells}
+Introductory paragraph + ACS energy letter
+
+\includepdf[pages={1-},scale=1.0]{papers/CZTS_lett.pdf}
+
+\section{Monte Carlo simulation of Cu-Zn disorder in {\CZTS}}
+Introductory paragraph + Eris paper1 (methodology) + include paper SI? (put in appendix?) + Add statement on personal contribution + link to Eris git repo and Zenodo doi for data?\\
+
+For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
+During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
+Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.
+
+\includepdf[pages={1-},scale=1.0]{papers/ErisPaper1_draft.pdf}
+\includepdf[pages={1-},scale=1.0]{papers/Eris1_draft_SI.pdf}
+
+
+%\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
+\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}
+Introductory paragraph: importance of band tailing for devices and implication for our understanding of defect physics of materials with high levels of disorder? i.e. supercell picture/ dilute limit may be less appropriate (band tailing and Sn defects in presence of high levels of Cu-Zn disorder as extensions/ applications of MC model)\\
+
+Look for Jarv's work on band tailing in MAPI to discuss how Eris could be similarly applied to extract band tails in CZTS\\
+
+Discuss NREL works on extended antisites? (see other notes on Sn disorder) Key paper for discussing Sn disorder: https://doi.org/10.1016/j.solmat.2017.11.005\\
+
+Possible adaptation of MC model to explore possibility of disorder suppression in off-stoichiometric CZTS?
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.45\textwidth]{figures/urbach_fig.png}
+    \caption{Optical absorption spectrum of a typical direct band gap semiconductor with the absorption coefficient, $\alpha_{0}$, proportional to the extended density of states in the Urbach tail. Figure taken from reference \citenum{thin_film_Boer}.}
+  \label{urbach_fig}
+\end{figure}
+Although $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects have been predicted to produce only shallow defect levels within the band gap of the material \cite{defects_Chen}, their presence could be linked to band tailing in the material, as described in section \ref{defects_impact}. 
+Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge, such as that shown in figure \ref{bs2}. Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. For disorder due to defects with a correlation length on the order of interatomic spacing, the absorption coefficient, $\alpha_{0}$ (which was discussed as a key property for PV materials in section \ref{PV_properties}) shows a exponential decline. This effect, illustrated in figure \ref{urbach_fig}, is referred to as the Urbach tail \cite{Urbach1953} and is widely observed in disordered semiconductors \cite{thin_film_Boer}. Such tailing can be quantified by the Urbach energy, and it has recently been proposed that there is a direct link between the Urbach energy and open circuit voltage deficit in standard photovoltaic materials \cite{culprit, UrbachE_Voc}.
+
+\chapter{Screening for candidate photoferroic solar absorbers}\label{chap:screening}
+\section{Candidate photoferroic minerals}
+Introductory paragraph + sulfosalts paper1 + include paper SI? (put in appendix?) \\
+
+Introduce `photoactive ferroelectrics', state that idea would be to use a p-n junction architecture but exploit internal electric fields for improved local carrier separation and possible new pathways to achieving high-performance devices. (or move some of this statement to intro for band alignment paper?)
+
+State that band tailing from prevalent cation disorder (as investigated for CZTS) would be expected to be less prevalent in these materials (as in AZTS, BCTS etc.) due to less similar chemical character of components (get citations from sulfosalts paper).\\
+
++ Add statement on personal contribution
+
+\includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
+\includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
+
+
+\section{Outlook: Large-scale screening with material properties databases}
+Introductory paragraph (larger dataset than previous study and additional screening metrics in study, e.g. m* from Boltztrap, - outline here) + project with Lee and MP - give overview of number of compounds, abundance and m* from study (use plots and check with Lee if okay to include? Put in the form of a paper draft to share with Lee?)\\
+
++ Add statement on personal contribution
+
+\chapter{Theoretical insights for new solar absorbers}\label{chap:insights}
+\begin{itemize}
+\item IP matching for sulfosalt p-n junctions and to metal workfunctions for back contacts
+\item Developing defects calculations with FHI-aims for sulfosalts and defects benchmark study
+\item Sulfosalt defects study as far as possible/ outline work so far and touch on as further work
+\end{itemize}
+
+State that although we expect cation disorder to be less prevalent than Cu-Zn disorder in CZTS, this does not rule out other limitations on performance (such as defects and non-optimal device architectures). Here we take inspiration from more mature or successful PV tech and use insights from theory to assess the potential of the three minerals from \autoref{chap:screening}.\\
+
+Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
+
+\section{Band alignment for solar cell device architectures}\label{sulfosalt_band_alignment}
+Introductory paragraph (new PV tech must be optimised layer-by-layer), barrier to utilisation of new tech, aim to use theory to accelerate process, often architectures optimised for different, more mature tech is used for new PV absorbers - not necessarily optimal! (e.g. of enargite paper and various others from band alignments paper intro) + sulfosalts band alignments paper\\
+
++ Add statement on personal contribution
+
+\includepdf[pages={1-},scale=1.0]{papers/sulfosalts_band_alignment_draft.pdf}
+
+\section{Defect physics}
+State that we expect extended cation disorder to be present to a lesser extent than in CZTS due to less chemical similarity? Also that understanding defect physics from a point-defect perspective is an important foundation to build for understanding the complicate defect physics of a multi-component material? e.g. next step would be pairs, etc.
+
+\subsection{Benchmarking finite-size corrections to defect supercells}
+Nod to delta project DFT benchmark for bulk and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells. 
++ defect calculations benchmark wrt VASP paper if possible\\
+
++ Add statement on personal contribution?
+
+\subsection{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
+Introductory paragraph (power of predicting this property - determine materials worthy of further study, inform synthesis procedures for faster optimisation) + sulfosalts defects work as complete as possible (write last, aim to have as much of paper written as possible first!)\\
+
++ Add statement on personal contribution
+
+\includepdf[pages={1-},scale=1.0]{papers/sulfosalts_defects_draft.pdf}
+
+%\section{The quest for universal descriptors for predicting solar cell performance}
+%Mention high-throughput material screening (in broader research field) here again.\\
+
+%See Thomas Kirchartz recent review 'What makes a good solar cell'.\\
+
+%Nod to SQ, SLME and Thomas Kirchartz's detailed balance theoretical maximum efficiencies when introducing this section? + works on predicting defect-tolerance by MIT\\
+
+%Dielectric function review? (finished/ collab with Jacob or as finished as far as possible?) Comment on dielectric constants of enargite and bournonite calculated as part of defects study here?\\
+
+
+
+
+\chapter{Closing remarks}
+
+Taken from old thesis plan:
+\begin{itemize}
+\item Extensions with Eris for CZTS cation disorder and band tailing (further investigate origin and suppression of band tailing)
+\item Off-stoichiometric types (explanation for higher-performance of Cu-poor?) and Sn disorder
+\item Maybe broader implications from Eris – defect formation energy in a typical supercell method perhaps not applicable in materials with high levels of disorder? (If Sn point defect formation E can be reduced by presence of Cu-Zn disorder)
+\item Insights (and limitations) of PV performance predictions for sulfosalts
+\item New pathways to high-performance… or added complexity in fabrication? Depolarisation fields at device interfaces? Static FE domains like internal diodes? (c.f. mobile FE proposed in MAPI due to mobile MA+)
+\item Extra considerations for tuning electric fields in photoferroic devices, especially at interfaces and modelling carrier transport?
+\item We hope that the predictions made for sulfosalts will aid in experimental investigation of photoferroic solar cells
+\item Many pathways for further investigations of the sulfosalts (materials are a playground for a materials scientist!)
+\item Many on-going works to better understand FE-PV phenomena to open up possibility of exploiting the phenomena in devices? (refer to works of Rappe and at NREL?)
+\item Possibility of studying effect of Rashba splitting on PL lifetimes with bournonite by tuning splitting with applied E-field? (provide insights onto role this feature of band structure of MAPI is having on performance?)
+\end{itemize}
+
+\section{Cu-Zn disorder in {\CZTS} solar cells}
+State that we predict a minimum of 10\% Cu-Zn disorder from our thermodynamic MC model, even if perfect processing conditions (i.e. no kinetic limitations on ordering). However, the exact impact of Cu-Zn disorder on the performance is not yet understood. Possible extensions with MC model to explore the impact: band tails from Eris potentials and Sn defect formation energy in the presence of high levels of Cu-Zn disorder. If Cu-Zn disorder is found to be detrimental to performance, could also adapt our MC model to simulate off-stoichiometric CZTS to see if Cu-Zn disorder could be suppressed in these systems.
+
+\section{Candidate photoferroic absorbers in solar cells}
+Overview of optical properties predicted in paper1. Opportunity to explore possible FE-PV phenomena in these materials. Suggested device architecture and processing conditions for minimising Voc loss at junctions and deep level defects + overview of expected defect properties of the materials.
+
+\appendix
+% appendices come here
+
+%\chapter{Appendix}
+%\section{Review of photoluminescence spectra of \CZTS}\label{CZTS_PL_section}
+%Photoluminescence (PL) spectroscopy is a popular method to inspect solar cell materials as it does not require a full functioning device and can be a powerful tool for probing defects in semiconductors. There are a large number of possible optical transitions that can be detected by PL measurements, some of which were illustrated in figure \ref{PL_transitions}. For this reason, low-temperature PL can be a particularly powerful tool for probing defects as energy level occupancy is dependent upon temperature and so not all PL recombinations will occur at the same temperature, allowing for the isolation of different types of recombination transitions \cite{spatial_resolved_book}. There are also other variations in the set up of a PL measurement that can be altered to provide more information on the band structure and how it is altered by the presence of defects. Firstly the intensity of the laser can be increased to determine if states are localized (such as those introduced by defects) or extended states (such as the conduction and valence bands) by if it is possible to saturate the states in the case of localized states such that an increase in laser intensity no longer increases the intensity of the PL peak \cite{Gershon}. Secondly, time-resolved PL (TRPL) measurements  can be used to differentiate between recombination mechanisms with different carrier lifetimes. Slower optical transitions usually involve carriers in localized states, whereas faster transitions usually involve delocalized states \cite{Gershon}.
+
+%Several PL studies have been performed on kesterite-structured samples of {\CZTS}, Cu$_2$ZnSnSe$_4$ and alloys of the two. PL measurements have been performed on both full devices and polycrystalline thin-films \cite{band_tail, Gershon, Gershon_ref18, Romero, Miyamoto, Unold} and single crystals \cite{Halliday, Levcenko, Hones}. In addition studies such as reference \citenum{Halliday} compare the PL spectra for varying compositions of the sample, whereas in reference \citenum{band_tail} measurements on both CIGSSe and CZTSSe thin films are performed in an attempt to account for the difference in the performance of these two technologies by comparing their defect-influenced PL emission spectra. Polycrystalline samples are more similar to those likely to be used in thin-film CZTS photovoltaic devices, however comparison between those measurements with single crystal measurements could enable the isolation of recombination at grain boundaries from those due to bulk defects. Also measurements performed on single crystals as close to perfectly stoichiometric {\CZTS} as possible are likely to be the most directly relatable to our simulations on bulk systems. However one feature common to all of the PL spectra from studies on kesterite samples is clear evidence of defects and disorder from the observed band tailing. The PL spectra of kesterite samples usually features a much broader peak than that observed in CIGSSe samples, such as that shown in figure \ref{CZTS+CIGS_PL}. The energy of the maximum PL peaks of kesterite samples is also usually considerably red-shifted compared to the energy of the band gap. These two features are usually attributed to band tailing caused by either spatial band gap variations or electrostatic potential fluctuations in the absorber material, which were discussed in section \ref{PL_section}.  Both effects lead to a non-zero density of states (DOS) within the band gap \cite{culprit, band_tail}. 
+%Measurements performed in reference \citenum{band_tail} found the tailing in CZTSSe to be roughly twice as severe as that observed in higher-performing CIGSSe devices.
+
+%\cite{band_tail} = Mitzi PL paper, \cite{Gershon} = first paper in overview, \cite{Gershon_ref18} = previous work with good overview of PL
+
+%However, there is some disagreement in the literature about the main recombination mechanisms that could explain the observed PL spectra. Of the measurements performed on single crystals, reference \citenum{Levcenko} perform measurements on near-stoichiometric CZTS crystals and report a free-to-bound transition between the conduction band and an acceptor level. In reference \citenum{Hones}, donor-acceptor-pair (DAP) transitions are reported for large single grains of CZTS, whereas in reference \citenum{Halliday} where measurements are performed on CZTS single-crystals of varying composition, they report PL measurements through spatially fluctuating band states as would be expected from either spatial band gap variations or electrostatic potential fluctuations from heavy defect compensation. Therefore in bulk monograins of CZTS PL band-to-impurity, DAP and spatially fluctuating band-type recombinations have all been reported and the exact sources, or rather associated defects, for these recombination mechanisms are not yet known \cite{Gershon_ref18}.
+
+%For measurements performed on polycrystalline kesterite samples, some studies attribute the spectra to spatially fluctuating band tail states \cite{Romero}, whereas others suggest that recombination in CZTS is dominated by the distinct energy levels introduced by DAPs \cite{Unold, Miyamoto}. In other studies, an explanation that is almost a combination of the two is proposed \cite{Gershon, Gershon_ref18}. These studies refer to a quasi-donor-acceptor-pair (QDAP) model, where the word `quasi' is used to indicate a deviation from the classical DAP model for recombinations, such as that shown in figure \ref{PL_transitions}, due to interactions between defects. In reference \citenum{Gershon_ref18} they note that distinguishing between DAP recombination and spatially fluctuating band tails caused by spatially varying densities of ionized donor and acceptor defects is particularly complicated as a high density of compensating DAPs is necessarily co-incident with spatial fluctuation in electrostatic potential. In the same work, they note that the dominance of donor and acceptor pairs on PL spectra is in agreement with theoretical predictions such as those by Chen et al \cite{defect1} that antisite DAPs such as $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ should be abundant due to the low formation energy of the defect complex and also experimental observations of cation disorder by neutron diffraction, synchrotron radiation x-ray diffraction and aberration corrected scanning transmission electron microscopy respectively \cite{Schorr, CZTS_Xray, CZTS_TEM}.
+
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{unsrt}
+\bibliography{thesis.bib}
+
+\end{document}
