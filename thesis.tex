@@ -93,7 +93,7 @@ SK Wallace, KL Svane, WP Huhn, T Zhu, DB Mitzi, V Blum, A Walsh\\ Sustainable En
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\section{The case for new absorber materials for solar cell devices}
+\section{The case for new absorber materials for solar cells}
 
 \subsection{Terawatt-scale power production from renewable resources}
 
@@ -217,7 +217,7 @@ Statement about incorporating papers into thesis (and which sections correspond 
 
 \chapter{Theoretical background} 
 
-\section{Models of perfect periodic solids}\label{crystal_models}
+\section{Models of perfect, periodic solids}\label{crystal_models}
 %Refer to: pg 28 29 35 \cite{thin_film_Boer}\\
 To relate the properties observed for a material to its underlying atomic and electronic structure, and also to predict properties that have not yet been measured, it is necessary to have a suitable model for the material. Theoretical models of crystalline solids are based around the existence of translational symmetry in a crystal lattice such that the lattice can be constructed by periodically repeating a unit cell of atoms. The Bravais lattice specifies the periodic array in which the repeated units of the crystal are arranged. A crystal lattice can therefore be described by its underlying Bravais lattice and the arrangement of atoms, ions or molecules within a particular unit cell, i.e. the basis \cite{AshcroftMermin2}. This principle is also used in electronic calculations of solid state systems through the implementation of periodic boundary conditions to simulate an infinite, bulk system using only a finite unit cell. Methodologies used in electronic structure calculations will be discussed further in section \ref{elec_struc}.
  
@@ -323,13 +323,10 @@ In a semiconductor at 0 K, the VB is fully occupied by electrons and the CB is c
 %  \label{energy_dispersion}
 %\end{figure}
 
+\section{The photovoltaic effect}
+A solar cell device converts incident solar energy directly into electrical energy. Solar energy can be described as either a spectrum of electromagnetic radiation in the classical-wave theory of light or as a flux of packets of energy (photons) in the quantum theory of light. Electrical energy is a flow of charge carriers able to do work in an external circuit \cite{spatial_resolved_book}. Voltage is generated in a solar cell device by the photovoltaic effect (PVE). The terms `solar cell' and `photovoltaic (PV) cell' are therefore often used interchangeably. The explanation for the photovoltaic effect uses ideas from the quantum theory of light \cite{Nelson1}.
 
-\section{Solar cell device physics}\label{PV_architecture}
-
-\subsection{The photovoltaic effect}
-A solar cell device converts solar energy directly into electrical energy. Solar energy can be described as either a spectrum of electromagnetic radiation in the classical-wave theory of light or as a flux of packets of energy (photons) in the quantum theory of light. Electrical energy is a flow of charge carriers able to do work in an external circuit \cite{spatial_resolved_book}. Voltage is generated in a solar cell device by the photovoltaic effect (PVE). The terms `solar cell' and `photovoltaic (PV) cell' are therefore often used interchangeably. The explanation for the photovoltaic effect uses ideas from the quantum theory of light \cite{Nelson1}.
-
-Semiconducting materials are usually used as the absorber layer in a PV device, the presence of an optical band gap in the electronic structure of the material is vital for the PVE. In the case of a perfectly pure semiconductor, only photons with energies higher than the intrinsic optical band gap can be absorbed to excite an electron from the valence band into the conduction band to produce an electron-hole pair as shown in Fig. \ref{PV_schematic}a. In order for this process to be induced by sunlight, the magnitude of the optical band gap must be within the range of the photon energies that make up the solar spectrum, which as shown in Fig. \ref{PV_schematic}b. The optical band gap of a semiconductor is also necessary in order for electrons that have been optically excited to gain extra potential energy, which provides the potential difference or electromotive force that will later drive electrons through a load in an external circuit to do electrical work. If electrons are instead promoted through a continuum of energy levels, as in a metal, excited electrons would quickly decay back to the ground state via intermediate energy levels, thus dissipating the potential energy gained. In the conventional PV effect, the band gap of the material sets the upper limit for the maximum voltage that can be generated. The voltage at open circuit (and hence when current is zero), V$_{OC}$, is the maximum possible potential difference across the terminals of the solar cell. However in order for the cell to do any electrical work both voltage, V and current, I (and hence power, P) must be non-zero when a load is connected in the external circuit \cite{Nelson3}.
+Semiconducting materials are usually used as the absorber layer in a PV device, the presence of an optical band gap in the electronic structure of the material is vital for the PVE. In the case of a perfectly pure semiconductor, only photons with energies higher than the intrinsic optical band gap can be absorbed to excite an electron from the valence band (VB) into the conduction band (CB) to produce an electron-hole pair as shown in Fig. \ref{PV_schematic}a. In order for this process to be induced by sunlight, the magnitude of the optical band gap must be within the range of the photon energies that make up the solar spectrum, which as shown in Fig. \ref{PV_schematic}b. The optical band gap of a semiconductor is also necessary in order for electrons that have been optically excited to gain extra electrochemical potential energy, which provides the potential difference or electromotive force that will later drive electrons through a load in an external circuit to do electrical work. If electrons are instead promoted through a continuum of energy levels, as in a metal, excited electrons would quickly decay back to the ground state via intermediate energy levels, thus dissipating the potential energy gained. In the conventional PV effect, the band gap of the material sets the upper limit for the maximum voltage that can be generated. The voltage at open circuit (and hence when current is zero), V$_{OC}$, is the maximum possible potential difference across the terminals of the solar cell. However in order for the cell to do any electrical work both voltage, V and current, I (and hence power, P) must be non-zero when a load is connected in the external circuit \cite{Nelson3}.
 
 \begin{figure}[h!]
   \centering
@@ -338,51 +335,78 @@ Semiconducting materials are usually used as the absorber layer in a PV device, 
   \label{PV_schematic}
 \end{figure}
 
-In the absence of a driving force to separate the photoexcited electron and hole, the pair would quickly recombine and relax back to the ground state of the material with the emission of a photon of an energy equal to the energy of the electronic transition that has just occurred. However in a PV device, there is a `built-in' electrical asymmetry that provides an electric field to pull electrons away before they can relax and drive them towards electrical contacts to be fed into an external circuit. An electric field is effective for charge separation because it drives p and n carriers in opposite directions \cite{Nelson5}. There are various ways to provide the electrical asymmetry, such as: through connecting a metal and a semiconductor to form a Schottky barrier junction and connecting a p-type semiconductor to an n-type semiconductor to form a p-n junction. These types of device architectures are outlined in the next section. In section \ref{ferroPVsection} novel PV phenomena in bulk materials with internal electric fields will be outlined and a search for candidate `photoferroic' materials is presented in \autoref{chap:screening}. The motivation of this investigation was to find materials where it may be possible to exploit the internal electric fields of polar crystals for enhanced local charge carrier separation.
+In the absence of a driving force to separate the photoexcited electron and hole, the pair would quickly recombine and relax back to the ground state of the material with the emission of a photon of an energy equal to the energy of the electronic transition that has just occurred. However in a PV device, there is a `built-in' electrical asymmetry that provides an electric field to pull electrons away before they can relax and drive them towards electrical contacts to be fed into an external circuit. An electric field is effective for charge separation because it drives positively and negatively charged carriers in opposite directions \cite{Nelson5}. There are various ways to provide the electrical asymmetry, such as: through connecting a metal and a semiconductor to form a Schottky barrier junction and connecting a p-type semiconductor to an n-type semiconductor to form a p-n junction. These types of device architectures are outlined in the next section. In section \ref{ferroPVsection} novel PV phenomena in bulk materials with internal electric fields will be outlined and a search for candidate `photoferroic' materials is presented in \autoref{chap:screening}. The motivation of this investigation was to find materials where it may be possible to exploit the internal electric fields of polar crystals for enhanced local charge carrier separation.
 
 
 
-\subsection{Solar cell junctions and device architectures}\label{junctions}
-\begin{itemize}
-\item Also see: https://kashanu.ac.ir/Files/Content/Handbook.pdf
-\item See PV section of Kirchartz review to PVE and architectures section? (para starting In general, a metal or metal oxide contact with low workfunction…) \cite{FE-PV_kirchartz}
-\item Check references to schematic in text below are consistent with a, b, c, d labels, etc.
-\item  **band bending (c.f. spike/ cliff and check paper write up) **
-\end{itemize}
-
+\section{Solar cell junctions}\label{junctions}
 As discussed in the previous section, an electrical asymmetry is vital for the PVE. A light absorber material must be connected to an external circuit by paths of different resistance for positive and negative charge carriers, i.e. for holes and electrons. This can be provided by spatial variation in the electronic environment, such as the junction between two electronically distinct materials.
-An electrostatic field can be established by creating a junction with a gradient in the work function $\Phi_W$, electron affinity (EA) or band gap ($E_g$), which are depicted in Fig. \ref{Schottky_schematic}. However the fields established by gradients in EA or $E_g$ are usually small, whereas more substantial electric fields can be achieved by a gradient in $\Phi_W$ \cite{Nelson5}.
-The work function, ($\Phi_W$), is the energy required to remove the least tightly bound electron from a material and is given in Eq. \ref{workfunction} where $E_{vac}$ is the energy of the vacuum level and $E_F$ is the Fermi level, which are both indicated in Fig \ref{Schottky_schematic}. 
+An electrostatic field can be established by creating a junction with a gradient in the work function $\Phi_W$, electron affinity (EA) or band gap ($E_g$), which are all labelled in Fig. \ref{schottky_schematic}. The fields established by gradients in EA or $E_g$ are usually small, whereas more substantial electric fields can be achieved by a gradient in $\Phi_W$ \cite{Nelson5}.
+The work function, $\Phi_W$, is the energy required to remove the least tightly bound electron from a material and is given in Eq. \ref{workfunction} where $E_{vac}$ is the energy of the vacuum level and $E_F$ is the Fermi level, which are both indicated in Fig \ref{schottky_schematic}. 
 \begin{equation}\label{workfunction}
 \Phi_W = E_{vac} - E_F
 \end{equation}
-For a metal, $\Phi_W$ is defined by the electron affinity (EA) (indicated in Fig. \ref{Schottky_schematic}). For a semiconductor, $\Phi_W$ is controlled by the doping of the material, since $E_F$ within the band gap is dependant upon the doping. For instance, a semiconductor doped n-type will have $E_F$ closer to the CB and has a smaller $\Phi_W$ than if it was doped p-type. The potential difference across the junction is then the difference in the work functions of the two materials \cite{Nelson5}.
+For a metal, $\Phi_W$ is defined by the electron affinity (EA) (indicated in Fig. \ref{schottky_schematic}). For a semiconductor, $\Phi_W$ is controlled by the doping of the material, since $E_F$ within the band gap is dependant upon the doping. For instance, a semiconductor doped n-type will have $E_F$ closer to the CB and has a smaller $\Phi_W$ than if it was doped p-type. The potential difference across the junction is then the difference in the work functions of the two materials \cite{Nelson5}.
 In early PV devices, the asymmetric junction was a Schottky barrier contact between a metal and a semiconductor but now more effective p-n junctions are used in solar cells, which are formed by joining together p-type and n-type semiconductors \cite{Nelson1}.
 In both types of junction, the photovoltage generated is related to the difference in $\Phi_W$ of the two materials either side of the junction and the junction will develop a photovoltage provided that it presents a barrier to majority carrier currents \cite{Nelson5}. In the next sections the formation of an electrical asymmetry at a metal-semiconductor is outlined, the limitations of this type of junction in a solar cell is explained and then the formation of an electrical asymmetry at a semiconductor-semiconductor junction is outlined.
 
 \subsubsection{Equilibrium electrical asymmetry at a metal-semiconductor junction}
-** Add Schottky schematic - formation of barrier highlighting band bending + quasi Fermi level splitting under illumination, adapted from Ref. \citenum{Nelson5}. **\\
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{figures/schottky_schematic.png}
+    \caption{The formation of a Schottky barrier junction between an n-type semiconductor and a metal and the splitting of the electron Fermi level ($E_{F,n}$) under illumination. Adapted from Ref. \citenum{Nelson5} and \citenum{band_gap_rev}.}
+  \label{schottky_schematic}
+\end{figure}
 
-When two materials are isolated, their $E_F$ are independent. However when they are brought into electrical contact and allowed to reach equilibrium,  $E_F$ must be constant across the junction, i.e. the levels must line up, as shown in Fig. \ref{Schottky_schematic}. If the two materials have different $\Phi_W$, the vacuum level must then change between the two materials by an amount equal to the difference in $\Phi_W$ between the two materials. The electrostatic field created by a gradient in the vacuum level energy is $\frac{1}{q} \nabla E_{vac}$.
-To achieve this gradient, free carriers at the junction redistribute themselves. In the case of a junction between a metal and an n-type semiconductor, if the metal has a larger $\Phi_W$ than the n-type semiconductor, electrons flow from the semiconductor to the metal, leaving a layer of fixed positive charge behind in the semiconductor and a negative charge on the metal until a charge gradient builds up that is large enough to prevent any further transport of charge carriers. An electric field that still exists in a material in equilibrium is called a `built-in' electric field \cite{Nelson5}. In this case, the field would drive any excess electrons towards the positively charged side of the junction (the n-type semiconductor) and holes towards the metal side, i.e. it will provide a barrier to the flow of majority n-type carriers from the semiconductor to the metal.
+When two materials are isolated, their $E_F$ are independent. When they are brought into electrical contact and allowed to reach thermal equilibrium there is no net current flow. Therefore by definition $E_F$ must be constant across the junction \cite{PV_bands_book}, i.e. the Fermi levels must line up as shown in Fig. \ref{schottky_schematic}. 
+If the two materials have different $\Phi_W$, the vacuum level must then change between the two materials by an amount equal to the difference in $\Phi_W$ between the two materials. The electrostatic field created by a gradient in the vacuum level energy is $\frac{1}{q} \nabla E_{vac}$.
+To achieve this gradient, free carriers at the junction redistribute themselves. In the case of a junction between a metal and an n-type semiconductor, if the metal has a larger $\Phi_W$ than the n-type semiconductor, electrons flow from the semiconductor to the metal. A layer of fixed positive charge in the semiconductor and a negative charge on the metal are left behind until a charge gradient builds up that is large enough to prevent any further transport of charge carriers. An electric field that still exists in a material in equilibrium is called a `built-in' electric field \cite{Nelson5}. In this case, the field would drive any excess electrons towards the positively charged side of the junction (the n-type semiconductor) and holes towards the metal side, i.e. it will provide a barrier to the flow of majority n-type carriers from the semiconductor to the metal.
 
-As can be seen in Fig. \ref{Schottky_schematic}c, once the semiconductor-metal junction has formed, the CB of the bulk semiconductor is lower than that at the interface, resulting in a spatial variation in electrostatic potential towards the semiconductor-metal interface. This is the region where $E_{vac}$ is changing, the materials possess a net charge and it is called the space charge region. The potential is distributed across the two materials at the interface but drops off further from the interface and the electric field falls to zero.  As metals do not store charge as in a semiconductor, this distance is vanishingly small on the metal side of the junction, but on the semiconductor side this region is typically around 1 micron. The $E_g$ and EA of the semiconductor do not vary, therefore the VB and CB levels change in parallel with $E_{vac}$ at the interface, this effect is called `band bending' and the amount the bands bend is called the `built-in bias', $V_{bi}$.
+As can be seen in Fig. \ref{schottky_schematic}, once the semiconductor-metal junction has formed, the CB of the bulk semiconductor is lower than that at the interface, resulting in a spatial variation in electrostatic potential towards the semiconductor-metal interface. This is the region where $E_{vac}$ is changing, the materials possess a net charge and it is called the space-charge or depletion region as it is devoid of any charge carriers \cite{PV_bands_book}. The potential is distributed across the two materials at the interface but drops off further from the interface and the electric field falls to zero.  As metals do not store charge as in a semiconductor, this distance is vanishingly small on the metal side of the junction, but on the semiconductor side this region is typically around 1 micron. The $E_g$ and EA of the semiconductor do not vary, therefore the VB and CB levels change in parallel with $E_{vac}$ at the interface, this effect is called `band bending' and the amount the bands bend is called the `built-in bias', $V_{bi}$.
 In the case of a junction between a p-type semiconductor and a metal, if the metal has a smaller $\Phi_W$ than the semiconductor, the semiconductor band instead bends downwards at the interface and presents a barrier to the flow of holes from the semiconductor into the metal, which are now the majority carriers.
-If instead $\Phi_W$ of the metal is larger than that of a p-type semiconductor or smaller than that of an n-type semiconductor, the bands will instead bend in such a way as to encourage majority carrier transport across the junction. Majority carriers therefore do not accummulate at the interface to develop the potential difference at the interface necessary for the PVE. This is an Ohmic contact, as opposed to a barrier. 
+If instead $\Phi_W$ of the metal is larger than that of a p-type semiconductor or smaller than that of an n-type semiconductor, the bands will instead bend in such a way as to encourage majority carrier transport across the junction. Majority carriers therefore do not accumulate at the interface to develop the potential difference at the interface necessary for the PVE. This is an Ohmic contact, as opposed to a barrier. 
 %Under illumination, photoexcited charge carriers pass easily across the junction and the photovoltage measured at the terminals will be negligible. 
 
-If incident photons have an energy greater than the $E_g$ of the semiconductor in a Schottky barrier junction, then an electron-hole pair will be photoexcited (as depicted in Fig. \ref{PV_schematic}a). The system is now no longer in equilibrium. The space charge region of the junction will cause the photoexcited electron-hole pair to be separated. In the case of a junction between an n-type semiconductor and a metal, electrons will accumulate in the semiconductor and holes in the metal. The semiconductor will become negatively charged and the potential difference across the junction will be reduced. $E_F$ in the semiconductor will now be different for electrons and holes, it has been split into a `quasi Fermi level' for electrons. Far from the junction the electron quasi $E_F$ will now be larger than in the metal and larger than it was in the semiconductor before illumination, as shown in Fig. \ref{Schottky_schematic}b. The illumination has generated a photovoltage equal to the difference in the Fermi level in the metal and the semiconductor \cite{Nelson5}.  A Schottky barrier junction can therefore facilitate photovoltaic energy conversion, but it suffers from certain limitations which impact the maximum achievable photovoltages. For example, a barrier height greater than approximately half of the band gap of the semiconductor will cause minority carriers to outnumber majority carriers close to the interface region, causing an inversion layer. The junction then becomes carrier rich and cannot sustain a photovoltage. Also if the barrier region at the junction is small and the semiconductor layer is highly doped, tunneling of majority carriers across the junction may occur, reducing the effectiveness of the barrier. Many of these problems can be overcome by using a semiconductor-semiconductor p-n junction, outlined next.
+If incident photons have an energy greater than the $E_g$ of the semiconductor in a Schottky barrier junction, then an electron-hole pair can be photoexcited (as depicted in Fig. \ref{PV_schematic}a). The system is now no longer in equilibrium as the density of electrons and holes has increased and is no longer described by the Fermi-Dirac equilibrium distribution function given in Eq. \ref{fermi-dirac}. 
+The space charge region of the junction will cause the photoexcited electron-hole pair to be separated. In the case of a junction between an n-type semiconductor and a metal, electrons will accumulate in the semiconductor and holes in the metal. The semiconductor will become negatively charged and the potential difference across the junction will be reduced. $E_F$ in the semiconductor will now be different for electrons and holes, it has been split into a `quasi-Fermi level' for electrons. Far from the junction the electron quasi $E_F$ will now be larger than in the metal and larger than it was in the semiconductor before illumination, as shown in Fig. \ref{schottky_schematic}.
+There are now different distribution functions for electrons in the CB and holes in the VB. It is assumed that system reaches new state of quasi-thermal equilibrium because relaxation of photoexcited electrons within the CB and holes in the VB is on a much faster timescale compared to relaxation between the bands. In each case the charge carriers are able to establish a new quasi-thermal equilibrium within the bands, with associated quasi-Fermi levels for electrons in the CB and holes in the VB, $E_{F,n}$ and E$_{F,p}$ respectively
+\cite{Nelson3}.
+ The illumination has generated a photovoltage equal to the difference in the Fermi level in the metal and the semiconductor \cite{Nelson5}. The quasi-Fermi level gradient can be considered as a driving force for conduction \cite{Nelson3}.
+
+A Schottky barrier junction can therefore facilitate photovoltaic energy conversion, but it suffers from certain limitations which impact the maximum achievable photovoltages. For example, a barrier height greater than approximately half of the band gap of the semiconductor will cause minority carriers to outnumber majority carriers close to the interface region, causing an inversion layer. The junction then becomes carrier rich and cannot sustain a photovoltage. Also if the barrier region at the junction is small and the semiconductor layer is highly doped, tunneling of majority carriers across the junction may occur, reducing the effectiveness of the barrier. Many of these problems can be overcome by using a semiconductor-semiconductor p-n junction \cite{Nelson5}, outlined next.
 
 \subsubsection{Equilibrium electrical asymmetry at a semiconductor p-n junction}
-** Add p-n schematic: p-n junc under illumination from Nelson Ch5 and JC slides (a) + Si layers (b) + CIGS layers (c) **\\
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.85\textwidth]{figures/p-n_schematic.png}
+    \caption{p-n junction formed between a p-type and n-type semiconductor, in the dark and in thermal equilibrium indicating the difference in work functions ($\Phi_W$) and built-in bias ($V_{bi}$) (a). Adapted from Ref. \citenum{Nelson5}. p-n junction under illumination indicating the direction of flow of minority carriers in the case of a p-type (orange) and n-type (blue) absorber layer (b). Adapted from Ref. \citenum{Nelson6}. Schematic of device architecture for a silicon wafer-based device (c) and a CIGS thin-film device architecture (d), both taken from Ref. \citenum{pathways}.}
+  \label{p-n_schematic}
+\end{figure}
 
-For certain semiconductors such as Si, it is possible for the material to be doped both n- and p-type depending on the valence of the dopant species relative to the host lattice, i.e. it is ambipolar. In this case, it is possible to form a junction between electrically distinct p-type and n-type semiconductors by doping different regions of the same material differently forming a 'homojunction'. Since $\Phi_W$ of the p-type is larger than that of the n-type region, an electric field is established at the junction due to the difference in electrostatic potential, as shown in Fig. \ref{p-n_schematic}a, will drive electrons towards the n-type layer and holes towards the p-type layer. The junction region is depleted of both electrons and holes \cite{Nelson5}.
+For certain semiconductors, such as Si, it is possible for the material to be doped both n- and p-type depending on the valence of the dopant species relative to the host lattice, i.e. it is ambipolar. In this case, it is possible to form a junction between electrically distinct p-type and n-type semiconductors by doping different regions of the same material differently forming a `homojunction'. An example PV architecture for a Si solar cell is shown in Fig. \ref{p-n_schematic}c. Since $\Phi_W$ of the p-type is larger than that of the n-type region, an electric field is established at the junction due to the difference in electrostatic potential, as shown in Fig. \ref{p-n_schematic}a. Under illumination this will drive photoexcited electrons towards the n-type layer and holes towards the p-type layer, as shown in Fig. \ref{p-n_schematic}b. The junction region is depleted of both electrons and holes \cite{Nelson5}.
 
 %In real, non-ideal, solar cell devices power is dissipated through parasitic resistances in the device, including current leakage and resistance from the electrical contacts \cite{Nelson1}. In the case of the p-n junction architecture shown schematically in Fig \ref{PV_architecture}b, there can be series resistance of the p and n layers to the flow of majority carriers, resulting in a reduction in the potential between the junction and the terminal. There can also be resistance at the contact layers in the device, such as those indicated in Fig. \ref{PV_architecture}c and \ref{PV_architecture}d \cite{Nelson6}. The open circuit voltage (V$_{OC}$) of a device can be reduced by non-ideal alignment of the electronic bands of the different layers within the device. 
-For many of the materials being studied for use as absorber layers in thin-film solar cells, such as chalcogenide-based materials like the device shown in Fig. \ref{p-n_schematic}c, it is not possible, or is very difficult, to achieve ambipolar doping \cite{band_alignment_review, Zhang_doping_limits}. Therefore to achieve a p-n junction for many thin-film PV devices it is necessary to form an interface between two different materials with different energy gaps, lattice constants and even slightly different crystal structures. Due to such mismatches, defects are expected to be more prevalent at heterojunction interfaces than at homojunction interfaces. In section \ref{sulfosalt_band_alignment} band alignments that have been proposed for reducing the impact of defects at p-n heterojunctions will be discussed and suggestions for the contact materials for the candidate photoferroic solar absorber materials are presented.
+For many of the materials being studied for use as absorber layers in thin-film solar cells, such as chalcogenide-based materials like the device shown in Fig. \ref{p-n_schematic}d, it is not possible, or is very difficult, to achieve ambipolar doping \cite{band_alignment_review, Zhang_doping_limits}. Therefore to achieve a p-n junction for many thin-film PV devices it is necessary to form an interface between two different materials with different energy gaps, lattice constants and even slightly different crystal structures. Due to such mismatches, defects are expected to be more prevalent at heterojunction interfaces than at homojunction interfaces. In section \ref{sulfosalt_band_alignment} band alignments that have been proposed for reducing the impact of defects at p-n heterojunctions will be discussed and suggestions for p-n junction partners for the candidate photoferroic solar absorber materials are presented.
+
+\section{Photoferroic phenomena}\label{ferroPVsection}
+% ** Cite Rappe about shift current (+BPE?) possible in any crystal that lacks centre of inversion symmetry, not just FE materials
+A ferroelectric material possesses a spontaneous electric polarisation that can be switched between two or more states using an electric field \cite{new_FE_PV_1}. Many interesting PV phenomena have been observed in ferroelectric (FE) materials such as the bulk photovoltaic effect (BPE) and the anomalous photovoltaic effect (APE) \cite{keith}. 
+%Ferroelectric materials usually have a high dielectric constant (which was mentioned in section \ref{PV_properties} as an important parameter for a photovoltaic material) and they possess a spontaneous electric polarization that can be switched between two or more states using an electric field \cite{new_FE_PV_1}.
+The BPE was first recorded in 1956 in BaTiO$_3$ \cite{keith_46}, where photovoltages were measured in un-doped single crystals \cite{keith}.
+The BPE effect is distinctly different from the typical PV effect in semiconductor
+p-n junctions outlined in section \ref{PV_architecture} as the driving force for the photocurrent is provided by the internal electric polarisation of the crystal \cite{FE_PV_rev1}. 
+The APE was first observed in PbS films in 1946 \cite{keith_54} and has since been reported in polycrystalline CdTe, ZnTe, InP \cite{keith_55, keith_56, keith_57}, where photovoltages output along the polarisation direction can be significantly larger than the band gap of the material \cite{FE_PV_rev1}, which is usually the limit for a semiconductor PV material \cite{keith}. 
+The Shockley-Queisser limit \cite{SQ_1961}, which prevents any single p-n junction solar cell from converting more than 33.7\% of the incident light into electricity, has not been predicted to apply for these photovoltaic phenomena. An upper limit for the theoretical power conversion efficiency (PCE) from this photovoltaic mechanism seems to still be an open question \cite{ FE-PV_kirchartz, new_FE_PV}, although an ultimate maximum efficiency of any single-band gap absorber of 44\% has been set by thermodynamic considerations \cite{SQ_1961}. 
+
+The identification, understanding and utilisation of such phenomena discussed above may open up the possibility of more efficient PV devices constructed from photoactive-ferroelectric, i.e. `photoferroic', materials.
+In addition to the above novel PV effects, it has been proposed that the presence of electric polarisation in a PV absorber material may allow for efficient polarisation-driven charge carrier separation \cite{Jarv, FE-PV_lett} and also that ferroelectric materials in solar cells may allow for control over the internal electric fields and carrier injection barriers, which play a central role in the PV mechanism \cite{FE-PV_kirchartz}.
+However, most of the commonly used ferroelectric materials such as LiNbO$_3$ and BaTiO$_3$ have band gaps larger than 3 eV and can therefore only absorb sunlight in the UV range to convert into electricity, which accounts for only around 3.5\% of the solar spectrum. Research efforts have sought to adjust the optical absorption of ferroelectric materials without influencing the ferroelectric properties through chemical doping or alloying \cite{FE_PV_rev1}. In Bi$_4$Ti$_3$O$_{12}$ the optical band gap has been tuned in such a way, resulting in a decrease from 3.6 eV to 2.7 eV \cite{FE_PV_rev1_83}, although this is still considerably larger than the optimal range for a PV absorber material, as discussed in section \ref{PV_properties}. A recent study has demonstrated a more substantial reduction in the optical band gap of BaTiO$_3$  to 1.66 eV, whilst maintaining 70\% of the original polarisation \cite{FE-PV_lett}, however the PV performance of the modified material was not demonstrated in this study. 
+
+This then leads on to the second component of this study: to identify new candidate solar absorber materials that may exhibit ferroelectricity and have band gaps within the optimal range for the absorption of sunlight. The screening criteria used to identify these candidate absorber layers will be outlined further in \autoref{chap:screening}, but the basic principles are as follows: by starting from a dataset of naturally occurring minerals, it could be assumed that all candidates are likely to be thermodynamically stable. Secondly, necessary (although not sufficient) conditions are used to screen for candidate photoferroic materials. A dark streak colour for the mineral implies that the magnitude of the optical band gap may be somewhere within the visible spectrum and therefore within the ideal range for a PV absorber layer. A polar space group is a necessary, but again not sufficient, condition for a material to exhibit ferroelectricity. Even in the absence of switchable ferroelectric states, the internal crystal polarisation may be beneficial for a PV material, as mentioned earlier.
+The optoelectronic properties of the candidate materials are then investigated further to assess the likely performance of solar cells made from these absorber materials to determine those worthy of further experimental study. The identification of stable materials with a large polarisation and strong optical absorption could provide more test systems for further experimental investigation and, ideally, the development of control of the novel FE-PV phenomena outlined at the start of this section.
 
 
-\section{Material properties of absorber layers for efficient solar cells}\label{PV_properties}
+\section{Absorber material properties for efficient solar cells}\label{PV_properties}
 The most fundamental, necessary requirement for a solar absorber material in a PV device is that it possesses a band gap across which an electron can be excited. As discussed in the previous section, the magnitude of this band gap must also be somewhere within the energy range of the solar spectrum so that sunlight can induce this excitation. The next most fundamental requirement of a solar absorber material is that it must allow for the transport of charge carriers out of the absorber material layer, into a collection electrode and on to an external circuit in order to do electrical work. Provided these necessary conditions are met and some sort of spatial asymmetry (outlined above) is present to drive electrons away from their point of promotion, the material should exhibit the PVE \cite{Nelson2}. However, how well it will actually peform in a solar cell is determined by more stringent criteria and other material properties. 
 
 Firstly the actual value of the band gap within the range of the solar spectrum (shown in Fig. \ref{PV_schematic}b) is of importance. It is ideal for the value to be as close as possible to the region of photon energies that make up the majority of the solar spectrum. The optimal range for the band gap under typical radiation conditions is approximately 1.0 to 1.7 eV \cite{PV_E_range}. The upper limit of the power conversion efficiency (PCE) of incident photon energy into electrical energy by a device made from a particular absorber material based on its band gap was first calculated by Shockley and Quiesser in 1961 \cite{SQ_1961}. A plot of theoretical efficiency limit as a function of band gap was shown in figure \ref{SQ}, as well as the record efficiencies of various PV technologies.
@@ -421,7 +445,7 @@ As mentioned in section \ref{BandTheorySection}, another property of importance 
 %Although certain thin-film technologies, which will be discussed towards the end of section \ref{current_tech}, reduce the amount of absorber material the charge carrier must travel through before being collected. So although carriers must still travel through the material, effective mass could be considered less of a crucial parameter for this technology. 
 However m* should just be considered as a necessary but not a sufficient condition for good carrier mobility as the effect of the effective mass on the transport properties could be overshadowed by scattering of charge carriers by defects in a real, non-ideal material. 
 
-\section{Impact of defects in absorber layers on solar cell performance}\label{defects_impact}
+\section{Impact of absorber layer defects on solar cell performance}\label{defects_impact}
 %Refer to: pg 160 \cite{fund_semi}, pg 51, 52, 64 \cite{thin_film_Boer}, pg 63 + 65 \cite{phys_semicond}\\
 Although the main framework for modeling solid-state systems (as outlined at the start of this chapter) is built around perfect, periodic systems; in reality absolutely perfect systems do not exist. Deviations from the perfect crystal lattice structure (i.e. defects) can strongly influence the performance of electronic devices. There is an energy cost associated with the creation of a defect, but in many cases the free energy of a system can be lowered by the incorporation of a certain concentration of defects due to an increase in the configurational entropy of the system \cite{AshcroftMermin_general}. Methods for modeling defects in solids are discussed in section \ref{defects_methods}, but here the impact of defects in the absorber layers on the performance of solar cells is discussed.
 
@@ -528,23 +552,6 @@ Observed band tailing can be caused by either spatial band gap variations or ele
 In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow for the investigation of the possible contribution to band tailing in {\CZTS} from the potential fluctuations of high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites. In section \ref{sulfosalt_defects} we perform electronic structure calculations to investigate the defects physics of candidate `photoferroic' solar absorber materials for which no experimental measurements have yet been made.
 
 
-\section{Photoferroic phenomena and prospects for solar cells}\label{ferroPVsection}
-% ** Cite Rappe about shift current (+BPE?) possible in any crystal that lacks centre of inversion symmetry, not just FE materials
-A ferroelectric material possesses a spontaneous electric polarisation that can be switched between two or more states using an electric field \cite{new_FE_PV_1}. Many interesting PV phenomena have been observed in ferroelectric (FE) materials such as the bulk photovoltaic effect (BPE) and the anomalous photovoltaic effect (APE) \cite{keith}. 
-%Ferroelectric materials usually have a high dielectric constant (which was mentioned in section \ref{PV_properties} as an important parameter for a photovoltaic material) and they possess a spontaneous electric polarization that can be switched between two or more states using an electric field \cite{new_FE_PV_1}.
-The BPE was first recorded in 1956 in BaTiO$_3$ \cite{keith_46}, where photovoltages were measured in un-doped single crystals \cite{keith}.
-The BPE effect is distinctly different from the typical PV effect in semiconductor
-p-n junctions outlined in section \ref{PV_architecture} as the driving force for the photocurrent is provided by the internal electric polarisation of the crystal \cite{FE_PV_rev1}. 
-The APE was first observed in PbS films in 1946 \cite{keith_54} and has since been reported in polycrystalline CdTe, ZnTe, InP \cite{keith_55, keith_56, keith_57}, where photovoltages output along the polarisation direction can be significantly larger than the band gap of the material \cite{FE_PV_rev1}, which is usually the limit for a semiconductor PV material \cite{keith}. 
-The Shockley-Queisser limit \cite{SQ_1961}, which prevents any single p-n junction solar cell from converting more than 33.7\% of the incident light into electricity, has not been predicted to apply for these photovoltaic phenomena. An upper limit for the theoretical power conversion efficiency (PCE) from this photovoltaic mechanism seems to still be an open question \cite{ FE-PV_kirchartz, new_FE_PV}, although an ultimate maximum efficiency of any single-band gap absorber of 44\% has been set by thermodynamic considerations \cite{SQ_1961}. 
-
-The identification, understanding and utilisation of such phenomena discussed above may open up the possibility of more efficient PV devices constructed from photoactive-ferroelectric, i.e. `photoferroic', materials.
-In addition to the above novel PV effects, it has been proposed that the presence of electric polarisation in a PV absorber material may allow for efficient polarisation-driven charge carrier separation \cite{Jarv, FE-PV_lett} and also that ferroelectric materials in solar cells may allow for control over the internal electric fields and carrier injection barriers, which play a central role in the PV mechanism \cite{FE-PV_kirchartz}.
-However, most of the commonly used ferroelectric materials such as LiNbO$_3$ and BaTiO$_3$ have band gaps larger than 3 eV and can therefore only absorb sunlight in the UV range to convert into electricity, which accounts for only around 3.5\% of the solar spectrum. Research efforts have sought to adjust the optical absorption of ferroelectric materials without influencing the ferroelectric properties through chemical doping or alloying \cite{FE_PV_rev1}. In Bi$_4$Ti$_3$O$_{12}$ the optical band gap has been tuned in such a way, resulting in a decrease from 3.6 eV to 2.7 eV \cite{FE_PV_rev1_83}, although this is still considerably larger than the optimal range for a PV absorber material, as discussed in section \ref{PV_properties}. A recent study has demonstrated a more substantial reduction in the optical band gap of BaTiO$_3$  to 1.66 eV, whilst maintaining 70\% of the original polarisation \cite{FE-PV_lett}, however the PV performance of the modified material was not demonstrated in this study. 
-
-This then leads on to the second component of this study: to identify new candidate solar absorber materials that may exhibit ferroelectricity and have band gaps within the optimal range for the absorption of sunlight. The screening criteria used to identify these candidate absorber layers will be outlined further in \autoref{chap:screening}, but the basic principles are as follows: by starting from a dataset of naturally occurring minerals, it could be assumed that all candidates are likely to be thermodynamically stable. Secondly, necessary (although not sufficient) conditions are used to screen for candidate photoferroic materials. A dark streak colour for the mineral implies that the magnitude of the optical band gap may be somewhere within the visible spectrum and therefore within the ideal range for a PV absorber layer. A polar space group is a necessary, but again not sufficient, condition for a material to exhibit ferroelectricity. Even in the absence of switchable ferroelectric states, the internal crystal polarisation may be beneficial for a PV material, as mentioned earlier.
-The optoelectronic properties of the candidate materials are then investigated further to assess the likely performance of solar cells made from these absorber materials to determine those worthy of further experimental study. The identification of stable materials with a large polarisation and strong optical absorption could provide more test systems for further experimental investigation and, ideally, the development of control of the novel FE-PV phenomena outlined at the start of this section.
-
 
 \chapter{Methodology}
 \section{Electronic structure calculations}\label{elec_struc}
@@ -557,38 +564,230 @@ Alternative representations of wavefunctions: expressing basis sets as plane wav
 
 \subsection{Hybrid-DFT}
 
-\section{Models of imperfect solids}\label{defects_methods}
-When a solid forms a regular crystal, the energies of the bands, i.e. band structure, as outlined in section \ref{BandTheorySection} can be predicted exactly from electronic structure calculations \ref{Nelson3}. However...
+\section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
+When a solid forms a regular crystal the energies of the bands, i.e. the band structure discussed in section \ref{BandTheorySection}, can be predicted exactly from electronic structure calculations \cite{Nelson3}. However, in reality, absolutely perfect systems do not exist. The energy cost associated with the creation of a defect often can be countered by the increase in the configurational entropy of the system \cite{AshcroftMermin_general}.
+There are several types of possible defects in solids, some of which were depicted in section \ref{defects_impact}. 
 
-Nod to different types of defects and disorder here (on different scales - 1D, 2D, 3D, etc.) (point, line, pinholes). Maybe also take line from theory section on perfect solids not existing due to entropy?
+In this section, methods developed for electronic structure calculations of the formation energy of isolated point defects, i.e. in the dilute limit, are discussed. 
+These methods are applied in section \ref{sulfosalt_defects} to provide the first insights into the defect physics (and likely associated impact on PV performance) of some of the candidate photoferroic absorbers identified in \autoref{chap:screening}.
+Defect formation energies under specific synthesis conditions can be used to infer the likely concentrations of particular defects. 
+In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in materials with large extents of substitutional disorder. 
 
-\subsection{Defects in the dilute limit}
-(Reuse theory from DefectsBenchmark write up) Outline supercell method as one (but not only) method to simulate defects in the dilute limit (see defects JC talk). In this case, use a unit cell larger than the primitive unit cell discussed in section \ref{crystal_models}.\\
+\subsection{The problem of periodicity}
+As discussed in section \ref{crystal_models}, models of crystalline solids are built around the translational symmetry of periodic crystal lattices. This property is exploited in electronic structure calculations where, typically, the smallest possible unit cell is used to represent the crystal structure and periodic boundary conditions (PBCs) are used to simulate an infinite, bulk crystal. It is then possible to predict the bulk properties of the material by solving quantum mechanical equations for the electronic structure. However, the introduction of a point defect into this simulated system produces a situation such as the slice shown in Fig. \ref{defect_PBCs}a. With the implementation of 3-dimensional PBCs, this would correspond to an infinite 3D array of highly concentrated point defects. In real systems, defects are typically present in parts per million, so this is clearly not a realistic representation. Defect wavefunctions in adjacent unit cells may overlap. To correctly represent isolated point defects, interactions between defect periodic images must be negligible \cite{freysoldt_rev}.
 
-Also nod to MC method in next section as a means for considering defects and concentrations larger than the dilute limit (see transfer report with graph of Cu-Zn defect conc as justification for above dilute limit and interacting defects).
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.75\textwidth]{figures/ase_defects.png}
+    \caption{A charge-neutral defect interacting with periodic images of itself across periodic boundary conditions (a) and the longer-ranged Coulombic interactions of charged defects (b). Figure taken from reference \citenum{ase_defects} and adapted. ** MAKE OWN? - especially for benchmark write up **}
+  \label{defect_PBCs}
+\end{figure}
+
+The supercell method is a common approach to simulate defects in the dilute limit and is the method that is utilised in section \ref{sulfosalt_defects}. This approach involves repeating the primitive unit cell a finite number of times in 3D and then embedding the defect within this larger unit cell so that the defect will be separated from its periodic image by a greater distance. If this distance is sufficiently large, the properties of an isolated defect can be represented by this model \cite{freysoldt_rev}.
+
+\subsubsection{Charge neutral point defects}
+The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to or removed from the system when the defect is formed and $\mu_i$ is the chemical potential of species i. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species.
+\begin{equation}\label{defect_neutral}
+\Delta H_{D,q=0} = E_{D,q=0} - E_{host} - \sum_i n_i \mu_i
+\end{equation}
+
+\subsubsection{Charged point defects}
+However, additional complexities arise when attempting to obtain the formation energy of a charged defect. Firstly, there is a strong and long-ranged Coulomb interaction between charged supercells in PBCs (indicated in Fig. \ref{defect_PBCs}b) and this converges slowly with increased supercell size.
+Secondly, electronic structure calculations with PBCs for a charged unit cell (effectively) include a neutralising homogeneous background charge to avoid infinite charge, which is not present in the calculation for the perfect equivalent supercell. Thirdly, the charge of the defect system does not match that of reference perfect bulk. It is therefore necessary to introduce a chemical potential to account for the change in energy when electrons are added to or removed from the system when creating a defect in a given charge state \cite{freysoldt_rev}. Consequently, the expression for the defect formation energy given in Eq. \ref{defect_neutral} must be modified to that shown in Eq. \ref{defect_charged}.
+\begin{equation}\label{defect_charged}
+\Delta H_{D,q} = E_{D,q} - E_{host} - \sum_i n_i \mu_i + q[\epsilon_F + \epsilon_{\nu} + \Delta \nu_{0/b}] + E^q_{corr}
+\end{equation}
+Additional terms in Eq. \ref{defect_charged} are: $q \epsilon_F$ (electron chemical potential for energy required to add or remove electrons when charged defect forms), $q \epsilon_{\nu}$ (energy of bulk VBM) and $q \Delta \nu_{0/b}$ (term used to align the electrostatic potential of bulk and defect supercells). The terms in Eq. \ref{defect_charged} are explained pictorially in Fig. \ref{pylada_eq}.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/pylada_eq.png}
+    \caption{Visual descriptions of terms in the equation for the formation energy of charged defects. Figure taken from Ref. \citenum{pylada}.}
+  \label{pylada_eq}
+\end{figure}
+
+However due to computational limitations, it is usually not feasible to perform calculations with sufficiently large supercells to remove all spurious defect-defect interactions, especially for the long-ranged Coulombic interaction of charged defects, as depicted in Fig. \ref{defect_PBCs}b. 
+It is therefore crucial to estimate the magnitude and decay behavior of the different effects.
+Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. Some such schemes are outlined in the next section and a study conducted to compare defect formation energies obtained from different schemes implemented with different electronic structure codes is presented in section \ref{defect_benchmark}.
+
+
+
+
+
+
+
+
 
 \subsection{Finite-size corrections to defect supercells}
-(Reuse theory from DefectsBenchmark write up) Outline need (PBCs in material simulation, defect-defect interaction, etc.). Discuss different correction steps (see pylada paper) and different schemes (see Komsa paper?). + see JC talk slides\\
 
-Mention importance of band gap error in standard DFT for defect calculations (see Lany defects review)
+\cite{komsa}
+\cite{freysoldt_rev}
+\cite{Lany_defects}
+\cite{pylada}
 
-\subsection{All-electron defect calculations}
-Outline methodology for pa with FHI-aims ($V_{es}^{at}(0)$) (take from paper methodology? - write last) \\
+or call - a posteriori Finite-size corrections to formation energy of charged defects?
+Outline of some (but acknowledge that not all are presented here) post-calculation finite-size correction schemes for the supercell method. (FNV, LZ, extrapolation + Kumagai/ Oba?)
 
-Possibly different treatment for `jellium' than VASP and hence different correction? no pa??
+Discuss different correction steps (see pylada paper) and different schemes (see Komsa paper?). + see JC talk slides\\
+
+Mention importance of band gap error in standard DFT for defect calculations (see Lany defects review) \cite{Lany_defects}
 
 
 
-\section{The Monte Carlo method}
-\begin{itemize}
-\item Introduce general method (see transfer report + textbooks)
-\item Outline Eris model of Cu-Zn disorder in CZTS (see transfer report)
-\item Introduce as one method for simulating defects and disorder on scales much larger than possible with electronic structure calculations, but we also explore various levels of DFT-parameterisation in our model (just dielectric const from DFT then also Cu-Zn defect formation E, find former more suitable for reproducing correct transition T)
-\end{itemize}
+\cite{freysoldt_rev}, notes from JC talk:
 
-\subsection{Fundamentals}
+pa
+Supercell calculations for charged systems must include compensating background charge (electrostatic energy of a system with a net charge in the unit cell diverges) 
+Usually homogeneous background is included (equivalent to setting the average electrostatic potential to zero)
+The formation energy of a charged defect depends on the Fermi level 
+Referenced to the bulk VBM (depends on the average electrostatic potential in the bulk)
+The long-range nature of the Coulomb potential precludes establishing an absolute reference for the electrostatic potential 
+ hence need to align the average electrostatic potential in the defect supercell with that in the bulk
+
+ic:
+The unphysical electrostatic interaction of the defect with its periodic images and the constant background makes a spurious contribution to the calculated energy of the system
+The magnitude of these interactions can be estimated from the Madelung energy of an array of point charges with neutralizing background (Leslie and Gillan, 1985)
+The interaction decays asymptotically as q2/L (Leslie and Gillan, 1985; Makov and Payne, 1995), where L is a representative supercell dimension
+Makov and Payne proved for isolated ions that the quadrupole moment of the charge distribution gives rise to a further term scaling as L−3 (Makov and Payne, 1995)
+
+
+
+\subsection{Benchmarking point defect formation energies}\label{defect_benchmark}
+Nod to delta project DFT benchmark for bulk and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells. \\
+
+Possibly different treatment for `jellium' than VASP and hence different correction? no pa??\\
+
+Introduce paper for FHI-aims defects benchmark study with Volker and Tong + add statement on personal contribution?
+
+
+
+
+
+\section{Modeling imperfect solids: Extended antisite defects}\label{MC}
+Introduce as one method for simulating defects and disorder on scales much larger than possible with electronic structure calculations. Above for point defects and pairs in {\CZTS} has been performed already \cite{defects_Chen}, but evidence of high concentrations of disorder **add exptl refs**.
+
+\subsection{The Monte Carlo method}
+Introduce general method (see transfer report + textbooks)\\
+
+\subsubsection{Monte Carlo simulation with the Metropolis Algorithm }
+
+The Monte Carlo method can be used to calculate thermodynamic information about a system of N interacting ions represented on a 3D lattice by using classical statistics, considering only two-body forces and assuming that the potential field of an ion is spherically symmetric. If we know the positions of the N interacting ions on the lattice then the potential energy of the system can be calculated using equation \ref{pot_E}, where V is the Coulombic potential between two ions and $d_{ij}$ is the minimum distance between ions i and j \cite{Metropolis}.
+\begin{equation}\label{pot_E}
+E = \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N V d_{ij}
+\end{equation}
+To calculate the properties of the system, the canonical ensemble is used where the temperature, number of ions and volume are all constant. In this ensemble, the equilibrium value for any quantity of interest, B, is given by equation \ref{av}, where $E_\alpha$ is the energy of the system when in state $\alpha$ and $p_\alpha$ is the probability of the system being in state $\alpha$.
+\begin{equation}\label{av}
+<B> = \frac{ \sum_\alpha e^{-\frac{E_\alpha}{k_bT}} B_\alpha}{ \sum_\alpha e^{-\frac{E_\alpha}{k_bT}}} = \frac{ \sum_\alpha e^{-\frac{E_\alpha}{k_bT}} B_\alpha}{Z} = \sum_\alpha B_\alpha p_\alpha
+\end{equation}
+\begin{equation}\label{prob}
+p_\alpha = \frac{  e^{-\frac{E_\alpha}{k_bT}} }{ \sum_{\alpha} e^{-\frac{E_\alpha}{k_bT}}} =\frac{  e^{-\frac{E_\alpha}{k_bT}} }{Z}
+\end{equation}
+$Z$ in equation \ref{av} is called the partition function. For most systems calculating the value of the partition function requires the summation over a large number of states. When applying the Monte Carlo method to a system of particles, the summation over discrete states for $Z$ is replaced by a set of integrals. This is shown in equation \ref{MC_av} where $U(\mathbf{r}^N)$ is the potential energy of the system which depends upon the position, \textbf{r}, of the N interacting ions in the system and $Z_{NVT}$ is the configurational integral \cite{Lesar3}.
+%\begin{equation}\label{MC_prob}
+%p(\mathbf{r}^N) = \frac{  e^{-\frac{U(\mathbf{r}^N)}{k_bT}} }{\int %e^{-\frac{U(\mathbf{r}^N)}{k_bT}} d\mathbf{r}^N}  = \frac{  e^{-\frac{U(\mathbf{r}^N)}%{k_bT}}}{Z_{NVT}} 
+%\end{equation}
+\begin{equation}\label{MC_av}
+<U> = \frac{ \int e^{-\frac{U(\mathbf{r}^N)}{k_bT}} U(\mathbf{r}^N) d\mathbf{r}^N}{\int e^{-\frac{U(\mathbf{r}^N)}{k_bT}} d\mathbf{r}^N}  = \frac{  \int e^{-\frac{U(\mathbf{r}^N)}{k_bT}} U(\mathbf{r}^N) d\mathbf{r}^N}{Z_{NVT}} 
+\end{equation}
+The configurational integral is over the three coordinates of each ion, as shown in equation \ref{dr}. There are therefore 3N coordinates that define all possible configurations of the system.
+\begin{equation}d \mathbf{r}^N = dx_1 dy_1 dz_1 dx_2 dy_2 dz_2... dx_N dy_N dz_N\end{equation}\label{dr}
+For a system containing several hundred ions this would be a several-hundred dimensional integral over the configuration space, which would be impractical to carry out by the usual numerical methods. The Monte Carlo method for many-dimensional integrals is used for this purpose \cite{Metropolis}. It is conceptually easiest to think about this method for a one-dimensional integral. This method involves sampling a large number of random points within a region defined by the limits of the integral. The integrated function is then the fraction of points that fall below the curve of the function multiplied by the area of the sampled region. The value obtained becomes a better approximation to the actual value of the integral as the number of random numbers, called Monte Carlo steps (MCS), used to sample the integration region increases. \cite{Lesar3}.
+
+The Standard Monte Carlo method for our system would involve placing each of the N ions at random positions in the lattice to define a random point in the 3N-dimensional configuration space. The energy of the system would then be calculated using equation \ref{pot_E} and the configuration would then be weighted using $e^{-\frac{U(\mathbf{r}^N)}{k_bT}}$ when obtaining the equilibrium value of U. However, many configurations are very improbable so performing this calculation for every possible configuration would be inefficient and unnecessary to sufficiently evaluate the ensemble. The custom Monte Carlo code in this study makes use of the Metropolis modified Monte Carlo scheme \cite{Metropolis}. In this implementation of the Monte Carlo method, instead of choosing configurations randomly and then weighting them, the Metropolis algorithm considers the relative probability of a system being in a new configuration, $\beta$, to that of being in the current configuration, $\alpha$. This is shown in equation \ref{relative_prob}, where $E_\alpha$ is the energy of state $\alpha$ and $E_\beta$ is the energy of state $\beta$.
+\begin{equation}\label{relative_prob}
+\frac{p_\beta}{p_\alpha} = \frac{  e^{-\frac{E_\alpha}{k_bT}} }{Z} \frac{Z}{  e^{-\frac{E_\alpha}{k_bT}} } = e^{- \frac{E_\beta - E_\alpha}{k_BT}}
+\end{equation}
+The relative probabilities of the two states are completely determined by the energy 
+difference, such that if:
+\begin{equation}\label{met}
+\Delta E = E_{\beta} - E_{\alpha} \leq 0 \text{   then   } \frac{p_{\beta}}{p_{\alpha}} \geq 1 
+\end{equation}
+and if
+\begin{equation}\label{met2}
+\Delta E = E_{\beta} - E_{\alpha} > 0 \text{   then   } \frac{p_{\beta}}{p_{\alpha}} < 1
+\end{equation}
+
+The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration, in the case of our study this would be a substitution between a Cu and a Zn ion. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. If the relative probability is  $\geq$ 1, as shown in equation \ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $e^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}.
+
+
+\subsubsection{Equilibration and finite-size effects }\label{equilibration}
+Our Monte Carlo model for Cu-Zn disorder is analogous to the Ising model of a ferromagnet, descriptions of which can be found in many textbooks such as references \citenum{MC} and \citenum{MC_Landau}. In the case of an Ising model, the trial moves in the Metropolis algorithm are spin flips, whereas in our model the trial moves are swaps between Cu and Zn ions. Typically when performing simulations of an Ising model the calculated quantities of interest are the internal energy and average magnetization of the system as a function of temperature obtained by summing over the distribution of atomic spins. In the case of our system, the quantities of interest are the spatial arrangement of the Cu and Zn ions due to thermodynamic substitutions between the two species and the resulting distribution of electrostatic potential across the system for the implications this could have on band tailing. As we fix Sn ions in our simulation we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu-Zn disorder.
+However, before we attempt to extract any information on thermodynamic disorder or the associated band tailing we would predict from such disorder, two important considerations for our model will be firstly to determine if the disordered configuration we obtain is in fact the equilibrated configuration at the given temperature and secondly if finite size effects are having an impact on the system properties we obtain from our simulations.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.4\textwidth]{figures/MC_PBCs.png}
+    \caption{Typical periodic boundary conditions for the two-dimensional Ising model. Figure taken from \citenum{MC_Landau}.}
+  \label{MC_PBCs}
+\end{figure}
+
+As simulations are performed for finite lattices, in order to simulate a bulk system the edges or `boundaries' of the system must be treated carefully. The boundaries can be effectively eliminated through the use of periodic boundary conditions (PBCs). In the case of an Ising model, this means that the first spin in a row interacts with the last spin in the row as if it were a nearest neighbour, and vice versa \cite{MC_Landau}. This principle is illustrated for a two-dimensional system in figure \ref{MC_PBCs}. Although this procedure effectively eliminates boundary effects, the system is still characterized by the finite lattice size, L, which limits the correlation length to $\frac{L}{2}$. Resultant properties of the simulated system may then differ from the bulk system. We therefore will need to perform simulations with increasing system size to look for any differences in the quantities of interest.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/ising_equil.png}
+    \caption{The magnetization (upper curve) and internal energy (lower curve) per site of a two-dimensional Ising model simulated using the Metropolis algorithm (a). Magnetization as a function of time for two different simulations (b). Time is measured in Monte Carlo steps per lattice site. Figures taken from \citenum{MC}.}
+  \label{ising_equil}
+\end{figure}
+
+Determining if our system has reached equilibration at each temperature however may require a more complicated proceedure. As the Monte Carlo method is stochastic, making use of sampling many times with random numbers in order to determine the minimum energy configuration of the system, the trajectory to reach this final configuration will by nature be random. Therefore, we can draw no conclusions about the properties of our system from evolved states until the final configuration at the particular temperature is reached. Even then we must consider the possibility of our system finding local minima instead of global minima, and therefore giving a false impression of having equilibrated. We therefore are developing methods to check for equilibration before we attempt to extract any thermodynamic properties of our system.
+
+In the case of the Ising model when, for example, determining the average magnetization of a system at a given temperature, the simulation must be run for a suitably long time until the system has come to equilibrium at that temperature. This is referred to as the equilibration time and the point at which a system has attained equilibrium can be defined as being when the average probability of finding the system in any particular state $\alpha$ is proportional to the Boltzmann weight of that state, $e^{-\frac{E_\alpha}{k_bT}}$. Once the system has equilibrated, the quantity of interest such as the magnetization must then be measured again over a suitably long time and averaged \cite{MC}. 
+To gauge if a system has reached equilibrium, in the case of the Ising model, it is common practice to run the simulation for a large number of Monte Carlo steps (MCS) (where one MCS corresponds to attempting a trial spin-flip at all sites in the system once) and looking for how the value of a quantity of interest, such as the average magnetization across the system, changes with increasing number of MCS as the simulation progresses. Equilibration is often considered as the point at which the value of a quantity of interest, which initially changes by a large amount, eventually converges to fluctuating about a steady average value. An example of this is shown in figure \ref{ising_equil}a. This is dependent upon the principle that a system in equilibrium spends the overwhelming majority of its time in a small subset of states in which its properties take a narrow range of values \cite{MC}. Provided the simulation is allowed to run for a sufficiently long time to reach this global minimum energy (or equilibrium) configuration and that the system does not become stuck in a local minimum state, the final configuration for a given system at a given temperature should always be the same regardless of the initial configuration of the simulation, this point is illustrated in figure \ref{ising_equil}b.
+
+Using this principle, one way to determine if our system has reached its equilibrium configuration could be to use the perfectly ordered or disordered initial lattice configurations that were discussed at the end of section \ref{mapping}. Both of these initial configurations, if the simulation is allowed to evolve over a suitable number of MCS, should eventually result in the same equilibrium system configuration. It would be difficult to distinguish differences in the atomic arrangement of one 3D lattice to another by eye, therefore comparisons of the radial distribution function (RDF) for each configuration as it evolves from either an ordered or disordered initial configuration will be made. Using RDFs for structural analysis will be discussed further in section \ref{RDF_methods}, but for the present discussion, the point after which the RDF of the system evolved from an ordered initial lattice converges to being the same as that of a system evolved from a disordered initial lattice could be one way to determine if the system has reached its equilibrium configuration. 
+
+An example of this analysis is shown in figure \ref{RDF_Z-Z_equil_check}. So far, we have seen that the system evolves much faster (in terms of number of MCS as opposed to time) when starting from an initially ordered configuration than an initially disordered configuration. This could be explained by it being more entropically favourable for a system to move away from a highly ordered system than to move from a disordered configuration to a more ordered configuration. 
+%As the difference in the RDF peaks can be difficult to gauge by eye and as our system is on lattice, we are also summing over the square of the difference in the RDF peak intensities at each value of r to quantify the difference in the distributions. 
+So far in our study we have found that the system evolution from a disordered initial configuration is possibly too slow for comparisons between this simulation and that from an ordered initial configuration to be a feasible method to check for equilibration.
+
+Another method to check for equilibration is analogous to that shown in figure \ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of the electrostatic potential at Sn sites in the system that is of interest so one possible method to check for equilibration could be to look for a point after which the variance of the distribution of electrostatic potentials across the system has reached a steady value. An example of this analysis is shown in figure \ref{variance_with_MCS}, where the system was evolved from an ordered initial configuration and electrostatic potential of Sn ions were calculated using the GULP code. In contrast to the disordered initial configuration, systems evolved from an initially perfectly ordered lattice appear to equilibrate quickly where in figure \ref{variance_with_MCS}, each `MC Mega Step' corresponds to 100 Monte Carlo steps (MCS). The figure shows the variance evolving from the initially perfectly ordered system, in which there is only one distinct crystallographic environment for Sn and so the variance is zero, to fluctuating around a finite value. Figure \ref{variance_with_MCS_1000} shows the same simulation performed with 1000 MCS per data point.
+
+
 \subsection{Application to thermodynamic substitutional cation disorder}
-Include stuff from transfer report showing expected defect concentrations of Cu and Zn antisites in CZTS $>$ dilute limit (and hence need for MC model), Eris visuals, etc.
+
+\subsubsection{Defects beyond the dilute limit in {\CZTS}}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/Cu-Zn_eqm_conc.png}
+    \caption{Probability of nearest neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] defect formation as a function of temperature based on the equilibrium defect concentration from classical thermodynamics. The shaded region indicates typical annealing temperatures used in the synthesis of {\CZTS}.}
+  \label{Cu-Zn_eqm_conc}
+\end{figure}
+
+For our calculations of the formation energy of the nearest-neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] defect pair (shown in figure \ref{Cu-Zn_defect}), we make use of the Heyd-Scuseria-Ernzerhof (HSE06) hybrid-functional \cite{HSE} for the exchange-correlation functional as implemented in the Vienna Ab-initio Simulation Package (VASP) \cite{VASP}. This functional mixes 25\% of screened Hartree-Fock exchange to the Perdew-Burke-Ernzerhof (PBE) exchange functional \cite{PBE}. Projector augmented-wave potentials \cite{PAW} were used to describe the core electrons with an energy cut-off of 500 eV for the plane-wave basis set. Calculations were initially performed at the gamma point (a 1x1x1 \textit{k}-point mesh) until forces on the ions converged to within 0.01 eV/ $\AA$. 
+A single geometry step was then performed with a 2x2x2 \textit{k}-point mesh centred on the gamma point as these parameters were found to be sufficient for the total energy to converge to within $<$2 meV  per atom with respect to increased plane-wave cut-off energy and for the external pressure to be $<$1 kbar. However, performing the full calculation with a 2x2x2 \textit{k}-point mesh was found to be too computationally expensive. Data for the convergence test is given is table \ref{conv_test}. From our calculation, we predict a defect formation energy of 0.30 eV.
+
+When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting. Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects as a function of temperature can be obtained \cite{thermodynamics}. This is shown in equation \ref{defect_conc}, where N is the number of sites, $\Delta H$ is the defect formation energy, $k_B$ is the Boltzmann constant and T is the temperature of the system.
+\begin{equation} \label{defect_conc}
+n = Ne^{\frac{-\Delta H}{k_BT}}
+\end{equation}
+The probability of defect formation as a function of temperature is given by the exponential expression in equation \ref{defect_conc}. The defect formation energy from the DFT calculations were halved to take an average of the formation energy per defect during the formation of an antisite pair before being inserted into this expression. This is plotted against temperature in figure \ref{Cu-Zn_eqm_conc}. 
+It can be seen from figure \ref{Cu-Zn_eqm_conc} that the probability of defect formation at a typical annealing temperatures is approximately 7-13\%.
+It was also found that, compared to the undefective system, there was a decrease in the separation of the antisite defects of 3.84$\AA$ to 3.82$\AA$ after the geometry optimization. This effect could be due to a Coulombic attraction between the two antisite defects.
+The point defects (the $Cu_{Zn}^-$ and $Zn_{Cu}^+$ antisites) form the defect complex [$Cu_{Zn}^- + Zn_{Cu}^+$]. The point defects become associated with one another due to a Coulomb interaction between the effective +1 and -1 charge that results from substituting species with a +1 charge with a species with a +2 charge and vice versa. This, in addition to the high equilibrium concentrations of antisite defects predicted, suggests that it is not sufficient to consider the $Cu_{Zn}^-$ and $Zn_{Cu}^+$ antisites as non-interacting point defects and that we must instead consider a system of interacting defects.
+ We aim to do this through our Monte Carlo simulations of thermodynamic disorder, which are discussed in section \ref{MC_section}.
+
+\subsubsection{Custom on-lattice Monte Carlo code for Cu-Zn disorder in {\CZTS}}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/eris_spatial_disorder.png}
+    \caption{Example outputs from Eris Monte Carlo simulations of Cu-Zn disorder from an initially ordered lattice showing the top two layers of the lattice when simulations are performed at temperatures T = 0K (a) and at T = 200K (b).}
+  \label{eris_spatial_disorder}
+\end{figure}
+
+** Clarify here on personal contributions to Eris or just do this when introducing paper in Ch4?? **
+
+Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions  will be allowed to evolve until the equilibrium configuration in terms of the arrangement of Cu and Zn atoms at the given temperature is reached, which was discussed in section \ref{equilibration}. The electrostatic potential at each site in the lattice will then be calculated for later analysis of the distribution of electrostatic potential of Sn ions across the system when extracting information on band tailing due to Cu-Zn disorder. The methodology for this will be discussed as future work in section \ref{eris_future_work}. Figure \ref{eris_spatial_disorder} shows an example of outputs from our simulations, where the T = 0K spatial arrangement of cations in figure \ref{eris_spatial_disorder}a corresponds to the perfectly ordered system and the T= 200K configuration in figure \ref{eris_spatial_disorder}b shows spatial clustering of Cu and Zn ions as the system has been allowed to evolve at a finite temperature.
+
++ Give pairwise Hamiltonian here?
+
++ Mention code applied in study in Ch4.2
+
+%\subsubsection{Quantification of disorder using pair correlation functions}\label{RDF_methods}
+%In order to analyse the extent of disorder in resulting configurations from our simulations, we plan to use radial distribution functions (RDFs). The RDF of a system of particles describes how density varies as a function of distance from a reference particle. In our study we will use the RDF of particular pairs of species to study how the arrangement of Cu and Zn ions varies across the whole system as a result of thermodynamic disorder.
+%The simplest way to quantify disorder could be to use the nearest-neighbour RDF peak of the Cu-Cu or Zn-Zn RDFs as an increase in disorder is associated with clustering of two or more Cu or Zn species together, as shown in figure \ref{Cu-Zn_disorder}. Therefore, when comparing to the RDF of a perfectly ordered system, we could expect a new nearest-neighbour peak to emerge in the Cu-Cu and Zn-Zn RDFs, which will increase in intensity as the regions of clusters of Cu and Zn increase in cluster-size and occur more frequently with disorder. This can be seen in figure \ref{RDF_Z-Z} of the Zn-Zn RDF where a new nearest neighbour peak emerges in the disordered configurations, which was not present for the ordered initial configuration, and the peak appears to increase in intensity going from a system that has been evolved from an initially ordered configuration compared to the disordered initial configuration. This analysis will not entirely capture the disorder process but could be used to quantify the initial disordering from a perfectly ordered system. Ideas for other methods to quantify disorder will be discussed as future work in section \ref{eris_future_work}.
+
+
+
 
 
 \chapter{Performance bottlenecks of {\CZTS} solar cells}\label{chap:CZTS}
@@ -598,14 +797,14 @@ Introductory paragraph + ACS energy letter
 \includepdf[pages={1-},scale=1.0]{papers/CZTS_lett.pdf}
 
 \section{Monte Carlo simulation of Cu-Zn disorder in {\CZTS}}
-Introductory paragraph + Eris paper1 (methodology) + include paper SI? (put in appendix?) + Add statement on personal contribution + link to Eris git repo and Zenodo doi for data?\\
-
 For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
-Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.
+Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.\\
 
-\includepdf[pages={1-},scale=1.0]{papers/ErisPaper1_draft.pdf}
-\includepdf[pages={1-},scale=1.0]{papers/Eris1_draft_SI.pdf}
+Introductory paragraph + Eris paper1 (methodology) + include paper SI? (or put in appendix?) + Add statement on personal contribution + link to Eris git repo and Zenodo doi for data?
+
+\includepdf[pages={1-},scale=1.0]{papers/ErisPaper1.pdf}
+\includepdf[pages={1-},scale=1.0]{papers/Eris1_SI.pdf}
 
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
@@ -635,7 +834,7 @@ Introduce `photoactive ferroelectrics', state that idea would be to use a p-n ju
 
 State that band tailing from prevalent cation disorder (as investigated for CZTS) would be expected to be less prevalent in these materials (as in AZTS, BCTS etc.) due to less similar chemical character of components (get citations from sulfosalts paper).\\
 
-+ Add statement on personal contribution
++ Add statement on personal contribution (include? - work largely carried out during placement at Duke University in collaboration with...)
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
@@ -644,36 +843,23 @@ State that band tailing from prevalent cation disorder (as investigated for CZTS
 \section{Outlook: Large-scale screening with material properties databases}
 Introductory paragraph (larger dataset than previous study and additional screening metrics in study, e.g. m* from Boltztrap, - outline here) + project with Lee and MP - give overview of number of compounds, abundance and m* from study (use plots and check with Lee if okay to include? Put in the form of a paper draft to share with Lee?)\\
 
-+ Add statement on personal contribution
++ Add statement on personal contribution - work performed in collaboration with Lee A Burton using screening criteria and rationale in previous section, in combination with Lee's methods to filter candidates from the materials project
 
 \chapter{Theoretical insights for new solar absorbers}\label{chap:insights}
-\begin{itemize}
-\item IP matching for sulfosalt p-n junctions and to metal workfunctions for back contacts
-\item Developing defects calculations with FHI-aims for sulfosalts and defects benchmark study
-\item Sulfosalt defects study as far as possible/ outline work so far and touch on as further work
-\end{itemize}
-
 State that although we expect cation disorder to be less prevalent than Cu-Zn disorder in CZTS, this does not rule out other limitations on performance (such as defects and non-optimal device architectures). Here we take inspiration from more mature or successful PV tech and use insights from theory to assess the potential of the three minerals from \autoref{chap:screening}.\\
 
 Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
-\section{Band alignment for solar cell device architectures}\label{sulfosalt_band_alignment}
+\section{Band alignment for solar cell p-n heterojunctions}\label{sulfosalt_band_alignment}
 Introductory paragraph (new PV tech must be optimised layer-by-layer), barrier to utilisation of new tech, aim to use theory to accelerate process, often architectures optimised for different, more mature tech is used for new PV absorbers - not necessarily optimal! (e.g. of enargite paper and various others from band alignments paper intro) + sulfosalts band alignments paper\\
 
-+ Add statement on personal contribution
++ Add statement on personal contribution (Slabs cut by Yoyo, MD and ELS codes by Keith, calculations performed by me, ELS extended by me to include workflow for CBOs and VBOs of interest for PV)
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts_band_alignment_draft.pdf}
 
-\section{Defect physics}
+\section{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
 State that we expect extended cation disorder to be present to a lesser extent than in CZTS due to less chemical similarity? Also that understanding defect physics from a point-defect perspective is an important foundation to build for understanding the complicate defect physics of a multi-component material? e.g. next step would be pairs, etc.
 
-\subsection{Benchmarking finite-size corrections to defect supercells}
-Nod to delta project DFT benchmark for bulk and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells. 
-+ defect calculations benchmark wrt VASP paper if possible\\
-
-+ Add statement on personal contribution?
-
-\subsection{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
 Introductory paragraph (power of predicting this property - determine materials worthy of further study, inform synthesis procedures for faster optimisation) + sulfosalts defects work as complete as possible (write last, aim to have as much of paper written as possible first!)\\
 
 + Add statement on personal contribution
