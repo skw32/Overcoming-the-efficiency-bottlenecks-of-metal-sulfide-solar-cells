@@ -554,15 +554,28 @@ In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow f
 
 
 \chapter{Methodology}
+
 \section{Electronic structure calculations}\label{elec_struc}
+See Richard Martin book (Ch1), etc.
+
 \subsection{Fundamentals}
-Ab initio fundamentals (H-F, etc.)
+Ab initio fundamentals (H-F, etc.), setting up Slater determinants, etc.
+
+Introduce PBCs for periodic calculations here and reciprocal space here?? (See Richard Martin Ch4 + Chris' thesis (nice comment related waves with associated phase in real space to point in reciprocal space by FT)
+
 \subsection{Density functional theory (DFT)}
 Starting point: http://iopscience.iop.org/article/10.1238/Physica.Topical.109a00009/pdf
+
++ Richard Martin Ch6-9
+
 \subsection{Alternative basis sets in DFT}
 Alternative representations of wavefunctions: expressing basis sets as plane waves (VASP) or numeric atom centred orbitals (FHI-aims) or localised gaussian basis sets for molecules. See aims workshop slides (https://th.fhi-berlin.mpg.de/sitesub/meetings/dft-workshop-2015/index.php?n=Meeting.Program). State that both plane waves within the VASP code and NACO within FHI-aims are used in this work.
 
-\subsection{Hybrid-DFT}
++ Richard Martin Ch12+13
+
+\subsection{Hybrid-DFT}\label{hse_theory}
+See hse papers + Richard Martin Ch8
++ discuss band gap error in standard DFT here?
 
 \section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
 When a solid forms a regular crystal the energies of the bands, i.e. the band structure discussed in section \ref{BandTheorySection}, can be predicted exactly from electronic structure calculations \cite{Nelson3}. However, in reality, absolutely perfect systems do not exist. The energy cost associated with the creation of a defect often can be countered by the increase in the configurational entropy of the system \cite{AshcroftMermin_general}.
@@ -570,34 +583,35 @@ There are several types of possible defects in solids, some of which were depict
 
 In this section, methods developed for electronic structure calculations of the formation energy of isolated point defects, i.e. in the dilute limit, are discussed. 
 These methods are applied in section \ref{sulfosalt_defects} to provide the first insights into the defect physics (and likely associated impact on PV performance) of some of the candidate photoferroic absorbers identified in \autoref{chap:screening}.
-Defect formation energies under specific synthesis conditions can be used to infer the likely concentrations of particular defects. 
+Defect formation energies under specific synthesis conditions can be used to infer the likely concentrations of particular defects, which may have different impacts on PV performance \cite{Aron_defect_tolerance}. 
 In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in materials with large extents of substitutional disorder. 
 
 \subsection{The problem of periodicity}
-As discussed in section \ref{crystal_models}, models of crystalline solids are built around the translational symmetry of periodic crystal lattices. This property is exploited in electronic structure calculations where, typically, the smallest possible unit cell is used to represent the crystal structure and periodic boundary conditions (PBCs) are used to simulate an infinite, bulk crystal. It is then possible to predict the bulk properties of the material by solving quantum mechanical equations for the electronic structure. However, the introduction of a point defect into this simulated system produces a situation such as the slice shown in Fig. \ref{defect_PBCs}a. With the implementation of 3-dimensional PBCs, this would correspond to an infinite 3D array of highly concentrated point defects. In real systems, defects are typically present in parts per million, so this is clearly not a realistic representation. Defect wavefunctions in adjacent unit cells may overlap. To correctly represent isolated point defects, interactions between defect periodic images must be negligible \cite{freysoldt_rev}.
+As discussed in section \ref{crystal_models}, models of crystalline solids are built around the translational symmetry of periodic crystal lattices. This property is exploited in electronic structure calculations where, typically, the smallest possible unit cell is used to represent the crystal structure and periodic boundary conditions (PBCs) are used to simulate an infinite, bulk crystal. It is then possible to predict the bulk properties of the material by solving quantum mechanical equations for the electronic structure. However, the introduction of a point defect into this simulated system produces a situation such as the slice shown in Fig. \ref{defect_PBCs}a. With the implementation of 3-dimensional PBCs, this would correspond to an infinite 3D array of highly concentrated point defects. Defect wavefunctions in adjacent unit cells may overlap. However in real systems, defects are typically present in parts per million.  To correctly represent isolated point defects, interactions between defect periodic images must be negligible \cite{freysoldt_rev}.
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.75\textwidth]{figures/ase_defects.png}
-    \caption{A charge-neutral defect interacting with periodic images of itself across periodic boundary conditions (a) and the longer-ranged Coulombic interactions of charged defects (b). Figure taken from reference \citenum{ase_defects} and adapted. ** MAKE OWN? - especially for benchmark write up **}
+    \caption{A charge-neutral defect interacting with periodic images of itself across periodic boundary conditions (a) and the longer-ranged Coulombic interactions of charged defects (b). Figure taken from reference \citenum{ase_defects} and adapted. ** MAKE OWN? - especially for benchmark write up and add charge to defect in (b)?**}
   \label{defect_PBCs}
 \end{figure}
 
 The supercell method is a common approach to simulate defects in the dilute limit and is the method that is utilised in section \ref{sulfosalt_defects}. This approach involves repeating the primitive unit cell a finite number of times in 3D and then embedding the defect within this larger unit cell so that the defect will be separated from its periodic image by a greater distance. If this distance is sufficiently large, the properties of an isolated defect can be represented by this model \cite{freysoldt_rev}.
 
 \subsubsection{Charge neutral point defects}
-The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to or removed from the system when the defect is formed and $\mu_i$ is the chemical potential of species i. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species.
+The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell of the host crystal and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to ($n_i > 0 $) or removed from ($n_i < 0$) the system when the defect is formed and $\mu_i$ is the chemical potential of species i. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species.
 \begin{equation}\label{defect_neutral}
 \Delta H_{D,q=0} = E_{D,q=0} - E_{host} - \sum_i n_i \mu_i
 \end{equation}
 
 \subsubsection{Charged point defects}
-However, additional complexities arise when attempting to obtain the formation energy of a charged defect. Firstly, there is a strong and long-ranged Coulomb interaction between charged supercells in PBCs (indicated in Fig. \ref{defect_PBCs}b) and this converges slowly with increased supercell size.
-Secondly, electronic structure calculations with PBCs for a charged unit cell (effectively) include a neutralising homogeneous background charge to avoid infinite charge, which is not present in the calculation for the perfect equivalent supercell. Thirdly, the charge of the defect system does not match that of reference perfect bulk. It is therefore necessary to introduce a chemical potential to account for the change in energy when electrons are added to or removed from the system when creating a defect in a given charge state \cite{freysoldt_rev}. Consequently, the expression for the defect formation energy given in Eq. \ref{defect_neutral} must be modified to that shown in Eq. \ref{defect_charged}.
+However, additional complexities arise when attempting to obtain the formation energy of a charged isolated point defect. Firstly, there is a strong and long-ranged Coulomb interaction between charged supercells in PBCs (indicated in Fig. \ref{defect_PBCs}b) and this converges slowly with increased supercell size.
+Secondly, the charge of the defect system does not match that of the perfect bulk reference system. It is therefore necessary to introduce a chemical potential to account for the change in energy when electrons are added to or removed from the system when creating a defect in a given charge state.
+Thirdly, electronic structure calculations with PBCs for a charged unit cell (effectively) include a neutralising homogeneous background charge to avoid infinite charge, which is not present in the calculation for the perfect equivalent supercell \cite{freysoldt_rev}. Consequently, the expression for the defect formation energy given in Eq. \ref{defect_neutral} for a charge neutral defect must be modified to that shown in Eq. \ref{defect_charged}.
 \begin{equation}\label{defect_charged}
 \Delta H_{D,q} = E_{D,q} - E_{host} - \sum_i n_i \mu_i + q[\epsilon_F + \epsilon_{\nu} + \Delta \nu_{0/b}] + E^q_{corr}
 \end{equation}
-Additional terms in Eq. \ref{defect_charged} are: $q \epsilon_F$ (electron chemical potential for energy required to add or remove electrons when charged defect forms), $q \epsilon_{\nu}$ (energy of bulk VBM) and $q \Delta \nu_{0/b}$ (term used to align the electrostatic potential of bulk and defect supercells). The terms in Eq. \ref{defect_charged} are explained pictorially in Fig. \ref{pylada_eq}.
+Additional terms in Eq. \ref{defect_charged} are: $q \epsilon_F$ (electron chemical potential for energy required to add or remove electrons when a charged defect forms), $E^q_{corr}$ (usually represents multiple post-DFT calculation corrections, one such correction is that for interactions between a charged defect and its periodic images, the `image-charge' correction but another is the `band filling' correction, both of which are outlined later),  $q \epsilon_{\nu}$ (energy of bulk VBM) and $q \Delta \nu_{0/b}$ (term used to align the electrostatic potential of bulk and defect supercells). The latter term is to account for the introduction of the homogeneous background charge in electronic structure calculations of charged supercells, which is discussed further in the next section. The terms in Eq. \ref{defect_charged} are explained pictorially in Fig. \ref{pylada_eq}.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.95\textwidth]{figures/pylada_eq.png}
@@ -605,72 +619,154 @@ Additional terms in Eq. \ref{defect_charged} are: $q \epsilon_F$ (electron chemi
   \label{pylada_eq}
 \end{figure}
 
-However due to computational limitations, it is usually not feasible to perform calculations with sufficiently large supercells to remove all spurious defect-defect interactions, especially for the long-ranged Coulombic interaction of charged defects, as depicted in Fig. \ref{defect_PBCs}b. 
-It is therefore crucial to estimate the magnitude and decay behavior of the different effects.
-Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. Some such schemes are outlined in the next section and a study conducted to compare defect formation energies obtained from different schemes implemented with different electronic structure codes is presented in section \ref{defect_benchmark}.
+In theory, it is possible to continually increase the supercell dimensions to allow estimations of the magnitude and decay behavior of the different effects to be obtained and, from this, extrapolate to the formation energy of a defect in the limit of an infinitely large supercell.
+However, due to computational limitations, it is usually not feasible to perform calculations with sufficiently large supercells to remove all spurious defect-defect interactions, especially for the long-ranged Coulombic interaction of charged defects, as depicted in Fig. \ref{defect_PBCs}b.
+Furthermore, the band gap error in standard-DFT can cause large errors in the calculated properties of defects \cite{Lany_defects}. For this reason, methods beyond standard-DFT such as hybrid-DFT (outlined in section \ref{elec_struc}) may be used to more accurately predict the electronic structure. However, the computational expense for such methods is increased further, hence performing calculations for larger supercells becomes a less feasible endeavor.
+Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. Some such schemes are outlined in the next section and a study conducted to compare defect formation energies obtained from different schemes implemented with different electronic structure codes is presented in section \ref{defect_benchmark}.\\
 
-
-
-
-
-
-
+** c.f. Above eqn to that in Alex's paper (and likely implementation in AIDE) **
 
 
 \subsection{Finite-size corrections to defect supercells}
 
-\cite{komsa}
-\cite{freysoldt_rev}
-\cite{Lany_defects}
-\cite{pylada}
-
-or call - a posteriori Finite-size corrections to formation energy of charged defects?
-Outline of some (but acknowledge that not all are presented here) post-calculation finite-size correction schemes for the supercell method. (FNV, LZ, extrapolation + Kumagai/ Oba?)
-
-Discuss different correction steps (see pylada paper) and different schemes (see Komsa paper?). + see JC talk slides\\
-
-Mention importance of band gap error in standard DFT for defect calculations (see Lany defects review) \cite{Lany_defects}
+\subsubsection{Potential alignment}
+The formation energy of a charged defect depends on the Fermi level, as shown in Eq. \ref{defect_charged} and this is referenced to the VBM of the host as the defect formation energy is related to the energy required to add or remove electrons to or from the VBM of the host from or to a Fermi reservoir \cite{Alex_defects}.
+As already mentioned, when a charged defect is embedded in a supercell in a periodic electronic structure calculation, there will also be a compensating background charge. Otherwise, the Ewald summation performed in the electronic structure code to calculate the electrostatic energy of the system diverges, i.e. the system has an infinite charge. The effect of including a compensating homogeneous background charge is equivalent to setting the average electrostatic potential to zero \cite{freysoldt_rev}. 
+In practise this corresponds to removing a constant in the Fourier transform of the electrostatic potential and the consequence of this treatment is that the eigenvalues are defined only up to an undetermined constant \cite{kumagai_oba, kumagai_oba_9}.
+Although referred to as adding a `homogeneous background charge' in the electronic structure calculation, the charge compensation occurs only in the potential. A background charge density is usually not explicitly introduced into the calculation. If instead a compensating charge density was introduced, the resulting overall charge-neutral system should have a well-defined total energy and not depend on the undetermined constant \cite{Lany_defects, Lany_defects_2008}.
+This correction step of course will only be applied to the charged defect supercell in the electronic structure calculations, and not to the perfect host. It is therefore necessary to align the average electrostatic potential in the perfect host supercell to that of the charged defect supercell before computing the defect formation energy through comparisons of the two systems with Eq. \ref{defect_charged}.
+ 
+ Different approaches for potential alignment have been proposed in the literature, including using averages over the electrostatic potential in a small sphere around an atom, as in the Lany-Zunger (LZ) scheme \cite{Lany_defects}, and through the average over transversal planes in the `alignment-like' term in the Freysoldt, Neugebauer, Van de Walle (FNV) scheme \cite{FNV, kumagai_oba}. In both cases, the treatment involves comparing the averaged potential in the bulk-like region of the defect supercell (i.e far from the defect site) to that of a perfect bulk system. Although the electronic structure far from the defect may be similar in the defect supercell and the perfect reference, the average electrostatic potential in equivalent regions of each system could differ by a constant, due to the treatment described above \cite{komsa}. This constant can then be used in Eq. \ref{defect_charged} to align the VBM of the the perfect reference to the defect system.
+ However, there is some debate in the literature as to whether this potential alignment step is required as a separate correction step, or, if it is in fact accounted for in the image-charge correction \cite{kumagai_oba}, which is outlined next.
 
 
 
-\cite{freysoldt_rev}, notes from JC talk:
+\subsubsection{Image-charge correction}
+Image-charge corrections are applied a posteriori to calculated total energies of charged defect supercells to account for the spurious interactions of defects with their periodic images, which were depicted in Fig. \ref{defect_PBCs}, and also with the neutralising `homogeneous background charge'. 
+%and a number of schemes have been developed to correct for this error (Kumagai/ Oba paper ref 7, 11-18)
+%This step involves considering three systems, firstly there is the perfect host system (the supercell without the periodically repeated charged defect). This is the reference system used to compare to the next two systems to determine the energy of the defect in each case. Secondly, there is a system with a periodic array of localised charged defects of charge q with a neutralising background charge.
+%, where the defect interacts both with its periodic image and the neutralising background charge. 
+%of $-\frac{q}{\Omega}$ (where $\Omega$ is the volume of the supercell unit).
+This step involves considering two systems. Firstly there is a system with a periodic array of localised charged defects of charge q with a neutralising background charge.
+This corresponds to the bare result of the electronic structure calculation for the charged defect supercell which needs to have energy corrections applied to it due to spurious interactions caused by the PBCs. Secondly, a system is considered that is just an isolated charge q in a dielectric medium (used to represent the host crystal), where more sophisticated models also take into account the anisotropy of the dielectric response of the host material \cite{kumagai_oba}.
+Different models have been developed to quantify the effects of image-charge interactions in electronic structure calculations for the defect supercell through comparisons of the defect formation energy in these two systems.
 
-pa
-Supercell calculations for charged systems must include compensating background charge (electrostatic energy of a system with a net charge in the unit cell diverges) 
-Usually homogeneous background is included (equivalent to setting the average electrostatic potential to zero)
-The formation energy of a charged defect depends on the Fermi level 
-Referenced to the bulk VBM (depends on the average electrostatic potential in the bulk)
-The long-range nature of the Coulomb potential precludes establishing an absolute reference for the electrostatic potential 
- hence need to align the average electrostatic potential in the defect supercell with that in the bulk
+%The simplest model for the latter system of an isolated point defect in a dielectric medium is to subtract point-charge energies \cite{kumagai_oba}
+The magnitude of interactions between the charged defect with its periodic images can be estimated from the screened Madelung-like energy of an array of point charges \cite{LeslieGillan}.
+The interaction decays asymptotically as $\frac{q^2\alpha}{2 \epsilon L}$ where L is a representative supercell dimension, $\epsilon$ is the dielectric constant of the host material (when an isotropic approximation is used) or the dielectric tensor otherwise \cite{kumagai_oba} and $\alpha$ is the Madelung constant which depends on the supercell geometry and can be calculated for any Bravais lattice through the use of the Ewald method \cite{Ewald, komsa}.
+Makov and Payne (MP) derived an extension of the Madelung lattice sum for a more extended (but still localised charge) distribution \cite{MP}, shown in Eq \ref{MP} \cite{komsa}.
+MP proved that for isolated ions the quadrupole moment of the charge distribution gives rise to a further term scaling as $L^{−3}$ \cite{MP, freysoldt_rev}.
+\begin{equation}\label{MP}
+E^{MP}_{corr} = E_{MP1} + E_{MP2} = \frac{q^2\alpha}{2 \epsilon L} - \frac{2 \pi q Q}{3 \epsilon L^3}
+\end{equation}
+where
+\begin{equation}\label{MP_Q}
+Q = \int r^2 \rho_c(\mathbf{r}) d\mathbf{r}
+\end{equation}
+is the second radial moment of the extended charge density.
 
-ic:
-The unphysical electrostatic interaction of the defect with its periodic images and the constant background makes a spurious contribution to the calculated energy of the system
-The magnitude of these interactions can be estimated from the Madelung energy of an array of point charges with neutralizing background (Leslie and Gillan, 1985)
-The interaction decays asymptotically as q2/L (Leslie and Gillan, 1985; Makov and Payne, 1995), where L is a representative supercell dimension
-Makov and Payne proved for isolated ions that the quadrupole moment of the charge distribution gives rise to a further term scaling as L−3 (Makov and Payne, 1995)
+However, Q in Eq. \ref{MP} cannot be calculated directly for defects in crystalline materials \cite{kumagai_oba, komsa, Lany_defects_2008}. Therefore in practise when using the MP scheme $E^{MP}_{corr}$ is usually not calculated but is estimated by fitting Eq. \ref{MP} to the formation energies calculated for defects with increased supercell size and then extrapolating to the infinite supercell limit. As already discussed, at high levels of theory such large systems may be computationally unfeasible. Furthermore, it has been shown that Eq \ref{MP} does not always give a good fit to calculated defect formation energies, creating doubt regarding the predictive power of this scheme \cite{FNV}. A number of alternative schemes have been proposed that do not require the use of increasing supercell sizes \cite{MP, LeslieGillan, PeterSchultz, Lany_defects, FNV, kumagai_oba}, here the LZ \cite{Lany_defects} and FNV \cite{FNV} schemes will be outlined as these methods will be used to calculate defect formation energies and the results will be compared in section \ref{defect_benchmark}.
 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{figures/LZ_ic.png}
+    \caption{A defect supercell of volume $\Omega$ in an environment (env) of periodic images of the defect (left) and in an environment of surrounding perfect, unperturbed supercells of the host lattice (right). Figure taken from Ref. \citenum{Lany_defects}.}
+  \label{LZ_ic}
+\end{figure}
+
+The MP scheme \cite{MP} discussed above was developed for molecular systems and when calculating Q in Eq. \ref{MP_Q} the part of the defect charge density, $\rho_c(\mathbf{r})$, due to the electronic screening from the host crystal is not included \cite{Lany_defects_2008, Lany_defects}. However, it has been shown that Q is dominated by this contribution in crystalline solids \cite{Lany_defects_2008}. The LZ scheme, as outlined in Ref. \citenum{Lany_defects}, was devised to resolve this situation when calculating the image-charge correction for charged defects in crystalline solids. Firstly, the LZ scheme initially also considers the quadrupole-quadrupole contribution (whereas the MP scheme considers point-charge to point-charge in the MP1 term and point-charge to quadrupole in the MP2 term). If $\rho_c(\mathbf{r})$ is expected to be dominated by the screening response of the host, then it is not confined to the supercell and interactions between extended densities should also be considered \cite{Lany_defects}.
+The image-charge correction is determined in the LZ scheme by considering the difference between the electrostatic interaction energy of the supercell with an environment of
+unperturbed host supercells minus the interaction energy of the supercell with an environment of identical defect supercells, as shown on the right and left hand sides of Fig. \ref{LZ_ic} respectively. This is expressed in Eq. \ref{LZ_Ecorr1} where $\rho_H^{tot}$ is the charge density in the unperturbed perfect host supercell, $\Delta \rho_D$ is the difference between the charge density in the defect supercell and the perfect host supercell and $\Delta \rho_p$ is point-charge-like contribution to the change in the charge density due to the ionic substitution involved in the formation of the crystallographic defect.
+\begin{equation}\label{LZ_Ecorr1}
+\Delta E_i = - \int_{\Omega} dr^3 ( \rho_H^{tot}(\mathbf{r}) + \Delta \rho_p(\mathbf{r}) + \Delta \rho_D(\mathbf{r}) ) \int_{env} dr^{\prime 3} \frac{\Delta \rho_p(\mathbf{r^{\prime}}) + \Delta \rho_D(\mathbf{r^{\prime}})}{ | \mathbf{r} - \mathbf{r^{\prime}} | }
+\end{equation}
+Eq. \ref{LZ_Ecorr1} can be interpreted as Eq. \ref{LZ_Ecorr2} by making some assumptions. Firstly, that the interaction energy of $\rho_H^{tot}$ with the total defect-induced charge density in the image supercells ($\Delta \rho_p(\mathbf{r^{\prime}}) + \Delta \rho_D(\mathbf{r^{\prime}})$) can be neglected (provided that the defect supercell is sufficiently large). Secondly, that the second integral in Eq. \ref{LZ_Ecorr1} can be interpreted as the screened potential, $V_{scr}^{env}(\mathbf{r})$, by assuming that $\Delta \rho_D(\mathbf{r})$ essentially reflects the screening response of the host crystal to the defect.
+\begin{equation}\label{LZ_Ecorr2}
+\Delta E_i = - \int_{\Omega} dr^3 ( \Delta \rho_p(\mathbf{r}) + \Delta \rho_D(\mathbf{r}) ) V_{scr}^{env}(\mathbf{r})
+\end{equation}
+The interaction energy of $ V_{scr}^{env}(\mathbf{r})$ with $\Delta \rho_p(\mathbf{r})$ corresponds to the MP1 term in the MP scheme and the interaction with $\Delta \rho_D(\mathbf{r}) $ corresponds to the MP2 term in the MP scheme when the screening response of the host lattice is included in $\Delta \rho_D(\mathbf{r})$.
+
+The expression in Eq. \ref{LZ_Ecorr2} can then be simplified by exploiting the observation that the delocalised part of the defect density, $\Delta \rho_D(\mathbf{r})$, is dominated by the screening response of the host. The consequence is that Q in Eq. \ref{MP_Q} is proportional to $q L^2$. The second term in Eq. \ref{MP} is then proportional to $\frac{q^2}{L}$ instead of $\frac{q}{L^3}$. By also assuming that the electronic charge accumulation at a defect is drawn homogeneously from the entire supercell \cite{Lany_defects_2008}, the image-charge correction can be expressed as the first-order correction to the MP1 term shown in Eq. \ref{LZ_Ecorr}, which depends only on the dielectric constant of the host, $\epsilon$, and the shape factor $c_{sh}$, which depends only on the shape of the host supercell (FCC, BCC, etc.) and has been calculated for several types of supercell shape in Ref. \citenum{Lany_defects}.
+\begin{equation}\label{LZ_Ecorr}
+E_{corr}^{LZ} = [1 + c_{sh} (1 - \epsilon^{-1}) ] E_{MP1}
+\end{equation}
+In the LZ scheme the potential alignment correction is performed independently of the image-charge correction.
+
+The FNV scheme, as outlined in Ref. \citenum{FNV}, differs from the LZ scheme in that it does not depend upon the shape of the supercell and does not involve a separate potential alignment step, this is instead incorporated in the image-charge correction with the `alignment-like' term. The FNV scheme considers two contributions to the correction term: the interaction energy of a defect with periodic images ($E^{inter}$) and the interaction energy of the background charge with the defect inside the reference supercell ($E^{intra}$).
+These contributions are combined to give the correction term shown in Eq. \ref{FNV_corr}.
+\begin{equation}\label{FNV_corr}
+E_{corr}^{FNV} = E^{inter} + E^{intra} = E^{latt}_q - q\Delta_{q/0}
+\end{equation}
+where
+\begin{equation}\label{E_latt}
+E^{latt}_q = \int_{\Omega} d^3 \mathbf{r} \Big[ \frac{1}{2} [q_d(\mathbf{r}) + n ] [\tilde{V}^{lr}_q(\mathbf{r}) - V^{lr}_q(\mathbf{r}) ] + nV^{lr}_q(\mathbf{r}) \Big]
+\end{equation}
+and
+\begin{equation}\label{alignmentlike}
+\Delta_{q/0} = \frac{1}{\Omega} \int_{\Omega} d^3 \mathbf{r} V^{sr}_{q/0}(\mathbf{r})
+\end{equation}
+$q_d(\mathbf{r})$ is the unscreened charge density of the defect which is assumed to be contained entirely within the supercell. $\Omega$ is the volume of the supercell. $V_{q}$ is the electrostatic potential for defect with charge q, $q/0$ corresponds to the electrostatic potential for the charged defect with charge q minus that for a neutral defect (where q=0). Tildes are used to denotes values for the system from the periodic electronic structure calculation. The $lr$ and $sr$ superscripts correspond to the long range and short range components of the potential, where the lr will be dominated by the macroscopically screened Coulomb potential and sr accounts for variations in the microscopic screening.
+%FNV eq6
+%FNV eq7
+
+A value for Eq. \ref{E_latt} can be obtained by taking a suitable approximation for the defect charge density in the supercell, $q_d$, such as a point charge or a Gaussian and then performing an Ewald summation.
+Eq. \ref{alignmentlike} is the `alignment-like' term in the FNV scheme and $V^{sr}_{q/0}$ is given by Eq. \ref{alignmentlike2}. In this expression $\tilde{V}_{q/0}(\mathbf{r})$ is obtained directly from the electronic structure calculation and the alignment constant, C, is determined by plotting average potentials in the xy plane as a function of z and taking the difference between plots of $\tilde{V}_{q/0}$ and $\tilde{V}^{lr}_{q}$ where the two plots plateau.
+\begin{equation}\label{alignmentlike2}
+V^{sr}_{q/0} =  \tilde{V}_{q/0}(\mathbf{r}) - \tilde{V}^{lr}_{q}(\mathbf{r}) - C 
+\end{equation}
+
+
+\subsubsection{Band filling correction}
+
+%Key sections of \cite{Lany_defects_2008}:
+%\begin{itemize}
+%\item Section II, D. “Postprocessor” corrections to supercell energies, 3. Band-filling correction (SSE)
+%\item Section IV, B. Finite-size effects due to host and impurity band dispersion, 1. Total-energy contributions due to band filling
+%\item Summary last para
+%\item + ref 5 \cite{CIS_defects}
+%\end{itemize}
+
+The above correction methodologies require that the charge of the defect is localised within the supercell unit. However, this is not always the case. Large finite-size effects that converge slowly with increased supercell size have been observed for some defects, even in charge neutral states. This has been attributed to ‘band filling’ effects from high defect concentrations in typical finite-size supercells \cite{Lany_defects_2008, CIS_defects, pylada}. This effect is typically more pronounced for shallower defects. Shallower defects typically have more delocalised wavefunctions associated with them, therefore increasing the likelihood of the defect wavefunction extending beyond the boundary of the supercell unit. Consequently, it is possible for even neutral defects to interact with defect-images in adjacent supercells. 
+
+Defect-defect interaction means that the defect-induced energy level may interact with that of its image to form a defect band with a dispersion in the band energies that would not be present for a distinct, localised defect level that would be expected for a defect in the dilute limit. In the case of a donor defect, the electrons may now occupy defect-induced energy levels in the defect band at higher energies than would be possible in the dilute limit due to the dispersion of the defect band. This could then also lead to spurious hybridisation of defect bands with the host electron states, and the donor electrons can partly populate the host conduction bands, giving rise to band filling effects (Moss-Burstein shift) \cite{Lany_defects_2008}.
+
+A correction step for such effects has been proposed \cite{CIS_defects, Lany_defects_2008, Lany_defects} and is to be applied after performing the potential alignment step in the LZ scheme outlined above.
+To correct the total energy of the finite supercell due to the band-filling effects, the higher energy populations are subtracted \cite{CIS_defects}.
+For a given \textit{k}-point set (weighted sum, $w_k$) and band occupations, $\eta_{n,k}$, the correction for a shallow donor is obtained from Eq. \ref{band_filling_donor} and for a shallow acceptor from Eq. \ref{band_filling_acceptor}, where $e_{n,k}$ are the band energies in the defect calculation, $\tilde{e}_c$ and $\tilde{e}_v$ are the CBM and VBM energies respectively of the pure host after performing the potential alignment step within the LZ scheme \cite{pylada}.
+\begin{equation}\label{band_filling_donor}
+E_{BF} = - \sum_{n,k} w_k \eta_{n,k} [e_{n,k} - \tilde{e}_c]
+\end{equation}
+\begin{equation}\label{band_filling_acceptor}
+E_{BF} = - \sum_{n,k} w_k (1 - \eta_{n,k}) [e_{n,k} - \tilde{e}_v]
+\end{equation}
+However, if the intention is to simulate defects in highly doped semiconductors, the corrections in Eq. \ref{band_filling_donor} and \ref{band_filling_acceptor} should be zero or at least smaller since the formation of defect bands with band dispersion and heavy band filling should be present in a system where defect-defect interactions are a correct physical representation \cite{CIS_defects}.
 
 
 \subsection{Benchmarking point defect formation energies}\label{defect_benchmark}
-Nod to delta project DFT benchmark for bulk and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells. \\
+
+%Or rename `Benchmarking potential alignment for defect supercells'???
+
+Post-processing tools for the implementation of finite-size correction schemes to defect formation energies were integrated with the electronic structure code FHI-aims \cite{FHI-aims} for the study presented in section \ref{sulfosalt_defects}. This therefore provided an opportunity to benchmark defect formation energies calculated by different electronic structure codes with different post-processing finite-size correction schemes applied…
+
+Nod to delta project DFT benchmark for bulk \cite{delta_project_paper} and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells.
+
+Introduce paper for FHI-aims defects benchmark study with Volker and Tong + add statement on personal contribution?\\
 
 Possibly different treatment for `jellium' than VASP and hence different correction? no pa??\\
 
-Introduce paper for FHI-aims defects benchmark study with Volker and Tong + add statement on personal contribution?
-
-
-
+Note from Komsa paper: Possibly contributions to need for pa from variations in the average value of the local pseudopotential which depends on the number and kind of atoms in the supercell, would not also be present in FHI-aims?
 
 
 \section{Modeling imperfect solids: Extended antisite defects}\label{MC}
-Introduce as one method for simulating defects and disorder on scales much larger than possible with electronic structure calculations. Above for point defects and pairs in {\CZTS} has been performed already \cite{defects_Chen}, but evidence of high concentrations of disorder **add exptl refs**.
+In this section defects and disorder is considered on much larger scales than is computationally feasible from electronic structure calculations.
+Here, the fundamentals of utilising the Monte Carlo method to describe thermodynamic substitutional disorder are outlined. This is equivalent to investigating extended antisite defects at higher defect concentrations than would be considered as the dilute limit. This method is applied to study Cu-Zn disorder in {\CZTS} in \autoref{chap:CZTS}.\\
 
-\subsection{The Monte Carlo method}
-Introduce general method (see transfer report + textbooks)\\
+**Introduce general method (see transfer report + cross-ref extra textbooks** \cite{MC} = Newman, \cite{MC_Landau} and \cite{MC3} (Topic in current physics)
 
-\subsubsection{Monte Carlo simulation with the Metropolis Algorithm }
-
-The Monte Carlo method can be used to calculate thermodynamic information about a system of N interacting ions represented on a 3D lattice by using classical statistics, considering only two-body forces and assuming that the potential field of an ion is spherically symmetric. If we know the positions of the N interacting ions on the lattice then the potential energy of the system can be calculated using equation \ref{pot_E}, where V is the Coulombic potential between two ions and $d_{ij}$ is the minimum distance between ions i and j \cite{Metropolis}.
+\subsection{The Monte Carlo method for equilibrium thermodynamics}
+The Monte Carlo (MC) method allows for the simulation of systems with many degrees of freedom. Its name derives from its use of (pseudo-)random numbers to simulate statistical fluctuations in order to numerically generate probability distributions \cite{MC3}.
+The MC method in statistical physics is a special case of the more general MC method.
+Starting from a model hamiltonian, the method can be used to calculate thermodynamic information about a system of N interacting ions represented on a 3D lattice by using classical statistics, considering only two-body forces and assuming that the potential field of an ion is spherically symmetric. If we know the positions of the N interacting ions on the lattice then the potential energy of the system can be calculated using equation \ref{pot_E}, where V is the Coulombic potential between two ions and $d_{ij}$ is the minimum distance between ions i and j \cite{Metropolis}.
 \begin{equation}\label{pot_E}
 E = \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N V d_{ij}
 \end{equation}
@@ -692,6 +788,8 @@ The configurational integral is over the three coordinates of each ion, as shown
 \begin{equation}d \mathbf{r}^N = dx_1 dy_1 dz_1 dx_2 dy_2 dz_2... dx_N dy_N dz_N\end{equation}\label{dr}
 For a system containing several hundred ions this would be a several-hundred dimensional integral over the configuration space, which would be impractical to carry out by the usual numerical methods. The Monte Carlo method for many-dimensional integrals is used for this purpose \cite{Metropolis}. It is conceptually easiest to think about this method for a one-dimensional integral. This method involves sampling a large number of random points within a region defined by the limits of the integral. The integrated function is then the fraction of points that fall below the curve of the function multiplied by the area of the sampled region. The value obtained becomes a better approximation to the actual value of the integral as the number of random numbers, called Monte Carlo steps (MCS), used to sample the integration region increases. \cite{Lesar3}.
 
+
+\subsubsection{Monte Carlo simulation with the Metropolis Algorithm }
 The Standard Monte Carlo method for our system would involve placing each of the N ions at random positions in the lattice to define a random point in the 3N-dimensional configuration space. The energy of the system would then be calculated using equation \ref{pot_E} and the configuration would then be weighted using $e^{-\frac{U(\mathbf{r}^N)}{k_bT}}$ when obtaining the equilibrium value of U. However, many configurations are very improbable so performing this calculation for every possible configuration would be inefficient and unnecessary to sufficiently evaluate the ensemble. The custom Monte Carlo code in this study makes use of the Metropolis modified Monte Carlo scheme \cite{Metropolis}. In this implementation of the Monte Carlo method, instead of choosing configurations randomly and then weighting them, the Metropolis algorithm considers the relative probability of a system being in a new configuration, $\beta$, to that of being in the current configuration, $\alpha$. This is shown in equation \ref{relative_prob}, where $E_\alpha$ is the energy of state $\alpha$ and $E_\beta$ is the energy of state $\beta$.
 \begin{equation}\label{relative_prob}
 \frac{p_\beta}{p_\alpha} = \frac{  e^{-\frac{E_\alpha}{k_bT}} }{Z} \frac{Z}{  e^{-\frac{E_\alpha}{k_bT}} } = e^{- \frac{E_\beta - E_\alpha}{k_BT}}
@@ -699,92 +797,20 @@ The Standard Monte Carlo method for our system would involve placing each of the
 The relative probabilities of the two states are completely determined by the energy 
 difference, such that if:
 \begin{equation}\label{met}
-\Delta E = E_{\beta} - E_{\alpha} \leq 0 \text{   then   } \frac{p_{\beta}}{p_{\alpha}} \geq 1 
+\Delta E = E_{\beta} - E_{\alpha} \leq 0    \quad  then  \quad   \frac{p_{\beta}}{p_{\alpha}} \geq 1 
 \end{equation}
 and if
 \begin{equation}\label{met2}
-\Delta E = E_{\beta} - E_{\alpha} > 0 \text{   then   } \frac{p_{\beta}}{p_{\alpha}} < 1
+\Delta E = E_{\beta} - E_{\alpha} > 0   \quad   then   \quad   \frac{p_{\beta}}{p_{\alpha}} < 1
 \end{equation}
 
-The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration, in the case of our study this would be a substitution between a Cu and a Zn ion. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. If the relative probability is  $\geq$ 1, as shown in equation \ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $e^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}.
+The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration. In the case of the study presented in section \ref{CZTS_MC} this would be a substitution between a Cu and a Zn ion in an on-lattice model of {\CZTS}. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. If the relative probability is  $\geq$ 1, as shown in equation \ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $e^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}. Provided a sufficiently large number of trial moves have been made, from this procedure it is possible to obtain equilibrium disordered configurations for the ions in {\CZTS} at various simulation temperatures. The model developed for {\CZTS} is discussed further in the section \ref{Eris}.
 
 
-\subsubsection{Equilibration and finite-size effects }\label{equilibration}
-Our Monte Carlo model for Cu-Zn disorder is analogous to the Ising model of a ferromagnet, descriptions of which can be found in many textbooks such as references \citenum{MC} and \citenum{MC_Landau}. In the case of an Ising model, the trial moves in the Metropolis algorithm are spin flips, whereas in our model the trial moves are swaps between Cu and Zn ions. Typically when performing simulations of an Ising model the calculated quantities of interest are the internal energy and average magnetization of the system as a function of temperature obtained by summing over the distribution of atomic spins. In the case of our system, the quantities of interest are the spatial arrangement of the Cu and Zn ions due to thermodynamic substitutions between the two species and the resulting distribution of electrostatic potential across the system for the implications this could have on band tailing. As we fix Sn ions in our simulation we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu-Zn disorder.
-However, before we attempt to extract any information on thermodynamic disorder or the associated band tailing we would predict from such disorder, two important considerations for our model will be firstly to determine if the disordered configuration we obtain is in fact the equilibrated configuration at the given temperature and secondly if finite size effects are having an impact on the system properties we obtain from our simulations.
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.4\textwidth]{figures/MC_PBCs.png}
-    \caption{Typical periodic boundary conditions for the two-dimensional Ising model. Figure taken from \citenum{MC_Landau}.}
-  \label{MC_PBCs}
-\end{figure}
-
-As simulations are performed for finite lattices, in order to simulate a bulk system the edges or `boundaries' of the system must be treated carefully. The boundaries can be effectively eliminated through the use of periodic boundary conditions (PBCs). In the case of an Ising model, this means that the first spin in a row interacts with the last spin in the row as if it were a nearest neighbour, and vice versa \cite{MC_Landau}. This principle is illustrated for a two-dimensional system in figure \ref{MC_PBCs}. Although this procedure effectively eliminates boundary effects, the system is still characterized by the finite lattice size, L, which limits the correlation length to $\frac{L}{2}$. Resultant properties of the simulated system may then differ from the bulk system. We therefore will need to perform simulations with increasing system size to look for any differences in the quantities of interest.
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.9\textwidth]{figures/ising_equil.png}
-    \caption{The magnetization (upper curve) and internal energy (lower curve) per site of a two-dimensional Ising model simulated using the Metropolis algorithm (a). Magnetization as a function of time for two different simulations (b). Time is measured in Monte Carlo steps per lattice site. Figures taken from \citenum{MC}.}
-  \label{ising_equil}
-\end{figure}
-
-Determining if our system has reached equilibration at each temperature however may require a more complicated proceedure. As the Monte Carlo method is stochastic, making use of sampling many times with random numbers in order to determine the minimum energy configuration of the system, the trajectory to reach this final configuration will by nature be random. Therefore, we can draw no conclusions about the properties of our system from evolved states until the final configuration at the particular temperature is reached. Even then we must consider the possibility of our system finding local minima instead of global minima, and therefore giving a false impression of having equilibrated. We therefore are developing methods to check for equilibration before we attempt to extract any thermodynamic properties of our system.
-
-In the case of the Ising model when, for example, determining the average magnetization of a system at a given temperature, the simulation must be run for a suitably long time until the system has come to equilibrium at that temperature. This is referred to as the equilibration time and the point at which a system has attained equilibrium can be defined as being when the average probability of finding the system in any particular state $\alpha$ is proportional to the Boltzmann weight of that state, $e^{-\frac{E_\alpha}{k_bT}}$. Once the system has equilibrated, the quantity of interest such as the magnetization must then be measured again over a suitably long time and averaged \cite{MC}. 
-To gauge if a system has reached equilibrium, in the case of the Ising model, it is common practice to run the simulation for a large number of Monte Carlo steps (MCS) (where one MCS corresponds to attempting a trial spin-flip at all sites in the system once) and looking for how the value of a quantity of interest, such as the average magnetization across the system, changes with increasing number of MCS as the simulation progresses. Equilibration is often considered as the point at which the value of a quantity of interest, which initially changes by a large amount, eventually converges to fluctuating about a steady average value. An example of this is shown in figure \ref{ising_equil}a. This is dependent upon the principle that a system in equilibrium spends the overwhelming majority of its time in a small subset of states in which its properties take a narrow range of values \cite{MC}. Provided the simulation is allowed to run for a sufficiently long time to reach this global minimum energy (or equilibrium) configuration and that the system does not become stuck in a local minimum state, the final configuration for a given system at a given temperature should always be the same regardless of the initial configuration of the simulation, this point is illustrated in figure \ref{ising_equil}b.
-
-Using this principle, one way to determine if our system has reached its equilibrium configuration could be to use the perfectly ordered or disordered initial lattice configurations that were discussed at the end of section \ref{mapping}. Both of these initial configurations, if the simulation is allowed to evolve over a suitable number of MCS, should eventually result in the same equilibrium system configuration. It would be difficult to distinguish differences in the atomic arrangement of one 3D lattice to another by eye, therefore comparisons of the radial distribution function (RDF) for each configuration as it evolves from either an ordered or disordered initial configuration will be made. Using RDFs for structural analysis will be discussed further in section \ref{RDF_methods}, but for the present discussion, the point after which the RDF of the system evolved from an ordered initial lattice converges to being the same as that of a system evolved from a disordered initial lattice could be one way to determine if the system has reached its equilibrium configuration. 
-
-An example of this analysis is shown in figure \ref{RDF_Z-Z_equil_check}. So far, we have seen that the system evolves much faster (in terms of number of MCS as opposed to time) when starting from an initially ordered configuration than an initially disordered configuration. This could be explained by it being more entropically favourable for a system to move away from a highly ordered system than to move from a disordered configuration to a more ordered configuration. 
-%As the difference in the RDF peaks can be difficult to gauge by eye and as our system is on lattice, we are also summing over the square of the difference in the RDF peak intensities at each value of r to quantify the difference in the distributions. 
-So far in our study we have found that the system evolution from a disordered initial configuration is possibly too slow for comparisons between this simulation and that from an ordered initial configuration to be a feasible method to check for equilibration.
-
-Another method to check for equilibration is analogous to that shown in figure \ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of the electrostatic potential at Sn sites in the system that is of interest so one possible method to check for equilibration could be to look for a point after which the variance of the distribution of electrostatic potentials across the system has reached a steady value. An example of this analysis is shown in figure \ref{variance_with_MCS}, where the system was evolved from an ordered initial configuration and electrostatic potential of Sn ions were calculated using the GULP code. In contrast to the disordered initial configuration, systems evolved from an initially perfectly ordered lattice appear to equilibrate quickly where in figure \ref{variance_with_MCS}, each `MC Mega Step' corresponds to 100 Monte Carlo steps (MCS). The figure shows the variance evolving from the initially perfectly ordered system, in which there is only one distinct crystallographic environment for Sn and so the variance is zero, to fluctuating around a finite value. Figure \ref{variance_with_MCS_1000} shows the same simulation performed with 1000 MCS per data point.
+ 
 
 
-\subsection{Application to thermodynamic substitutional cation disorder}
 
-\subsubsection{Defects beyond the dilute limit in {\CZTS}}
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.9\textwidth]{figures/Cu-Zn_eqm_conc.png}
-    \caption{Probability of nearest neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] defect formation as a function of temperature based on the equilibrium defect concentration from classical thermodynamics. The shaded region indicates typical annealing temperatures used in the synthesis of {\CZTS}.}
-  \label{Cu-Zn_eqm_conc}
-\end{figure}
-
-For our calculations of the formation energy of the nearest-neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] defect pair (shown in figure \ref{Cu-Zn_defect}), we make use of the Heyd-Scuseria-Ernzerhof (HSE06) hybrid-functional \cite{HSE} for the exchange-correlation functional as implemented in the Vienna Ab-initio Simulation Package (VASP) \cite{VASP}. This functional mixes 25\% of screened Hartree-Fock exchange to the Perdew-Burke-Ernzerhof (PBE) exchange functional \cite{PBE}. Projector augmented-wave potentials \cite{PAW} were used to describe the core electrons with an energy cut-off of 500 eV for the plane-wave basis set. Calculations were initially performed at the gamma point (a 1x1x1 \textit{k}-point mesh) until forces on the ions converged to within 0.01 eV/ $\AA$. 
-A single geometry step was then performed with a 2x2x2 \textit{k}-point mesh centred on the gamma point as these parameters were found to be sufficient for the total energy to converge to within $<$2 meV  per atom with respect to increased plane-wave cut-off energy and for the external pressure to be $<$1 kbar. However, performing the full calculation with a 2x2x2 \textit{k}-point mesh was found to be too computationally expensive. Data for the convergence test is given is table \ref{conv_test}. From our calculation, we predict a defect formation energy of 0.30 eV.
-
-When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting. Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects as a function of temperature can be obtained \cite{thermodynamics}. This is shown in equation \ref{defect_conc}, where N is the number of sites, $\Delta H$ is the defect formation energy, $k_B$ is the Boltzmann constant and T is the temperature of the system.
-\begin{equation} \label{defect_conc}
-n = Ne^{\frac{-\Delta H}{k_BT}}
-\end{equation}
-The probability of defect formation as a function of temperature is given by the exponential expression in equation \ref{defect_conc}. The defect formation energy from the DFT calculations were halved to take an average of the formation energy per defect during the formation of an antisite pair before being inserted into this expression. This is plotted against temperature in figure \ref{Cu-Zn_eqm_conc}. 
-It can be seen from figure \ref{Cu-Zn_eqm_conc} that the probability of defect formation at a typical annealing temperatures is approximately 7-13\%.
-It was also found that, compared to the undefective system, there was a decrease in the separation of the antisite defects of 3.84$\AA$ to 3.82$\AA$ after the geometry optimization. This effect could be due to a Coulombic attraction between the two antisite defects.
-The point defects (the $Cu_{Zn}^-$ and $Zn_{Cu}^+$ antisites) form the defect complex [$Cu_{Zn}^- + Zn_{Cu}^+$]. The point defects become associated with one another due to a Coulomb interaction between the effective +1 and -1 charge that results from substituting species with a +1 charge with a species with a +2 charge and vice versa. This, in addition to the high equilibrium concentrations of antisite defects predicted, suggests that it is not sufficient to consider the $Cu_{Zn}^-$ and $Zn_{Cu}^+$ antisites as non-interacting point defects and that we must instead consider a system of interacting defects.
- We aim to do this through our Monte Carlo simulations of thermodynamic disorder, which are discussed in section \ref{MC_section}.
-
-\subsubsection{Custom on-lattice Monte Carlo code for Cu-Zn disorder in {\CZTS}}
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.9\textwidth]{figures/eris_spatial_disorder.png}
-    \caption{Example outputs from Eris Monte Carlo simulations of Cu-Zn disorder from an initially ordered lattice showing the top two layers of the lattice when simulations are performed at temperatures T = 0K (a) and at T = 200K (b).}
-  \label{eris_spatial_disorder}
-\end{figure}
-
-** Clarify here on personal contributions to Eris or just do this when introducing paper in Ch4?? **
-
-Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions  will be allowed to evolve until the equilibrium configuration in terms of the arrangement of Cu and Zn atoms at the given temperature is reached, which was discussed in section \ref{equilibration}. The electrostatic potential at each site in the lattice will then be calculated for later analysis of the distribution of electrostatic potential of Sn ions across the system when extracting information on band tailing due to Cu-Zn disorder. The methodology for this will be discussed as future work in section \ref{eris_future_work}. Figure \ref{eris_spatial_disorder} shows an example of outputs from our simulations, where the T = 0K spatial arrangement of cations in figure \ref{eris_spatial_disorder}a corresponds to the perfectly ordered system and the T= 200K configuration in figure \ref{eris_spatial_disorder}b shows spatial clustering of Cu and Zn ions as the system has been allowed to evolve at a finite temperature.
-
-+ Give pairwise Hamiltonian here?
-
-+ Mention code applied in study in Ch4.2
-
-%\subsubsection{Quantification of disorder using pair correlation functions}\label{RDF_methods}
-%In order to analyse the extent of disorder in resulting configurations from our simulations, we plan to use radial distribution functions (RDFs). The RDF of a system of particles describes how density varies as a function of distance from a reference particle. In our study we will use the RDF of particular pairs of species to study how the arrangement of Cu and Zn ions varies across the whole system as a result of thermodynamic disorder.
-%The simplest way to quantify disorder could be to use the nearest-neighbour RDF peak of the Cu-Cu or Zn-Zn RDFs as an increase in disorder is associated with clustering of two or more Cu or Zn species together, as shown in figure \ref{Cu-Zn_disorder}. Therefore, when comparing to the RDF of a perfectly ordered system, we could expect a new nearest-neighbour peak to emerge in the Cu-Cu and Zn-Zn RDFs, which will increase in intensity as the regions of clusters of Cu and Zn increase in cluster-size and occur more frequently with disorder. This can be seen in figure \ref{RDF_Z-Z} of the Zn-Zn RDF where a new nearest neighbour peak emerges in the disordered configurations, which was not present for the ordered initial configuration, and the peak appears to increase in intensity going from a system that has been evolved from an initially ordered configuration compared to the disordered initial configuration. This analysis will not entirely capture the disorder process but could be used to quantify the initial disordering from a perfectly ordered system. Ideas for other methods to quantify disorder will be discussed as future work in section \ref{eris_future_work}.
 
 
 
@@ -796,7 +822,81 @@ Introductory paragraph + ACS energy letter
 
 \includepdf[pages={1-},scale=1.0]{papers/CZTS_lett.pdf}
 
-\section{Monte Carlo simulation of Cu-Zn disorder in {\CZTS}}
+
+\section{Defects beyond the dilute limit in {\CZTS}}
+Electronic structure calculations for the formation energies of point defects and point defect pairs in the dilute limit have already been calculated for {\CZTS}, where the [$Cu_{Zn}^- + Zn_{Cu}^+$] defect pair was found to have a particularly low formation energy \cite{defects_Chen}.
+The calculations performed in Ref. \citenum{defects_Chen} were performed using the GGA functional with a rigid shift applied to the defect levels to account for the band gap error at this level of theory \cite{Lany_defects}. In Ref. \citenum{defects_Chen} one defect calculation was performed using a hybrid functional where it was found that the formation energy of the test defect differed by 0.1 eV. We therefore repeated the calculation of the formation energy for the defect pair of interest for our study.
+
+For our calculation of the formation energy of the nearest-neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] defect pair, we make use of the Heyd-Scuseria-Ernzerhof (HSE06) hybrid-functional \cite{HSE} for the exchange-correlation functional as implemented in the Vienna Ab-initio Simulation Package (VASP) \cite{VASP}. This functional mixes 25\% of screened Hartree-Fock exchange to the Perdew-Burke-Ernzerhof (PBE) exchange functional \cite{PBE}. Projector augmented-wave potentials \cite{PAW} were used to describe the core electrons with an energy cut-off of 500 eV for the plane-wave basis set. Calculations were initially performed at the gamma point (a 1x1x1 \textit{k}-point mesh) until forces on the ions converged to within 0.01 eV/ $\AA$. 
+A single geometry step was then performed with a 2x2x2 \textit{k}-point mesh centred on the gamma point as these parameters were found to be sufficient for the total energy to converge to within $<$2 meV  per atom with respect to increased plane-wave cut-off energy and for the external pressure to be $<$1 kbar. However, performing the full calculation with a 2x2x2 \textit{k}-point mesh was found to be too computationally expensive. 
+%Data for the convergence test is given is table \ref{conv_test}. 
+From our calculation, we predict a defect formation energy of 0.30 eV.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/Cu-Zn_eqm_conc.png}
+    \caption{Probability of nearest neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] defect formation as a function of temperature based on the equilibrium defect concentration from classical thermodynamics. The shaded region indicates typical annealing temperatures used in the synthesis of {\CZTS}.}
+  \label{Cu-Zn_eqm_conc}
+\end{figure}
+
+When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting. Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects as a function of temperature can be obtained \cite{thermodynamics}. This is shown in equation \ref{defect_conc}, where N is the number of sites, $\Delta H$ is the defect formation energy, $k_B$ is the Boltzmann constant and T is the temperature of the system.
+\begin{equation} \label{defect_conc}
+n = Ne^{\frac{-\Delta H}{k_BT}}
+\end{equation}
+The probability of defect formation as a function of temperature is given by the exponential expression in equation \ref{defect_conc}. The defect formation energy from the DFT calculations were halved to take an average of the formation energy per defect during the formation of an antisite pair before being inserted into this expression. This is plotted against temperature in figure \ref{Cu-Zn_eqm_conc}. 
+It can be seen from figure \ref{Cu-Zn_eqm_conc} that the probability of defect formation at a typical annealing temperatures is approximately 7-13\%, which is much higher than what would be considered as the `dilute limit'.
+
+Furthermore, there is experimental evidence of high concentrations of disorder \cite{Scragg, pot_fluc_4, neutron, Schorr}, indicating the likely formation of extended defect structures beyond point defects and pairs. To simulate such defect structures in {\CZTS} a bespoke Monte Carlo model was developed. This will be outlined in the next section and is applied in the study presented in section \ref{CZTS_MC}.
+
+
+\section{Custom on-lattice Monte Carlo code for Cu-Zn disorder in {\CZTS}}\label{Eris}
+** Clarify here on personal contributions to Eris or just do this when introducing paper in Ch4?? **\\
+
+The Monte Carlo model for Cu-Zn disorder is analogous to the Ising model of a ferromagnet, descriptions of which can be found in many textbooks such as references \citenum{MC} and \citenum{MC_Landau}. 
+The Ising model uses interactions between spins, whereas our model considers the Coulombic interaction between the bare formal charges of ions in the lattice of {\CZTS}…
+**+ Give pairwise interactions Hamiltonian here?**\\
+
+In the case of an Ising model, the trial moves in the Metropolis algorithm are spin flips, whereas in our model the trial moves are swaps between Cu and Zn ions. Typically, when performing simulations of an Ising model the calculated quantities of interest are the internal energy and average magnetization of the system as a function of temperature obtained by summing over the distribution of atomic spins. In the case of our system, the quantities of interest are the spatial arrangement of the Cu and Zn ions due to thermodynamic substitutions between the two species and the resulting distribution of electrostatic potential across the system for the implications this could have on band tailing. As we fix Sn ions in our simulation we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu-Zn disorder.
+However, before we attempt to extract any information on thermodynamic disorder or the associated band tailing we would predict from such disorder, two important considerations for our model will be firstly to determine if the disordered configuration we obtain is in fact the equilibrated configuration at the given temperature and secondly if finite size effects are having an impact on the system properties we obtain from our simulations.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.4\textwidth]{figures/MC_PBCs.png}
+    \caption{Typical periodic boundary conditions for the two-dimensional Ising model. Figure taken from \citenum{MC_Landau}.}
+  \label{MC_PBCs}
+\end{figure}
+
+As simulations are performed for finite lattices, in order to simulate a bulk system the edges or `boundaries' of the system must be treated carefully. The boundaries can be effectively eliminated through the use of periodic boundary conditions (PBCs). In the case of an Ising model, this means that the first spin in a row interacts with the last spin in the row as if it were a nearest neighbour, and vice versa \cite{MC_Landau}. This principle is illustrated for a two-dimensional system in figure \ref{MC_PBCs}. Although this procedure effectively eliminates boundary effects, the system is still characterized by the finite lattice size, L, which limits the correlation length to $\frac{L}{2}$. Resultant properties of the simulated system may then differ from the bulk system. We therefore will need to perform simulations with increasing system size to look for any differences in the quantities of interest.
+
+Determining if our system has reached equilibration at each temperature however may require a more complicated procedure. As the Monte Carlo method is stochastic, making use of sampling many times with random numbers to determine the minimum energy configuration of the system, the trajectory to reach this final configuration will by nature be random. Therefore, we can draw no conclusions about the properties of our system from evolved states until the final configuration at the particular temperature is reached. We therefore developed and tested methods to check for equilibration before we attempt to extract any thermodynamic properties of our system.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/ising_equil.png}
+    \caption{The magnetization (upper curve) and internal energy (lower curve) per site of a two-dimensional Ising model simulated using the Metropolis algorithm (a). Magnetization as a function of time for two different simulations (b). Time is measured in Monte Carlo steps per lattice site. Figures taken from \citenum{MC}.}
+  \label{ising_equil}
+\end{figure}
+
+In the case of the Ising model when, for example, determining the average magnetization of a system at a given temperature, the simulation must be run for a suitably long time until the system has come to equilibrium at that temperature. This is referred to as the equilibration time. Once the system has equilibrated, the quantity of interest such as the magnetization must then be measured again over a suitably long time and averaged. 
+To gauge if a system has reached equilibrium, in the case of the Ising model, it is common practice to run the simulation for a large number of Monte Carlo steps (MCS) (where one MCS corresponds to attempting a trial spin-flip at all sites in the system once) and looking for how the value of a quantity of interest, such as the average magnetization across the system, changes with increasing number of MCS as the simulation progresses. Equilibration is often considered as the point at which the value of a quantity of interest, which initially changes by a large amount, eventually converges to fluctuating about a steady average value. An example of this is shown in figure \ref{ising_equil}a. This is dependent upon the principle that a system in equilibrium spends the overwhelming majority of its time in a small subset of states in which its properties take a narrow range of values \cite{MC}. Provided the simulation has equilibrated, the final configuration for a given system at a given temperature should always be the same regardless of the initial configuration of the simulation, this point is illustrated in figure \ref{ising_equil}b.
+
+Using this principle, one way to determine if our system has reached its equilibrium configuration could be to use perfectly ordered or disordered initial lattice configurations that. Both of these initial configurations, if the simulation is allowed to evolve over a suitable number of MCS, should eventually result in the same equilibrium system configuration. It would be difficult to distinguish differences in the atomic arrangement of one 3D lattice to another by eye, therefore comparisons of the radial distribution function (RDF) for each configuration as it evolves from either an ordered or disordered initial configuration can be made. 
+
+Another method to check for equilibration is analogous to that shown in figure \ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of the electrostatic potential at Sn sites in the system that is of interest so one possible method to check for equilibration could be to look for a point after which the variance of the distribution of electrostatic potentials across the system has reached a steady value. Both of these methods were tested and are discussed in the study in section \ref{CZTS_MC}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/eris_spatial_disorder.png}
+    \caption{Example outputs from Eris Monte Carlo simulations of Cu-Zn disorder from an initially ordered lattice showing the top two layers of the lattice when simulations are performed at temperatures T = 0K (a) and at T = 200K (b).}
+  \label{eris_spatial_disorder}
+\end{figure}
+
+Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions will be allowed to evolve until the equilibrium configuration in terms of the arrangement of Cu and Zn atoms at the given temperature is reached. Fig. \ref{eris_spatial_disorder} shows an example output from our simulations, where the T = 0K spatial arrangement of cations in figure \ref{eris_spatial_disorder}a corresponds to the perfectly ordered system and the T= 200K configuration in figure \ref{eris_spatial_disorder}b shows spatial clustering of Cu and Zn ions as the system has been allowed to evolve at a finite temperature. The model is used to investigate and quantify thermodynamic Cu-Zn disorder in {\CZTS} in section \ref{CZTS_MC}. The electrostatic potential at each site in the lattice in disordered configurations can be calculated for later analysis of the distribution of electrostatic potential of Sn ions across the system when extracting information on band tailing due to Cu-Zn disorder. The methodology for this will be discussed as future work in section \ref{eris_future_work}. 
+
+
+
+
+\section{Thermodynamically limited Cu-Zn order in {\CZTS}}\label{CZTS_MC}
 For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.\\
@@ -808,10 +908,13 @@ Introductory paragraph + Eris paper1 (methodology) + include paper SI? (or put i
 
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
-\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}
+\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
 Introductory paragraph: importance of band tailing for devices and implication for our understanding of defect physics of materials with high levels of disorder? i.e. supercell picture/ dilute limit may be less appropriate (band tailing and Sn defects in presence of high levels of Cu-Zn disorder as extensions/ applications of MC model)\\
 
 Look for Jarv's work on band tailing in MAPI to discuss how Eris could be similarly applied to extract band tails in CZTS\\
+
+See band tailing write up plan + paper: https://www.sciencedirect.com/science/article/pii/S0927024817306062?via%3Dihub
+\\
 
 Discuss NREL works on extended antisites? (see other notes on Sn disorder) Key paper for discussing Sn disorder: https://doi.org/10.1016/j.solmat.2017.11.005\\
 
@@ -850,7 +953,7 @@ State that although we expect cation disorder to be less prevalent than Cu-Zn di
 
 Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
-\section{Band alignment for solar cell p-n heterojunctions}\label{sulfosalt_band_alignment}
+\section{Band alignment for solar cell heterojunctions}\label{sulfosalt_band_alignment}
 Introductory paragraph (new PV tech must be optimised layer-by-layer), barrier to utilisation of new tech, aim to use theory to accelerate process, often architectures optimised for different, more mature tech is used for new PV absorbers - not necessarily optimal! (e.g. of enargite paper and various others from band alignments paper intro) + sulfosalts band alignments paper\\
 
 + Add statement on personal contribution (Slabs cut by Yoyo, MD and ELS codes by Keith, calculations performed by me, ELS extended by me to include workflow for CBOs and VBOs of interest for PV)
