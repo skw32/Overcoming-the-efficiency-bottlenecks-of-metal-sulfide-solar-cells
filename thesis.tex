@@ -69,7 +69,7 @@ Write last, ideas:
 \item Sulfosalts defects paper?
 \item Photoferroic materials project screening with Lee?
 \item Defects benchmark study?
-\item Dielectric function review with Jacob?
+\item Eris band tailing study?
 \item Sulfosalts band alignment paper?
 \item Thermodynamically limited Cu-Zn order in {\CZTS} from Monte Carlo simulations
 \item Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite, and bournonite\\
@@ -97,7 +97,7 @@ SK Wallace, KL Svane, WP Huhn, T Zhu, DB Mitzi, V Blum, A Walsh\\ Sustainable En
 
 \subsection{Terawatt-scale power production from renewable resources}
 
-It is now widely accepted that the world is heading towards a major energy crisis with the current major sources of energy, namely fossil fuels, eventually being unable to meet increasing global demand for energy. Furthermore, there is the ever present worry of climate change linked to increased carbon dioxide emissions from the burning of fossil fuels. Renewable, low-carbon alternatives, such as solar power, are therefore clearly desirable. 
+It is now widely accepted that the world is heading towards a major energy crisis with the current major sources of energy, namely fossil fuels, eventually being unable to meet increasing global demand for energy. Furthermore, there is the ever present worry of climate change linked to increased carbon dioxide emissions from the burning of fossil fuels. Renewable, low-carbon alternatives, such as solar power, are therefore clearly desirable \cite{PV_for_climate_change}. 
 Recent years have seen a rapid increase in the installed solar generation capacity, with the global grid-connected PV capacity growing from 1.3 GW in 2000 to 139 GW in 2014 \cite{pathways_129}, with approximately a doubling in the cumulative installed capacity every two years \cite{pathways}. Creative business models have spurred investment in residential solar systems \cite{MIT} and great improvements in technology, price and performance have helped to facilitate this growth. However, solar energy still only provides a minor fraction of the world's energy. In 2013 solar power only provided 0.87\% of the worlds electricity \cite{pathways_130}.
 
 Solar power is by far the largest source of energy available to us and it is also the most widely geographically distributed \cite{inorg_pv}. The Sun supplies $3 \times 10^{24}$ J of energy to the Earth each year, which is around $10^4$ times more than mankind's current annual energy consumption. 
@@ -611,7 +611,7 @@ Thirdly, electronic structure calculations with PBCs for a charged unit cell (ef
 \begin{equation}\label{defect_charged}
 \Delta H_{D,q} = E_{D,q} - E_{host} - \sum_i n_i \mu_i + q[\epsilon_F + \epsilon_{\nu} + \Delta \nu_{0/b}] + E^q_{corr}
 \end{equation}
-Additional terms in Eq. \ref{defect_charged} are: $q \epsilon_F$ (electron chemical potential for energy required to add or remove electrons when a charged defect forms), $E^q_{corr}$ (usually represents multiple post-DFT calculation corrections, one such correction is that for interactions between a charged defect and its periodic images, the `image-charge' correction but another is the `band filling' correction, both of which are outlined later),  $q \epsilon_{\nu}$ (energy of bulk VBM) and $q \Delta \nu_{0/b}$ (term used to align the electrostatic potential of bulk and defect supercells). The latter term is to account for the introduction of the homogeneous background charge in electronic structure calculations of charged supercells, which is discussed further in the next section. The terms in Eq. \ref{defect_charged} are explained pictorially in Fig. \ref{pylada_eq}.
+Additional terms in Eq. \ref{defect_charged} compared to Eq. \ref{defect_neutral} are: q (the charge state of the defect), $\epsilon_F$ (position of the Fermi level in the band gap),  $q \epsilon_{\nu}$ (energy of bulk VBM) and $\Delta \nu_{0/b}$ (term used to align the electrostatic potential of the VBM for the bulk and defect supercells) and $E^q_{corr}$ (usually represents multiple post-DFT calculation corrections, one such correction is that for interactions between a charged defect and its periodic images, the `image-charge' correction but another is the `band filling' correction, both of which are outlined later). The latter term is to account for the introduction of the homogeneous background charge in electronic structure calculations of charged supercells, which is discussed further in the next section. The terms in Eq. \ref{defect_charged} are explained pictorially in Fig. \ref{pylada_eq}.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.95\textwidth]{figures/pylada_eq.png}
@@ -622,10 +622,7 @@ Additional terms in Eq. \ref{defect_charged} are: $q \epsilon_F$ (electron chemi
 In theory, it is possible to continually increase the supercell dimensions to allow estimations of the magnitude and decay behavior of the different effects to be obtained and, from this, extrapolate to the formation energy of a defect in the limit of an infinitely large supercell.
 However, due to computational limitations, it is usually not feasible to perform calculations with sufficiently large supercells to remove all spurious defect-defect interactions, especially for the long-ranged Coulombic interaction of charged defects, as depicted in Fig. \ref{defect_PBCs}b.
 Furthermore, the band gap error in standard-DFT can cause large errors in the calculated properties of defects \cite{Lany_defects}. For this reason, methods beyond standard-DFT such as hybrid-DFT (outlined in section \ref{elec_struc}) may be used to more accurately predict the electronic structure. However, the computational expense for such methods is increased further, hence performing calculations for larger supercells becomes a less feasible endeavor.
-Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. Some such schemes are outlined in the next section and a study conducted to compare defect formation energies obtained from different schemes implemented with different electronic structure codes is presented in section \ref{defect_benchmark}.\\
-
-** c.f. Above eqn to that in Alex's paper (and likely implementation in AIDE) **
-
+Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. Some such schemes are outlined in the next section and a study conducted to compare defect formation energies obtained from different schemes implemented with different electronic structure codes is presented in section \ref{defect_benchmark}.
 
 \subsection{Finite-size corrections to defect supercells}
 
@@ -818,12 +815,12 @@ The Metropolis algorithm creates a list of configurations through configuration 
 
 \chapter{Performance bottlenecks of {\CZTS} solar cells}\label{chap:CZTS}
 \section{Motivations and challenges for {\CZTS} solar cells}
-Introductory paragraph + ACS energy letter
+Thin-film PV is a desirable contender for terawatt-scale renewable energy generation. Kesterite-structured {\CZTS} stands out for its potential for large-scale deployment due to the abundance and non-toxicity of its elemental components, as well as sunlight-matched direct band gap of 1.5 eV \cite{CZTS_rev}. In the following letter we outline some of the main bottlenecks for the advancement of this solar cell technology.
 
 \includepdf[pages={1-},scale=1.0]{papers/CZTS_lett.pdf}
 
 
-\section{Defects beyond the dilute limit in {\CZTS}}
+\section{Defects beyond the dilute limit in {\CZTS}}\label{CZTS_beyond_dilute}
 Electronic structure calculations for the formation energies of point defects and point defect pairs in the dilute limit have already been calculated for {\CZTS}, where the [$Cu_{Zn}^- + Zn_{Cu}^+$] defect pair was found to have a particularly low formation energy \cite{defects_Chen}.
 The calculations performed in Ref. \citenum{defects_Chen} were performed using the GGA functional with a rigid shift applied to the defect levels to account for the band gap error at this level of theory \cite{Lany_defects}. In Ref. \citenum{defects_Chen} one defect calculation was performed using a hybrid functional where it was found that the formation energy of the test defect differed by 0.1 eV. We therefore repeated the calculation of the formation energy for the defect pair of interest for our study.
 
@@ -850,8 +847,6 @@ Furthermore, there is experimental evidence of high concentrations of disorder \
 
 
 \section{Custom on-lattice Monte Carlo code for Cu-Zn disorder in {\CZTS}}\label{Eris}
-** Clarify here on personal contributions to Eris or just do this when introducing paper in Ch4?? **\\
-
 The Monte Carlo model for Cu-Zn disorder is analogous to the Ising model of a ferromagnet, descriptions of which can be found in many textbooks such as references \citenum{MC} and \citenum{MC_Landau}. 
 The Ising model uses interactions between spins, whereas our model considers the Coulombic interaction between the bare formal charges of ions in the lattice of {\CZTS}…
 **+ Give pairwise interactions Hamiltonian here?**\\
@@ -891,7 +886,7 @@ Another method to check for equilibration is analogous to that shown in figure \
   \label{eris_spatial_disorder}
 \end{figure}
 
-Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions will be allowed to evolve until the equilibrium configuration in terms of the arrangement of Cu and Zn atoms at the given temperature is reached. Fig. \ref{eris_spatial_disorder} shows an example output from our simulations, where the T = 0K spatial arrangement of cations in figure \ref{eris_spatial_disorder}a corresponds to the perfectly ordered system and the T= 200K configuration in figure \ref{eris_spatial_disorder}b shows spatial clustering of Cu and Zn ions as the system has been allowed to evolve at a finite temperature. The model is used to investigate and quantify thermodynamic Cu-Zn disorder in {\CZTS} in section \ref{CZTS_MC}. The electrostatic potential at each site in the lattice in disordered configurations can be calculated for later analysis of the distribution of electrostatic potential of Sn ions across the system when extracting information on band tailing due to Cu-Zn disorder. The methodology for this will be discussed as future work in section \ref{eris_future_work}. 
+Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions will be allowed to evolve until the equilibrium configuration in terms of the arrangement of Cu and Zn atoms at the given temperature is reached. Fig. \ref{eris_spatial_disorder} shows an example output from our simulations, where the T = 0K spatial arrangement of cations in figure \ref{eris_spatial_disorder}a corresponds to the perfectly ordered system and the T= 200K configuration in figure \ref{eris_spatial_disorder}b shows spatial clustering of Cu and Zn ions as the system has been allowed to evolve at a finite temperature. The model is used to investigate and quantify thermodynamic Cu-Zn disorder in {\CZTS} in section \ref{CZTS_MC}. The electrostatic potential at each site in the lattice in disordered configurations can be calculated for later analysis of the distribution of electrostatic potential across the system due to Cu-Zn disorder. This will discussed further in section \ref{eris_future_work}. 
 
 
 
@@ -909,28 +904,35 @@ Introductory paragraph + Eris paper1 (methodology) + include paper SI? (or put i
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
 \section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
-Introductory paragraph: importance of band tailing for devices and implication for our understanding of defect physics of materials with high levels of disorder? i.e. supercell picture/ dilute limit may be less appropriate (band tailing and Sn defects in presence of high levels of Cu-Zn disorder as extensions/ applications of MC model)\\
 
-Look for Jarv's work on band tailing in MAPI to discuss how Eris could be similarly applied to extract band tails in CZTS\\
-
-See band tailing write up plan + paper: https://www.sciencedirect.com/science/article/pii/S0927024817306062?via%3Dihub
-\\
-
-Discuss NREL works on extended antisites? (see other notes on Sn disorder) Key paper for discussing Sn disorder: https://doi.org/10.1016/j.solmat.2017.11.005\\
-
-Possible adaptation of MC model to explore possibility of disorder suppression in off-stoichiometric CZTS?
-
+Although $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects have been predicted to produce only shallow defect levels within the band gap of the material \cite{defects_Chen}, their presence could be linked to band tailing in the material, as described in section \ref{defects_impact}. 
+Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge, such as that shown in Fig. \ref{pankove_elec_fluc}. Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.45\textwidth]{figures/urbach_fig.png}
     \caption{Optical absorption spectrum of a typical direct band gap semiconductor with the absorption coefficient, $\alpha_{0}$, proportional to the extended density of states in the Urbach tail. Figure taken from reference \citenum{thin_film_Boer}.}
   \label{urbach_fig}
 \end{figure}
-Although $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects have been predicted to produce only shallow defect levels within the band gap of the material \cite{defects_Chen}, their presence could be linked to band tailing in the material, as described in section \ref{defects_impact}. 
-Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge, such as that shown in figure \ref{bs2}. Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. For disorder due to defects with a correlation length on the order of interatomic spacing, the absorption coefficient, $\alpha_{0}$ (which was discussed as a key property for PV materials in section \ref{PV_properties}) shows a exponential decline. This effect, illustrated in figure \ref{urbach_fig}, is referred to as the Urbach tail \cite{Urbach1953} and is widely observed in disordered semiconductors \cite{thin_film_Boer}. Such tailing can be quantified by the Urbach energy, and it has recently been proposed that there is a direct link between the Urbach energy and open circuit voltage deficit in standard photovoltaic materials \cite{culprit, UrbachE_Voc}.
+For disorder due to defects with a correlation length on the order of interatomic spacing, the absorption coefficient, $\alpha_{0}$ (which was discussed as a key property for PV materials in section \ref{PV_properties}) shows a exponential decline. This effect, illustrated in figure \ref{urbach_fig}, is referred to as the Urbach tail \cite{Urbach1953} and is widely observed in disordered semiconductors \cite{thin_film_Boer}. Such tailing can be quantified by the Urbach energy, and it has recently been proposed that there is a direct link between the Urbach energy and open circuit voltage deficit in standard photovoltaic materials \cite{culprit, UrbachE_Voc}.
+
+** Maybe move some content from theory impact of defects section here? **
+
+As discussed in section \ref{CZTS_beyond_dilute}, concentrations of Cu-on-Zn and Zn-on-Cu antisites in {\CZTS} are expected to be beyond the dilute limit. In this section therefore we calculate on-site electrostatic potentials of disordered configurations from our Monte Carlo simulations of on-lattice extended Cu-Zn disorder...
+
+... Outline ideology for band tailing extension (s.d. of dist. of Cu and Sn potentials wrt T and c.f. Q to infer band tailing of VBM and CBM with T respectively + inc. CZTS band structure from a paper, see eris lab book slides), quantify band tailing from this and also show 2D visuals of fluctuations using 2D histogram plots of Cu and Sn vs. mean of dist.?\\
+
++ See band tailing write up plan + this paper: https://www.sciencedirect.com/science/article/pii/S0927024817306062?via%3Dihub
+\\
+
+Possible extension to adapt MC model to explore possibility of disorder suppression in off-stoichiometric CZTS?\\
+
+%Look for Jarv's work on band tailing in MAPI to discuss how Eris could be similarly applied to extract band tails in CZTS\\
+
+%Discuss NREL works on extended antisites? (see other notes on Sn disorder) Key paper for discussing Sn disorder: https://doi.org/10.1016/j.solmat.2017.11.005\\
+
 
 \chapter{Screening for candidate photoferroic solar absorbers}\label{chap:screening}
-\section{Candidate photoferroic minerals}
+\section{Candidate photoferroic minerals and predicted optoelectronic properties}
 Introductory paragraph + sulfosalts paper1 + include paper SI? (put in appendix?) \\
 
 Introduce `photoactive ferroelectrics', state that idea would be to use a p-n junction architecture but exploit internal electric fields for improved local carrier separation and possible new pathways to achieving high-performance devices. (or move some of this statement to intro for band alignment paper?)
@@ -946,7 +948,9 @@ State that band tailing from prevalent cation disorder (as investigated for CZTS
 \section{Outlook: Large-scale screening with material properties databases}
 Introductory paragraph (larger dataset than previous study and additional screening metrics in study, e.g. m* from Boltztrap, - outline here) + project with Lee and MP - give overview of number of compounds, abundance and m* from study (use plots and check with Lee if okay to include? Put in the form of a paper draft to share with Lee?)\\
 
-+ Add statement on personal contribution - work performed in collaboration with Lee A Burton using screening criteria and rationale in previous section, in combination with Lee's methods to filter candidates from the materials project
++ Add statement on personal contribution - work performed in collaboration with Lee A Burton using screening criteria and rationale in previous section, in combination with Lee's methods to filter candidates from the materials project\\
+
+Maybe just comment on number of candidates with m* for BOTH electrons and holes below 0.5 me from prelim results? (Check with Lee) - 'This is an on-going work but so far results from the initial screening have shown...'
 
 \chapter{Theoretical insights for new solar absorbers}\label{chap:insights}
 State that although we expect cation disorder to be less prevalent than Cu-Zn disorder in CZTS, this does not rule out other limitations on performance (such as defects and non-optimal device architectures). Here we take inspiration from more mature or successful PV tech and use insights from theory to assess the potential of the three minerals from \autoref{chap:screening}.\\
