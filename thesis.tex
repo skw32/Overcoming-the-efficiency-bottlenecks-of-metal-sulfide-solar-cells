@@ -549,7 +549,7 @@ In general, the main cause of V$_{OC}$ deficit in a PV device is the recombinati
 
 Observed band tailing can be caused by either spatial band gap variations or electrostatic potential fluctuations in the material \cite{band_tail}. In the case of the latter, it is the inhomogeneous distribution of ionised defects that cause the fluctuations. An ionised donor exerts and attractive force on conduction electrons and a repulsive force on valence holes. As the defects are distributed randomly, the local interaction varies depending on the crowding of the defects. In this case the energy gap between the valence band and conduction band is maintained, as shown in figure \ref{pankove_elec_fluc} and the states of each tail are spatially separated \cite{Pankove}. Defects can also result in fluctuations in the band gap of a material. For example, if an impurity atom is of a different size to the atoms of the host lattice, then this can result in a local mechanical strain, as shown in figure \ref{pankove_band_fluc}b which results in a deformation potential, such as that shown in figure \ref{pankove_band_fluc}c for an edge dislocation defect. Local strains can alter the separation of atoms in the crystal and, as figure \ref{pankove_band_fluc}a shows, the atomic separation within a crystal has a significant impact on the band structure. Additionally, due to the narrow region of phase stability for {\CZTS}, it is also possible there may be compositional inhomogeneity and secondary phases present \cite{SandS}, which could also produce local band gap fluctuations. 
 
-In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow for the investigation of the possible contribution to band tailing in {\CZTS} from the potential fluctuations of high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites. In section \ref{sulfosalt_defects} we perform electronic structure calculations to investigate the defects physics of candidate `photoferroic' solar absorber materials for which no experimental measurements have yet been made.
+In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow for the investigation of the possible contribution to band tailing in {\CZTS} from the potential fluctuations of high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites. In section \ref{sulfosalt_defects} we perform electronic structure calculations for point defects to investigate the defects physics of candidate `photoferroic' solar absorber materials for which no experimental measurements have yet been made.
 
 
 
@@ -578,13 +578,13 @@ See hse papers + Richard Martin Ch8
 + discuss band gap error in standard DFT here?
 
 \section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
-When a solid forms a regular crystal the energies of the bands, i.e. the band structure discussed in section \ref{BandTheorySection}, can be predicted exactly from electronic structure calculations \cite{Nelson3}. However, in reality, absolutely perfect systems do not exist. The energy cost associated with the creation of a defect often can be countered by the increase in the configurational entropy of the system \cite{AshcroftMermin_general}.
+The electronic band structure of a semiconductor provides a rich source of information for how the material may perform as a solar cell absorber layer. When a solid forms a regular crystal the energies of the bands, i.e. the band structure, can be predicted exactly as discussed in section \ref{BandTheorySection} from electronic structure calculations \cite{Nelson3}. However, in reality, absolutely perfect systems do not exist. The energy cost associated with the creation of a defect often can be countered by the increase in the configurational entropy of the system \cite{AshcroftMermin_general}.
 There are several types of possible defects in solids, some of which were depicted in section \ref{defects_impact}. 
 
-In this section, methods developed for electronic structure calculations of the formation energy of isolated point defects, i.e. in the dilute limit, are discussed. 
+In this section, methods developed in the literature for electronic structure calculations of the formation energy of isolated point defects, i.e. in the dilute limit, are discussed. 
 These methods are applied in section \ref{sulfosalt_defects} to provide the first insights into the defect physics (and likely associated impact on PV performance) of some of the candidate photoferroic absorbers identified in \autoref{chap:screening}.
 Defect formation energies under specific synthesis conditions can be used to infer the likely concentrations of particular defects, which may have different impacts on PV performance \cite{Aron_defect_tolerance}. 
-In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in materials with large extents of substitutional disorder. 
+In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in materials with large extents of substitutional disorder. In this case, the methodology is used to investigate high concentrations of Cu-Zn disorder in {\CZTS}. 
 
 \subsection{The problem of periodicity}
 As discussed in section \ref{crystal_models}, models of crystalline solids are built around the translational symmetry of periodic crystal lattices. This property is exploited in electronic structure calculations where, typically, the smallest possible unit cell is used to represent the crystal structure and periodic boundary conditions (PBCs) are used to simulate an infinite, bulk crystal. It is then possible to predict the bulk properties of the material by solving quantum mechanical equations for the electronic structure. However, the introduction of a point defect into this simulated system produces a situation such as the slice shown in Fig. \ref{defect_PBCs}a. With the implementation of 3-dimensional PBCs, this would correspond to an infinite 3D array of highly concentrated point defects. Defect wavefunctions in adjacent unit cells may overlap. However in real systems, defects are typically present in parts per million.  To correctly represent isolated point defects, interactions between defect periodic images must be negligible \cite{freysoldt_rev}.
@@ -756,9 +756,8 @@ Note from Komsa paper: Possibly contributions to need for pa from variations in 
 
 \section{Modeling imperfect solids: Extended antisite defects}\label{MC}
 In this section defects and disorder is considered on much larger scales than is computationally feasible from electronic structure calculations.
-Here, the fundamentals of utilising the Monte Carlo method to describe thermodynamic substitutional disorder are outlined. This is equivalent to investigating extended antisite defects at higher defect concentrations than would be considered as the dilute limit. This method is applied to study Cu-Zn disorder in {\CZTS} in \autoref{chap:CZTS}.\\
-
-**Introduce general method (see transfer report + cross-ref extra textbooks** \cite{MC} = Newman, \cite{MC_Landau} and \cite{MC3} (Topic in current physics)
+Here, the fundamentals of utilising the Monte Carlo method to describe thermodynamic substitutional disorder are outlined. This is equivalent to investigating interacting extended antisite defects at higher defect concentrations than would be considered as the `dilute', non-interacting limit. This method is applied to study Cu-Zn disorder in {\CZTS} in \autoref{chap:CZTS}.
+%**Introduce general method (see transfer report + cross-ref extra textbooks** \cite{MC} = Newman, \cite{MC_Landau} and \cite{MC3} (Topic in current physics)
 
 \subsection{The Monte Carlo method for equilibrium thermodynamics}
 The Monte Carlo (MC) method allows for the simulation of systems with many degrees of freedom. Its name derives from its use of (pseudo-)random numbers to simulate statistical fluctuations in order to numerically generate probability distributions \cite{MC3}.
@@ -787,7 +786,7 @@ For a system containing several hundred ions this would be a several-hundred dim
 
 
 \subsubsection{Monte Carlo simulation with the Metropolis Algorithm }
-The Standard Monte Carlo method for our system would involve placing each of the N ions at random positions in the lattice to define a random point in the 3N-dimensional configuration space. The energy of the system would then be calculated using equation \ref{pot_E} and the configuration would then be weighted using $e^{-\frac{U(\mathbf{r}^N)}{k_bT}}$ when obtaining the equilibrium value of U. However, many configurations are very improbable so performing this calculation for every possible configuration would be inefficient and unnecessary to sufficiently evaluate the ensemble. The custom Monte Carlo code in this study makes use of the Metropolis modified Monte Carlo scheme \cite{Metropolis}. In this implementation of the Monte Carlo method, instead of choosing configurations randomly and then weighting them, the Metropolis algorithm considers the relative probability of a system being in a new configuration, $\beta$, to that of being in the current configuration, $\alpha$. This is shown in equation \ref{relative_prob}, where $E_\alpha$ is the energy of state $\alpha$ and $E_\beta$ is the energy of state $\beta$.
+The Standard MC method for our system would involve placing each of the N ions at random positions in the lattice to define a random point in the 3N-dimensional configuration space. The energy of the system would then be calculated using equation \ref{pot_E} and the configuration would then be weighted using $e^{-\frac{U(\mathbf{r}^N)}{k_bT}}$ when obtaining the equilibrium value of U. However, many configurations are very improbable so performing this calculation for every possible configuration would be inefficient and unnecessary to sufficiently evaluate the ensemble. The custom MC code in this study makes use of the Metropolis modified MC scheme \cite{Metropolis}. In this implementation of the MC method, instead of choosing configurations randomly and then weighting them, the Metropolis algorithm considers the relative probability of a system being in a new configuration, $\beta$, to that of being in the current configuration, $\alpha$. This is shown in equation \ref{relative_prob}, where $E_\alpha$ is the energy of state $\alpha$ and $E_\beta$ is the energy of state $\beta$.
 \begin{equation}\label{relative_prob}
 \frac{p_\beta}{p_\alpha} = \frac{  e^{-\frac{E_\alpha}{k_bT}} }{Z} \frac{Z}{  e^{-\frac{E_\alpha}{k_bT}} } = e^{- \frac{E_\beta - E_\alpha}{k_BT}}
 \end{equation}
@@ -831,28 +830,25 @@ From our calculation, we predict a defect formation energy of 0.30 eV.
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=0.9\textwidth]{figures/Cu-Zn_eqm_conc.png}
+    \includegraphics[width=0.9\textwidth]{figures/CZTS_Cu-Zn_defect_conc.pdf}
     \caption{Probability of nearest neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] defect formation as a function of temperature based on the equilibrium defect concentration from classical thermodynamics. The shaded region indicates typical annealing temperatures used in the synthesis of {\CZTS}.}
   \label{Cu-Zn_eqm_conc}
 \end{figure}
 
-When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting. Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects as a function of temperature can be obtained \cite{thermodynamics}. This is shown in equation \ref{defect_conc}, where N is the number of sites, $\Delta H$ is the defect formation energy, $k_B$ is the Boltzmann constant and T is the temperature of the system.
+When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting (**REF??? From Stoneham maybe? - check!**). Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects as a function of temperature can be obtained \cite{thermodynamics}. This is shown in equation \ref{defect_conc}, where N is the number of sites, $\Delta H$ is the defect formation energy, $k_B$ is the Boltzmann constant and T is the temperature of the system.
 \begin{equation} \label{defect_conc}
 n = Ne^{\frac{-\Delta H}{k_BT}}
 \end{equation}
 The probability of defect formation as a function of temperature is given by the exponential expression in equation \ref{defect_conc}. The defect formation energy from the DFT calculations were halved to take an average of the formation energy per defect during the formation of an antisite pair before being inserted into this expression. This is plotted against temperature in figure \ref{Cu-Zn_eqm_conc}. 
-It can be seen from figure \ref{Cu-Zn_eqm_conc} that the probability of defect formation at a typical annealing temperatures is approximately 7-13\%, which is much higher than what would be considered as the `dilute limit'.
+Even `low-temperature' synthesis procedures for {\CZTS} use annealing temperatures over 600K \cite{low_T_CZTS}. It can be seen from figure \ref{Cu-Zn_eqm_conc} that the probability of defect formation even at 600K is much higher than what would be considered as the `dilute limit' at 1\%.
 
 Furthermore, there is experimental evidence of high concentrations of disorder \cite{Scragg, pot_fluc_4, neutron, Schorr}, indicating the likely formation of extended defect structures beyond point defects and pairs. To simulate such defect structures in {\CZTS} a bespoke Monte Carlo model was developed. This will be outlined in the next section and is applied in the study presented in section \ref{CZTS_MC}.
 
 
 \section{Custom on-lattice Monte Carlo code for Cu-Zn disorder in {\CZTS}}\label{Eris}
 The Monte Carlo model for Cu-Zn disorder is analogous to the Ising model of a ferromagnet, descriptions of which can be found in many textbooks such as references \citenum{MC} and \citenum{MC_Landau}. 
-The Ising model uses interactions between spins, whereas our model considers the Coulombic interaction between the bare formal charges of ions in the lattice of {\CZTS}…
-**+ Give pairwise interactions Hamiltonian here?**\\
-
-In the case of an Ising model, the trial moves in the Metropolis algorithm are spin flips, whereas in our model the trial moves are swaps between Cu and Zn ions. Typically, when performing simulations of an Ising model the calculated quantities of interest are the internal energy and average magnetization of the system as a function of temperature obtained by summing over the distribution of atomic spins. In the case of our system, the quantities of interest are the spatial arrangement of the Cu and Zn ions due to thermodynamic substitutions between the two species and the resulting distribution of electrostatic potential across the system for the implications this could have on band tailing. As we fix Sn ions in our simulation we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu-Zn disorder.
-However, before we attempt to extract any information on thermodynamic disorder or the associated band tailing we would predict from such disorder, two important considerations for our model will be firstly to determine if the disordered configuration we obtain is in fact the equilibrated configuration at the given temperature and secondly if finite size effects are having an impact on the system properties we obtain from our simulations.
+The Ising model uses interactions between spins, whereas our model considers the Coulombic interaction between the bare formal charges of ions in the lattice of {\CZTS}.
+In the case of an Ising model, the trial moves in the Metropolis algorithm are spin flips, whereas in our model the trial moves are swaps between Cu and Zn ions. Typically, when performing simulations of an Ising model the calculated quantities of interest are the internal energy and average magnetization of the system as a function of temperature obtained by summing over the distribution of atomic spins. In the case of our system, the quantities of interest are the spatial arrangement of the Cu and Zn ions due to thermodynamic substitutions between the two species and the resulting distribution of electrostatic potential across the system for the implications this could have on band tailing. 
 
 \begin{figure}[h!]
   \centering
@@ -861,6 +857,7 @@ However, before we attempt to extract any information on thermodynamic disorder 
   \label{MC_PBCs}
 \end{figure}
 
+However, before we attempt to extract any information on thermodynamic disorder or the associated band tailing we would predict from such disorder, two important considerations for our model will be firstly to determine if the disordered configuration we obtain is in fact the equilibrated configuration at the given temperature and secondly if finite size effects are having an impact on the system properties we obtain from our simulations.
 As simulations are performed for finite lattices, in order to simulate a bulk system the edges or `boundaries' of the system must be treated carefully. The boundaries can be effectively eliminated through the use of periodic boundary conditions (PBCs). In the case of an Ising model, this means that the first spin in a row interacts with the last spin in the row as if it were a nearest neighbour, and vice versa \cite{MC_Landau}. This principle is illustrated for a two-dimensional system in figure \ref{MC_PBCs}. Although this procedure effectively eliminates boundary effects, the system is still characterized by the finite lattice size, L, which limits the correlation length to $\frac{L}{2}$. Resultant properties of the simulated system may then differ from the bulk system. We therefore will need to perform simulations with increasing system size to look for any differences in the quantities of interest.
 
 Determining if our system has reached equilibration at each temperature however may require a more complicated procedure. As the Monte Carlo method is stochastic, making use of sampling many times with random numbers to determine the minimum energy configuration of the system, the trajectory to reach this final configuration will by nature be random. Therefore, we can draw no conclusions about the properties of our system from evolved states until the final configuration at the particular temperature is reached. We therefore developed and tested methods to check for equilibration before we attempt to extract any thermodynamic properties of our system.
@@ -876,8 +873,7 @@ In the case of the Ising model when, for example, determining the average magnet
 To gauge if a system has reached equilibrium, in the case of the Ising model, it is common practice to run the simulation for a large number of Monte Carlo steps (MCS) (where one MCS corresponds to attempting a trial spin-flip at all sites in the system once) and looking for how the value of a quantity of interest, such as the average magnetization across the system, changes with increasing number of MCS as the simulation progresses. Equilibration is often considered as the point at which the value of a quantity of interest, which initially changes by a large amount, eventually converges to fluctuating about a steady average value. An example of this is shown in figure \ref{ising_equil}a. This is dependent upon the principle that a system in equilibrium spends the overwhelming majority of its time in a small subset of states in which its properties take a narrow range of values \cite{MC}. Provided the simulation has equilibrated, the final configuration for a given system at a given temperature should always be the same regardless of the initial configuration of the simulation, this point is illustrated in figure \ref{ising_equil}b.
 
 Using this principle, one way to determine if our system has reached its equilibrium configuration could be to use perfectly ordered or disordered initial lattice configurations that. Both of these initial configurations, if the simulation is allowed to evolve over a suitable number of MCS, should eventually result in the same equilibrium system configuration. It would be difficult to distinguish differences in the atomic arrangement of one 3D lattice to another by eye, therefore comparisons of the radial distribution function (RDF) for each configuration as it evolves from either an ordered or disordered initial configuration can be made. 
-
-Another method to check for equilibration is analogous to that shown in figure \ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of the electrostatic potential at Sn sites in the system that is of interest so one possible method to check for equilibration could be to look for a point after which the variance of the distribution of electrostatic potentials across the system has reached a steady value. Both of these methods were tested and are discussed in the study in section \ref{CZTS_MC}.
+Another method to check for equilibration is analogous to that shown in figure \ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of the electrostatic potential at Sn sites in the system that is of interest. As we fix Sn ions in our simulation we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu-Zn disorder. One possible method to check for equilibration could be to look for a point after which the variance of the distribution of electrostatic potentials across the system has reached a steady value. Both of these methods were tested and are discussed in the study in section \ref{CZTS_MC}.
 
 \begin{figure}[h!]
   \centering
@@ -896,7 +892,7 @@ For {\CZTS} a lot of attention in the literature has been paid to disorder among
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.\\
 
-Introductory paragraph + Eris paper1 (methodology) + include paper SI? (or put in appendix?) + Add statement on personal contribution + link to Eris git repo and Zenodo doi for data?
+Introductory paragraph + Eris paper1 (methodology) + include paper SI? (or put in appendix?) + Add statement on personal contribution (or include this in previous section??) + link to Eris git repo and Zenodo doi for data?
 
 \includepdf[pages={1-},scale=1.0]{papers/ErisPaper1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/Eris1_SI.pdf}
@@ -917,14 +913,26 @@ For disorder due to defects with a correlation length on the order of interatomi
 
 ** Maybe move some content from theory impact of defects section here? **
 
-As discussed in section \ref{CZTS_beyond_dilute}, concentrations of Cu-on-Zn and Zn-on-Cu antisites in {\CZTS} are expected to be beyond the dilute limit. In this section therefore we calculate on-site electrostatic potentials of disordered configurations from our Monte Carlo simulations of on-lattice extended Cu-Zn disorder...
+As discussed in section \ref{CZTS_beyond_dilute}, concentrations of $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites in {\CZTS} are expected to be beyond the dilute limit. In this section therefore we calculate on-site electrostatic potentials of disordered configurations from our Monte Carlo simulations of on-lattice extended Cu-Zn disorder. Our model can be used to determine the contribution to band tailing just from fluctuations in the spatial distribution of electrostatic potential from the presence of charged $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects. (**Note that our model can't account for any strain effects on band gap because it is fixed on lattice, but expect small contribution to band tailing from this effect due to similar ionic radii of Cu+ and Zn2+)
 
-... Outline ideology for band tailing extension (s.d. of dist. of Cu and Sn potentials wrt T and c.f. Q to infer band tailing of VBM and CBM with T respectively + inc. CZTS band structure from a paper, see eris lab book slides), quantify band tailing from this and also show 2D visuals of fluctuations using 2D histogram plots of Cu and Sn vs. mean of dist.?\\
+... Outline ideology for band tailing extension (s.d. or range of dist. of Cu and Sn potentials wrt T? and c.f. Q to infer band tailing of VBM and CBM with T respectively + inc. CZTS band structure from a paper, see eris lab book slides), quantify band tailing from this and also show 2D visuals of fluctuations using 2D histogram plots of Cu and Sn vs. mean of dist.?\\
 
 + See band tailing write up plan + this paper: https://www.sciencedirect.com/science/article/pii/S0927024817306062?via%3Dihub
 \\
 
 Possible extension to adapt MC model to explore possibility of disorder suppression in off-stoichiometric CZTS?\\
+
+Plan for discussion of eris band tailing results:
+\begin{itemize}
+\item s.d. of potential distribution w.r.t T (smoothed over multiple random seed re-runs) - comparison between this and Q vs. T plot indicates difference between a macroscopic average and the microscopic fluctuations that will interact with photocarriers
+\item Use range as indicator of band tailing (as opposed to s.d.)?
+\item Histograms/ kde plots of potential distribution (normal dist or double pot?)
+\item 2D on-site potential - mean potential histograms (comparisons for different random seeds, 72x72x72 and a hero 144x144x72)
+\item Generate 1D plot along y=x to show two well and peak for 72x72x72 system... relate to band fluctuation schematics in literature?
+\item Discuss if it is possible to infer that Sn-on-Zn antisites (which has been linked to defect clusters that impact band gap) may be more likely to form due to potential distribution. e.g. Sn4+ more likely to be on a Zn2+ site in negative potential region? c.f. end of S4 in doi: 10.1016/j.solmat.2017.11.005
+\item Also note from (doi: 10.1016/j.solmat.2017.11.005) - 'clusters of Zn-Cu+ antisites have been observed by scanning transmission electron microscopy [40]'
+\item Note use dielectric const for perfect CZTS (9.9) calculated by Sunghyun when converting units to V for potential because we are now interesting in potential in our perfect system (rather than scaling order-disorder transition T to exptl system with more physics than in present in our model)
+\end{itemize}
 
 %Look for Jarv's work on band tailing in MAPI to discuss how Eris could be similarly applied to extract band tails in CZTS\\
 
@@ -933,32 +941,55 @@ Possible extension to adapt MC model to explore possibility of disorder suppress
 
 \chapter{Screening for candidate photoferroic solar absorbers}\label{chap:screening}
 \section{Candidate photoferroic minerals and predicted optoelectronic properties}
-Introductory paragraph + sulfosalts paper1 + include paper SI? (put in appendix?) \\
 
-Introduce `photoactive ferroelectrics', state that idea would be to use a p-n junction architecture but exploit internal electric fields for improved local carrier separation and possible new pathways to achieving high-performance devices. (or move some of this statement to intro for band alignment paper?)
+%Introductory paragraph + sulfosalts paper1 + include paper SI? (put in appendix?) \\
 
-State that band tailing from prevalent cation disorder (as investigated for CZTS) would be expected to be less prevalent in these materials (as in AZTS, BCTS etc.) due to less similar chemical character of components (get citations from sulfosalts paper).\\
+In the previous chapter, it was demonstrated that high concentrations of Cu-Zn disorder is inevitable in the solar absorber material {\CZTS} and the contribution of electrostatic potential fluctuations from this type of disorder to the observed band tailing was quantified. In this chapter, a screening procedure is conducted to look for alternative absorber materials. The motivation of this study was to identify candidate `photoferroic’ or photoactive ferroelectric materials. Photoferroic phenomena were outlined in section \ref{photoferroic}. The mechanisms behind such phenomena are not yet fully understood, however it may be possible to achieve improvements in solar cell performance from enhanced local carrier separation from the internal electric fields of polar crystals, possibly providing new pathways to achieving high-performance devices.
+Additionally, the band tailing from prevalent cation disorder (as investigated for {\CZTS}) would be expected to be less prevalent in these materials (as has been demonstrated in AZTS **REF FROM PAPER* and BCTS **REF FROM PAPER**) due to the materials containing less chemically similar components.
 
-+ Add statement on personal contribution (include? - work largely carried out during placement at Duke University in collaboration with...)
+This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package and calculations of spontaneous lattice polarisation were performed by Katrine Svane at the University of Bath.
+
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
 
 
 \section{Outlook: Large-scale screening with material properties databases}
-Introductory paragraph (larger dataset than previous study and additional screening metrics in study, e.g. m* from Boltztrap, - outline here) + project with Lee and MP - give overview of number of compounds, abundance and m* from study (use plots and check with Lee if okay to include? Put in the form of a paper draft to share with Lee?)\\
 
-+ Add statement on personal contribution - work performed in collaboration with Lee A Burton using screening criteria and rationale in previous section, in combination with Lee's methods to filter candidates from the materials project\\
+Overview of screening process:
+\begin{itemize}
+\item Stable - energy below convex hull
+\item Less than or equal to 4 elements
+\item Materials with toxic or rare elements ruled out?
+\item Polar space group
+\item Band gap 0 to 1.5 (N.B. materials project GGA roughly underestimates by 20%) – double check with Lee + citation???
+\item Effective mass calculated with Boltztrapp (need to justify choice of T and carrier conc? Take optimal value for carrier conc on the assumption this could be tuned experimentally? And T as typical operating T of a solar cell? – double check exact values with Lee
+\item Check slack channel for how we were screening effective mass tensor (first for average below threshold then discounted anything with one component above threshold to avoid materials with very anisotropic transport properties??
+\end{itemize}
 
-Maybe just comment on number of candidates with m* for BOTH electrons and holes below 0.5 me from prelim results? (Check with Lee) - 'This is an on-going work but so far results from the initial screening have shown...'
+
+In the study in the previous section, three candidate photoferroic materials were identified from the dataset of approximately 200 naturally occurring minerals. This choice of initial dataset was motivated by the high stability that could be expected for naturally occurring minerals. However, with the availability of materials properties databases and tools for screening such databases, there are much larger search spaces for materials discovery and it may be possible to identify better materials from such a resource. For this reason, an ongoing study is being conducted in collaboration with Lee A. Burton to perform a similar screening procedure using the Materials Project \cite{materials_project}. Here, just the motivations, modified screening criteria and some preliminary results of this subsequent search are outlined.
+
+As we do not start from a dataset of naturally occurring minerals in this extension, we limit our search space to only stable materials by considering only compounds with energies below the convex hull **GET MP REF FOR CONVEX HULL**. We also only consider compounds composed of 4 or less elements to avoid materials that are likely to be particularly challenging to synthesise. In the interests of identifying suitable candidates for large-scale and environmentally friendly solar cells, we rule out compounds containing rare or toxic elements **double check with Lee** (maybe just screened by abundance??).
+
+After this initial screening, we apply similar screening criteria to the previous project. We also screen by polar space group but as opposed to using the streak colour as an indication that the band gap is likely to be within the visible range, we use the calculated band gaps for the compounds contained in the Materials Project database. Calculations for the material properties contained in the Materials Project database are performed at the GGA \cite{GGA}.
+The underestimation of the band gaps in the Materials Project database is roughly 20% **GET REF**. We use 0 to 1.5 eV as the range of band gap for our candidates. Effective masses were calculated for the three candidate photoferroic minerals in the previous study, in this study high-throughput calculations of effective mass tensors are performed for ??? candidates using calculated band structure from the Materials Project and the BoltzTrapp code \cite{BoltzTrapp} with temperature set to the typical operating temperature of a solar cell at ?? and carrier concentration assumed to be ??. 
+With this substantially larger number of candidate photoferroic materials, we were able to be more stringent in our standards for charge carrier effective masses. We first screened by the isotropic average… and then by components of the effective mass tensor so that we were left with candidates with the potential for with isotropically high carrier mobility.
+
+Preliminary results: maybe just comment on number of candidates with m* for BOTH electrons and holes below 0.5 me? (Check with Lee) - 'This is an on-going work but so far results from the initial screening have shown ?? number of compounds that have polar space groups, band gaps within the range for solar absorption and effective masses for both electrons and holes less than 0.5m$_e$. Further work will involve a closer examination of their optoelectronic properties and potential as solar cell absorber layers.'\\
+
+**Write intro, motivations for FE-PV and methods in the form of a paper intro for Lee?? – take some motivations from paper1 and refer to Kirchartz review + see other FE-PV lit on desktop **
+
 
 \chapter{Theoretical insights for new solar absorbers}\label{chap:insights}
-State that although we expect cation disorder to be less prevalent than Cu-Zn disorder in CZTS, this does not rule out other limitations on performance (such as defects and non-optimal device architectures). Here we take inspiration from more mature or successful PV tech and use insights from theory to assess the potential of the three minerals from \autoref{chap:screening}.\\
+State that although we expect cation disorder to be less prevalent than Cu-Zn disorder in {\CZTS}, this does not rule out other limitations on performance (such as defects and non-optimal device architectures). Here we take inspiration from more mature or successful PV tech and use insights from theory to assess the potential of two of the three minerals from \autoref{chap:screening}.\\
 
 Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
 \section{Band alignment for solar cell heterojunctions}\label{sulfosalt_band_alignment}
 Introductory paragraph (new PV tech must be optimised layer-by-layer), barrier to utilisation of new tech, aim to use theory to accelerate process, often architectures optimised for different, more mature tech is used for new PV absorbers - not necessarily optimal! (e.g. of enargite paper and various others from band alignments paper intro) + sulfosalts band alignments paper\\
+
+Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction as described in section \ref{photoferroics}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation and possible new pathways to achieving high-performance devices.\\
 
 + Add statement on personal contribution (Slabs cut by Yoyo, MD and ELS codes by Keith, calculations performed by me, ELS extended by me to include workflow for CBOs and VBOs of interest for PV)
 
@@ -978,7 +1009,8 @@ Introductory paragraph (power of predicting this property - determine materials 
 
 %See Thomas Kirchartz recent review 'What makes a good solar cell'.\\
 
-%Nod to SQ, SLME and Thomas Kirchartz's detailed balance theoretical maximum efficiencies when introducing this section? + works on predicting defect-tolerance by MIT\\
+%Nod to SQ, SLME and Thomas Kirchartz's detailed balance theoretical maximum efficiencies when introducing this section? + works on predicting defect-tolerance by MIT\\ 
+
 
 %Dielectric function review? (finished/ collab with Jacob or as finished as far as possible?) Comment on dielectric constants of enargite and bournonite calculated as part of defects study here?\\
 
