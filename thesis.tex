@@ -15,6 +15,8 @@
 \usepackage{etaremune}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{braket}
 \hypersetup{
     colorlinks,
     linkcolor={black!50!black},
@@ -66,12 +68,12 @@ Write last, ideas:
 
 \section*{Publications during the course of the PhD}
 \begin{etaremune}
-\item Sulfosalts defects paper?
+\item Sulfosalts defects paper? (w/ aide post-processing?)
 \item Photoferroic materials project screening with Lee?
-\item Defects benchmark study?
-\item Eris band tailing study?
+\item Defects benchmark study with Volker and Tong?
+\item Eris band tailing letter?
 \item Sulfosalts band alignment paper?
-\item Thermodynamically limited Cu-Zn order in {\CZTS} from Monte Carlo simulations
+\item Disorder processes during the Cu-Zn order-disorder transition in {\CZTS} from Monte Carlo simulations
 \item Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite, and bournonite\\
 SK Wallace, KL Svane, WP Huhn, T Zhu, DB Mitzi, V Blum, A Walsh\\ Sustainable Energy \& Fuels  (6), 1339-1350 (2017)
 \item The steady rise of Kesterite solar cells\\ SK Wallace, DB Mitzi, A Walsh\\ ACS Energy Letters 2 (4), 776-779 (2017)
@@ -207,8 +209,9 @@ The record device efficiencies are more than double that of SnS-based solar cell
 
 \section{The role of computational modeling in material design and optimisation}
 The discovery of new functional materials by experimental methods is largely hindered by high costs and the optimisation of time-consuming synthesis procedures \cite{high_tp}.
-However, with the rapid increase in computational processing power and the availability of large-scale supercomputers, we are entering a very exciting era in computational materials design \cite{WMD_material_design_review}. 
-There are two main contributions that computational simulations could make towards the technological breakthroughs needed for economically-viable, large-scale solar energy generation. Firstly, by predicting relevant properties of materials that are not currently utilised in solar cells and screening for certain desirable properties, materials simulations are able to aid in the discovery of new materials that may be capable of out-performing current solar cell technologies. Secondly, material simulations are able to provide valuable, atomistic insight to improve fundamental understanding of known photovoltaic materials, which may enable improvements in existing solar cell technologies.
+However, with the rapid increase in computational processing power and the availability of large-scale supercomputers, we are entering a very exciting era in computational materials design \cite{WMD_material_design_review}. Furthermore, electronic structure theory has advanced to a level where it is possible to obtain good quantitative agreement with experiment without using adjustable parameters fit to experiment, i.e. from first principles. The only inputs into these calculations are electronic mass, electronic charge, atomic numbers and masses of the constituent atoms in the material. From this, it is possible to obtain to fairly high accuracy the structure, lattice constants, charge densities and various electronic, magnetic, optical and transport properties \cite{elec_structure_theory}. Therefore theory and simulation of materials has reached a point of possessing some predictive power for material properties relevant for various applications, completely independent of experimental measurement.
+
+There are two main contributions that computational simulations could make towards the technological breakthroughs needed for economically-viable, large-scale solar energy generation. Firstly, by predicting relevant properties of materials that are not currently utilised in solar cells and screening for certain desirable properties, material simulations are able to aid in the discovery of new materials that may be capable of out-performing current solar cell technologies. Such an approach allows for a less time-consuming screening of potential new materials for a given application before attempting to prepare just the most promising candidates in the laboratory. Experimental validation of predicted properties, however, is always an important follow up to account for additional features of the physical system not initially accounted for in the model. In the case of candidate solar absorbers, for example, the optical properties are often initially predicted for the perfect bulk crystal. In reality materials contain various types of defects. Methods exist to model different forms of defects in a crystalline system, some of which are discussed later in this work. However, this typically quite complex and idiosyncratic feature of the system is often not considered initially, largely due to the vast range of possible defect features in a material. The defect physics of a material is a prime example of an area in which knowledge and understanding is developed symbiotically between works from experiment and theory. Secondly, material simulations are able to provide valuable, atomistic insight on scales that cannot be probed experimentally to improve fundamental understanding of known photovoltaic materials, which may enable improvements in existing solar cell technologies. Defect physics is again a prime example of this, where theory can probe on the atomic scale to aid in the interpretation of experimental data obtained from a variety of different measurements.
 
 In this work, materials modeling techniques are developed and applied to make both types of contribution to the field. A model is developed to improve current atomic-scale understanding of the candidate earth-abundant, non-toxic solar absorber material {\CZTS} (CZTS) and to provide a tool for assessing possible origins of the under-performance of this particular solar cell technology. This is the subject of \autoref{chap:CZTS}. Materials modeling is also used to predict the relevant properties of candidate photoferroic absorbers that are not currently utilised in solar cell technologies to identify those that are most likely to be worthy of further study. In \autoref{chap:screening}, the screening criteria and methodologies used in this study for identifying candidate photoferroic absorbers are discussed and some relevant calculated material properties for the candidates are presented. In \autoref{chap:insights}, the use of material simulations and theoretical insights to assess the likely performance of a material in a solar cell device is discussed further. In particular, knowledge gained from previous studies on more mature PV technologies is drawn upon when examining the potential of the candidate photoferroic materials for solar cell applications.
 
@@ -246,7 +249,7 @@ The first Brillouin zone is the Wigner-Seitz primitive cell of the reciprocal la
 %The band theory of solids provides a means to explain the difference in the electrical conductivity of conductors, semiconductors and insulators. 
 Electrons bound to an atom in atomic orbitals have a number of possible discrete energy levels. When a pair of atoms are brought together to form a molecule, the atomic orbitals combine to form pairs of molecular orbitals arranged with energy levels slightly higher and slightly lower in energy than the original energy levels. When a large number of atoms are brought together to form a solid the 
 %it becomes impossible to assign individual electrons to individual atoms. Instead, the electrons are considered to be shared amongst the atomic nuclei. A consequence of this sharing would be a large number of electrons occupying the same energy state, which violates the Pauli Exclusion Principle. The 
-original discrete energy levels are broadened into new energy levels that are so closely spaced that they are considered to be a quasi-continuous band of allowed energies. This is illustrated in Fig. \ref{band_Elevels}. The energy distribution of the bands depends upon the electronic properties of the constituent atoms of the crystal and the strength of the bonds between them. Bands are occupied if the original molecular orbitals were occupied. The highest occupied band (containing the valence electrons) is the valence band (VB). The lowest unoccupied band is the conduction band (CB). If the VB is only partially filled or if it overlaps in energy with the CB, then the solid is a metal. The availability of empty states at energies close to that of the occupied states facilitates easy scattering of valence electrons into neighbouring states, thereby allowing for the transport of heat and charge. Hence metals conduct both heat and electric current. In a semiconductor or insulator, the VB is completely full and separated from the next unoccupied CB by an energy gap called the optical band gap, E$_g$ \cite{Nelson3}. In the simplest model, the CB is separated from the VB by a constant band gap. This is called the flat band model and is often shown in schematics of junctions for PV device architectures, which will be discussed in section \ref{PV_architecture}. In real structures, the band architecture is more complicated than this simple model, like the band structures shown later in figure \ref{Si_and_GaAs} \cite{Tilley}.
+original discrete energy levels are broadened into new energy levels that are so closely spaced that they are considered to be a quasi-continuous band of allowed energies. This is illustrated in Fig. \ref{band_Elevels}. The energy distribution of the bands depends upon the electronic properties of the constituent atoms of the crystal and the strength of the bonds between them. Bands are occupied if the original molecular orbitals were occupied. The highest occupied band (containing the valence electrons) is the valence band (VB). The lowest unoccupied band is the conduction band (CB). If the VB is only partially filled or if it overlaps in energy with the CB, then the solid is a metal. The availability of empty states at energies close to that of the occupied states facilitates easy scattering of valence electrons into neighbouring states, thereby allowing for the transport of heat and charge. Hence metals conduct both heat and electric current. In a semiconductor or insulator, the VB is completely full and separated from the next unoccupied CB by an energy gap called the optical band gap, E$_g$ \cite{Nelson3}. In the simplest model, the CB is separated from the VB by a constant band gap. This is called the flat band model and is often shown in schematics of junctions for PV device architectures, which will be discussed in section \ref{junctions}. In real structures, the band architecture is more complicated than this simple model, like the band structures shown later in figure \ref{Si_and_GaAs} \cite{Tilley}.
 
 \begin{figure}[h!]
   \centering
@@ -255,7 +258,7 @@ original discrete energy levels are broadened into new energy levels that are so
   \label{band_Elevels}
 \end{figure}
 
-To understand the behaviour of electrons in solids, the electron is considered as a wave propagating in a periodic structure \cite{small_semiconductor1}. As for electrons in atoms and molecules, the Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
+To understand the behaviour of electrons in solids, the electron is considered as a wave propagating in a periodic structure \cite{small_semiconductor1}. The Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
 The energy of a single electron in a perfect crystal is described by the one-electron Schr{\"o}dinger equation, shown in equation \ref{single_SE}. The first term in equation \ref{single_SE} is the kinetic energy of the electron, V(\textbf{r}) is the effective periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and $\epsilon$ is the eigenenergy of the electron.
 \begin{equation} \label{single_SE}
 \left[ \left(-\frac{\hbar^2}{2m}\right)\nabla^2 + V(\mathbf{r})\right]\psi = \epsilon \psi 
@@ -394,7 +397,7 @@ A ferroelectric material possesses a spontaneous electric polarisation that can 
 %Ferroelectric materials usually have a high dielectric constant (which was mentioned in section \ref{PV_properties} as an important parameter for a photovoltaic material) and they possess a spontaneous electric polarization that can be switched between two or more states using an electric field \cite{new_FE_PV_1}.
 The BPE was first recorded in 1956 in BaTiO$_3$ \cite{keith_46}, where photovoltages were measured in un-doped single crystals \cite{keith}.
 The BPE effect is distinctly different from the typical PV effect in semiconductor
-p-n junctions outlined in section \ref{PV_architecture} as the driving force for the photocurrent is provided by the internal electric polarisation of the crystal \cite{FE_PV_rev1}. 
+p-n junctions outlined in section \ref{junctions} as the driving force for the photocurrent is provided by the internal electric polarisation of the crystal \cite{FE_PV_rev1}. 
 The APE was first observed in PbS films in 1946 \cite{keith_54} and has since been reported in polycrystalline CdTe, ZnTe, InP \cite{keith_55, keith_56, keith_57}, where photovoltages output along the polarisation direction can be significantly larger than the band gap of the material \cite{FE_PV_rev1}, which is usually the limit for a semiconductor PV material \cite{keith}. 
 The Shockley-Queisser limit \cite{SQ_1961}, which prevents any single p-n junction solar cell from converting more than 33.7\% of the incident light into electricity, has not been predicted to apply for these photovoltaic phenomena. An upper limit for the theoretical power conversion efficiency (PCE) from this photovoltaic mechanism seems to still be an open question \cite{ FE-PV_kirchartz, new_FE_PV}, although an ultimate maximum efficiency of any single-band gap absorber of 44\% has been set by thermodynamic considerations \cite{SQ_1961}. 
 
@@ -556,26 +559,161 @@ In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow f
 \chapter{Methodology}
 
 \section{Electronic structure calculations}\label{elec_struc}
-See Richard Martin book (Ch1), etc.
+%See Richard Martin book (Ch1), etc. \cite{RichardMartin_Ch1}
 
-\subsection{Fundamentals}
-Ab initio fundamentals (H-F, etc.), setting up Slater determinants, etc.
+\subsection{Quantum theory of materials}
 
-Introduce PBCs for periodic calculations here and reciprocal space here?? (See Richard Martin Ch4 + Chris' thesis (nice comment related waves with associated phase in real space to point in reciprocal space by FT)
+%** See Prasad ch1 (intro) + ch2 for SE\\
 
-\subsection{Density functional theory (DFT)}
+The properties of materials are determined by their constituent electrons and nuclei and how they interact with each other. Nuclei are massive (compared to electrons) and can usually be described using classical mechanics with interactions via Coulomb's law. However, as hypothesised by de Broglie in 1924 and later demonstrated experimentally by Davisson and Germer and also by Thomson with electron diffraction, electrons exhibit wave-like behavior in addition to particle-like behavior and do not obey classical mechanics \cite{quantum_intro}. The behaviour of the electrons largely determines the physical and chemical properties of a material \cite{Prasad_ch2}, such as the bonding that holds the material together and many of the observed macroscopic properties such as the optical, electrical and magnetic properties \cite{RichardMartin_Ch1}. But to describe the behaviour of electrons, it is necessary to use quantum mechanics.
+
+Quantum mechanical systems can be described by the Schr{\"o}dinger equation, which describes the energy of the electrons and nuclei within a material where electrons interact with the positively charged atomic nuclei through an electrostatic potential \cite{Lesar}. The time-dependent Schr{\"o}dinger equation for a one-electron system is given in equation \ref{SE}, where the first term on the left hand side of the equation is related to the electron's kinetic energy, the second term to the electron's potential energy and $\psi$ is used to denote the one-electron wavefunction.
+\begin{equation} \label{SE}
+\left( - \frac{\hbar^2}{2m} \nabla^2 + \hat{V} \right)\psi(r,t) = i\text{ } \hbar\frac{\partial \psi(r,t)}{\partial t}
+\end{equation}
+In section \ref{BandTheorySection} the one-electron Schr{\"o}dinger equation for an electron moving in a weak periodic potential with the nearly free electron approximation was used to discuss obtaining the energy eigenvalues of the electron as a function of \textbf{k}, i.e. the electronic band structure of a periodic, crystalline solid.
+However, for systems containing more than one electron we must consider the many-body Schr{\"o}dinger equation and this soon becomes a very complex problem. This is due to the many electrons in the system interacting with each other as well as with the nuclei. The Schr{\"o}dinger equation for a system containing M nuclei and N electrons is shown in equation \ref{many_SE} \cite{Lesar}, where uppercase \textbf{R} denotes nuclear coordinates and lowercase \textbf{r} denotes electron coordinates. This is a very complex mathematical problem for most systems. For example, the many-body wavefunction, $\Psi$, in equation \ref{many_SE} for 1 cm$^3$ of a typical metal would be a function of approximately $10^{23}$ variables.
+
+\begin{multline}  \label{many_SE}
+\left\{ - \frac{\hbar^2}{2m} \left( \frac{\nabla_{n_1}^2}{m_1} + ... + \frac{\nabla_{n_M}^2}{m_M}, 
+\frac{\nabla_{e_1}^2}{m_e} + ... + \frac{\nabla_{e_N}^2}{m_e} \right)
++ V \left( \mathbf{R_1},...,\mathbf{R_M}, \mathbf{r_1}, ..., \mathbf{r_N} \right)
+\right\}
+\Psi (\mathbf{R_1},...,\mathbf{R_M}, \mathbf{r_1}, ..., \mathbf{r_N}, t) \\
+= i\hbar \frac{\partial\Psi(\mathbf{R_1},...,\mathbf{R_M}, \mathbf{r_1}, ..., \mathbf{r_N},t)}{\partial t}
+\end{multline}
+
+When dealing with such systems, the Born-Oppenheimer approximation is almost universally used. As electrons are fast moving relative to the nuclei, they are considered to be moving in the classical field generated by static nuclei. This decouples the nuclear and electronic degrees of freedom, allowing us to separate the ionic and electronic wavefunctions. 
+%The total energy of the system is now just the sum of the energy of the electrons and the nuclei and only the electronic density requires quantum mechanical treatment. 
+When using the Born-Oppenheimer approximation it is also assumed that nuclear motion cannot cause electronic transitions, therefore the electrons will remain in their ground state. There is now no explicit time dependence for the electron density as electrons are assumed to always be in their ground state for the instantaneous ionic configuration and that they transition adiabatically to their ground state for each ionic configuration. This approximation is generally more suitable for semiconductors than for metals as phonon energies are usually less than the energy of the electronic band gap in a semiconductor and hence ionic motion cannot excite electrons to higher energy states \cite{Prasad_ch2}. $\Psi$ for electrons in the system is now no longer a function of t and so it is the solution of the time-independent Schr{\"o}dinger equation for the system of ions and electrons that is of interest and the ionic system can be considered separately from the electronic system which is subjected to the classical electric field of a stationary ionic system.
+%and is only a function of electron coordinates (lowercase r in Eq. \ref{many_SE}).
+
+The general form of a time-independent Schr{\"o}dinger equation is shown in Eq. \ref{TISE}, where H is the Hamiltonian operator used to determine the total energy of a system with the wavefunction $\Psi$. Lowercase \textbf{r} are the electronic coordinates and $\sigma$ is used to denote the spin of electrons, which was omitted in earlier equations for simplicity. The Born-Oppenheimer Hamiltonian for the electrons is shown in Eq. \ref{Born-Opp}, where l are the ionic sites, Z is the nuclear charge, m is the electron mass, i is the index of the electron and j are the indices of all other electrons in the system. The first term is the kinetic energy of the electrons, the second term is the Coulomb attraction between electrons and nuclei and the third term is the Coulomb repulsion between different electrons \cite{Prasad_ch2}.
+\begin{equation}\label{TISE}
+H\Psi(\mathbf{r_1}, ..., \mathbf{r_N}, \sigma_1, ..., \sigma_N) = E\Psi(\mathbf{r_1}, ..., \mathbf{r_N}, \sigma_1, ..., \sigma_N)
+\end{equation}
+\begin{equation}\label{Born-Opp}
+H = - \sum_i \frac{\hbar^2}{2m}\nabla_i^2 - \frac{1}{4 \pi \epsilon_0}\sum_i \sum_l \frac{Ze^2}{|\mathbf{r_i}-\mathbf{R_l}|} + \frac{1}{8 \pi \epsilon_0} \sum_{ij, i \neq j}\frac{e^2}{|\mathbf{r_i}-\mathbf{r_j}|}
+\end{equation}
+Although we can write out the electron Hamiltonian as shown above, we do not know the exact form of the many-body wavefunction in Eq. \ref{TISE}. The third term in the expression for the Hamiltonian, the summation of electron-electron interactions in the system, is the cause of a dramatic rise in computational expense as the system size (and hence number of interacting electrons) increases. In the next section various approaches that have been developed to treat electron-electron interactions are outlined and those utilised in this work are highlighted.
+
+%\subsection{History of electronic structure theory}
+
+\subsection{Treatments of electron-electron interactions}
+
+\subsubsection{Approximations of the many-body wavefunction}
+As we do not know the exact form of the many-body wavefunction, $\Psi$, the simplest way to avoid the dramatic rise in complexity with increased system size from electron-electron interactions in the many-body Schr{\"o}dinger equation is to approximate the form of $\Psi$ to allows us to decouple electron-electron interactions. In the `independent particle approximation', as used in the Hartree method, electrons are treated as independent and are included in an average electron-electron interaction scheme. The method involves assuming approximate forms of both the Hamiltonian and the many-body wavefunction. The electron-electron interaction term in the Hamiltonian in Eq. \ref{Born-Opp} is replaced by one that accounts for only the repulsion between an electron and the average position of all other electrons, the electrons therefore interact with an average effective potential instead of many, many interactions between all pairs of electrons in the system. This is an example of a mean field approximation.
+%The second term in  Eq. \ref{Born-Opp} is then combined with the modified electron-electron interaction term to form an effective potential, the Hartree potential (V$_{eff}$). 
+As electrons are considered to be independent, the many-body wavefunction can be written as the product of single-electron wavefunctions (or orbitals) as shown in Eq. \ref{Hartree}, where $\psi_i(\mathbf{r_i}, \sigma_i)$ is the wavefunction of a single electron i at position $r_i$ with spin $\sigma_i$ \cite{Prasad_ch2}. 
+\begin{equation}\label{Hartree}
+\Psi_H = \psi_1(\mathbf{r_1}, \sigma_1) \psi_2(\mathbf{r_2}, \sigma_2) ... \psi_N(\mathbf{r_N}, \sigma_N)
+\end{equation}
+To solve the many-body Schr{\"o}dinger equation, the Hartree method pioneered the self-consistent field method \cite{RichardMartin_Ch1}. Firstly, the variational principle is invoked to set up an inequality for the groundstate energy, $E_0$, of the system (i.e. the minimum total energy) to find an approximate value of $E_0$ and the set of $\psi_i$, this is shown in Eq. \ref{var_princip}, where the middle term is the expectation value of a state of the system described by the many-body wavefunction $\Psi$. Many properties of interest can be determined from $E_0$ of the system and from changes in the energy of the system in response to particular perturbations. $E_0$ can be used to determine various structural properties such as equilibrium bond lengths, surface configurations and the most likely defect structures in a material.
+\begin{equation}\label{var_princip}
+E = \braket{\Psi | H | \Psi } \geq E_0
+\end{equation}
+The solution of the Hartree equation, shown in Eq. \ref{Hartree_eq}, depends on the Hartree potential, shown in Eq. \ref{V_Hartree}, but the potential depends on the solution of the Hartree equation itself to obtain $\psi_i$. The solution of the Hartree equation therefore involves a self-consistent procedure. A guess is made for $V_H(\mathbf{r})$ and then Eq. \ref{Hartree_eq} is solved. Then the solution is used to calculate $V_H(\mathbf{r})$ with Eq. \ref{V_Hartree} and the Hartree equation is solved again with this new value for $V_H(\mathbf{r})$. The procedure is repeated until input and output potentials are the same, within a given tolerance \cite{Prasad_ch2}.
+\begin{equation}\label{Hartree_eq}
+\left[ -\frac{\hbar^2}{2m_e}\nabla^2 + V_I(\mathbf{r}) + V_H(\mathbf{r}) \right] \psi_i(\mathbf{r}) = \epsilon_i \psi_i(\mathbf{r})
+\end{equation}
+\begin{equation}\label{V_Hartree}
+V_H(\mathbf{r_i}) = \frac{1}{4 \pi \epsilon_0} \int \frac{d^3r}{|\mathbf{r_i} - \mathbf{r}|}e^2 \sum_{j \neq i} |\psi_j\mathbf{r}|^2
+\end{equation}
+\begin{equation}\label{V_I}
+V_I(\mathbf{r_i}) = -\frac{1}{4 \pi \epsilon_0} \sum_l \frac{Ze^2}{|\mathbf{r_i} - \mathbf{R_l}|}
+\end{equation}
+
+There are however a number of large drawbacks of the Hartree method. The mean-field approach to obtaining the Hartree potential is flawed due to spurious self-interaction of an electron interacting with itself as it is also included in the average electron density it interacts with when calculating the electron-electron interaction term.
+The next large omission of the Hartree method is electron correlation. The probability of finding an electron at $\mathbf{r_1}$ is uncorrelated to finding one at $\mathbf{r_2}$ because it can be written as a product of two one-electron probabilities. Paraphrasing John Perdew from his talk at the 2015 `Hands-on workshop density-functional theory and beyond: First-principles simulations of molecules and materials' helps to explain why this is neglecting some behaviour of the electron density: electron correlation can be likened to shoppers at a busy shopping mall where many people are moving around but in such a way that they try to avoid bumping into each other. Neglecting this effect can lead to results as unphysical as the dissociation of the H$_2$ molecule \cite{Prasad_ch2}.
+
+Lastly, the basic Hartree method described above does not account for electron exchange. Although the spin of the electron is included in Eq. \ref{Hartree}, it actually plays no role in the Hartree method. The many-body wavefunction needs to be antisymmetric under particle exchange as required by the Pauli Exclusion Principle for fermions. This requirement is shown in Eq. \ref{antisym}. According to the Pauli Exclusion Principle, no two fermions can occupy the same quantum state. The spin quantum number therefore should be taken into account. The Hartree-Fock (H-F) extension to this method is able to account for this latter flaw \cite{Prasad_ch2}.
+\begin{equation}\label{antisym}
+\Psi(\mathbf{r_1}\sigma_1, ..., \mathbf{r_i}\sigma_i, ..., \mathbf{r_j}\sigma_j, ...) = - \Psi(\mathbf{r_1}\sigma_1, ..., \mathbf{r_j}\sigma_j, ..., \mathbf{r_i}\sigma_i, ...)
+\end{equation}
+The requirement shown in Eq. \ref{antisym} can be satisfied by using the Slater determinant as the trial wavefunction, as shown in Eq. \ref{Slater_det}, where N is the number of electrons.
+\begin{equation}\label{Slater_det}
+\Psi(\mathbf{r_1}\sigma_1, ..., \mathbf{r_N}\sigma_N) = \frac{1}{\sqrt{N!}} \begin{bmatrix}
+\psi_1(\mathbf{r_1}\sigma_1) & \psi_1(\mathbf{r_2}\sigma_2) & \dots & \psi_1(\mathbf{r_N}\sigma_N) \\
+\psi_2(\mathbf{r_1}\sigma_1) & \psi_2(\mathbf{r_2}\sigma_2) & \dots & \psi_2(\mathbf{r_N}\sigma_N) \\
+\vdots & \vdots & \vdots & \vdots \\
+\psi_N(\mathbf{r_1}\sigma_1) & \psi_N(\mathbf{r_2}\sigma_2) & \dots & \psi_N(\mathbf{r_N}\sigma_N) 
+\end{bmatrix}
+\end{equation}
+When using the Slater determinant as the trial wavefunction, each electron is now surrounded by an `exchange hole' in which the probability of finding another electron is very small. The exchange term in the H-F method also cancels the self-interaction in the Hartree potential as a result of the antisymmetry.
+The exchange interaction is a real quantum mechanical effect and must appear in any one-electron model. The H-F method, like the Hartree method, is a mean-field theory and hence the many-body problem is reduced to a one-electron problem where the electron moves in an average field generated by the other electrons \cite{Prasad_ch2}. 
+
+However, the H-F method still neglects Coulomb repulsion correlation effects that arise due to electrons moving in such a way to avoid each other. It includes some correlation effects between parallel spin electrons from the explicit treatment of exchange interactions, but neglects correlations between opposite spin electrons. The Coulomb correlations reduce the exchange interaction between electrons with parallel spins, so the H-F method overestimates the strength of the exchange interaction. The H-F method is better suited to compact systems such as atoms or molecules but describes conduction electrons in solids poorly \cite{Prasad_ch2} and, despite the approximations used, is still very computationally demanding \cite{Prasad_ch1}.
+%$\Psi(3N)$ where n is the number of electrons 
+
+Coulomb correlations can be introduced by using the Configuration Interaction method which involves writing the many-body wavefunction as a weighted sum of H-F wavefunctions for different electronic configurations. This method has been successful for atoms and molecules, but is very difficult to apply for large molecules or solids \cite{Prasad_ch2} and is therefore not used at all in this work where calculations have only been performed for solid-state systems. For solids, density functional theory (DFT) is usually the methodology of choice, which is outlined in the next section.
+
+
+%\subsubsection{Density functional theory (DFT)}
+\subsubsection{Electron density methods}
+
+** See Prasad ch3 **
+
+Plan: Start with Thomas Fermi as first electron density method (with HEG?), then HK formalism, then KS, then LDA and GGA functionals, then lead into hybrid DFT
+
+From Prasad ch1: \cite{Prasad_ch1}
+Hohenberg-Kohn proposed method to handle electron-electron interaction. In this method the ground state electron density, $\rho$, is the key quantity instead of the many-body wavefunction. This reduces the key quantity to be described by 3 degrees of freedom instead of 3N.
+HK1 -- $V_{ext}$ is a functional of ground state $\rho$ therefore $\rho$ is the basic variable in this method
+HK2 -- $E_{tot}$ is minimised for the correct ground state $\rho$ therefore the variational principle can be used to obtain $E_{tot}$
+
+Hohenberg-Kohn theorem (Etot is min for correct GS electron density) gives variational principle as a method to obtain Etot
+
 Starting point: http://iopscience.iop.org/article/10.1238/Physica.Topical.109a00009/pdf
 
-+ Richard Martin Ch6-9
++ York comp QM notes? + Phil Hasnip's notes (focus on ground state at use DFT)
 
-\subsection{Alternative basis sets in DFT}
-Alternative representations of wavefunctions: expressing basis sets as plane waves (VASP) or numeric atom centred orbitals (FHI-aims) or localised gaussian basis sets for molecules. See aims workshop slides (https://th.fhi-berlin.mpg.de/sitesub/meetings/dft-workshop-2015/index.php?n=Meeting.Program). State that both plane waves within the VASP code and NACO within FHI-aims are used in this work.
++ Richard Martin Ch6-9 \cite{RichardMartin_Ch6} \cite{RichardMartin_Ch7} \cite{RichardMartin_Ch8} \cite{RichardMartin_Ch9}
 
-+ Richard Martin Ch12+13
+LDA (good for metals), GGA (improvement but still underestimates band gap... lead into hybrid-DFT section)
 
-\subsection{Hybrid-DFT}\label{hse_theory}
-See hse papers + Richard Martin Ch8
-+ discuss band gap error in standard DFT here?
+See top of Prasad pg 38 - H-F as upperbound of exact GS E (does H-F always overestimate and DFT usually underestimate? Hench hybrids? *Look for plot*)
+
+
+\subsubsection{Hybrid-DFT}\label{hse_theory}
+\begin{itemize}
+\item Discuss band gap error in standard DFT here?
+\item Plot showing under and overshooting of GGA vs HF when discussing mixing?
+\item See hse papers + Richard Martin Ch8 \cite{RichardMartin_Ch8}
+\item Overview of HSE06 functional (inc. long/ short ranged, etc.), state that this is used extensively in this thesis for accurate electronic properties
+\end{itemize}
+
+
+
+\subsection{Implementation for periodic solids}
+Introduce PBCs for periodic calculations here and reciprocal space here?? but refer back to theory chapter (See Richard Martin Ch4 \cite{RichardMartin_Ch4} + vacuum gap for slabs + Chris' thesis (nice comment relating waves with associated phase in real space to point in reciprocal space by FT)
+
+\subsubsection{Alternative representations of wavefunctions}
+\begin{itemize}
+\item Basis sets: (see comp QM lecture handouts) expanding the unknown wavefunction as a set of linearly independent known functions (basis set) allows use of linear matrix methods and efficient comp tools (cross ref Adam's thesis?), but there are a number of options for the known functions to use as this basis set. In this work, two different software packages are used for electronic structure calculations, which make use of different functions for their basis sets. These are outlined next along with comments on their relative merits in terms of chemical accuracy and computational efficiency.
+\item See aims workshop slides (https://th.fhi-berlin.mpg.de/sitesub/meetings/dft-workshop-2015/index.php?n=Meeting.Program) + Richard Martin Ch12+13 \cite{RichardMartin_Ch12} \cite{RichardMartin_Ch13}
+\item State that both plane waves within the VASP code and NACO within FHI-aims are used in this work
+\item VASP with plane waves and pseudopotentials (computational efficiency of plane waves and fourier transforms) \cite{RichardMartin_Ch11} + see vasp slides + see Phil Hasnip's slides
+\item FHI-aims with numeric atom centred orbitals: scalability for modern HPC multiple processor hardware, show plot like MRes quantum chem module plot of std radial * angular component, tabulated flexible shape for radial component of FHI-aims basis sets + see FHI-aims slides
+\item FHI-aims vs. Gaussian basis sets, should allow for simultaneous convergence efficiency and high accuracy?
+\end{itemize}
+
+\subsubsection{The chemical accuracy and computational efficiency compromise}
+\begin{itemize}
+\item Note that all representations are approximations because may need an infinite set to completely represent it (see Adam's thesis), in practise must truncate and check for convergence in properties of interest w.r.t basis set truncation (ENMAX for pseudopotentials and tiers in FHI-aims)
+\item Converging basis set size and \textit{k}-grid density for Brillouin zone sampling w.r.t. property of interest
+\item Note that certain properties are more sensitive, e.g. optical dielectric function to k-grid density than geometry optimisation, hence importance of testing for each property
+\item Add k-point sampling stuff from transfer report appendix?
+\end{itemize}
+
+\subsubsection{Iterative electronic and geometric optimisation}
+\begin{itemize}
+\item Nod again to properties from GS? + finding min E electronic and ionic configuration of the solid
+\item Electronic and geometric convergence and solving iteratively
+\item Geometry optimization and potential energy landscape minima (see Adam and Jess' theses?)
+\item See transfer report appendix? + check against theory section
+\item Converging scf electronic cycle (inc. figure)
+\end{itemize}
+
+
 
 \section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
 The electronic band structure of a semiconductor provides a rich source of information for how the material may perform as a solar cell absorber layer. When a solid forms a regular crystal the energies of the bands, i.e. the band structure, can be predicted exactly as discussed in section \ref{BandTheorySection} from electronic structure calculations \cite{Nelson3}. However, in reality, absolutely perfect systems do not exist. The energy cost associated with the creation of a defect often can be countered by the increase in the configurational entropy of the system \cite{AshcroftMermin_general}.
@@ -599,6 +737,8 @@ As discussed in section \ref{crystal_models}, models of crystalline solids are b
 The supercell method is a common approach to simulate defects in the dilute limit and is the method that is utilised in section \ref{sulfosalt_defects}. This approach involves repeating the primitive unit cell a finite number of times in 3D and then embedding the defect within this larger unit cell so that the defect will be separated from its periodic image by a greater distance. If this distance is sufficiently large, the properties of an isolated defect can be represented by this model \cite{freysoldt_rev}.
 
 \subsubsection{Charge neutral point defects}
+** Ref Zhang and Northup (1991) for formation E eqn's? - double check! **\\
+
 The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell of the host crystal and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to ($n_i > 0 $) or removed from ($n_i < 0$) the system when the defect is formed and $\mu_i$ is the chemical potential of species i. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species.
 \begin{equation}\label{defect_neutral}
 \Delta H_{D,q=0} = E_{D,q=0} - E_{host} - \sum_i n_i \mu_i
@@ -739,21 +879,6 @@ E_{BF} = - \sum_{n,k} w_k (1 - \eta_{n,k}) [e_{n,k} - \tilde{e}_v]
 However, if the intention is to simulate defects in highly doped semiconductors, the corrections in Eq. \ref{band_filling_donor} and \ref{band_filling_acceptor} should be zero or at least smaller since the formation of defect bands with band dispersion and heavy band filling should be present in a system where defect-defect interactions are a correct physical representation \cite{CIS_defects}.
 
 
-\subsection{Benchmarking point defect formation energies}\label{defect_benchmark}
-
-%Or rename `Benchmarking potential alignment for defect supercells'???
-
-Post-processing tools for the implementation of finite-size correction schemes to defect formation energies were integrated with the electronic structure code FHI-aims \cite{FHI-aims} for the study presented in section \ref{sulfosalt_defects}. This therefore provided an opportunity to benchmark defect formation energies calculated by different electronic structure codes with different post-processing finite-size correction schemes applied…
-
-Nod to delta project DFT benchmark for bulk \cite{delta_project_paper} and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells.
-
-Introduce paper for FHI-aims defects benchmark study with Volker and Tong + add statement on personal contribution?\\
-
-Possibly different treatment for `jellium' than VASP and hence different correction? no pa??\\
-
-Note from Komsa paper: Possibly contributions to need for pa from variations in the average value of the local pseudopotential which depends on the number and kind of atoms in the supercell, would not also be present in FHI-aims?
-
-
 \section{Modeling imperfect solids: Extended antisite defects}\label{MC}
 In this section defects and disorder is considered on much larger scales than is computationally feasible from electronic structure calculations.
 Here, the fundamentals of utilising the Monte Carlo method to describe thermodynamic substitutional disorder are outlined. This is equivalent to investigating interacting extended antisite defects at higher defect concentrations than would be considered as the `dilute', non-interacting limit. This method is applied to study Cu-Zn disorder in {\CZTS} in \autoref{chap:CZTS}.
@@ -887,7 +1012,7 @@ Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions wi
 
 
 
-\section{Thermodynamically limited Cu-Zn order in {\CZTS}}\label{CZTS_MC}
+\section{Disorder processes during the Cu-Zn order-disorder transition in {\CZTS} from Monte Carlo simulations}\label{CZTS_MC}
 For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.\\
@@ -899,7 +1024,10 @@ Introductory paragraph + Eris paper1 (methodology) + include paper SI? (or put i
 
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
-\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
+%\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
+\section{Electronic band tailing in {\CZTS} from Cu-Zn disorder}
+
+** Band tailing letter here **\\
 
 Although $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects have been predicted to produce only shallow defect levels within the band gap of the material \cite{defects_Chen}, their presence could be linked to band tailing in the material, as described in section \ref{defects_impact}. 
 Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge, such as that shown in Fig. \ref{pankove_elec_fluc}. Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. 
@@ -995,6 +1123,21 @@ Although it may be possible to achieve photovoltaic energy conversion without a 
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts_band_alignment_draft.pdf}
 
+\section{Benchmarking point defect formation energies}\label{defect_benchmark}
+
+Or rename benchmarking potential alignment for defect formation energies?? (If this work is using FNV in coFFEE, validate against VASP and quantumESPRESSO and then compare to GaAs cluster? (When introducing, refer back to methods section outlining finite-size correction, highlight need for reliable defect formation energies, read Thomas Durrant's paper that looks into different contributions to and check there for ref for inconsistent defect E's in the literature?)\\
+
+Post-processing tools for the implementation of finite-size correction schemes to defect formation energies were integrated with the electronic structure code FHI-aims \cite{FHI-aims} for the study presented in section \ref{sulfosalt_defects}. This therefore provided an opportunity to benchmark defect formation energies calculated by different electronic structure codes with different post-processing finite-size correction schemes applied…
+
+Nod to delta project DFT benchmark for bulk \cite{delta_project_paper} and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells.
+
+Introduce paper for FHI-aims defects benchmark study with Volker and Tong + add statement on personal contribution?\\
+
+Possibly different treatment for `jellium' than VASP and hence different correction? no pa??\\
+
+Note from Komsa paper: Possibly contributions to need for pa from variations in the average value of the local pseudopotential which depends on the number and kind of atoms in the supercell, would not also be present in FHI-aims?
+
+
 \section{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
 State that we expect extended cation disorder to be present to a lesser extent than in CZTS due to less chemical similarity? Also that understanding defect physics from a point-defect perspective is an important foundation to build for understanding the complicate defect physics of a multi-component material? e.g. next step would be pairs, etc.
 
@@ -1034,7 +1177,7 @@ Taken from old thesis plan:
 \end{itemize}
 
 \section{Cu-Zn disorder in {\CZTS} solar cells}
-State that we predict a minimum of 10\% Cu-Zn disorder from our thermodynamic MC model, even if perfect processing conditions (i.e. no kinetic limitations on ordering). However, the exact impact of Cu-Zn disorder on the performance is not yet understood. Possible extensions with MC model to explore the impact: band tails from Eris potentials and Sn defect formation energy in the presence of high levels of Cu-Zn disorder. If Cu-Zn disorder is found to be detrimental to performance, could also adapt our MC model to simulate off-stoichiometric CZTS to see if Cu-Zn disorder could be suppressed in these systems.
+Summarise results of paper1 + could also adapt our MC model to simulate off-stoichiometric CZTS to see if Cu-Zn disorder could be suppressed in these systems. Summarise results of band tailing letter. If band tails from Cu-Zn disorder are small, maybe here would be a good point to mention possibility of reduced Sn defect formation energy in regions of inhomogeneous electrostatic potential due to Cu-Zn disorder??
 
 \section{Candidate photoferroic absorbers in solar cells}
 Overview of optical properties predicted in paper1. Opportunity to explore possible FE-PV phenomena in these materials. Suggested device architecture and processing conditions for minimising Voc loss at junctions and deep level defects + overview of expected defect properties of the materials.
