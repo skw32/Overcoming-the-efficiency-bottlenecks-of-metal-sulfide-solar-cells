@@ -588,7 +588,7 @@ When dealing with such systems, the Born-Oppenheimer approximation is almost uni
 When using the Born-Oppenheimer approximation it is also assumed that nuclear motion cannot cause electronic transitions, therefore the electrons will remain in their ground state. There is now no explicit time dependence for the electron density as electrons are assumed to always be in their ground state for the instantaneous ionic configuration and that they transition adiabatically to their ground state for each ionic configuration. This approximation is generally more suitable for semiconductors than for metals as phonon energies are usually less than the energy of the electronic band gap in a semiconductor and hence ionic motion cannot excite electrons to higher energy states \cite{Prasad_ch2}. $\Psi$ for electrons in the system is now no longer a function of t and so it is the solution of the time-independent Schr{\"o}dinger equation for the system of ions and electrons that is of interest and the ionic system can be considered separately from the electronic system which is subjected to the classical electric field of a stationary ionic system.
 %and is only a function of electron coordinates (lowercase r in Eq. \ref{many_SE}).
 
-The general form of a time-independent Schr{\"o}dinger equation is shown in Eq. \ref{TISE}, where H is the Hamiltonian operator used to determine the total energy of a system with the wavefunction $\Psi$. Lowercase \textbf{r} are the electronic coordinates and $\sigma$ is used to denote the spin of electrons, which was omitted in earlier equations for simplicity. The Born-Oppenheimer Hamiltonian for the electrons is shown in Eq. \ref{Born-Opp}, where l are the ionic sites, Z is the nuclear charge, m is the electron mass, i is the index of the electron and j are the indices of all other electrons in the system. The first term is the kinetic energy of the electrons, the second term is the Coulomb attraction between electrons and nuclei and the third term is the Coulomb repulsion between different electrons \cite{Prasad_ch2}.
+The general form of a time-independent Schr{\"o}dinger equation for the electronic system is shown in Eq. \ref{TISE}, where H is the Hamiltonian operator used to determine the total energy of a system with the wavefunction $\Psi$. Lowercase \textbf{r} are the electronic coordinates and $\sigma$ is used to denote the spin of electrons, which was omitted in earlier equations for simplicity. The Born-Oppenheimer Hamiltonian for the electrons is shown in Eq. \ref{Born-Opp}, where l are the ionic sites, Z is the nuclear charge, m is the electron mass, i is the index of the electron and j are the indices of all other electrons in the system. The first term is the kinetic energy of the electrons, the next terms are related to the potential energy of the electrons. The second term is the Coulomb attraction between electrons and static nuclei and the third term is the Coulomb repulsion between different electrons \cite{Prasad_ch2}.
 \begin{equation}\label{TISE}
 H\Psi(\mathbf{r_1}, ..., \mathbf{r_N}, \sigma_1, ..., \sigma_N) = E\Psi(\mathbf{r_1}, ..., \mathbf{r_N}, \sigma_1, ..., \sigma_N)
 \end{equation}
@@ -608,7 +608,7 @@ As electrons are considered to be independent, the many-body wavefunction can be
 \begin{equation}\label{Hartree}
 \Psi_H = \psi_1(\mathbf{r_1}, \sigma_1) \psi_2(\mathbf{r_2}, \sigma_2) ... \psi_N(\mathbf{r_N}, \sigma_N)
 \end{equation}
-To solve the many-body Schr{\"o}dinger equation, the Hartree method pioneered the self-consistent field method \cite{RichardMartin_Ch1}. Firstly, the variational principle is invoked to set up an inequality for the groundstate energy, $E_0$, of the system (i.e. the minimum total energy) to find an approximate value of $E_0$ and the set of $\psi_i$, this is shown in Eq. \ref{var_princip}, where the middle term is the expectation value of a state of the system described by the many-body wavefunction $\Psi$. Many properties of interest can be determined from $E_0$ of the system and from changes in the energy of the system in response to particular perturbations. $E_0$ can be used to determine various structural properties such as equilibrium bond lengths, surface configurations and the most likely defect structures in a material.
+To solve the many-body Schr{\"o}dinger equation, the Hartree method pioneered the self-consistent field method \cite{RichardMartin_Ch1}. Firstly, the variational principle is invoked to set up an inequality for the groundstate energy, $E_0$, of the system (i.e. the minimum total energy) to find an approximate value of $E_0$ and the corresponding set of $\psi_i$. This is shown in Eq. \ref{var_princip} where the middle term is the expectation value of a state of the system described by the many-body wavefunction $\Psi$. Many properties of interest can be determined from $E_0$ of the system and from changes in the energy of the system in response to particular perturbations. $E_0$ can be used to determine various structural properties such as equilibrium bond lengths, surface configurations and the most likely defect structures in a material.
 \begin{equation}\label{var_princip}
 E = \braket{\Psi | H | \Psi } \geq E_0
 \end{equation}
@@ -640,9 +640,9 @@ The requirement shown in Eq. \ref{antisym} can be satisfied by using the Slater 
 \end{bmatrix}
 \end{equation}
 When using the Slater determinant as the trial wavefunction, each electron is now surrounded by an `exchange hole' in which the probability of finding another electron is very small. The exchange term in the H-F method also cancels the self-interaction in the Hartree potential as a result of the antisymmetry.
-The exchange interaction is a real quantum mechanical effect and must appear in any one-electron model. The H-F method, like the Hartree method, is a mean-field theory and hence the many-body problem is reduced to a one-electron problem where the electron moves in an average field generated by the other electrons \cite{Prasad_ch2}. 
-
-However, the H-F method still neglects Coulomb repulsion correlation effects that arise due to electrons moving in such a way to avoid each other. It includes some correlation effects between parallel spin electrons from the explicit treatment of exchange interactions, but neglects correlations between opposite spin electrons. The Coulomb correlations reduce the exchange interaction between electrons with parallel spins, so the H-F method overestimates the strength of the exchange interaction. The H-F method is better suited to compact systems such as atoms or molecules but describes conduction electrons in solids poorly \cite{Prasad_ch2} and, despite the approximations used, is still very computationally demanding \cite{Prasad_ch1}.
+%The exchange interaction is a real quantum mechanical effect and must appear in any one-electron model. The H-F method, like the Hartree method, is a mean-field theory and hence the many-body problem is reduced to a one-electron problem where the electron moves in an average field generated by the other electrons \cite{Prasad_ch2}. 
+However, the H-F method still neglects Coulomb repulsion correlation effects that arise due to electrons moving in such a way to avoid each other. It includes some correlation effects between parallel spin electrons from the explicit treatment of exchange interactions, but neglects correlations between opposite spin electrons. 
+The exchange term tends to lower the total energy of the system due to the tendency to keep two electrons with the same spin apart, however, the Coulomb correlations reduce the exchange interaction between electrons with parallel spins, so the H-F method overestimates the strength of the exchange interaction. The H-F method is better suited to compact systems such as atoms or molecules but describes conduction electrons in solids poorly \cite{Prasad_ch2} and, despite the approximations used, is still very computationally demanding \cite{Prasad_ch1}.
 %$\Psi(3N)$ where n is the number of electrons 
 
 Coulomb correlations can be introduced by using the Configuration Interaction method which involves writing the many-body wavefunction as a weighted sum of H-F wavefunctions for different electronic configurations. This method has been successful for atoms and molecules, but is very difficult to apply for large molecules or solids \cite{Prasad_ch2} and is therefore not used at all in this work where calculations have only been performed for solid-state systems. For solids, density functional theory (DFT) is usually the methodology of choice, which is outlined in the next section.
@@ -651,42 +651,77 @@ Coulomb correlations can be introduced by using the Configuration Interaction me
 %\subsubsection{Density functional theory (DFT)}
 \subsubsection{Electron density methods}
 
-** See Prasad ch3 **
+The essence of density functional theory (DFT) is to write the total energy as functional of a simpler quantity to provide a more feasible approach to solving the many-body Schr{\"o}dinger equation. The methods described above solve the many-body Schr{\"o}dinger equation by approximating the many-body wavefunction, $\Psi$, which involves the coordinates of all electrons in the system and therefore is a function of 3N variables, where N is the number of electrons in the system which is typically large for most systems of interest. If the system is instead described by the electron density, n(\textbf{r}), instead of $\PSi$ the key quantity in the equation would instead be a function of 3 variables \cite{Prasad_ch3}.
 
-Plan: Start with Thomas Fermi as first electron density method (with HEG?), then HK formalism, then KS, then LDA and GGA functionals, then lead into hybrid DFT
+The earliest electron density method was the Thomas-Fermi theory proposed in 1927 \cite{Thomas-Fermi_1, Thomas-Fermi_2}. In the original method, the kinetic energy of the system is approximated as an explicit functional of the electron density, simplified to a non-interacting homogeneous electron gas with density equal to the local density at any given point.
+However, approximations used in this method are too crude to account for many essential physical and chemical aspects of matter such as the electronic shell structures of atoms and the binding of molecules \cite{RichardMartin_Ch6}.
 
-From Prasad ch1: \cite{Prasad_ch1}
-Hohenberg-Kohn proposed method to handle electron-electron interaction. In this method the ground state electron density, $\rho$, is the key quantity instead of the many-body wavefunction. This reduces the key quantity to be described by 3 degrees of freedom instead of 3N.
-HK1 -- $V_{ext}$ is a functional of ground state $\rho$ therefore $\rho$ is the basic variable in this method
-HK2 -- $E_{tot}$ is minimised for the correct ground state $\rho$ therefore the variational principle can be used to obtain $E_{tot}$
+In 1964 Hohenberg and Kohn provided two theorems (and corresponding proofs) which formulated DFT as an exact theory of many-body systems \cite{hohenberg_kohn1964}. The ansatz provided by Kohn and Sham a year later \cite{Kohn_Sham1965} then allowed for the construction of useful, approximate ground state functionals for real systems of many electrons. Firstly, the two Hohenberg-Kohn theorems are as follows:
+\begin{enumerate}
+\item The external potential, $V_{ext}(\mathbf{r})$, of a system of interacting electrons in an external potential, $V_{ext}(\mathbf{r})$, is a unique functional of the ground state electron density, $n(\mathbf{r})$. The total ground state energy, E, of a many-electron system therefore is also a unique functional of $n(\mathbf{r})$, E[n(\textbf{r})].
+\item The total energy functional, E[n(\textbf{r})], for the total energy has a minimum equal to the ground state energy at the ground state electron density. 
+\end{enumerate}
+Combining both Hohenberg-Kohn theorems says that the ground state energy of a system can be determined from the unique ground state electron density by minimising the energy functional, E[n(\textbf{r})], with respect to the electron density. However, this does not yet tell us anything about the form of E[n(\textbf{r})]. 
 
-Hohenberg-Kohn theorem (Etot is min for correct GS electron density) gives variational principle as a method to obtain Etot
+The approach proposed by Kohn and Sham in 1965 involves replacing the original interacting many-body problem by an auxiliary system that can be solved more easily where there are independent particles, but an interacting density. The assumption made here is that the ground state density of the original interacting system is the same as that of some auxiliary non-interacting system, where all complex many-body interaction are incorporated into an exchange-correlation functional of the electron density, $E_{xc}[n(\mathbf{r})]$. When the Kohn-Sham equations are solved, the ground state electron density of the original system is then determined, with accuracy limited only by the approximate form of $E_{xc}[n(\mathbf{r})]$ \cite{RichardMartin_Ch7}.
+
+Using the Born-Oppenheimer approximation, E[n(\textbf{r})] can be expressed as shown in Eq. \ref{E_functional} where the first term is the external potential from the interaction between electrons and nuclei and the second term is usually denoted as F[n(\textbf{r})]. This term is a functional of the electrons only where T is the functional for the electron kinetic energy and $V_{EE}$ is for electron-electron interactions.
+\begin{equation}\label{E_functional}
+E[n(\mathbf{r})] = \braket{\Psi | V_{ext} | \Psi} +  \braket{\Psi | T + V_{EE} | \Psi} = \braket{\Psi | V_{ext} | \Psi} + F[n(\mathbf{r})]
+\end{equation}
+F[n(\textbf{r})] can be split into three parts as shown in Eq. \ref{F_functional} where $T[n(\mathbf{r})]$ is the kinetic energy of a non-interacting electron gas of density $n(\mathbf{r})$ in its ground state, the second term is the classical Coulomb repulsion energy between the electrons and the last term then contains all of the many-body effects of the electronic system, including: exchange, correlation and part of the total kinetic energy \cite{Prasad_ch3}.
+\begin{equation}\label{F_functional}
+F[n(\mathbf{r})] = T[n(\mathbf{r})] + \frac{e^2}{2}\int \int \frac{1}{4\pi \epsilon_0}\frac{n(\mathbf{r})n(\mathbf{r^{\prime}})}{|\mathbf{r} - \mathbf{r^{\prime}}|}d^3rd^3r^{\prime} + E_{xc}[n(\mathbf{r})]
+\end{equation}
+
+... however the form of $E_{xc}[n]$ is unknown
+Below the Kohn-Sham equations are outlined ... KS orbitals ... solved self-consistently ...
+(see Prasad Ch3)
+
+\cite{RichardMartin_Ch6}
+\cite{Prasad_ch3}
+
+
+
+** See comp QM L8 + Prasad ch3 **
+
++ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
 
 Starting point: http://iopscience.iop.org/article/10.1238/Physica.Topical.109a00009/pdf
+(Good for original citations!)
 
-+ York comp QM notes? + Phil Hasnip's notes (focus on ground state at use DFT)
 
-+ Richard Martin Ch6-9 \cite{RichardMartin_Ch6} \cite{RichardMartin_Ch7} \cite{RichardMartin_Ch8} \cite{RichardMartin_Ch9}
 
-LDA (good for metals), GGA (improvement but still underestimates band gap... lead into hybrid-DFT section)
+\subsubsection{Exchange correlation functionals, $E_{xc}[n(\textbf{r})]$}
+
+LDA (good for metals)
+As simple as the Hartree theory, but gives much better results than H-F theory due to the inclusion of both exchange and correlation fairly accurately (whereas the H-F theory includes exchange exactly but neglects correlation completely) \cite{Prasad_ch3}.
+
+GGA (improvement but still underestimates band gap... lead into hybrid-DFT section)
 
 See top of Prasad pg 38 - H-F as upperbound of exact GS E (does H-F always overestimate and DFT usually underestimate? Hench hybrids? *Look for plot*)
 
++ cross-ref functional sections in Adam, Chris and Jess' theses
+
 
 \subsubsection{Hybrid-DFT}\label{hse_theory}
+offline sources for flight: HSE paper (x2?) + get plot first
 \begin{itemize}
 \item Discuss band gap error in standard DFT here?
+\item Std DFT underestimates, H-F overestimates due to absense of correlation (see ref 164 in Jess' thesis)
 \item Plot showing under and overshooting of GGA vs HF when discussing mixing?
+\item See hybrid functional sections in Adam and Chris' theses
 \item See hse papers + Richard Martin Ch8 \cite{RichardMartin_Ch8}
 \item Overview of HSE06 functional (inc. long/ short ranged, etc.), state that this is used extensively in this thesis for accurate electronic properties
 \end{itemize}
-
-
 
 \subsection{Implementation for periodic solids}
 Introduce PBCs for periodic calculations here and reciprocal space here?? but refer back to theory chapter (See Richard Martin Ch4 \cite{RichardMartin_Ch4} + vacuum gap for slabs + Chris' thesis (nice comment relating waves with associated phase in real space to point in reciprocal space by FT)
 
 \subsubsection{Alternative representations of wavefunctions}
+**Check have slides for offline work **
+
+Although the key quantity in standard DFT methods is the electron density as opposed to the many-body wavefunction, the former is expressed in terms of the latter, as was shown in Eq. ??? **(n(r) = sum over conj psi)**. There are a number of different options for how to mathematically represent the wavefunction, some of which are outlined below.
 \begin{itemize}
 \item Basis sets: (see comp QM lecture handouts) expanding the unknown wavefunction as a set of linearly independent known functions (basis set) allows use of linear matrix methods and efficient comp tools (cross ref Adam's thesis?), but there are a number of options for the known functions to use as this basis set. In this work, two different software packages are used for electronic structure calculations, which make use of different functions for their basis sets. These are outlined next along with comments on their relative merits in terms of chemical accuracy and computational efficiency.
 \item See aims workshop slides (https://th.fhi-berlin.mpg.de/sitesub/meetings/dft-workshop-2015/index.php?n=Meeting.Program) + Richard Martin Ch12+13 \cite{RichardMartin_Ch12} \cite{RichardMartin_Ch13}
@@ -697,6 +732,7 @@ Introduce PBCs for periodic calculations here and reciprocal space here?? but re
 \end{itemize}
 
 \subsubsection{The chemical accuracy and computational efficiency compromise}
+** Check Richard Martin or vasp slides for offline work?? **
 \begin{itemize}
 \item Note that all representations are approximations because may need an infinite set to completely represent it (see Adam's thesis), in practise must truncate and check for convergence in properties of interest w.r.t basis set truncation (ENMAX for pseudopotentials and tiers in FHI-aims)
 \item Converging basis set size and \textit{k}-grid density for Brillouin zone sampling w.r.t. property of interest
@@ -712,6 +748,7 @@ Introduce PBCs for periodic calculations here and reciprocal space here?? but re
 \item See transfer report appendix? + check against theory section
 \item Converging scf electronic cycle (inc. figure)
 \end{itemize}
+
 
 
 
