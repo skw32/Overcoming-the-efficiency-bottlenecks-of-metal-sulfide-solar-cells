@@ -651,19 +651,19 @@ Coulomb correlations can be introduced by using the Configuration Interaction me
 %\subsubsection{Density functional theory (DFT)}
 \subsubsection{Electron density methods}
 
-The essence of density functional theory (DFT) is to write the total energy as functional of a simpler quantity to provide a more feasible approach to solving the many-body Schr{\"o}dinger equation. The methods described above solve the many-body Schr{\"o}dinger equation by approximating the many-body wavefunction, $\Psi$, which involves the coordinates of all electrons in the system and therefore is a function of 3N variables, where N is the number of electrons in the system which is typically large for most systems of interest. If the system is instead described by the electron density, n(\textbf{r}), instead of $\PSi$ the key quantity in the equation would instead be a function of 3 variables \cite{Prasad_ch3}.
+The essence of density functional theory (DFT) is to write the total energy as functional of a simpler quantity to provide a more feasible approach to solving the many-body Schr{\"o}dinger equation. The methods described above solve the many-body Schr{\"o}dinger equation by approximating the many-body wavefunction, $\Psi$, which involves the coordinates of all electrons in the system and therefore is a function of 3N variables, where N is the number of electrons in the system which is typically large for most systems of interest. If the system is instead described by the electron density, n(\textbf{r}), instead of $\Psi$ the key quantity in the equation would instead be a function of 3 variables \cite{Prasad_ch3}.
 
 The earliest electron density method was the Thomas-Fermi theory proposed in 1927 \cite{Thomas-Fermi_1, Thomas-Fermi_2}. In the original method, the kinetic energy of the system is approximated as an explicit functional of the electron density, simplified to a non-interacting homogeneous electron gas with density equal to the local density at any given point.
-However, approximations used in this method are too crude to account for many essential physical and chemical aspects of matter such as the electronic shell structures of atoms and the binding of molecules \cite{RichardMartin_Ch6}.
+However, approximations used in this method are too crude to account for many essential physical and chemical aspects of matter, such as the electronic shell structures of atoms and the binding of molecules \cite{RichardMartin_Ch6}.
 
 In 1964 Hohenberg and Kohn provided two theorems (and corresponding proofs) which formulated DFT as an exact theory of many-body systems \cite{hohenberg_kohn1964}. The ansatz provided by Kohn and Sham a year later \cite{Kohn_Sham1965} then allowed for the construction of useful, approximate ground state functionals for real systems of many electrons. Firstly, the two Hohenberg-Kohn theorems are as follows:
 \begin{enumerate}
 \item The external potential, $V_{ext}(\mathbf{r})$, of a system of interacting electrons in an external potential, $V_{ext}(\mathbf{r})$, is a unique functional of the ground state electron density, $n(\mathbf{r})$. The total ground state energy, E, of a many-electron system therefore is also a unique functional of $n(\mathbf{r})$, E[n(\textbf{r})].
 \item The total energy functional, E[n(\textbf{r})], for the total energy has a minimum equal to the ground state energy at the ground state electron density. 
 \end{enumerate}
-Combining both Hohenberg-Kohn theorems says that the ground state energy of a system can be determined from the unique ground state electron density by minimising the energy functional, E[n(\textbf{r})], with respect to the electron density. However, this does not yet tell us anything about the form of E[n(\textbf{r})]. 
+Combining both Hohenberg-Kohn theorems says that the ground state energy of a system can be determined from the unique ground state electron density by minimising the energy functional, E[n(\textbf{r})], with respect to the electron density, n(\textbf{r}). However, this does not yet tell us anything about the form of E[n(\textbf{r})]. 
 
-The approach proposed by Kohn and Sham in 1965 involves replacing the original interacting many-body problem by an auxiliary system that can be solved more easily where there are independent particles, but an interacting density. The assumption made here is that the ground state density of the original interacting system is the same as that of some auxiliary non-interacting system, where all complex many-body interaction are incorporated into an exchange-correlation functional of the electron density, $E_{xc}[n(\mathbf{r})]$. When the Kohn-Sham equations are solved, the ground state electron density of the original system is then determined, with accuracy limited only by the approximate form of $E_{xc}[n(\mathbf{r})]$ \cite{RichardMartin_Ch7}.
+The approach proposed by Kohn and Sham in 1965 involves replacing the original interacting many-body problem by an auxiliary system that can be solved more easily. This auxiliary system involves independent electrons, but an interacting density. The assumption made here is that the ground state density of the original interacting system is the same as that of some auxiliary non-interacting system, where all complex many-body interaction are incorporated into an exchange-correlation functional of the electron density, $E_{xc}[n(\mathbf{r})]$. When the Kohn-Sham equations are solved, the ground state electron density of the original system is then determined, with accuracy limited only by the approximate form of $E_{xc}[n(\mathbf{r})]$ \cite{RichardMartin_Ch7}.
 
 Using the Born-Oppenheimer approximation, E[n(\textbf{r})] can be expressed as shown in Eq. \ref{E_functional} where the first term is the external potential from the interaction between electrons and nuclei and the second term is usually denoted as F[n(\textbf{r})]. This term is a functional of the electrons only where T is the functional for the electron kinetic energy and $V_{EE}$ is for electron-electron interactions.
 \begin{equation}\label{E_functional}
@@ -673,29 +673,42 @@ F[n(\textbf{r})] can be split into three parts as shown in Eq. \ref{F_functional
 \begin{equation}\label{F_functional}
 F[n(\mathbf{r})] = T[n(\mathbf{r})] + \frac{e^2}{2}\int \int \frac{1}{4\pi \epsilon_0}\frac{n(\mathbf{r})n(\mathbf{r^{\prime}})}{|\mathbf{r} - \mathbf{r^{\prime}}|}d^3rd^3r^{\prime} + E_{xc}[n(\mathbf{r})]
 \end{equation}
+Substituting Eq. \ref{F_functional} into Eq. \ref{E_functional}, Eq. \ref{E_functional} can be re-written as shown in Eq. \ref{E_functional_2}. If Eq. \ref{E_functional_2} is minimised subject to the constraint that the integral of the electron density over the whole system volume is equal to the number of electrons in the system (Eq. \ref{n_constraint}), this gives Eq. \ref{E_func_min}, where the third term in the Hartree potential ($V_H$), the fourth term is the exchange-correlation potential ($V_{xc}$) and the fifth term is the Lagrange multiplier.
+\begin{equation}\label{E_functional_2}
+E[n(\mathbf{r})] = \int V_{ext}(\mathbf{r})n(\mathbf{r})d^3r + T[n(\mathbf{r})] + \frac{e^2}{2}\int \int \frac{1}{4\pi \epsilon_0}\frac{n(\mathbf{r})n(\mathbf{r^{\prime}})}{|\mathbf{r} - \mathbf{r^{\prime}}|}d^3rd^3r^{\prime} + E_{xc}[n(\mathbf{r})]
+\end{equation}
+\begin{equation}\label{n_constraint}
+\int n(\mathbf{r})d^3r = N
+\end{equation}
+\begin{equation}\label{E_func_min}
+\frac{\partial T[n(\mathbf{r})]}{\partial n(\mathbf{r})} + V_{ext}(\mathbf{r}) + \int \frac{e^2}{4\pi \epsilon_0}\frac{n(\mathbf{r^{\prime}})}{|(\mathbf{r})-(\mathbf{r^{\prime}})|}d^3\mathbf{r^{\prime}} + \frac{\partial E_{xc}[n(\mathbf{r})]}{\partial n(\mathbf{r})} - \mu = 0
+\end{equation}
+Kohn and Sham noted that, apart from the inclusion of E[n(\textbf{r})], Eq. \ref{E_functional} is identical to Hartree's expression for energy. Without the corresponding term in Eq. \ref{E_func_min}, $V_{ext}(\mathbf{r})$), this could be solved similarly to in the Hartree method by using the substitution in Eq. \ref{n_wavefunc} and solving Eq. \ref{KS_Hartree}.
+\begin{equation}\label{n_wavefunc}
+n(\mathbf{r}) = \sum^N_{i=1} |\psi_i(\mathbf{r})|^2
+\end{equation}
+\begin{equation}\label{KS_Hartree}
+\left( -\frac{\hbar^2}{2m_e}\nabla^2 + V_{ext}(\mathbf{r}) + V_H(\mathbf{r}) \right) \Psi_i(\mathbf{r}) = \epsilon_i \Psi_i(\mathbf{r})  
+\end{equation}
+If n(\textbf{r}) can be defined in terms of one-electron orbitals as in Eq. \ref{n_wavefunc} but by also including $V_{xc}(\mathbf{r})$ through an effective potential, $V_{eff}(\mathbf{r})$, as shown in Eq. \ref{KS_pot}, then the Kohn-Sham (KS) equations shown in Eq. \ref{KS_eq} can be solved self-consistently, analogously to solving Eq. \ref{KS_Hartree} in the Hartree method.
+\begin{equation}\label{KS_pot}
+V_{eff}(\mathbf{r}) = V_{ext}(\mathbf{r}) + V_H(\mathbf{r}) + V_{xc}(\mathbf{r})
+\end{equation}
+\begin{equation}\label{KS_eq}
+\left( -\frac{\hbar^2}{2m_e}\nabla^2 + V_{eff}(\mathbf{r}) \right) \Psi_i(\mathbf{r}) = \epsilon_i \Psi_i(\mathbf{r})
+\end{equation}
+The set of fictitious, non-interacting one-electron wavefunctions in Eq. \ref{n_wavefunc} are called the KS orbitals. However, these do not correspond to the physical atomic orbitals of the system. The KS orbitals are used to reproduce the correct ground state electron density when mapping the interacting electron system onto an auxiliary system of independent particles, which move in the KS potential from Eq. \ref{KS_pot}. Although solving Eq. \ref{KS_eq} is very similar to the Hartree method and reduces the many-electron problem to a set of one-electron problems, unlike the Hartree or H-F methods, DFT includes the effects of electron correlations as well as exchange because of the $V_{xc}(\mathbf{r})$ term. While the H-F method treats exchange exactly, it neglects correlations completely. The form of $V_{xc}(\mathbf{r})$ is not known therefore some approximation has to be made for this function. Exchange and correlation are both included in DFT, but only approximately. However, reasonable accuracy has been achieved with these approximate forms \cite{Prasad_ch3}. In the next section common approximations used in DFT will be outlined and those utilised in this work will be highlighted.
 
-... however the form of $E_{xc}[n]$ is unknown
-Below the Kohn-Sham equations are outlined ... KS orbitals ... solved self-consistently ...
-(see Prasad Ch3)
-
-\cite{RichardMartin_Ch6}
-\cite{Prasad_ch3}
-
-
-
-** See comp QM L8 + Prasad ch3 **
-
-+ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
-
-Starting point: http://iopscience.iop.org/article/10.1238/Physica.Topical.109a00009/pdf
-(Good for original citations!)
+%Starting point: http://iopscience.iop.org/article/10.1238/Physica.Topical.109a00009/pdf
+%(Good for original citations!)
 
 
 
 \subsubsection{Exchange correlation functionals, $E_{xc}[n(\textbf{r})]$}
 
++ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
+
 LDA (good for metals)
-As simple as the Hartree theory, but gives much better results than H-F theory due to the inclusion of both exchange and correlation fairly accurately (whereas the H-F theory includes exchange exactly but neglects correlation completely) \cite{Prasad_ch3}.
 
 GGA (improvement but still underestimates band gap... lead into hybrid-DFT section)
 
