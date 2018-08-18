@@ -595,7 +595,7 @@ H\Psi(\mathbf{r_1}, ..., \mathbf{r_N}, \sigma_1, ..., \sigma_N) = E\Psi(\mathbf{
 \begin{equation}\label{Born-Opp}
 H = - \sum_i \frac{\hbar^2}{2m}\nabla_i^2 - \frac{1}{4 \pi \epsilon_0}\sum_i \sum_l \frac{Ze^2}{|\mathbf{r_i}-\mathbf{R_l}|} + \frac{1}{8 \pi \epsilon_0} \sum_{ij, i \neq j}\frac{e^2}{|\mathbf{r_i}-\mathbf{r_j}|}
 \end{equation}
-Although we can write out the electron Hamiltonian as shown above, we do not know the exact form of the many-body wavefunction in Eq. \ref{TISE}. The third term in the expression for the Hamiltonian, the summation of electron-electron interactions in the system, is the cause of a dramatic rise in computational expense as the system size (and hence number of interacting electrons) increases. In the next section various approaches that have been developed to treat electron-electron interactions are outlined and those utilised in this work are highlighted.
+Although we can write out the electron Hamiltonian as shown above, we do not know the exact form of the many-body wavefunction in Eq. \ref{TISE}. The third term in the expression for the Hamiltonian, the summation of electron-electron interactions in the system, is the cause of a dramatic rise in computational expense as the system size (and hence number of interacting electrons) increases. In the next section some of the various approaches that have been developed to treat electron-electron interactions are outlined and those utilised in this work are highlighted.
 
 %\subsection{History of electronic structure theory}
 
@@ -704,22 +704,37 @@ The set of fictitious, non-interacting one-electron wavefunctions in Eq. \ref{n_
 
 
 
-\subsubsection{Exchange correlation functionals, $E_{xc}[n(\textbf{r})]$}
+\subsubsection{Exchange-correlation functionals, $E_{xc}[n(\textbf{r})]$}
+In 1965 Kohn and Sham also developed the first approximate form for the exchange-correlation functional, the local density approximation (LDA). In this approximation, it is assumed that the electron density, n(\textbf{r}), varies very slowly in space such that the electron gas in a small volume could be considered as approximately uniform locally, close to the limit of the homogeneous electron gas (HEG) \cite{RichardMartin_Ch8}. This approximation would then allow for the use of the exchange-correlation energy of the HEG to evaluate the form of the exchange-correlation functional, as shown in Eq. \ref{LDA_E_func} where $\epsilon_{xc}(n)$ is the exchange-correlation energy per particle of a uniform gas of density n(\textbf{r}) \cite{Prasad_ch3}. A simple analytic form is known for the exchange energy of the HEG and the correlation energy of the HEG has been calculated using Monte Carlo methods in Ref. \citenum{LDA_HEG} \cite{RichardMartin_Ch8}.
+\begin{equation}\label{LDA_E_func}
+E_{xc}[n(\mathbf{r})] = \int \epsilon_{xc}(n(\mathbf{r}))n(\mathbf{r})d^3r
+\end{equation}
+This approach can also be extended to spin-polarised systems with the localised spin density approximation (LSDA) where there is an unequal number of spin-up and spin-down electrons. In this case, $E_{xc}[n(\mathbf{r})]$ is split into separate parts for the spin-up and spin-down electron densities \cite{Prasad_ch3}.
 
-+ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
+Although the LDA has given remarkably good results for some systems, such as metals where the electron density more closely resembles the HEG, performance is poorer for more inhomogeneous systems, like atoms where the density must continuously approach zero outside of the atom \cite{RichardMartin_Ch8}. The accuracy of the LDA is not sufficient for purposes such as predicting binding energies for chemical reactions \cite{Prasad_ch3}, subsequent works therefore have sought to construct improved functionals. Various Generalised-gradient approximations (GGA) have been developed to improve the predictive power of DFT and various GGA functionals have been constructed with sufficient accuracy to now be utilised by the chemistry community \cite{RichardMartin_Ch8}.
 
-LDA (good for metals)
+Prasad pg 60 for achievements and shortcomings of LDA
 
-GGA (improvement but still underestimates band gap... lead into hybrid-DFT section)
+See ABC of DFT ch16 for intro to GGA functionals and xc hole + c.f. comp QM L8 notes for GGA + RM ch8
 
-See top of Prasad pg 38 - H-F as upperbound of exact GS E (does H-F always overestimate and DFT usually underestimate? Hench hybrids? *Look for plot*)
 
-+ cross-ref functional sections in Adam, Chris and Jess' theses
 
+\cite{Prasad_ch3}
+\cite{RichardMartin_Ch8}
+\cite{ABC_of_DFT}
+
+%+ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
+\begin{itemize}
+\item c.f. the ABC of DFT \cite{ABC_of_DFT}, VASP slides + FHI-aims slides
+\item LDA (good for metals)
+\item GGA (improvement but still underestimates band gap... lead into hybrid-DFT section)
+\item + cross-ref functional sections in Adam and Chris' theses
+\end{itemize}
 
 \subsubsection{Hybrid-DFT}\label{hse_theory}
-offline sources for flight: HSE paper (x2?) + get plot first
+Offline sources for flight: HSE paper (x2), VASP and aims slides + get plot first (e.g. in Arvid's FHI-aims slides, no. 5?) or take from https://pubs.acs.org/doi/pdf/10.1021/ar500021t (in thesis reading dir) or fig 8.3 from Richard Martin and use to discuss underbinding/ overbinding due to exact exchange/ neglecting correlation and improvements from mixing both
 \begin{itemize}
+\item See top of Prasad pg 38 - H-F as upperbound of exact GS E (does H-F always overestimate and DFT usually underestimate? Hence hybrids? *Look for plot*)
 \item Discuss band gap error in standard DFT here?
 \item Std DFT underestimates, H-F overestimates due to absense of correlation (see ref 164 in Jess' thesis)
 \item Plot showing under and overshooting of GGA vs HF when discussing mixing?
@@ -729,11 +744,11 @@ offline sources for flight: HSE paper (x2?) + get plot first
 \end{itemize}
 
 \subsection{Implementation for periodic solids}
+Offline sources for flight: VASP slides, FHI-aims slides + RM + theses
+
 Introduce PBCs for periodic calculations here and reciprocal space here?? but refer back to theory chapter (See Richard Martin Ch4 \cite{RichardMartin_Ch4} + vacuum gap for slabs + Chris' thesis (nice comment relating waves with associated phase in real space to point in reciprocal space by FT)
 
 \subsubsection{Alternative representations of wavefunctions}
-**Check have slides for offline work **
-
 Although the key quantity in standard DFT methods is the electron density as opposed to the many-body wavefunction, the former is expressed in terms of the latter, as was shown in Eq. ??? **(n(r) = sum over conj psi)**. There are a number of different options for how to mathematically represent the wavefunction, some of which are outlined below.
 \begin{itemize}
 \item Basis sets: (see comp QM lecture handouts) expanding the unknown wavefunction as a set of linearly independent known functions (basis set) allows use of linear matrix methods and efficient comp tools (cross ref Adam's thesis?), but there are a number of options for the known functions to use as this basis set. In this work, two different software packages are used for electronic structure calculations, which make use of different functions for their basis sets. These are outlined next along with comments on their relative merits in terms of chemical accuracy and computational efficiency.
@@ -745,10 +760,9 @@ Although the key quantity in standard DFT methods is the electron density as opp
 \end{itemize}
 
 \subsubsection{The chemical accuracy and computational efficiency compromise}
-** Check Richard Martin or vasp slides for offline work?? **
 \begin{itemize}
 \item Note that all representations are approximations because may need an infinite set to completely represent it (see Adam's thesis), in practise must truncate and check for convergence in properties of interest w.r.t basis set truncation (ENMAX for pseudopotentials and tiers in FHI-aims)
-\item Converging basis set size and \textit{k}-grid density for Brillouin zone sampling w.r.t. property of interest
+\item Converging basis set size and \textit{k}-grid density for Brillouin zone sampling w.r.t. property of interest + see Prasad pg 145
 \item Note that certain properties are more sensitive, e.g. optical dielectric function to k-grid density than geometry optimisation, hence importance of testing for each property
 \item Add k-point sampling stuff from transfer report appendix?
 \end{itemize}
