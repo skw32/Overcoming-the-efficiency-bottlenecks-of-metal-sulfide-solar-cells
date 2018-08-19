@@ -705,35 +705,28 @@ The set of fictitious, non-interacting one-electron wavefunctions in Eq. \ref{n_
 
 
 \subsubsection{Exchange-correlation functionals, $E_{xc}[n(\textbf{r})]$}
-In 1965 Kohn and Sham also developed the first approximate form for the exchange-correlation functional, the local density approximation (LDA). In this approximation, it is assumed that the electron density, n(\textbf{r}), varies very slowly in space such that the electron gas in a small volume could be considered as approximately uniform locally, close to the limit of the homogeneous electron gas (HEG) \cite{RichardMartin_Ch8}. This approximation would then allow for the use of the exchange-correlation energy of the HEG to evaluate the form of the exchange-correlation functional, as shown in Eq. \ref{LDA_E_func} where $\epsilon_{xc}(n)$ is the exchange-correlation energy per particle of a uniform gas of density n(\textbf{r}) \cite{Prasad_ch3}. A simple analytic form is known for the exchange energy of the HEG and the correlation energy of the HEG has been calculated using Monte Carlo methods in Ref. \citenum{LDA_HEG} \cite{RichardMartin_Ch8}.
+In 1965 Kohn and Sham also developed the first approximate form for the exchange-correlation functional, the local density approximation (LDA). Due to the explicit separation of the independent particle kinetic energy and long-ranged Hartree terms in Eq. \ref{E_functional_2}, the remaining exchange-correlation energy contributions can be approximated by a local or nearly-local functional of the electron density \cite{RichardMartin_Ch7}. In this approximation, it is assumed that the electron density, n(\textbf{r}), varies very slowly in space such that the electron gas in a small volume could be considered as approximately uniform locally, close to the limit of the homogeneous electron gas (HEG) \cite{RichardMartin_Ch8}. This approximation would then allow for the use of the exchange-correlation energy of the HEG to evaluate the form of the exchange-correlation functional, as shown in Eq. \ref{LDA_E_func} where $\epsilon_{xc}(n)$ is the exchange-correlation energy per particle of a uniform gas of density n(\textbf{r}) \cite{Prasad_ch3}. A simple analytic form is known for the exchange energy of the HEG and the correlation energy of the HEG has been calculated using Monte Carlo methods in Ref. \citenum{LDA_HEG} \cite{RichardMartin_Ch8}.
 \begin{equation}\label{LDA_E_func}
 E_{xc}[n(\mathbf{r})] = \int \epsilon_{xc}(n(\mathbf{r}))n(\mathbf{r})d^3r
 \end{equation}
 This approach can also be extended to spin-polarised systems with the localised spin density approximation (LSDA) where there is an unequal number of spin-up and spin-down electrons. In this case, $E_{xc}[n(\mathbf{r})]$ is split into separate parts for the spin-up and spin-down electron densities \cite{Prasad_ch3}.
 
-Although the LDA has given remarkably good results for some systems, such as metals where the electron density more closely resembles the HEG, performance is poorer for more inhomogeneous systems, like atoms where the density must continuously approach zero outside of the atom \cite{RichardMartin_Ch8}. The accuracy of the LDA is not sufficient for purposes such as predicting binding energies for chemical reactions \cite{Prasad_ch3}, subsequent works therefore have sought to construct improved functionals. Various Generalised-gradient approximations (GGA) have been developed to improve the predictive power of DFT and various GGA functionals have been constructed with sufficient accuracy to now be utilised by the chemistry community \cite{RichardMartin_Ch8}.
+Although the LDA has given remarkably good results for some systems, such as metals where the electron density more closely resembles the HEG, performance is poorer for more inhomogeneous systems, like atoms where the density must continuously approach zero outside of the atom \cite{RichardMartin_Ch8}. The accuracy of the LDA is not sufficient for purposes such as predicting binding energies for chemical reactions \cite{Prasad_ch3}, subsequent works therefore have sought to construct improved functionals. Various Generalised-gradient approximations (GGAs) have been developed to improve the predictive power of DFT and various GGA functionals have been constructed with sufficient accuracy to now be utilised by the chemistry community \cite{RichardMartin_Ch8}. These functionals aim to improve on the assumption that the electron density varies very slowly in space by including not just the electron density at a given location, but also the gradient in the density when approximating $E_{xc}[n(\textbf{r})]$ \cite{Prasad_ch3}.
 
-Prasad pg 60 for achievements and shortcomings of LDA
+A number of different GGA functionals have been developed, some of which are semi-empirical from their use of fits to experimental data. An example of a less empirical functional is the PBE functional where the main parameterisation is in the LDA component and otherwise fundamental physical constants are favoured over empirical fits \cite{PBE}.
+The exact exchange-correlation energy is related to the concept of an `exchange-correlation hole' in which all other electrons are excluded. The integration over this hole in the electron density is equal to one electron, hence the combination of the electron and the exchange-correlation hole gives a net neutral unit. The LDA approximates the exchange-correlation hole to be a sphere, while the inclusion of gradients in the electron density in GGA functionals allows for more elaborate shapes for the exchange-correlation hole \cite{RichardMartin_Ch7}.
+Semi-empirical GGAs can accurately represent small molecules, but usually fail for delocalised electrons in the uniform gas, or in similar simple metals. First-principles numerical GGAs can be constructed from electron density-gradient expansions for the exchange-correlation hole surrounding the electron in a system of slowly varying density with spurious long-range terms cut off to satisfy sum
+rules on the exact hole \cite{PBE}.
+However, accurate atomic exchange energies require violating the gradient expansion for slowly varying densities, which are more appropriate when modelling solids. A gradient expansion that works well for an atomic system is likely to perform poorly for a solid. For this reason an alternative PBE functional has been developed for solids, the PBEsol functional \cite{PBEsol}. In this work the PBEsol functional is often used for obtaining geometries. However, there are still some shortcomings in the simulation of semiconductors for PV applications with semilocal functionals such as PBEsol, a notable issue is the band gap error where the electronic band gap of semiconductors and insulators is often substantially underestimated compared to experimental measurements \cite{band_gap_error}. Significant improvements in the computational prediction of this particular, important material property have been achieved with some `beyond-DFT' methods. One method for this, which is utilised in this work, is hybrid functionals which are outlined in the next section \cite{HSE2}.
 
-See ABC of DFT ch16 for intro to GGA functionals and xc hole + c.f. comp QM L8 notes for GGA + RM ch8
-
-
-
-\cite{Prasad_ch3}
-\cite{RichardMartin_Ch8}
-\cite{ABC_of_DFT}
+** Check over and condense GGA section **
 
 %+ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
-\begin{itemize}
-\item c.f. the ABC of DFT \cite{ABC_of_DFT}, VASP slides + FHI-aims slides
-\item LDA (good for metals)
-\item GGA (improvement but still underestimates band gap... lead into hybrid-DFT section)
-\item + cross-ref functional sections in Adam and Chris' theses
-\end{itemize}
 
 \subsubsection{Hybrid-DFT}\label{hse_theory}
 Offline sources for flight: HSE paper (x2), VASP and aims slides + get plot first (e.g. in Arvid's FHI-aims slides, no. 5?) or take from https://pubs.acs.org/doi/pdf/10.1021/ar500021t (in thesis reading dir) or fig 8.3 from Richard Martin and use to discuss underbinding/ overbinding due to exact exchange/ neglecting correlation and improvements from mixing both
 \begin{itemize}
+\item Beyond DFT - combine GGA with some exact HF exchange
 \item See top of Prasad pg 38 - H-F as upperbound of exact GS E (does H-F always overestimate and DFT usually underestimate? Hence hybrids? *Look for plot*)
 \item Discuss band gap error in standard DFT here?
 \item Std DFT underestimates, H-F overestimates due to absense of correlation (see ref 164 in Jess' thesis)
