@@ -244,6 +244,9 @@ The first Brillouin zone is the Wigner-Seitz primitive cell of the reciprocal la
 
 
 \section{Electronic band structure of semiconductors}\label{BandTheorySection}
+
+** + cross-ref Prasad Ch4 **
+
 %Refer to: pg 18 \cite{fund_semi}, pg 105 112 128 131 137 \cite{thin_film_Boer}, pg 111 + 119 \cite{phys_semicond}\\
 %** Highlight link to PV and indication of PV performance from band structure + check against Nelson CH3\\
 %The band theory of solids provides a means to explain the difference in the electrical conductivity of conductors, semiconductors and insulators. 
@@ -711,15 +714,29 @@ E_{xc}[n(\mathbf{r})] = \int \epsilon_{xc}(n(\mathbf{r}))n(\mathbf{r})d^3r
 \end{equation}
 This approach can also be extended to spin-polarised systems with the localised spin density approximation (LSDA) where there is an unequal number of spin-up and spin-down electrons. In this case, $E_{xc}[n(\mathbf{r})]$ is split into separate parts for the spin-up and spin-down electron densities \cite{Prasad_ch3}.
 
-Although the LDA has given remarkably good results for some systems, such as metals where the electron density more closely resembles the HEG, performance is poorer for more inhomogeneous systems, like atoms where the density must continuously approach zero outside of the atom \cite{RichardMartin_Ch8}. The accuracy of the LDA is not sufficient for purposes such as predicting binding energies for chemical reactions \cite{Prasad_ch3}, subsequent works therefore have sought to construct improved functionals. Various Generalised-gradient approximations (GGAs) have been developed to improve the predictive power of DFT and various GGA functionals have been constructed with sufficient accuracy to now be utilised by the chemistry community \cite{RichardMartin_Ch8}. These functionals aim to improve on the assumption that the electron density varies very slowly in space by including not just the electron density at a given location, but also the gradient in the density when approximating $E_{xc}[n(\textbf{r})]$ \cite{Prasad_ch3}.
+Although the LDA has given remarkably good results for some systems, such as simple metals where the electron density more closely resembles the HEG, performance is poorer for more inhomogeneous systems, like atoms where the density must continuously approach zero outside of the atom \cite{RichardMartin_Ch8}. The accuracy of the LDA is not sufficient for purposes such as predicting binding energies for chemical reactions, subsequent works therefore have sought to construct improved functionals. 
+The gradient expansion approximation (GEA) was suggested by Kohn and Sham \cite{Kohn_Sham1965} where $E_{xc}[n(\textbf{r})]$ is expanded in terms of gradients of the electron density in Taylor series and truncated at some order \cite{Prasad_ch3}.
+%magnitude of the gradient of the electron density at each point is considered, as well as the density, when creating the functional. 
+The exact exchange-correlation energy is related to the concept of an `exchange-correlation hole' in which all other electrons are excluded. The integration over this hole in the electron density is equal to one electron, hence the combination of the electron and the exchange-correlation hole gives a net neutral unit. The LDA approximates the exchange-correlation hole to be a sphere, while the inclusion of gradients in the electron density allows for more elaborate shapes for the exchange-correlation hole \cite{RichardMartin_Ch7}.
+%These functionals aim to improve on the assumption made in the LDA that the electron density varies very slowly in space by including not just the electron density at a given location, but also the gradient in the density when approximating $E_{xc}[n(\textbf{r})]$ \cite{Prasad_ch3}.
 
-A number of different GGA functionals have been developed, some of which are semi-empirical from their use of fits to experimental data. An example of a less empirical functional is the PBE functional where the main parameterisation is in the LDA component and otherwise fundamental physical constants are favoured over empirical fits \cite{PBE}.
-The exact exchange-correlation energy is related to the concept of an `exchange-correlation hole' in which all other electrons are excluded. The integration over this hole in the electron density is equal to one electron, hence the combination of the electron and the exchange-correlation hole gives a net neutral unit. The LDA approximates the exchange-correlation hole to be a sphere, while the inclusion of gradients in the electron density in GGA functionals allows for more elaborate shapes for the exchange-correlation hole \cite{RichardMartin_Ch7}.
-Semi-empirical GGAs can accurately represent small molecules, but usually fail for delocalised electrons in the uniform gas, or in similar simple metals. First-principles numerical GGAs can be constructed from electron density-gradient expansions for the exchange-correlation hole surrounding the electron in a system of slowly varying density with spurious long-range terms cut off to satisfy sum
-rules on the exact hole \cite{PBE}.
-However, accurate atomic exchange energies require violating the gradient expansion for slowly varying densities, which are more appropriate when modelling solids. A gradient expansion that works well for an atomic system is likely to perform poorly for a solid. For this reason an alternative PBE functional has been developed for solids, the PBEsol functional \cite{PBEsol}. In this work the PBEsol functional is often used for obtaining geometries. However, there are still some shortcomings in the simulation of semiconductors for PV applications with semilocal functionals such as PBEsol, a notable issue is the band gap error where the electronic band gap of semiconductors and insulators is often substantially underestimated compared to experimental measurements \cite{band_gap_error}. Significant improvements in the computational prediction of this particular, important material property have been achieved with some `beyond-DFT' methods. One method for this, which is utilised in this work, is hybrid functionals which are outlined in the next section \cite{HSE2}.
+However, the GEA was not found to give systematic improvements over the LDA and important conditions such as the sum rules for the exchange-correlation holes were violated. The large density gradients in real materials cause the low-order gradient expansions to break down. 
+Generalised-gradient expansions (GGAs) have been proposed instead.
+Here functionals are constructed that are functions of both electron density, $n(\mathbf{r})$, and gradients in the density, $\nabla n(\mathbf{r})$, which do satisfy sum rules. The general form of a GGA is shown in Eq. \ref{GGA} and various functions are used for f in the equation.
+Various GGAs have been developed to improve the predictive power of DFT and have demonstrated sufficient accuracy to now be utilised by the chemistry community.
+The rapidly varying electron density in atoms leads to a greater lowering of exchange energy in atoms and molecules than in solids, this results in a reduction in the binding energy which is not accounted for by the LDA. The use of density gradients in the GGA is able to correct for the overbinding from the LDA \cite{RichardMartin_Ch8}. 
 
-** Check over and condense GGA section **
+%** Add in general GGA from Prasad pg 61 Eq. 3.52 + GEA as truncated gradient density as Taylor expansion but GGA constructs functional of electron density without using such expansion method?? **
+
+\begin{equation}\label{GGA}
+E_{xc}^{GGA}[ n_{\uparrow}(\mathbf{r}), n_{\downarrow}(\mathbf{r})] = \int d^3r f [ n_{\uparrow}(\mathbf{r}), n_{\downarrow}(\mathbf{r}), \nabla n_{\uparrow}(\mathbf{r}), \nabla n_{\downarrow}(\mathbf{r})]
+\end{equation}
+
+Some GGA functionals are semi-empirical due to their use of fits to experimental data. An example of a less empirical functional is the PBE functional \cite{PBE} where the main parameterisation is in the LDA component and otherwise fundamental physical constants are favoured over empirical fits.
+Semi-empirical GGAs can accurately represent small molecules, but usually fail for delocalised electrons in the uniform gas or for simple metals. First-principles numerical GGAs can be constructed from electron density-gradient expansions for the exchange-correlation hole surrounding the electron in a system of slowly varying density with spurious long-range terms cut off to satisfy sum rules on the exact hole \cite{PBE}.
+However, accurate atomic exchange energies require violating the gradient expansion for slowly varying densities, which are more appropriate when modelling solids. A gradient expansion that works well for an atomic system is likely to perform poorly for a solid. For this reason, an alternative PBE functional has been developed for solids, the PBEsol functional \cite{PBEsol}. In this work, the PBEsol functional is often used for obtaining geometries. However, there are still some shortcomings in the simulation of semiconductors for PV applications with semilocal functionals such as PBEsol. A notable issue is the band gap error where the electronic band gap of semiconductors and insulators is often substantially underestimated compared to experimental measurements \cite{band_gap_error}. Significant improvements in the computational prediction of this particular, important material property have been achieved with some `beyond-DFT' methods. One method for this, which is utilised in this work, is hybrid functionals which are outlined in the next section \cite{HSE2}.
+
+%** Check over and condense GGA section + look up sum rule again (xc hole – sum of wavefunc*occ no. must equal -1? + look into LDA/ GGA overbinding vs. underbinding?? **
 
 %+ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
 
@@ -729,7 +746,7 @@ Offline sources for flight: HSE paper (x2), VASP and aims slides + get plot firs
 \item Beyond DFT - combine GGA with some exact HF exchange
 \item See top of Prasad pg 38 - H-F as upperbound of exact GS E (does H-F always overestimate and DFT usually underestimate? Hence hybrids? *Look for plot*)
 \item Discuss band gap error in standard DFT here?
-\item Std DFT underestimates, H-F overestimates due to absense of correlation (see ref 164 in Jess' thesis)
+\item Std DFT underestimates, H-F overestimates due to absense of correlation (see ref 164 in Jess' thesis??)
 \item Plot showing under and overshooting of GGA vs HF when discussing mixing?
 \item See hybrid functional sections in Adam and Chris' theses
 \item See hse papers + Richard Martin Ch8 \cite{RichardMartin_Ch8}
@@ -762,12 +779,14 @@ Although the key quantity in standard DFT methods is the electron density as opp
 
 \subsubsection{Iterative electronic and geometric optimisation}
 \begin{itemize}
+\item c.f. Richard Martin fig 9.1 to transfer report appendix and other people's theses for scf implementation
 \item Nod again to properties from GS? + finding min E electronic and ionic configuration of the solid
 \item Electronic and geometric convergence and solving iteratively
 \item Geometry optimization and potential energy landscape minima (see Adam and Jess' theses?)
 \item See transfer report appendix? + check against theory section
 \item Converging scf electronic cycle (inc. figure)
 \end{itemize}
+
 
 
 
