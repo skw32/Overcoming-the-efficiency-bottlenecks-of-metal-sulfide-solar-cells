@@ -715,7 +715,7 @@ E_{xc}[n(\mathbf{r})] = \int \epsilon_{xc}(n(\mathbf{r}))n(\mathbf{r})d^3r
 This approach can also be extended to spin-polarised systems with the localised spin density approximation (LSDA) where there is an unequal number of spin-up and spin-down electrons. In this case, $E_{xc}[n(\mathbf{r})]$ is split into separate parts for the spin-up and spin-down electron densities \cite{Prasad_ch3}.
 
 Although the LDA has given remarkably good results for some systems, such as simple metals where the electron density more closely resembles the HEG, performance is poorer for more inhomogeneous systems, like atoms where the density must continuously approach zero outside of the atom \cite{RichardMartin_Ch8}. The accuracy of the LDA is not sufficient for purposes such as predicting binding energies for chemical reactions, subsequent works therefore have sought to construct improved functionals. 
-The gradient expansion approximation (GEA) was suggested by Kohn and Sham \cite{Kohn_Sham1965} where $E_{xc}[n(\textbf{r})]$ is expanded in terms of gradients of the electron density in Taylor series and truncated at some order \cite{Prasad_ch3}.
+The gradient expansion approximation (GEA) was suggested by Kohn and Sham \cite{Kohn_Sham1965} where $E_{xc}[n(\mathbf{r})]$ is expanded in terms of gradients of the electron density in Taylor series and truncated at some order \cite{Prasad_ch3}.
 %magnitude of the gradient of the electron density at each point is considered, as well as the density, when creating the functional. 
 The exact exchange-correlation energy is related to the concept of an `exchange-correlation hole' in which all other electrons are excluded. The integration over this hole in the electron density is equal to one electron, hence the combination of the electron and the exchange-correlation hole gives a net neutral unit. The LDA approximates the exchange-correlation hole to be a sphere, while the inclusion of gradients in the electron density allows for more elaborate shapes for the exchange-correlation hole \cite{RichardMartin_Ch7}.
 %These functionals aim to improve on the assumption made in the LDA that the electron density varies very slowly in space by including not just the electron density at a given location, but also the gradient in the density when approximating $E_{xc}[n(\textbf{r})]$ \cite{Prasad_ch3}.
@@ -724,7 +724,7 @@ However, the GEA was not found to give systematic improvements over the LDA and 
 Generalised-gradient expansions (GGAs) have been proposed instead.
 Here functionals are constructed that are functions of both electron density, $n(\mathbf{r})$, and gradients in the density, $\nabla n(\mathbf{r})$, which do satisfy sum rules. The general form of a GGA is shown in Eq. \ref{GGA} and various functions are used for f in the equation.
 Various GGAs have been developed to improve the predictive power of DFT and have demonstrated sufficient accuracy to now be utilised by the chemistry community.
-The rapidly varying electron density in atoms leads to a greater lowering of exchange energy in atoms and molecules than in solids, this results in a reduction in the binding energy which is not accounted for by the LDA. The use of density gradients in the GGA is able to correct for the overbinding from the LDA \cite{RichardMartin_Ch8}. 
+The rapidly varying electron density in atoms leads to a greater lowering of exchange energy in atoms and molecules than in solids, this results in a reduction in the binding energy which is not accounted for by the LDA. The use of density gradients in the GGA is able to correct for some of the overbinding from the LDA \cite{RichardMartin_Ch8}. 
 
 %** Add in general GGA from Prasad pg 61 Eq. 3.52 + GEA as truncated gradient density as Taylor expansion but GGA constructs functional of electron density without using such expansion method?? **
 
@@ -734,27 +734,44 @@ E_{xc}^{GGA}[ n_{\uparrow}(\mathbf{r}), n_{\downarrow}(\mathbf{r})] = \int d^3r 
 
 Some GGA functionals are semi-empirical due to their use of fits to experimental data. An example of a less empirical functional is the PBE functional \cite{PBE} where the main parameterisation is in the LDA component and otherwise fundamental physical constants are favoured over empirical fits.
 Semi-empirical GGAs can accurately represent small molecules, but usually fail for delocalised electrons in the uniform gas or for simple metals. First-principles numerical GGAs can be constructed from electron density-gradient expansions for the exchange-correlation hole surrounding the electron in a system of slowly varying density with spurious long-range terms cut off to satisfy sum rules on the exact hole \cite{PBE}.
-However, accurate atomic exchange energies require violating the gradient expansion for slowly varying densities, which are more appropriate when modelling solids. A gradient expansion that works well for an atomic system is likely to perform poorly for a solid. For this reason, an alternative PBE functional has been developed for solids, the PBEsol functional \cite{PBEsol}. In this work, the PBEsol functional is often used for obtaining geometries. However, there are still some shortcomings in the simulation of semiconductors for PV applications with semilocal functionals such as PBEsol. A notable issue is the band gap error where the electronic band gap of semiconductors and insulators is often substantially underestimated compared to experimental measurements \cite{band_gap_error}. Significant improvements in the computational prediction of this particular, important material property have been achieved with some `beyond-DFT' methods. One method for this, which is utilised in this work, is hybrid functionals which are outlined in the next section \cite{HSE2}.
+However, accurate atomic exchange energies require violating the gradient expansion for slowly varying densities, which are more appropriate when modelling solids. A gradient expansion that works well for an atomic system is likely to perform poorly for a solid. For this reason, an alternative PBE functional has been developed for solids, the PBEsol functional \cite{PBEsol}. In this work, the PBEsol functional is often used for obtaining geometries. However, there are still some shortcomings in the simulation of semiconductors for PV applications with semilocal functionals such as PBEsol. A notable issue is the band gap error where the electronic band gap of semiconductors and insulators is often substantially underestimated compared to experimental measurements \cite{band_gap_error}. Significant improvements in the computational prediction of this particular, important material property have been achieved with some `beyond-DFT' methods. One method for this, which is utilised in this work, is hybrid density functionals which are introduced in the next section.
 
 %** Check over and condense GGA section + look up sum rule again (xc hole – sum of wavefunc*occ no. must equal -1? + look into LDA/ GGA overbinding vs. underbinding?? **
 
 %+ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
 
 \subsubsection{Hybrid-DFT}\label{hse_theory}
-Offline sources for flight: HSE paper (x2), VASP and aims slides + get plot first (e.g. in Arvid's FHI-aims slides, no. 5?) or take from https://pubs.acs.org/doi/pdf/10.1021/ar500021t (in thesis reading dir) or fig 8.3 from Richard Martin and use to discuss underbinding/ overbinding due to exact exchange/ neglecting correlation and improvements from mixing both
-\begin{itemize}
-\item Beyond DFT - combine GGA with some exact HF exchange
-\item See top of Prasad pg 38 - H-F as upperbound of exact GS E (does H-F always overestimate and DFT usually underestimate? Hence hybrids? *Look for plot*)
-\item Discuss band gap error in standard DFT here?
-\item Std DFT underestimates, H-F overestimates due to absense of correlation (see ref 164 in Jess' thesis??)
-\item Plot showing under and overshooting of GGA vs HF when discussing mixing?
-\item See hybrid functional sections in Adam and Chris' theses
-\item See hse papers + Richard Martin Ch8 \cite{RichardMartin_Ch8}
-\item Overview of HSE06 functional (inc. long/ short ranged, etc.), state that this is used extensively in this thesis for accurate electronic properties
-\end{itemize}
+Various hybrid density functionals have been developed to improve upon standard DFT. One such approach is to incorporate some exact, analytic H-F exchange into a pure GGA functional. The exchange component, x, of this hybrid exchange-correlation functional, $E_{xc}^{hybrid}[n(\mathbf{r})]$, is expressed as a linear combination of the exchange components of the DFT functional, $E_{xc}^{DFT}[n(\mathbf{r})]$, and the H-F functional, $E_{xc}^{HF}[n(\mathbf{r})]$, with some mixing parameter a, as shown in Eq. \ref{hybrid_Exc}.
+\begin{equation}\label{hybrid_Exc}
+E_{xc}^{hybrid}[n(\mathbf{r})] = E_{xc}^{DFT}[n(\mathbf{r})] + a(E_{x}^{HF}[n(\mathbf{r})] - E_{x}^{DFT}[n(\mathbf{r})])
+\end{equation}
+The H-F method tends to underbind atoms in molecules \cite{DFT_delocalisation}. Although electron exchange is treated exactly, the method completely neglects electron correlation and therefore the modelled system entirely lacks a mechanism by which the electron arrangement could act to lower the total energy of the system. Hence the total energy of the system may be overestimated. DFT however, in particular the LDA, overbinds atoms in molecules and overly favours the formation of bonds \cite{DFT_delocalisation}. The approximation of a more uniform electron density than what may exist in the system in reality when constructing such electron density functionals may result in the assumption of a stronger, more uniform bonding arrangement, artificially lowering the total energy of the system. Some types of hybrid density functionals have been constructed to improve upon both methods by combining them, but the ways in which the functionals are combined differs for different hybrid functionals.
+
+In this work, the HSE06 hybrid functional \cite{HSE2} is frequently used for calculations of electronic properties. This functional has been demonstrated to produce accurate electronic properties with predicted electronic band gaps for semiconductors much closer to experimental values than those produced using semilocal functionals such as PBE and PBEsol \cite{HSEsol}.
+The HSE06 functional involves two adjustable parameters. Firstly, the mixing parameter a, as in Eq. \ref{hybrid_Exc}, but also a parameter $\omega$ which determines the screening of the exact exchange in the construction of this functional. 
+The HSE06 functional uses PBE as the GGA functional, incorporates 25\% H-F exchange (with a=$\frac{1}{4}$) and uses $\omega$ = 0.11 bohr$^{-1}$ for the screening parameter \cite{HSE2}.
+
+The exact H-F exchange is very computationally expensive to calculate for large molecules and solids. Kohn has shown that the range of the exchange interaction in insulators decays exponentially as a function of the HOMO-LUMO or band gap \cite{HSE_ref13}. Therefore, convergence with distance is very slow for small gap or metallic systems \cite{HSE}.
+Screened hybrid functionals, such as the HSE06 functional, have been introduced to reduce the computational expense of the inclusion of exact H-F exchange. In the case of the HSE06 functional, a screened Coulomb potential is applied to the exchange interaction only to screen the long-range component of the H-F exchange \cite{HSE2}. This restricts the Fock exchange calculations to small electron-electron separations \cite{HSE_systematic}. The Coulomb operator is split into short-range (SR) and long-range (LR) components as shown in Eq. \ref{HSE_SR_LR} in the first and second terms on the right-hand side of the equation respectively and $\omega$ defines the separation range.
+\begin{equation}\label{HSE_SR_LR}
+\frac{1}{r} = \frac{erfc(\omega r)}{r} + \frac{erf(\omega r)}{r}
+\end{equation}
+All of the terms for the hybrid exchange energy are split into their short- and long-ranged components in Eq. \ref{Ex_SR_LR}.
+\begin{equation}\label{Ex_SR_LR}
+E_x^{hybrid} = aE_x^{HF,SR}(\omega) + aE_x^{HF,LR}(\omega) + (1-a)E_x^{PBE,SR}(\omega) + E_x^{PBE,LR}(\omega) - aE_x^{PBE,LR}(\omega)
+\end{equation}
+Numerical tests indicated that the LR H-F and PBE exchange contributions to this functional are small and tend to cancel each other \cite{HSE}, therefore these terms are neglected in the expression for the exchange-correlation energy in Eq. \ref{HSE06}.
+\begin{equation}\label{HSE06}
+E_{xc}^{HSE06} = aE_x^{HF,SR}(\omega) + (1-a)E_x^{PBE,SR}(\omega) + E_x^{PBE,LR}(\omega) + E_c^{PBE}
+\end{equation}
+When the adjustable parameter $\omega = 0$, the LR term becomes zero and the SR term is the full Coulomb operator, equivalent to an unscreened hybrid functional. When $\omega \rightarrow \infty $, the HSE functional becomes identical with the semilocal PBE functional. The values chosen for a and $\omega$ in the HSE06 functional have been found to be close to the optimum in terms of accuracy and computational efficiency in a systematic study varying these parameters in hybrid functionals \cite{HSE_systematic}. However, the study also identifies alternative values for the two parameters for improved accuracy over the HSE06 functional and also parameters which were found to match the accuracy of the HSE06 functional but with reduced screening length and hence reduced computational expense. Improvement in the accuracy and transferability of density functionals to various systems is an on-going area of research.
+
+%This functional has been demonstrated to produce good band gaps... Adam thesis ref 25 (study on a and $\omega$ sensitivity for predicting Eg of semiconductors, HSE06 params v close to optimal values found to outperform hybrid unscreened functional PBE0. \cite{HSE_systematic}
+
 
 \subsection{Implementation for periodic solids}
 Offline sources for flight: VASP slides, FHI-aims slides + RM + theses
++ Find orbital plot for NACOs
 
 Introduce PBCs for periodic calculations here and reciprocal space here?? but refer back to theory chapter (See Richard Martin Ch4 \cite{RichardMartin_Ch4} + vacuum gap for slabs + Chris' thesis (nice comment relating waves with associated phase in real space to point in reciprocal space by FT)
 
@@ -786,6 +803,7 @@ Although the key quantity in standard DFT methods is the electron density as opp
 \item See transfer report appendix? + check against theory section
 \item Converging scf electronic cycle (inc. figure)
 \end{itemize}
+
 
 
 
