@@ -269,6 +269,9 @@ The energy of a single electron in a perfect crystal is described by the one-ele
 For a solid the infinite array of atomic potentials making up the crystal must be accounted for, as opposed to just the few associated with a molecule. For this purpose, the periodicity of crystalline solids outlined in section \ref{crystal_models} is exploited to determine the probability distribution of electrons in an infinite solid \cite{Nelson3}. 
 The spatial dependence of the potential experienced by an outer electron in a crystal for multi-electron systems was considered by Felix Bloch. Bloch determined that the total potential is the sum of two parts. Firstly, the electrostatic potential due to the array of atomic cores. For a perfect lattice this should have the translational periodicity of the lattice. Secondly, the potential due to all other electrons. Bloch assumed that the charge density would have the same long-term average value in every unit cell of the crystal and therefore would be periodic \cite{fund_semi}.
 The periodicity of the crystal lattice means that the probability distribution of the electrons must also be periodic, with no preference for an electron to occupy a particular site within one unit cell than any others. Furthermore, as the lattice is infinite, electrons in a periodic solid should form delocalised states which extend throughout the crystal in a similar manner to an electron in free space.
+
+** Add figure showing Bloch function?? (like group vs phase velocity??) + c.f. other theses – use Richard Martin Fig 4.11?? **
+
 Bloch's theorem states that the wavefunction which satisfies equation \ref{single_SE}, subject to a periodic potential, should be of the form shown in Eq. \ref{bloch}. This Bloch wavefunction is a product of a function $U_{i\mathbf{k}}(\mathbf{r})$, which possesses the periodicity of the lattice, and a plane wave part, where \textbf{k} is the wavevector of an electron propagating in the crystal bands i \cite{Nelson3}.
 \begin{equation} \label{bloch}
 \phi_k(\mathbf{r}) = U_{i\mathbf{k}}(\mathbf{r}) e^{i\mathbf{k \cdot r}} 
@@ -328,6 +331,7 @@ In a semiconductor at 0 K, the VB is fully occupied by electrons and the CB is c
 %    \caption{The energy dispersion relation for electrons moving in a crystal, illustrating how the function can be approximately represented by a finite number of \textit{k}-points, which form an equally-spaced mesh. Figure adapted from reference \citenum{vasp-slides}.}
 %  \label{energy_dispersion}
 %\end{figure}
+
 
 \section{The photovoltaic effect}
 A solar cell device converts incident solar energy directly into electrical energy. Solar energy can be described as either a spectrum of electromagnetic radiation in the classical-wave theory of light or as a flux of packets of energy (photons) in the quantum theory of light. Electrical energy is a flow of charge carriers able to do work in an external circuit \cite{spatial_resolved_book}. Voltage is generated in a solar cell device by the photovoltaic effect (PVE). The terms `solar cell' and `photovoltaic (PV) cell' are therefore often used interchangeably. The explanation for the photovoltaic effect uses ideas from the quantum theory of light \cite{Nelson1}.
@@ -741,7 +745,7 @@ However, accurate atomic exchange energies require violating the gradient expans
 %+ Richard Martin Ch6-9. 6 for DFT fundamentals, e.g. Hohenberg and Kohn theorems for simple existence proof of functionals but no guidance on form \cite{RichardMartin_Ch6}, 7 for Kohn-Sham ansatz (way to make useful, approximate ground state functionals for real systems of many electrons) \cite{RichardMartin_Ch7}, 8 for common approximations for xc functionals \cite{RichardMartin_Ch8}, 9 for solution of Kohn-Sham independent particle approximations \cite{RichardMartin_Ch9}
 
 \subsubsection{Hybrid-DFT}\label{hse_theory}
-Various hybrid density functionals have been developed to improve upon standard DFT. One such approach is to incorporate some exact, analytic H-F exchange into a pure GGA functional. The exchange component, x, of this hybrid exchange-correlation functional, $E_{xc}^{hybrid}[n(\mathbf{r})]$, is expressed as a linear combination of the exchange components of the DFT functional, $E_{xc}^{DFT}[n(\mathbf{r})]$, and the H-F functional, $E_{xc}^{HF}[n(\mathbf{r})]$, with some mixing parameter a, as shown in Eq. \ref{hybrid_Exc}.
+Various hybrid density functionals have been developed to improve upon standard DFT. One such approach is to incorporate some exact, non-local H-F exchange into a pure GGA functional. The exchange component, x, of this hybrid exchange-correlation functional, $E_{xc}^{hybrid}[n(\mathbf{r})]$, is expressed as a linear combination of the exchange components of the DFT functional, $E_{xc}^{DFT}[n(\mathbf{r})]$, and the H-F functional, $E_{xc}^{HF}[n(\mathbf{r})]$, with some mixing parameter a, as shown in Eq. \ref{hybrid_Exc}.
 \begin{equation}\label{hybrid_Exc}
 E_{xc}^{hybrid}[n(\mathbf{r})] = E_{xc}^{DFT}[n(\mathbf{r})] + a(E_{x}^{HF}[n(\mathbf{r})] - E_{x}^{DFT}[n(\mathbf{r})])
 \end{equation}
@@ -770,39 +774,155 @@ When the adjustable parameter $\omega = 0$, the LR term becomes zero and the SR 
 
 
 \subsection{Implementation for periodic solids}
-Offline sources for flight: VASP slides, FHI-aims slides + RM + theses
-+ Find orbital plot for NACOs
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.45\textwidth]{figures/slab_PBCs.png}
+    \caption{Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab where a sufficiently large vacuum gap is required to ensure the surfaces from either end of the slab do not interact (direction indicated by orange arrow).}
+  \label{slab_PBCs}
+\end{figure}
+Concepts for the theoretical modelling of periodic solids were outlined in section \ref{crystal_models}. The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. Electronic structure calculations performed in this work are mostly for periodic solids and therefore make use of 3D periodic boundary conditions (PBCs) to simulate an infinite, bulk solid using only a unit cell of the crystal. The only deviations from the basic implementation of PBCs, as introduced in section \ref{crystal_models}, are firstly work in section \ref{sulfosalt_band_alignment}. This work calculated surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. To simulate a 2D system (with one finite direction) with 3D periodic boundary conditions requires the use of a suitably large vacuum gap to ensure the two surfaces either end of the slab model do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig. \ref{slab_PBCs}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed much further in section \ref{defects_methods}. 
 
-Introduce PBCs for periodic calculations here and reciprocal space here?? but refer back to theory chapter (See Richard Martin Ch4 \cite{RichardMartin_Ch4} + vacuum gap for slabs + Chris' thesis (nice comment relating waves with associated phase in real space to point in reciprocal space by FT)
+In the rest of this section, approaches used in this work for electronic structure calculations of periodic solid-state systems will be outlined with comments on their relative merits for chemical accuracy and computational efficiency. Representations of the wavefunction in different electronic structure software packages that are used in this work will first be outlined. Then the general workflow for geometric and electronic optimisation will be outlined. The section concludes with a discussion of determining the most appropriate setup for electronic structure calculations in terms of an optimal compromise between chemical accuracy and computational efficiency.
+
+%Offline sources for flight: VASP slides, FHI-aims slides + RM ch4 + theses
+
 
 \subsubsection{Alternative representations of wavefunctions}
-Although the key quantity in standard DFT methods is the electron density as opposed to the many-body wavefunction, the former is expressed in terms of the latter, as was shown in Eq. ??? **(n(r) = sum over conj psi)**. There are a number of different options for how to mathematically represent the wavefunction, some of which are outlined below.
-\begin{itemize}
-\item Basis sets: (see comp QM lecture handouts) expanding the unknown wavefunction as a set of linearly independent known functions (basis set) allows use of linear matrix methods and efficient comp tools (cross ref Adam's thesis?), but there are a number of options for the known functions to use as this basis set. In this work, two different software packages are used for electronic structure calculations, which make use of different functions for their basis sets. These are outlined next along with comments on their relative merits in terms of chemical accuracy and computational efficiency.
-\item See aims workshop slides (https://th.fhi-berlin.mpg.de/sitesub/meetings/dft-workshop-2015/index.php?n=Meeting.Program) + Richard Martin Ch12+13 \cite{RichardMartin_Ch12} \cite{RichardMartin_Ch13}
-\item State that both plane waves within the VASP code and NACO within FHI-aims are used in this work
-\item VASP with plane waves and pseudopotentials (computational efficiency of plane waves and fourier transforms) \cite{RichardMartin_Ch11} + see vasp slides + see Phil Hasnip's slides
-\item FHI-aims with numeric atom centred orbitals: scalability for modern HPC multiple processor hardware, show plot like MRes quantum chem module plot of std radial * angular component, tabulated flexible shape for radial component of FHI-aims basis sets + see FHI-aims slides
-\item FHI-aims vs. Gaussian basis sets, should allow for simultaneous convergence efficiency and high accuracy?
-\end{itemize}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/atomic_radial_wavefunction.png}
+    \caption{Radial wavefunction, $r\psi_l(r)$, of Mn in the $3d^{5\uparrow}4s^2$ state showing all atomic orbitals. Taken from Ref. \citenum{RichardMartin_Ch10}.}
+  \label{atomic_radial_wavefunction}
+\end{figure}
 
-\subsubsection{The chemical accuracy and computational efficiency compromise}
-\begin{itemize}
-\item Note that all representations are approximations because may need an infinite set to completely represent it (see Adam's thesis), in practise must truncate and check for convergence in properties of interest w.r.t basis set truncation (ENMAX for pseudopotentials and tiers in FHI-aims)
-\item Converging basis set size and \textit{k}-grid density for Brillouin zone sampling w.r.t. property of interest + see Prasad pg 145
-\item Note that certain properties are more sensitive, e.g. optical dielectric function to k-grid density than geometry optimisation, hence importance of testing for each property
-\item Add k-point sampling stuff from transfer report appendix?
-\end{itemize}
+** Cross-ref undergrad QM notes? Add eqn for full wavefunction including radial and angular mtm components?? **
+
+The exact, analytical solution of the Schr{\"o}dinger equation for H gives us wavefunctions corresponding to the familiar 1s, 2s, 2p, etc. atomic orbitals. Fig. \ref{atomic_radial_wavefunction} shows the calculated radial wavefunction with all orbitals for a more complicated atomic system, Mn. Accurate description of the electronic structure of atoms is a vital starting point for computing the properties of valence electrons in molecules or solids, which predominantly determine the bonding in the material. 
+Eq. \ref{basis_set} shows the expansion of the KS orbitals in terms of known functions called a basis set. 
+\begin{equation}\label{basis_set}
+\psi(\mathbf{r}) = \sum_j c_j \phi_j(\mathbf{r})
+\end{equation}
+Constructing a basis set of linearly independent functions allows the use of linear matrix methods and efficient computational tools to solve the KS eigenvalue problem. There are different options for how to mathematically represent the wavefunction. In this work, two different software packages are used for electronic structure calculations, which make use of different functions for their basis sets. 
+%These are outlined next along with comments on their relative merits in terms of chemical accuracy and computational efficiency.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.65\textwidth]{figures/aims_NACBF.png}
+    \caption{Schematic representation of a numeric atom-centred orbital (NAO) basis function as used in the FHI-aims software package. Taken from Ref. \citenum{FHI-aims_slides}.}
+  \label{aims_NACBF}
+\end{figure}
+
+In the Fritz Haber Institute ab initio molecular simulations (FHI-aims) software package \cite{FHI-aims}, numeric atom-centred orbital (NAO) basis functions, such as that shown in equation \ref{aims_basis_set}, are the basis set used. This basis set for each atomic species has been established from iterative automated construction based on dimers \cite{FHI-aims_slides}. The radial shape, $u_i(r)$, is numerically tabulated and so fully flexible, enabling the creation of optimised element-dependent basis sets that are as compact as possible to minimise computational expense. A schematic represenatation of a NAO is shown in Fig. \ref{aims_NACBF}.
+\begin{equation}\label{aims_basis_set}
+\phi_{NAO}(\mathbf{r}) = \frac{u_i(\mathbf{r})}{r} Y_{lm}(\Omega)
+\end{equation}
+The NAO basis set used in FHI-aims is localised and highly scalable for use on modern high-performance computing (HPC) systems with multiple processors. The localised nature of the basis set has the benefit of no additional computational cost for vacuum gaps in the simulation unit cell, such as in the slab model in Fig. \ref{slab_PBCs}. This implementation of electronic structure calculations is an example of an `all-electron’ approach, which has benefitted greatly from advances in HPC technology. However, other highly-successful and computationally efficient approaches for electronic structure calculations of solids have been developed, largely prior to the HPC boom, that are not all-electron but have demonstrated accurate calculated chemical properties.
+
+In the Vienna Ab-initio Simulation Package (VASP) \cite{VASP} plane waves (PW), as shown in Eq. \ref{vasp_basis_set}, are used as the basis set.
+\begin{equation}\label{vasp_basis_set}
+\phi_{PW}(\mathbf{r}) = ce^{i(\mathbf{k}+\mathbf{G}).\mathbf{r}}
+\end{equation}
+
+pseudopotential approx...
+
+RM pseudopotential notes (ch11 summary): replace strong Coulomb potential of the nucleus and effects of tightly bound core electrons by an effective ionic potential acting on valence electrons, construct pseudopotentials from atomic wavefunctions and apply to solids… 
+
+c.f. Prasad notes: pg 112 \cite{Prasad_ch5} rapid oscillations of wavefunction in core region gives poor convergence of plane wave expansion of wave function vs. loosely bound valence electrons where wavefunction is plane wave like, pg 125 \cite{Prasad_ch6} for justification of frozen core pseudopotentials
+
+From Chris’ thesis – pseudopotentials
+Core electrons only accurately described by high f plane waves, hence computationally expensive to compute with plane waves, core electrons not usually involved in bonding and hence contribute little electronic information in the solution for solids, therefore pseudopotentials smooth over/ do not exactly include and just represent with a few planewaves
+
+ ** Get fig for pseudopotentials -- (RM fig 11.6 and c.f. Prasad pg126?) **
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/pseudopotential.png}
+    \caption{Fig 11.2 where LHS is OPW and RHS is NCPP, showing that NCPPs are less smooth? + 11.6 for ultrasoft comparison? Relate to discussion in text of using PAW and ultrasoft instead for comp efficiency?? Taken from Ref. \citenum{RichardMartin_Ch11}.}
+  \label{pseudopotential}
+\end{figure}
+
++ importance of high-quality pseudopotentials (c.f. Adam’s thesis), Cast as OPW for eigenvalue problem with smooth part of valence function plus core-like functions, PAW approach to use pseudopotentials as operators but keep full core wavefunctions, norm-conserving vs. ultrasoft pseudopotentials (summarized on pg 206+7 + c.f. Adam’s thesis and VASP slides)
+
+pg 144 for ultrasoft PAW \cite{Prasad_ch6}
+See Prasad ch5+6 for pseudopotentials + c.f. Adam’s thesis and VASP slides for ultrasoft… (PAW, combines pseudopotentials with plane wave basis set for computational  efficiency + note important of determining high-quality pseudopotentials)
+
++ c.f. Ruoxi’ thesis on VASP/ pseudopotenials/ plane waves
+
+Benefits: VASP with plane waves for solids and pseudopotentials (computational efficiency of plane waves and fourier transforms) \cite{RichardMartin_Ch11} + see vasp slides + see Phil Hasnip's slides
+
+Nod to delta project as a way of confirming that electronic properties obtained from different software packages are consisten?
+
+RM sections:
+Ch11: pg 204 for summary of pseudopotentials, pg 207 for OPWs, pg 222 for ultrasoft, pg 225 for PAW to allow full wavefunction
+Ch12:  c.f. Bloch theorem and grids
+Ch13: pg 258 for PAW
+
+
 
 \subsubsection{Iterative electronic and geometric optimisation}
+In this section, the process of optimizing the geometry (ionic structure) and electronic structure of a give solid using the SCF method (first discussed in the Hartree method and mentioned again in the KS formalism of DFT) for a given electron density functional will be outlined.
+
 \begin{itemize}
-\item c.f. Richard Martin fig 9.1 to transfer report appendix and other people's theses for scf implementation
+\item See Volker's slide `The Kohn-Sham Equations (again)', part 2 for scf loop
 \item Nod again to properties from GS? + finding min E electronic and ionic configuration of the solid
 \item Electronic and geometric convergence and solving iteratively
 \item Geometry optimization and potential energy landscape minima (see Adam and Jess' theses?)
-\item See transfer report appendix? + check against theory section
+\item Chris’ thesis S2.6.1 – geom opt + justify use of PBEsol for geom and HSE for electronic properties except for defect calcs because band gap error may make defect level much shallower such that even geom relaxation about defect is impacted (ref Lany defects review)
 \item Converging scf electronic cycle (inc. figure)
+\item c.f. Richard Martin fig 9.1 to transfer report appendix and other people's theses for scf implementations
+\item See transfer report appendix? + check against theory section
+\item c.f. Bjorn Lange’s aims slides for preconditioning, etc. for geom opt.
 \end{itemize}
+
+
+
+
+\subsubsection{The chemical accuracy and computational efficiency compromise}
+Earlier in this section the different mathematical representations of the KS orbitals (i.e. the basis sets) in the electronic structure software packages FHI-aims and VASP were discussed. However, all types of representation are an approximation. It may be necessary to use an infinite set of basis functions to completely represent the KS orbitals. In practice, the basis set must be truncated at some point and then we must check for convergence in the properties of interest with respect to this basis set truncation \cite{Prasad_ch6}. 
+
+When using FHI-aims, a user can select from a hierarchy of basis (sub)sets that have been tabulated for each chemical species. The inclusion of additional radial functions for each species are grouped into `tiers' and additional radial functions are included in the basis set to reach the required accuracy for settings referred to as `light', `tight' and `really\_tight' which corresponds to basis set convergence of ??meV, ?? meV and ?? meV respectively \cite{FHI-aims_manual}. Fig. \ref{FHI-aims_tiers} shows the radial wavefunctions necessary to achieve the `tight' level of convergence for Ni. 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/FHI-aims_tiers.png}
+    \caption{Ni radial functions to construct basis sets with increasingly tight convergence criteria as implemented in the software package FHI-aims \cite{FHI-aims}. Taken from Ref. \citenum{FHI-aims_slides}.}
+  \label{FHI-aims_tiers}
+\end{figure}
+
+The equivalent for electronic structure calculations with VASP to the process described above for FHI-aims is to converge the cutoff energy of the plane wave basis set to achieve the level of convergence desired for the property of interest.
+
++ see Prasad pg145 \cite{Prasad_ch6}
+
+** Figure showing increasing no. of plane waves to better describe the form of the wavefunction + get one of my figures of convergence of property wrt ENCUT to add to it?? **
+
+For both software packages, the inclusion of a larger basis set increases the computational expense of the calculation, but takes the approximate representations of the KS orbitals closer to the true form and hence improves the accuracy of the calculated material properties for the given electron density functional. Determining the optimal compromise between computational expense and chemical accuracy for the material property of interest is an important process in electronic structure calculations. The other calculation setting that must be considered in such a way is the density of the \textit{k}-grid when sampling the Brillouin zone…
+
+** Check over below (taken from transfer report) **
+In periodic DFT calculations, the total energy is also converged with respect to the number of \textit{k}-points used to sample the Brillouin zone.
+Each electron occupies a state of definite $\mathbf{k}$. Therefore, in a periodic crystal structure an infinite number of electrons would result in an infinite number of \textit{k}-points. At each \textit{k}-point, only a finite number of the available energy levels will be occupied. Therefore only a finite number of electrons need to be considered but at an infinite number of \textit{k}-points. In practise, all of these \textit{k}-points are not considered. 
+Electron wavefunctions will be almost identical for values of $\mathbf{k}$ that are sufficiently close, so the wavefunctions over a region of reciprocal space can be represented by considering the wavefunction at a single \textit{k}-point. It is therefore sufficient to consider the electronic states at a finite number of \textit{k}-points in order to determine the ground state energy of the solid. This approximation is illustrated in figure \ref{k_sampling}. Bloch's Theorem enables the ground state energy to be approximately determined by considering only the number of electrons in the unit cell at a finite number of \textit{k}-points, which are chosen to sample the Brillouin zone appropriately. The choice here is a balance between more \textit{k}-points for a more accurate representation of the Brillouin zone and fewer \textit{k}-points to reduce the computational expense of the calculation \cite{bloch-thesis}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/k_sampling_full.png}
+    \caption{a) The energy dispersion relation for electrons moving in a crystal, illustrating how the function can be approximately represented by a finite number of \textit{k}-points, forming an equally-spaced mesh. Figure adapted from reference \citenum{vasp_k-sampling_slides}. b) convergence of total energy and c) optical dielectric function for the same material.}
+  \label{k_sampling}
+\end{figure}
+
+Similarly, the calculated value of a property of interest should be converged with respect to the \textit{k}-grid density. Certain properties require a denser \textit{k}-grid than others. This is demonstrated in the example in Fig. \ref{k_sampling}b and c where the total energy required a $4 \times 4 \times 4$ \textit{k}-grid to achieve convergence, whereas the optical dielectric function ($\epsilon$) of the same material required a $10 \times 10 \times 10$ \textit{k}-grid.
+
+… evenly spaced Monhorst-Pack grid as common choice and even/ odd for including or not the gamma point.
+
+\begin{itemize}
+\item Converging basis set size and \textit{k}-grid density for Brillouin zone sampling w.r.t. property of interest + see Prasad pg 145 (ENMAX and kgrid for plane wave basis sets) \cite{Prasad_ch6}
+\item Adam’s thesis pg 63 and ref 26 for Monkhorst-Pack kgrid
+\item Note that certain properties are more sensitive, e.g. optical dielectric function to k-grid density than geometry optimisation, hence importance of testing for each property
+\item Add k-point sampling stuff from transfer report appendix?
+\item Cross-ref VASP and FHI-aims slides
+\end{itemize}
+
+
+
 
 
 
