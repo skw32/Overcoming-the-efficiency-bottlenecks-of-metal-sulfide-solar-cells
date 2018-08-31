@@ -68,12 +68,13 @@ Write last, ideas:
 
 \section*{Publications during the course of the PhD}
 \begin{etaremune}
-\item Sulfosalts defects paper? (w/ aide post-processing?)
+\item Enargite defects paper? (w/ aide post-processing?)
 \item Photoferroic materials project screening with Lee?
 \item Defects benchmark study with Volker and Tong?
 \item Eris band tailing letter?
-\item Sulfosalts band alignment paper?
 \item Disorder processes during the Cu-Zn order-disorder transition in {\CZTS} from Monte Carlo simulations
+\item Solar cell heterojunctions for candidate photoferroic absorbers enargite
+and bournonite from electronic band and lattice matching
 \item Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite, and bournonite\\
 SK Wallace, KL Svane, WP Huhn, T Zhu, DB Mitzi, V Blum, A Walsh\\ Sustainable Energy \& Fuels  (6), 1339-1350 (2017)
 \item The steady rise of Kesterite solar cells\\ SK Wallace, DB Mitzi, A Walsh\\ ACS Energy Letters 2 (4), 776-779 (2017)
@@ -780,14 +781,14 @@ When the adjustable parameter $\omega = 0$, the LR term becomes zero and the SR 
     \caption{Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab where a sufficiently large vacuum gap is required to ensure the surfaces from either end of the slab do not interact (direction indicated by orange arrow).}
   \label{slab_PBCs}
 \end{figure}
-Concepts for the theoretical modelling of periodic solids were outlined in section \ref{crystal_models}. The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. Electronic structure calculations performed in this work are mostly for periodic solids and therefore make use of 3D periodic boundary conditions (PBCs) to simulate an infinite, bulk solid using only a unit cell of the crystal. The only deviations from the basic implementation of PBCs, as introduced in section \ref{crystal_models}, are firstly work in section \ref{sulfosalt_band_alignment}. This work calculated surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. To simulate a 2D system (with one finite direction) with 3D periodic boundary conditions requires the use of a suitably large vacuum gap to ensure the two surfaces either end of the slab model do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig. \ref{slab_PBCs}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed much further in section \ref{defects_methods}. 
+Concepts for the theoretical modelling of periodic solids were outlined in section \ref{crystal_models}. The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. Electronic structure calculations performed in this work are for periodic solids and therefore make use of 3D periodic boundary conditions (PBCs) to simulate an infinite, bulk solid using only a unit cell of the crystal. The only deviations from the basic implementation of PBCs, as introduced in section \ref{crystal_models}, are firstly work in section \ref{sulfosalt_band_alignment}. This work calculated surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. To simulate a 2D system (with one finite direction) with 3D periodic boundary conditions requires the use of a suitably large vacuum gap to ensure the two surfaces either end of the slab model do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig. \ref{slab_PBCs}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed much further in section \ref{defects_methods}. 
 
 In the rest of this section, approaches used in this work for electronic structure calculations of periodic solid-state systems will be outlined with comments on their relative merits for chemical accuracy and computational efficiency. Representations of the wavefunction in different electronic structure software packages that are used in this work will first be described. Then the general workflow for geometric and electronic optimisation will be outlined. The section concludes with a discussion of determining the most appropriate setup for electronic structure calculations in terms of an optimal compromise between chemical accuracy and computational efficiency.
 
 %Offline sources for flight: VASP slides, FHI-aims slides + RM ch4 + theses
 
 
-\subsubsection{Alternative representations of wavefunctions}
+\subsubsection{Representations of wavefunctions for electronic structure calculations}
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.9\textwidth]{figures/atomic_radial_wavefunction.png}
@@ -798,11 +799,13 @@ In the rest of this section, approaches used in this work for electronic structu
 %** Cross-ref undergrad QM notes? Add eqn for full wavefunction including radial and angular mtm components?? **
 
 The exact, analytical solution of the Schr{\"o}dinger equation for H gives us wavefunctions corresponding to the familiar 1s, 2s, 2p, etc. atomic orbitals. 
-The full wavefunction can be described by the product of the radial and angular distribution functions and expressed in spherical coordinates, as shown in Eq. \ref{SE_rad+ang}. The radial component is related to the probability of finding an electron at a particular distance from the nucleus and the angular component is necessary to account for electronic orbitals that are not spherical in shape.
+In the non-relativistic case (where there is no spin-orbit coupling), the wavefunction can be decoupled as a product of the space and spin and since the nuclear potential acting on the electron is spherically symmetric, the spatial part of the orbital can be described by angular momentum quantum numbers, $L=\{l,m_l\}$ \cite{RichardMartin_Ch10}. This is shown for the hydrogenic one-electron atom in Eq. \ref{SE_rad+ang}, where the full wavefunction is described by the product of the radial and angular distribution functions and expressed in spherical coordinates. The radial component is related to the probability of finding an electron at a particular distance from the nucleus and the angular component is necessary to account for electronic orbitals that are not spherical in shape.
 \begin{equation}\label{SE_rad+ang}
 \psi_{nlm}(r, \theta, \phi) = R_n(r) Y_{lm}(\theta, \phi)
 \end{equation}
-Fig. \ref{atomic_radial_wavefunction} shows the calculated radial wavefunction with all atomic orbitals for a more complicated atomic system, Mn. Accurate description of the electronic structure of atoms is a vital starting point for computing the properties of valence electrons in molecules or solids, which predominantly determine the bonding in the material. 
+Fig. \ref{atomic_radial_wavefunction} shows the calculated radial wavefunction with all atomic orbitals for a more complicated atomic system, Mn. In this case the system is an open-shell atom and there are unpaired electrons, hence the orbital shapes depend upon the spin. `Spin-unrestricted' calculations require spin functionals and separate $V_{eff}(\mathbf{r})$ for spin up and down. 
+%For half-filled shell systems such as Mn, the system is closed-shell when spin up and down are treated separately. For some many-electron systems, the effective independent-particle potential ($V_{eff}(\mathbf{r})$) does not always have spherical symmetry, as it is dependent upon the occupation of the orbitals. In the case of Mn, the potential is spherically symmetric for each closed-shell system when spins are treated separately. However for open-shell systems that are not half-filled a `restricted' approximation can be used to take a spherical average over any non-spherical terms
+In a solid, the wavefunctions tend to be atom-like close to each atom. Atomic wavefunctions are also closely related to the radial atomic-like functions used in electronic structure codes to represent wavefunctions for solid-state systems \cite{RichardMartin_Ch10}. Accurate description of the electronic structure of atoms is therefore a vital starting point for computing the properties of valence electrons in molecules or solids, which predominantly determine the bonding in the material \cite{RichardMartin_Ch11}. This knowledge is the basis for constructing numeric atom centred orbitals (NAOs) and ab initio pseudopotentials (PPs) as used in the Fritz Haber Institute ab initio molecular simulations (FHI-aims) \cite{FHI-aims} and the Vienna Ab-initio Simulation Package (VASP) \cite{VASP} electronic structure codes to predict the electronic structure of molecules and solid state systems, which will be outlined next.
 
 Eq. \ref{basis_set} shows the expansion of the KS orbitals in terms of known functions called a basis set. 
 \begin{equation}\label{basis_set}
@@ -818,76 +821,65 @@ Constructing a basis set of linearly independent functions allows the use of lin
   \label{aims_NACBF}
 \end{figure}
 
-In the Fritz Haber Institute ab initio molecular simulations (FHI-aims) software package \cite{FHI-aims}, numeric atom-centred orbital (NAO) basis functions, such as that shown in equation \ref{aims_basis_set}, are the basis set used. This basis set for each atomic species has been established from iterative automated construction based on dimers \cite{FHI-aims_slides}. The radial shape, $u_i(r)$, is numerically tabulated and so fully flexible, enabling the creation of optimised element-dependent basis sets that are as compact as possible to minimise computational expense. A schematic represenatation of a NAO is shown in Fig. \ref{aims_NACBF}.
+In the FHI-aims software package, numeric atom-centred orbital (NAO) basis functions, such as that shown in equation \ref{aims_basis_set}, are the basis set used. This basis set for each atomic species has been established from iterative automated construction based on dimers \cite{FHI-aims_slides}. The radial shape, $u_i(r)$, is numerically tabulated and so fully flexible, enabling the creation of optimised element-dependent basis sets that are as compact as possible to minimise computational expense. A schematic represenatation of a NAO is shown in Fig. \ref{aims_NACBF}.
 \begin{equation}\label{aims_basis_set}
 \phi_{NAO}(\mathbf{r}) = \frac{u_i(\mathbf{r})}{r} Y_{lm}(\Omega)
 \end{equation}
-The NAO basis set used in FHI-aims is localised and highly scalable for use on modern high-performance computing (HPC) systems with multiple processors. The localised nature of the basis set has the benefit of no additional computational cost for vacuum gaps in the simulation unit cell, such as in the slab model in Fig. \ref{slab_PBCs}. This implementation of electronic structure calculations is an example of an `all-electron' approach, which has benefitted greatly from advances in HPC technology. However, other highly-successful and computationally efficient approaches for electronic structure calculations of solids have been developed, largely prior to the HPC boom, that are not all-electron but have demonstrated accurate calculated chemical properties.
+The NAO basis set used in FHI-aims is localised and highly scalable for use on modern high-performance computing (HPC) systems with multiple processors. The localised nature of the basis set has the benefit of no additional computational cost for vacuum gaps in the simulation unit cell, such as in the slab model in Fig. \ref{slab_PBCs}. This implementation of electronic structure calculations is an example of an `all-electron' approach, which has benefitted greatly from advances in HPC technology. 
+%However, other highly-successful and computationally efficient approaches for electronic structure calculations of solids have been developed, largely prior to the HPC boom, that are not all-electron but have demonstrated accurate calculated chemical properties.
 
-In the Vienna Ab-initio Simulation Package (VASP) \cite{VASP} plane waves (PW), as shown in Eq. \ref{vasp_basis_set}, are used as the basis set.
+In the VASP software package \cite{VASP} plane waves (PW), as shown in Eq. \ref{vasp_basis_set}, are used as the basis set.
 \begin{equation}\label{vasp_basis_set}
 \phi_{PW}(\mathbf{r}) = ce^{i(\mathbf{k}+\mathbf{G}).\mathbf{r}}
 \end{equation}
+In principle, a plane-wave expansion is an infinite expansion and so in practise the expansion must be truncated at some point where a compromise between accuracy and computational efficiency is made. This will be discussed further in section \ref{chem_acc_vs_eff}. Plane waves are a natural choice for describing the smoothly varying region of the wavefunction far from the atom cores, i.e. in the interstitial regions. Even a small number of plane waves can accurately represent such a function. However, as can be seen from Fig. \ref{atomic_radial_wavefunction}, the wavefunction oscillates much more rapidly closer to the atom core. This results in much poorer convergence of a plane-wave expansion of the functional. This would require a much larger basis set to accurately describe the system, hence increasing the computational expense \cite{Prasad_ch5}. To improve computational efficiency, without sacrificing chemical accuracy, one technique implemented in the VASP electronic structure code is a formalism of the projector-augmented wave (PAW) method \cite{PAW} that makes use of the pseudopotential and frozen-core approximations \cite{PAW_VASP}, outlined next.
 
-pseudopotential approx...
-
-RM pseudopotential notes (ch11 summary): replace strong Coulomb potential of the nucleus and effects of tightly bound core electrons by an effective ionic potential acting on valence electrons, construct pseudopotentials from atomic wavefunctions and apply to solids… 
-
-c.f. Prasad notes: pg 112 \cite{Prasad_ch5} rapid oscillations of wavefunction in core region gives poor convergence of plane wave expansion of wave function vs. loosely bound valence electrons where wavefunction is plane wave like, pg 125 \cite{Prasad_ch6} for justification of frozen core pseudopotentials
-
-From Chris’ thesis – pseudopotentials
-Core electrons only accurately described by high f plane waves, hence computationally expensive to compute with plane waves, core electrons not usually involved in bonding and hence contribute little electronic information in the solution for solids, therefore pseudopotentials smooth over/ do not exactly include and just represent with a few planewaves
-
- ** Get fig for pseudopotentials -- (RM fig 11.6 and c.f. Prasad pg126?) **
+A key concept is to distinguish between `core' and `valence' electrons. Core electrons are tightly bound to the nuclei and their wavefunctions are well localised at lattice sites \cite{Prasad_ch5}. Core electrons usually do not take part in bonding between atoms, therefore it is the valence electrons far from the atom centres that are the most important for determining the bonding in solids. This is the justification for the frozen-core approximation, where core electron states are pre-calculated in an atomic environment and kept unchanged during the course of subsequent calculations for the solid-state system \cite{vasp_slides_PP1}. The strong Coulomb potential of the nucleus and effects of tightly bound core electrons are replaced by an effective ionic potential acting on valence electrons \cite{RichardMartin_Ch11}. The rapid oscillations of the frozen states, however, are used in the orthogonalized plane wave (OPW) method to accelerate the convergence of the expansion used the represent the valence electrons. All solutions of the KS equation corresponding to different energies should be orthogonal to all of the core functions \cite{Prasad_ch5}.
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=0.9\textwidth]{figures/pseudopotential.png}
-    \caption{Fig 11.2 where LHS is OPW and RHS is NCPP, showing that NCPPs are less smooth? + 11.6 for ultrasoft comparison? Relate to discussion in text of using PAW and ultrasoft instead for comp efficiency?? Taken from Ref. \citenum{RichardMartin_Ch11}.}
-  \label{pseudopotential}
+    \includegraphics[width=0.45\textwidth]{figures/PP.png}
+    \caption{Schematic representation of a pseudopotential and pseudo-wavefunction (both shown by red solid lines) and corresponding original Coulomb potential and wavefunction (both shown by dashed blue line), where both red and blue lines converge at distances beyond the core region. Taken from Ref. \citenum{PP_ref}.}
+  \label{PP}
 \end{figure}
 
-+ importance of high-quality pseudopotentials (c.f. Adam’s thesis), Cast as OPW for eigenvalue problem with smooth part of valence function plus core-like functions, PAW approach to use pseudopotentials as operators but keep full core wavefunctions, norm-conserving vs. ultrasoft pseudopotentials (summarized on pg 206+7 + c.f. Adam’s thesis and VASP slides)
+Furthermore, to accurately describe bonding in solids, it is not necessary to accurately describe the wavefunction at all distances from the nucleus. For a given material there will be some critical radius from the ion cores where physically relevant processes begin to take place, such as inter-atomic wavefunction overlap for bond formation. This is where the pseudopotential approximation is invoked. The true ionic potential is replaced by a much smoother pseudopotential within some critical radius. The aim is that the corresponding pseudo-wavefunction will be smooth and therefore can be represented by fewer plane waves, whilst still reproducing the original wavefunction in the physically relevant regions of space. Fig. \ref{PP} is a schematic representation of the Coulomb potential, the pseudopotential that is smoothed close to the core region and the corresponding original wavefunction and the pseudo-wavefunction. High-quality pseudopotentials are vital for accurate electronic structure calculations with this method. 
+%When the pseudo-wavefunction is expanded in terms of OPWs, a projection operator is used to project the function onto the core states. In contrast to the true wavefunction, the pseudo-wavefunction is smooth and contains only a few plane waves \cite{Prasad_ch5}
+The PAW method combines ideas of the linear augmented-plane-wave (LAPW) method \cite{LAPW} with ultrasoft pseudopotential methods \cite{ultrasoft_PP, ultrasoft_PP_VASP, VASP_wiki_PAW}. Ultrasoft PPs reduce the number of plane waves needed by relaxing the norm-conservation requirement for the charge density for the PP. As the norm of the pseudo-wavefunction is not conserved, there is a charge deficit which is compensated by augmentation charges introduced into the core regions \cite{Prasad_ch5}. To combine this with ideas from the LAPW method, the all-electron valence wavefunction, $\psi_{AE}$, is separated into smooth pseudo-wavefunctions, $\psi_{PP}$, and rapidly varying contributions localised within the core region, projectors and auxiliary localised functions respectively. In the PAW approach, integrals are evaluated as a combination of integrals of smooth functions extending throughout space and localised contributions from radial integration over `muffin-tin' spheres \cite{RichardMartin_Ch11}. The $\psi_{AE}$ is related to the $\psi_{PP}$ by a linear transformation. The KS equations are solved to obtain $\psi_{PP}$, which are then transformed back to true wavefunctions (which also incorporate the localised core-region functions) before calculating the charge density and total energy \cite{Prasad_ch5}.
+Although the two electronic structure codes described here represent the wavefunction differently when performing electronic structure calculations, a benchmark study comparing results from 15 different solid-state DFT codes to compute the equation of states for 71 elemental crystals showed that all codes converged towards the same result, within error margins comparable to those of experimental measurements \cite{delta_project}. 
 
-pg 144 for ultrasoft PAW \cite{Prasad_ch6}
-See Prasad ch5+6 for pseudopotentials + c.f. Adam’s thesis and VASP slides for ultrasoft… (PAW, combines pseudopotentials with plane wave basis set for computational  efficiency + note important of determining high-quality pseudopotentials)
 
-+ c.f. Ruoxi’ thesis on VASP/ pseudopotenials/ plane waves
+%The PAW method is analogous to pseudopotentials in that the primary objects in the calculation are projection operators acting on smooth valence functions \cite{RichardMartin_Ch13}. 
 
-Benefits: VASP with plane waves for solids and pseudopotentials (computational efficiency of plane waves and fourier transforms) \cite{RichardMartin_Ch11} + see vasp slides + see Phil Hasnip's slides
+%See: https://cms.mpi.univie.ac.at/wiki/index.php/PAW\_method \cite{VASP_wiki_PAW}
+%+ RM pg 225 + 258 \cite{RichardMartin_Ch13}
+%+ Prasad pg 144 \cite{Prasad_ch6} + ch7 for LAPW
 
-Nod to delta project as a way of confirming that electronic properties obtained from different software packages are consisten?
-
-RM sections:
-Ch11: pg 204 for summary of pseudopotentials, pg 207 for OPWs, pg 222 for ultrasoft, pg 225 for PAW to allow full wavefunction
-Ch12:  c.f. Bloch theorem and grids
-Ch13: pg 258 for PAW
+%RM sections:
+%Ch11: pg 204 for summary of pseudopotentials, pg 207 for OPWs, pg 222 for ultrasoft, pg 225 for PAW to allow full wavefunction
+%Ch12:  c.f. Bloch theorem and grids
+%Ch13: pg 258 for PAW
 
 
 
 \subsubsection{Iterative electronic and geometric optimisation}
-In this section, the process of optimising the geometry (ionic structure) and electronic structure of a given solid towards the minimum energy configuration (i.e. the ground state) using the self-consistent field (SCF) method for a given electron density functional will be outlined. The SCF method was introduced when discussing the Hartree method for determining $V_H$ and $\psi_i$ that give the minimum total energy for the system within a set tolerance, but it also utilised in the KS formalism of DFT. It is common to use experimental X-ray diffraction data for the atomic arrangement in a solid as a starting point for electronic structure calculations. However, the exact minimum energy arrangement of ions and electrons modelled with a specific exchange-correlation functional will differ slightly. Therefore, an important step in calculating the electronic structure of a material is first to find the minimum energy arrangement of the ions and, in the case of solid-state systems, the lattice parameters for the unit cell that results in the lowest total energy.
-
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.85\textwidth]{figures/scf_flowchart.png}
     \caption{Schematic representation of iterative local geometry optimisation procedure with nested self-consistent solution of the Kohn-Sham equations to determine the ground state electron density for each ionic configuration. Darker blue represent iterative steps for geometry optimisation, lighter blue represent SCF electronic convergence. Figure adapted from Ref. \citenum{RichardMartin_Ch9}.}
     \label{SCF_flowchart}
 \end{figure}
-
-The general procedure for local structure optimisation involves displacing ions in the system (either just ionic coordinates within the unit cell or also including the unit cell dimensions), calculating the electronic structure self-consistently for this static ionic arrangement using the SCF method as indicated in Fig. \ref{SCF_flowchart}, repeatedly until the forces on the ions are below a given threshold and hence are close enough to their equilibrium, minimum energy positions. The process of geometry optimisation can also be described as searching the potential energy landscape of the system to find the minima, as illustrated in Fig. \ref{PE_landscape}. Most electronic structure software packages provide options for different optimisation algorithms to converge the system towards a minimum in the potential energy surface. A common approach is to use gradients in the total energy of the system to compute forces on the ions. These methods include the conjugate gradient method and Quasi-Newton appproaches \cite{FHI-aims_slides_Lange}.
-
+In this section, the process of optimising the geometry (ionic structure) and electronic structure of a given solid towards the minimum energy configuration (i.e. the ground state) using the self-consistent field (SCF) method for a given electron density functional will be outlined. The SCF method was introduced when discussing the Hartree method for determining $V_H$ and $\psi_i$ that give the minimum total energy for the system within a set tolerance, but it also utilised in the KS formalism of DFT. It is common to use experimental X-ray diffraction data for the atomic arrangement in a solid as a starting point for electronic structure calculations. However, the exact minimum energy arrangement of ions and electrons modelled with a specific exchange-correlation functional will differ slightly. Therefore, an important step in calculating the electronic structure of a material is first to find the minimum energy arrangement of the ions and, in the case of solid-state systems, the lattice parameters for the unit cell that results in the lowest total energy.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.4\textwidth]{figures/PE_landscape}
     \caption{Visualisation of minima in the potential energy landscape of a molecular system \citenum{PE_landscape_ref}.}
   \label{PE_landscape}
 \end{figure}
+The general procedure for local structure optimisation involves displacing ions in the system (either just ionic coordinates within the unit cell or also including the unit cell dimensions), calculating the electronic structure self-consistently for this static ionic arrangement using the SCF method as indicated in Fig. \ref{SCF_flowchart}, repeatedly until the forces on the ions are below a given threshold and hence are close enough to their equilibrium, minimum energy positions. The process of geometry optimisation can also be described as searching the potential energy landscape of the system to find the minima, as illustrated in Fig. \ref{PE_landscape}. Most electronic structure software packages provide options for different optimisation algorithms to converge the system towards a minimum in the potential energy surface. A common approach is to use gradients in the total energy of the system to compute forces on the ions. These methods include the conjugate gradient method and Quasi-Newton appproaches \cite{FHI-aims_slides_Lange}.
 
 
-
-
-\subsubsection{The chemical accuracy and computational efficiency compromise}
+\subsubsection{The chemical accuracy and computational efficiency compromise}\label{chem_acc_vs_eff}
 Earlier in this section the different mathematical representations of the KS orbitals (i.e. the basis sets) in the electronic structure software packages FHI-aims and VASP were discussed. However, all types of representation are an approximation. It may be necessary to use an infinite set of basis functions to completely represent the KS orbitals. In practice, the basis set must be truncated at some point and then we must check for convergence in the properties of interest with respect to this basis set truncation \cite{Prasad_ch6}. 
 
 When using FHI-aims, a user can select from a hierarchy of basis (sub)sets that have been organised into `tiers' and tabulated for expected levels of accuracy for each chemical species. The inclusion of additional radial functions (and their angular momenta) for each species are grouped into these tiers, which start from the minimal basis of free-atom like radial functions but users are always recommended to add at least one set of further radial functions that have been optimised to describe a chemical bond with that species.  When using predefined calculation settings (`species\_defaults'), additional radial functions are included in the basis set for each species until the required accuracy is reached for settings referred to as `light', `intermediate', `tight' and `really\_tight'. These species\_default settings also define other parameters used in the calculation to achieve the desired level of accuracy, such as the highest order used in the multipole decomposition of the electron density for the calculation of the Hartree potential and the integration grid when the Hamiltonian matrix elements are numerically integrated. The default tight settings are intended to provide meV-level converged energy differences \cite{FHI-aims_manual}. However, users are still encouraged to test the convergence for particular systems. Higher tiers may be required for problematic systems, but it may also be the case that less are required to achieve the desired level of accuracy and hence the computational expense of the calculation could be reduced. Fig. \ref{FHI-aims_tiers} shows the radial wavefunctions necessary to achieve the `tight' level of convergence for Ni, where `H' in the figure refers to hydrogen-like orbitals. 
@@ -899,7 +891,7 @@ When using FHI-aims, a user can select from a hierarchy of basis (sub)sets that 
   \label{FHI-aims_tiers}
 \end{figure}
 
-The equivalent to the process described above for FHI-aims for electronic structure calculations with VASP is to converge the cutoff energy of the plane wave basis set to achieve the level of convergence desired for the property of interest. As already mentioned, in principle an infinite number of plane waves of increasing frequency (and hence energy) may be necessary in the plane wave expansion described earlier for the exact construction of a pseudopotential shown in Eq. \ref{plane_wave_pseudopotential}. However, in practise this set must be truncated at some point too. Similar to the process described above for FHI-aims, the size of the plane wave basis set (determined by the cutoff energy) must be tested to ensure the desired property, often the total energy of the material, is converged to within an acceptable range. Smoother and weaker pseudopotentials require lower cutoff energies \cite{Prasad_ch6}, hence the motivation for the use of ultrasoft pseudopotentials in the VASP code.
+The equivalent to the process described above for FHI-aims for electronic structure calculations with VASP is to converge the cutoff energy of the plane wave basis set to achieve the level of convergence desired for the property of interest. As already mentioned, in principle an infinite number of plane waves of increasing frequency (and hence energy) may be necessary in the plane wave expansion. However, in practise this set must be truncated at some point too. Similar to the process described above for FHI-aims, the size of the plane wave basis set (determined by the cutoff energy) must be tested to ensure the desired property, often the total energy of the material, is converged to within an acceptable range. Smoother and weaker pseudopotentials require lower cutoff energies \cite{Prasad_ch6}.
 
 For both software packages, the inclusion of a larger basis set increases the computational expense of the calculation, but takes the approximate representations of the KS orbitals closer to the true form and hence improves the accuracy of the calculated material properties for the given electron density functional. Determining the optimal compromise between computational expense and chemical accuracy for the material property of interest is an important process in electronic structure calculations. The other calculation setting that must be considered in such a way is the density of the \textit{k}-grid when sampling the Brillouin zone.
 
@@ -1224,7 +1216,7 @@ Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions wi
 
 
 
-\section{Disorder processes during the Cu-Zn order-disorder transition in {\CZTS} from Monte Carlo simulations}\label{CZTS_MC}
+\section{Disorder processes during the Cu-Zn order-disorder transition in {\CZTS}}\label{CZTS_MC}
 For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.\\
@@ -1351,6 +1343,9 @@ Note from Komsa paper: Possibly contributions to need for pa from variations in 
 
 
 \section{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
+
+** Update: Just do for enargite? Use aide to post-process with LZ method, draw comparisons to CZTS, CIS and explore role of multivalence of As. Look into most recent MIT defect-tolerance work and discuss analysis wrt CIS with Stephan? Also, maybe discuss non-radiative defect recombination for enargite with Sam and Aron?? **
+
 State that we expect extended cation disorder to be present to a lesser extent than in CZTS due to less chemical similarity? Also that understanding defect physics from a point-defect perspective is an important foundation to build for understanding the complicate defect physics of a multi-component material? e.g. next step would be pairs, etc.
 
 Introductory paragraph (power of predicting this property - determine materials worthy of further study, inform synthesis procedures for faster optimisation) + sulfosalts defects work as complete as possible (write last, aim to have as much of paper written as possible first!)\\

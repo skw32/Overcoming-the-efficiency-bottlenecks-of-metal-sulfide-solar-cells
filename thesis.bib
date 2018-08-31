@@ -1644,8 +1644,36 @@ abstract = {Abstract The standard Kohn-Sham formulation of density functional th
 @manual{vasp_k-sampling_slides,
 author = {Eichler, A},
 title = {Sampling the Brillouin Zone},
-year = {2014 (Accessed on April 28, 2015)},
+year = {2003 (Accessed on August 31, 2018)},
 url = {https://www.vasp.at/vasp-workshop/slides/k-points.pdf},
+}
+
+@manual{vasp_slides_PP1,
+author = {Georg Kresse},
+title = {Pseudopotentials (Part I)},
+year = {2003 (Accessed on August 31, 2018)},
+url = {https://www.vasp.at/vasp-workshop/slides/pseudopp1.pdf},
+}
+
+@manual{PP_ref,
+author = {Joydeep Ghosh},
+title = {2.1 Band Structure Calculation Methods in Semiconductors},
+year = {1982 (Accessed on August 31, 2018)},
+url = {http://www.iue.tuwien.ac.at/phd/ghosh/diss_htmse6.html},
+}
+
+@article{delta_project,
+  doi = {10.1126/science.aad3000},
+  url = {https://doi.org/10.1126/science.aad3000},
+  year  = {2016},
+  month = {mar},
+  publisher = {American Association for the Advancement of Science ({AAAS})},
+  volume = {351},
+  number = {6280},
+  pages = {aad3000--aad3000},
+  author = {K. Lejaeghere and G. Bihlmayer and T. Bjorkman and P. Blaha and S. Blugel and V. Blum and D. Caliste and I. E. Castelli and S. J. Clark and A. Dal Corso and S. de Gironcoli and T. Deutsch and J. K. Dewhurst and I. Di Marco and C. Draxl and M. Du~ak and O. Eriksson and J. A. Flores-Livas and K. F. Garrity and L. Genovese and P. Giannozzi and M. Giantomassi and S. Goedecker and X. Gonze and O. Granas and E. K. U. Gross and A. Gulans and F. Gygi and D. R. Hamann and P. J. Hasnip and N. A. W. Holzwarth and D. Iu~an and D. B. Jochym and F. Jollet and D. Jones and G. Kresse and K. Koepernik and E. Kucukbenli and Y. O. Kvashnin and I. L. M. Locht and S. Lubeck and M. Marsman and N. Marzari and U. Nitzsche and L. Nordstrom and T. Ozaki and L. Paulatto and C. J. Pickard and W. Poelmans and M. I. J. Probert and K. Refson and M. Richter and G.-M. Rignanese and S. Saha and M. Scheffler and M. Schlipf and K. Schwarz and S. Sharma and F. Tavazza and P. Thunstrom and A. Tkatchenko and M. Torrent and D. Vanderbilt and M. J. van Setten and V. Van Speybroeck and J. M. Wills and J. R. Yates and G.-X. Zhang and S. Cottenier},
+  title = {Reproducibility in density functional theory calculations of solids},
+  journal = {Science}
 }
 
 @article{SupercellMethodDefects,
@@ -1995,20 +2023,6 @@ author = "G. Kresse and J. Furthm{\"u}ller",
 abstract = "We present a detailed description and comparison of algorithms for performing ab-initio quantum-mechanical calculations using pseudopotentials and a plane-wave basis set. We will discuss: (a) partial occupancies within the framework of the linear tetrahedron method and the finite temperature density-functional theory, (b) iterative methods for the diagonalization of the Kohn-Sham Hamiltonian and a discussion of an efficient iterative method based on the ideas of Pulay's residual minimization, which is close to an order Natoms2 scaling even for relatively large systems, (c) efficient Broyden-like and Pulay-like mixing methods for the charge density including a new special ‘preconditioning’ optimized for a plane-wave basis set, (d) conjugate gradient methods for minimizing the electronic free energy with respect to all degrees of freedom simultaneously. We have implemented these algorithms within a powerful package called \{VAMP\} (Vienna ab-initio molecular-dynamics package). The program and the techniques have been used successfully for a large number of different systems (liquid and amorphous semiconductors, liquid simple and transition metals, metallic and semi-conducting surfaces, phonons in simple metals, transition metals and semiconductors) and turned out to be very reliable. "
 }
 
-@article{PAW,
-  title = {From ultrasoft pseudopotentials to the projector augmented-wave method},
-  author = {Kresse, G. and Joubert, D.},
-  journal = {Phys. Rev. B},
-  volume = {59},
-  issue = {3},
-  pages = {1758--1775},
-  numpages = {0},
-  year = {1999},
-  month = {Jan},
-  publisher = {American Physical Society},
-  doi = {10.1103/PhysRevB.59.1758},
-  url = {http://link.aps.org/doi/10.1103/PhysRevB.59.1758}
-}
 
 @article{PBE,
   title = {Generalized Gradient Approximation Made Simple},
@@ -2136,7 +2150,84 @@ year = {2011 (Accessed on August 30, 2018)},
  url = {https://www.bioscience.org/2008/v13/af/3019/fulltext.php?bframe=PDFII},
 }
 
+@article{PAW,
+  title = {Projector augmented-wave method},
+  author = {Bl\"ochl, P. E.},
+  journal = {Phys. Rev. B},
+  volume = {50},
+  issue = {24},
+  pages = {17953--17979},
+  numpages = {0},
+  year = {1994},
+  month = {Dec},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevB.50.17953},
+  url = {https://link.aps.org/doi/10.1103/PhysRevB.50.17953}
+}
 
+@article{PAW_VASP,
+  title = {From ultrasoft pseudopotentials to the projector augmented-wave method},
+  author = {Kresse, G. and Joubert, D.},
+  journal = {Phys. Rev. B},
+  volume = {59},
+  issue = {3},
+  pages = {1758--1775},
+  numpages = {0},
+  year = {1999},
+  month = {Jan},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevB.59.1758},
+  url = {http://link.aps.org/doi/10.1103/PhysRevB.59.1758}
+}
+
+@article{ultrasoft_PP,
+  title = {Soft self-consistent pseudopotentials in a generalized eigenvalue formalism},
+  author = {Vanderbilt, David},
+  journal = {Phys. Rev. B},
+  volume = {41},
+  issue = {11},
+  pages = {7892--7895},
+  numpages = {0},
+  year = {1990},
+  month = {Apr},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevB.41.7892},
+  url = {https://link.aps.org/doi/10.1103/PhysRevB.41.7892}
+}
+
+@article{ultrasoft_PP_VASP,
+  author={G Kresse and J Hafner},
+  title={Norm-conserving and ultrasoft pseudopotentials for first-row and transition elements},
+  journal={Journal of Physics: Condensed Matter},
+  volume={6},
+  number={40},
+  pages={8245},
+  url={http://stacks.iop.org/0953-8984/6/i=40/a=015},
+  year={1994},
+  abstract={The construction of accurate pseudopotentials with good convergence properties for the first-row and transition elements is discussed. We show that by combining an improved description of the pseudowavefunction inside the cut-off radius with the concept of ultrasoft pseudopotentials introduced by Vanderbilt optimal compromise between transferability and plane-wave convergence can be achieved. With the new pseudopotentials, basis sets with no more than 75-100 plane waves per atom are sufficient to reproduce the results obtained with the most accurate norm-conserving pseudopotentials.}
+}
+
+@article{LAPW,
+  title = {Linear methods in band theory},
+  author = {Andersen, O. Krogh},
+  journal = {Phys. Rev. B},
+  volume = {12},
+  issue = {8},
+  pages = {3060--3083},
+  numpages = {0},
+  year = {1975},
+  month = {Oct},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevB.12.3060},
+  url = {https://link.aps.org/doi/10.1103/PhysRevB.12.3060}
+}
+
+@manual{VASP_wiki_PAW,
+author = {Vaspwiki},
+title = {PAW method},
+year = {2017 (Accessed on August 31, 2018)},
+ url = {https://cms.mpi.univie.ac.at/wiki/index.php/PAW_method},
+}
 
 
 
