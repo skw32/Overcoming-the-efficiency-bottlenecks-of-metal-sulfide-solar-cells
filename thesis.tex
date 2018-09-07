@@ -921,30 +921,28 @@ This approximation is illustrated in figure \ref{k_sampling}a. The choice here w
 
 
 \section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
-The electronic band structure of a semiconductor provides a rich source of information for how the material may perform as a solar cell absorber layer. When a solid forms a regular crystal the energies of the bands, i.e. the band structure, can be predicted exactly as discussed in section \ref{BandTheorySection} from electronic structure calculations \cite{Nelson3}. However, in reality, absolutely perfect systems do not exist. The energy cost associated with the creation of a defect often can be countered by the increase in the configurational entropy of the system \cite{AshcroftMermin_general}.
-There are several types of possible defects in solids, some of which were depicted in section \ref{defects_impact}. 
+The electronic band structure of a semiconductor provides a rich source of information for how the material may perform as a solar cell absorber layer. When a solid forms a regular crystal the energies of the bands, i.e. the band structure, can be predicted exactly, as discussed in section \ref{BandTheorySection}, from electronic structure calculations \cite{Nelson3}. However, in reality, absolutely perfect systems do not exist. The energy cost associated with the creation of a defect can often be countered by the increase in the configurational entropy of the system from the addition of the defect \cite{AshcroftMermin_general}.
+There are several types of possible defects in solids, some of which were described in section \ref{defects_impact}. 
 
-In this section, methods developed in the literature for electronic structure calculations of the formation energy of isolated point defects, i.e. in the dilute limit, are discussed. 
-These methods are applied in section \ref{sulfosalt_defects} to provide the first insights into the defect physics (and likely associated impact on PV performance) of some of the candidate photoferroic absorbers identified in \autoref{chap:screening}.
+In this section, approaches developed in the literature for periodic electronic structure calculations of the formation energy of isolated point defects, i.e. in the dilute limit, are discussed. 
+These methods are applied in section \ref{sulfosalt_defects} to provide the first insights into the defect physics (and likely associated impact on PV performance) of some of the candidate photoferroic absorbers identified in \autoref{chap:screening}. These methods are also compared to an aperiodic calculation on a defect embedded in a large cluster in section \ref{defect_benchmark}.
 Defect formation energies under specific synthesis conditions can be used to infer the likely concentrations of particular defects, which may have different impacts on PV performance \cite{Aron_defect_tolerance}. 
-In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in materials with large extents of substitutional disorder. In this case, the methodology is used to investigate high concentrations of Cu-Zn disorder in {\CZTS}. 
+In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in materials with large extents of substitutional disorder, beyond what would be considered as the dilute limit. In this case, the methodology is used to investigate high concentrations of Cu-Zn disorder in {\CZTS}. 
 
 \subsection{The problem of periodicity}
-As discussed in section \ref{crystal_models}, models of crystalline solids are built around the translational symmetry of periodic crystal lattices. This property is exploited in electronic structure calculations where, typically, the smallest possible unit cell is used to represent the crystal structure and periodic boundary conditions (PBCs) are used to simulate an infinite, bulk crystal. It is then possible to predict the bulk properties of the material by solving quantum mechanical equations for the electronic structure. However, the introduction of a point defect into this simulated system produces a situation such as that shown in 2D for a slice of the system in Fig. \ref{defect_PBCs}a. With the implementation of 3-dimensional PBCs for a 3D system, this would correspond to an infinite 3D array of highly concentrated point defects. Defect wavefunctions in adjacent unit cells may overlap. However in real systems, defects are typically present in parts per million.  To correctly represent isolated point defects, interactions between defect periodic images must be negligible \cite{freysoldt_rev}.
+As discussed in section \ref{crystal_models}, models of crystalline solids are built around the translational symmetry of periodic crystal lattices. This property is exploited in electronic structure calculations where, typically, the smallest possible unit cell is used to represent the crystal structure and periodic boundary conditions (PBCs) are used to simulate an infinite, bulk crystal. It is then possible to predict the bulk properties of the material by solving quantum mechanical equations for the electronic structure of just this small unit cell. However, the introduction of a point defect into this simulated system produces a situation such as that shown in 2D for a slice of the system in Fig. \ref{defect_PBCs}a. With the implementation of 3-dimensional PBCs for a 3D system, this would correspond to an infinite 3D array of highly concentrated point defects. Defect wavefunctions in adjacent unit cells may overlap. However, in real, crystalline systems defects are typically present in parts per million.  To correctly represent isolated point defects, interactions between defect periodic images must be negligible \cite{freysoldt_rev}.
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.75\textwidth]{figures/ase_defects.png}
-    \caption{A charge-neutral defect interacting with periodic images of itself across periodic boundary conditions in 2D (a) and the longer-ranged Coulombic interactions of charged defects (b). Figure taken from reference \citenum{ase_defects} and adapted. ** MAKE OWN? - especially for benchmark write up and add charge to defect in (b)?**}
+    \caption{A charge-neutral defect interacting with periodic images of itself across periodic boundary conditions in 2D (a) and the longer-ranged Coulombic interactions of charged defects (b). Figure taken from reference \citenum{ase_defects} and adapted.}
   \label{defect_PBCs}
 \end{figure}
 
 The supercell method is a common approach to simulate defects in the dilute limit and is the method that is utilised in section \ref{sulfosalt_defects}. This approach involves repeating the primitive unit cell a finite number of times in 3D and then embedding the defect within this larger unit cell so that the defect will be separated from its periodic image by a greater distance. If this distance is sufficiently large, the properties of an isolated defect can be represented by this model \cite{freysoldt_rev}.
 
 \subsubsection{Charge neutral point defects}
-** Ref Zhang and Northup (1991) for formation E eqn's? - double check! **\\
-
-The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell of the host crystal and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to ($n_i > 0 $) or removed from ($n_i < 0$) the system when the defect is formed and $\mu_i$ is the chemical potential of species i. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species.
+The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell of the host crystal and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to ($n_i > 0 $) or removed from ($n_i < 0$) the system when the defect is formed and $\mu_i$ is the chemical potential of species i \cite{ZhangNorthup_defect_formation}. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species.
 \begin{equation}\label{defect_neutral}
 \Delta H_{D,q=0} = E_{D,q=0} - E_{host} - \sum_i n_i \mu_i
 \end{equation}
@@ -964,111 +962,71 @@ Additional terms in Eq. \ref{defect_charged} compared to Eq. \ref{defect_neutral
   \label{pylada_eq}
 \end{figure}
 
-In theory, it is possible to continually increase the supercell dimensions to allow estimations of the magnitude and decay behavior of the different effects to be obtained and, from this, extrapolate to the formation energy of a defect in the limit of an infinitely large supercell.
-However, due to computational limitations, it is usually not feasible to perform calculations with sufficiently large supercells to remove all spurious defect-defect interactions, especially for the long-ranged Coulombic interaction of charged defects, as depicted in Fig. \ref{defect_PBCs}b.
+In theory, it is possible to continually increase the supercell dimensions to allow estimations of the magnitude and decay behavior of the different effects to be obtained and, from this, extrapolate to the formation energy of a defect in the limit of an infinitely large supercell. An empirical scaling rule for the correction to the defect formation energy for a supercell with a cubic shape was identified by Castleton et al \cite{supercell_scaling} and is of the form shown in Eq. \ref{defect_scaling_rule}, where L is the length of the side of the cubic supercell.
+\begin{equation}\label{defect_scaling_rule}
+\Delta H_{D,q}(L) = \Delta H_{D,q}(L \rightarrow \infty) + \frac{a_1}{L} + \frac{a_3}{L^3}
+\end{equation}
+
+Due to computational limitations, it is usually not feasible to perform calculations with sufficiently large supercells to remove all spurious defect-defect interactions, especially for the long-ranged Coulombic interaction of charged defects, as depicted in Fig. \ref{defect_PBCs}b.
 Furthermore, the band gap error in standard-DFT can cause large errors in the calculated properties of defects \cite{Lany_defects}. For this reason, methods beyond standard-DFT such as hybrid-DFT (outlined in section \ref{elec_struc}) may be used to more accurately predict the electronic structure. However, the computational expense for such methods is increased further, hence performing calculations for larger supercells becomes a less feasible endeavor.
-Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. Some such schemes are outlined in the next section and a study conducted to compare defect formation energies obtained from different schemes implemented with different electronic structure codes is presented in section \ref{defect_benchmark}.
+Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various finite-size correction schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. These correction schemes have been compared to the extrapolation scheme described above to compare their relative effectiveness for various types of defects \cite{komsa}, although uncertainties in the extrapolation method could be comparable to the errors between different correction schemes \cite{Durrant_defects}. Some of the existing finite-size correction schemes are outlined in the next section and a study conducted to compare defect formation energies obtained from different finite-size correction schemes for defect supercells to a defect embedded in a large, aperiodic cluster is presented in section \ref{defect_benchmark}.
 
 \subsection{Finite-size corrections to defect supercells}
 
-** Cross-ref Thomas Durrant's paper theory SII **
-
 \subsubsection{Potential alignment}
 The formation energy of a charged defect depends on the Fermi level, as shown in Eq. \ref{defect_charged} and this is referenced to the VBM of the host as the defect formation energy is related to the energy required to add or remove electrons to or from the VBM of the host from or to a Fermi reservoir \cite{Alex_defects}.
-As already mentioned, when a charged defect is embedded in a supercell in a periodic electronic structure calculation, there will also be a compensating background charge. Otherwise, the Ewald summation performed in the electronic structure code to calculate the electrostatic energy of the system diverges, i.e. the system has an infinite charge. The effect of including a compensating homogeneous background charge is equivalent to setting the average electrostatic potential to zero \cite{freysoldt_rev}. 
-In practise this corresponds to removing a constant in the Fourier transform of the electrostatic potential and the consequence of this treatment is that the eigenvalues are defined only up to an undetermined constant \cite{kumagai_oba, kumagai_oba_9}.
-Although referred to as adding a `homogeneous background charge' in the electronic structure calculation, the charge compensation occurs only in the potential. A background charge density is usually not explicitly introduced into the calculation. If instead a compensating charge density was introduced, the resulting overall charge-neutral system should have a well-defined total energy and not depend on the undetermined constant \cite{Lany_defects, Lany_defects_2008}.
-This correction step of course will only be applied to the charged defect supercell in the electronic structure calculations, and not to the perfect host. It is therefore necessary to align the average electrostatic potential in the perfect host supercell to that of the charged defect supercell before computing the defect formation energy through comparisons of the two systems with Eq. \ref{defect_charged}.
- 
- Different approaches for potential alignment have been proposed in the literature, including using averages over the electrostatic potential in a small sphere around an atom, as in the Lany-Zunger (LZ) scheme \cite{Lany_defects}, and through the average over transversal planes in the `alignment-like' term in the Freysoldt, Neugebauer, Van de Walle (FNV) scheme \cite{FNV, kumagai_oba}. In both cases, the treatment involves comparing the averaged potential in the bulk-like region of the defect supercell (i.e far from the defect site) to that of a perfect bulk system. Although the electronic structure far from the defect may be similar in the defect supercell and the perfect reference, the average electrostatic potential in equivalent regions of each system could differ by a constant, due to the treatment described above \cite{komsa}. This constant can then be used in Eq. \ref{defect_charged} to align the VBM of the the perfect reference to the defect system.
- However, there is some debate in the literature as to whether this potential alignment step is required as a separate correction step, or, if it is in fact accounted for in the image-charge correction \cite{kumagai_oba}, which is outlined next.
+However, there are a number of differences between the perfect, bulk system and the charged defect supercell which will cause the average of the potential (even at distances far from the defect) to differ between the perfect and defect supercell.
 
+Firstly, as the formation of a defect involves addition or removal of ions, this will cause a change in the potential of the system when forming a defect. Secondly, ionic relaxations during defect formation will also perturb the electrostatic potential in the system. Lastly, as already mentioned, when a charged defect is embedded in a supercell in a periodic electronic structure calculation, there will also be a compensating background charge. Otherwise, the Ewald summation performed in the electronic structure code to calculate the electrostatic energy of the system diverges, i.e. the system has an infinite charge. The effect of including a compensating homogeneous background charge is equivalent to setting the average electrostatic potential to zero \cite{freysoldt_rev}. 
+In practise this corresponds to removing a constant in the Fourier transform of the electrostatic potential and the consequence of this treatment is that the eigenvalues are defined only up to an undetermined constant \cite{kumagai_oba, kumagai_oba_9}.
+
+This correction step of course will only be applied to the charged defect supercell in the electronic structure calculations, and not to the perfect host. To make matters worse, spurious defect-image charge (which will be discussed in the next section) may also interact with this `homogeneous background charge'.
+It is therefore necessary to align the average electrostatic potential in the perfect host supercell to that of the charged defect supercell before computing the defect formation energy through comparisons of the two systems with Eq. \ref{defect_charged}.
+ 
+Different approaches for potential alignment have been proposed in the literature, including using averages over the electrostatic potential in a small sphere around an atom, as in the Lany-Zunger (LZ) scheme \cite{Lany_defects}, and through the average over transversal planes in the `alignment-like' term in the Freysoldt, Neugebauer, Van de Walle (FNV) scheme \cite{FNV, kumagai_oba}. In both cases, the treatment involves comparing the averaged potential in the bulk-like region of the defect supercell (i.e far from the defect site) to that of a perfect bulk system. Although the electronic structure far from the defect may be similar in the defect supercell and the perfect reference, the average electrostatic potential in equivalent regions of each system could differ by a constant, due to the treatment described above \cite{komsa}. 
+%This constant can then be used in Eq. \ref{defect_charged} to align the VBM of the the perfect reference to the defect system.
+However, there is some debate in the literature as to whether this potential alignment step is required as a separate correction step, or, if it is in fact accounted for in the image-charge correction (IIC) \cite{kumagai_oba}, which is discussed next for various correction schemes. 
 
 
 \subsubsection{Image-charge correction}
-Image-charge corrections are applied a posteriori to calculated total energies of charged defect supercells to account for the spurious interactions of defects with their periodic images, which were depicted in Fig. \ref{defect_PBCs}, and also with the neutralising `homogeneous background charge'. 
-%and a number of schemes have been developed to correct for this error (Kumagai/ Oba paper ref 7, 11-18)
-%This step involves considering three systems, firstly there is the perfect host system (the supercell without the periodically repeated charged defect). This is the reference system used to compare to the next two systems to determine the energy of the defect in each case. Secondly, there is a system with a periodic array of localised charged defects of charge q with a neutralising background charge.
-%, where the defect interacts both with its periodic image and the neutralising background charge. 
-%of $-\frac{q}{\Omega}$ (where $\Omega$ is the volume of the supercell unit).
-This step involves considering two systems. Firstly there is a system with a periodic array of localised charged defects of charge q with a neutralising background charge.
-This corresponds to the bare result of the electronic structure calculation for the charged defect supercell which needs to have energy corrections applied to it due to spurious interactions caused by the PBCs. Secondly, a system is considered that is just an isolated charge q in a dielectric medium (used to represent the host crystal), where more sophisticated models also take into account the anisotropy of the dielectric response of the host material \cite{kumagai_oba}.
-Different models have been developed to quantify the effects of image-charge interactions in electronic structure calculations for the defect supercell through comparisons of the defect formation energy in these two systems.
-
-%The simplest model for the latter system of an isolated point defect in a dielectric medium is to subtract point-charge energies \cite{kumagai_oba}
-The magnitude of interactions between the charged defect with its periodic images can be estimated from the screened Madelung-like energy of an array of point charges \cite{LeslieGillan}.
-The interaction decays asymptotically as $\frac{q^2\alpha}{2 \epsilon L}$ where L is a representative supercell dimension, $\epsilon$ is the dielectric constant of the host material (when an isotropic approximation is used) or the dielectric tensor otherwise \cite{kumagai_oba} and $\alpha$ is the Madelung constant which depends on the supercell geometry and can be calculated for any Bravais lattice through the use of the Ewald method \cite{Ewald, komsa}.
-Makov and Payne (MP) derived an extension of the Madelung lattice sum for a more extended (but still localised charge) distribution \cite{MP}, shown in Eq \ref{MP} \cite{komsa}.
-MP proved that for isolated ions the quadrupole moment of the charge distribution gives rise to a further term scaling as $L^{−3}$ \cite{MP, freysoldt_rev}.
-\begin{equation}\label{MP}
-E^{MP}_{corr} = E_{MP1} + E_{MP2} = \frac{q^2\alpha}{2 \epsilon L} - \frac{2 \pi q Q}{3 \epsilon L^3}
-\end{equation}
-where
-\begin{equation}\label{MP_Q}
-Q = \int r^2 \rho_c(\mathbf{r}) d\mathbf{r}
-\end{equation}
-is the second radial moment of the extended charge density.
-
-However, Q in Eq. \ref{MP} cannot be calculated directly for defects in crystalline materials \cite{kumagai_oba, komsa, Lany_defects_2008}. Therefore in practise when using the MP scheme $E^{MP}_{corr}$ is usually not calculated but is estimated by fitting Eq. \ref{MP} to the formation energies calculated for defects with increased supercell size and then extrapolating to the infinite supercell limit. As already discussed, at high levels of theory such large systems may be computationally unfeasible. Furthermore, it has been shown that Eq \ref{MP} does not always give a good fit to calculated defect formation energies, creating doubt regarding the predictive power of this scheme \cite{FNV}. A number of alternative schemes have been proposed that do not require the use of increasing supercell sizes \cite{MP, LeslieGillan, PeterSchultz, Lany_defects, FNV, kumagai_oba}, here the LZ \cite{Lany_defects} and FNV \cite{FNV} schemes will be outlined as these methods will be used to calculate defect formation energies and the results will be compared in section \ref{defect_benchmark}.
+Image-charge corrections (IICs) are applied a posteriori to calculated total energies of charged defect supercells to account for the spurious interactions of defects with their periodic images, which were depicted in Fig. \ref{defect_PBCs}, and also with the neutralising `homogeneous background charge'. Most IIC methods involve creating a separate, classical model for these unwanted electrostatic interactions and then subtracting the energy of this interaction from the DFT calculation.
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=0.8\textwidth]{figures/LZ_ic.png}
-    \caption{A defect supercell of volume $\Omega$ in an environment (env) of periodic images of the defect (left) and in an environment of surrounding perfect, unperturbed supercells of the host lattice (right). Figure taken from Ref. \citenum{Lany_defects}.}
-  \label{LZ_ic}
+    \includegraphics[width=0.8\textwidth]{figures/IIC.png}
+    \caption{a) Schematic of first-order Markov-Payne (MP) correction of electrostatic interactions in a periodic DFT calculation of a charged defect where the defect is modelled as a point charge. Adapted from Ref. \citenum{Durrant_defects}. b) Multipole expansion of a charge density. Taken from Ref. \citenum{multipole_web}.}
+  \label{IIC}
 \end{figure}
 
-The MP scheme \cite{MP} discussed above was developed for molecular systems and when calculating Q in Eq. \ref{MP_Q} the part of the defect charge density, $\rho_c(\mathbf{r})$, due to the electronic screening from the host crystal is not included \cite{Lany_defects_2008, Lany_defects}. However, it has been shown that Q is dominated by this contribution in crystalline solids \cite{Lany_defects_2008}. The LZ scheme, as outlined in Ref. \citenum{Lany_defects}, was devised to resolve this situation when calculating the image-charge correction for charged defects in crystalline solids. Firstly, the LZ scheme initially also considers the quadrupole-quadrupole contribution (whereas the MP scheme considers point-charge to point-charge in the MP1 term and point-charge to quadrupole in the MP2 term). If $\rho_c(\mathbf{r})$ is expected to be dominated by the screening response of the host, then it is not confined to the supercell and interactions between extended densities should also be considered \cite{Lany_defects}.
-The image-charge correction is determined in the LZ scheme by considering the difference between the electrostatic interaction energy of the supercell with an environment of
-unperturbed host supercells minus the interaction energy of the supercell with an environment of identical defect supercells, as shown on the right and left hand sides of Fig. \ref{LZ_ic} respectively. This is expressed in Eq. \ref{LZ_Ecorr1} where $\rho_H^{tot}$ is the charge density in the unperturbed perfect host supercell, $\Delta \rho_D$ is the difference between the charge density in the defect supercell and the perfect host supercell and $\Delta \rho_p$ is point-charge-like contribution to the change in the charge density due to the ionic substitution involved in the formation of the crystallographic defect.
-\begin{equation}\label{LZ_Ecorr1}
-\Delta E_i = - \int_{\Omega} dr^3 ( \rho_H^{tot}(\mathbf{r}) + \Delta \rho_p(\mathbf{r}) + \Delta \rho_D(\mathbf{r}) ) \int_{env} dr^{\prime 3} \frac{\Delta \rho_p(\mathbf{r^{\prime}}) + \Delta \rho_D(\mathbf{r^{\prime}})}{ | \mathbf{r} - \mathbf{r^{\prime}} | }
+The simplest electrostatic model that can be used to quantify the spurious electrostatic interactions in a periodic calculation of a charged defect in a supercell involves approximating the defect as a point charge. The point charge and its periodic images are then considered to interact with each other through a classical dielectric background that represents the host crystal. This is shown schematically in Fig. \ref{IIC}a where the left figure is the DFT calculation of the defect and the right figure is the model system used to determine the spurious interaction energy to substract from the DFT calculation. The magnitude of interactions between the charged defect with its periodic images can be estimated from the screened Madelung-like energy of an array of point charges. This approach was first used by Leslie and Gillan (LG) \cite{LeslieGillan}. 
+\begin{equation}\label{MP}
+E^{MP}_{corr} = E_{MP1} + E_{MP2} + ... = \frac{q^2\alpha}{2 \epsilon L} - \frac{2 \pi q Q}{3 \epsilon L^3} + O(L^{-5})
 \end{equation}
-Eq. \ref{LZ_Ecorr1} can be interpreted as Eq. \ref{LZ_Ecorr2} by making some assumptions. Firstly, that the interaction energy of $\rho_H^{tot}$ with the total defect-induced charge density in the image supercells ($\Delta \rho_p(\mathbf{r^{\prime}}) + \Delta \rho_D(\mathbf{r^{\prime}})$) can be neglected (provided that the defect supercell is sufficiently large). Secondly, that the second integral in Eq. \ref{LZ_Ecorr1} can be interpreted as the screened potential, $V_{scr}^{env}(\mathbf{r})$, by assuming that $\Delta \rho_D(\mathbf{r})$ essentially reflects the screening response of the host crystal to the defect.
-\begin{equation}\label{LZ_Ecorr2}
-\Delta E_i = - \int_{\Omega} dr^3 ( \Delta \rho_p(\mathbf{r}) + \Delta \rho_D(\mathbf{r}) ) V_{scr}^{env}(\mathbf{r})
-\end{equation}
-The interaction energy of $ V_{scr}^{env}(\mathbf{r})$ with $\Delta \rho_p(\mathbf{r})$ corresponds to the MP1 term in the MP scheme and the interaction with $\Delta \rho_D(\mathbf{r}) $ corresponds to the MP2 term in the MP scheme when the screening response of the host lattice is included in $\Delta \rho_D(\mathbf{r})$.
+The $E_{MP1}$ in Eq. \ref{MP} is equivalent to the corrections applied by LG where $\epsilon$ is the dielectric constant of the host crystal and $\alpha$ is the Madelung constant which is only dependant upon the shape of the host supercell. The is the first-order Markov-Payne (MP) correction for cubic supercells.
+MP derived a less approximate form for the defect-induced charge density that is still localised, but allowed to be more extended than a point charge \cite{MP}. Later terms in Eq. \ref{MP} are due to a multipole expansion of the charge density for higher-order terms. An example of a multipole expansion of a charge density is shown in Fig. \ref{IIC}b. Eq. \ref{MP} only shows odd powers of L as the even powers of L are zero for charge distributions with cubic symmetry \cite{Durrant_defects}.
 
-The expression in Eq. \ref{LZ_Ecorr2} can then be simplified by exploiting the observation that the delocalised part of the defect density, $\Delta \rho_D(\mathbf{r})$, is dominated by the screening response of the host. The consequence is that Q in Eq. \ref{MP_Q} is proportional to $q L^2$. The second term in Eq. \ref{MP} is then proportional to $\frac{q^2}{L}$ instead of $\frac{q}{L^3}$. By also assuming that the electronic charge accumulation at a defect is drawn homogeneously from the entire supercell \cite{Lany_defects_2008}, the image-charge correction can be expressed as the first-order correction to the MP1 term shown in Eq. \ref{LZ_Ecorr}, which depends only on the dielectric constant of the host, $\epsilon$, and the shape factor $c_{sh}$, which depends only on the shape of the host supercell (FCC, BCC, etc.) and has been calculated for several types of supercell shape in Ref. \citenum{Lany_defects}.
+However, Q in Eq. \ref{MP} cannot be calculated directly for defects in crystalline materials \cite{Lany_defects_2008}. Therefore in practise when using the MP scheme $E^{MP}_{corr}$ is usually not calculated but is estimated by fitting Eq. \ref{MP} to the formation energies calculated for defects with increased supercell size and then extrapolating to the infinite supercell limit. As already discussed, at high levels of theory such large systems may be computationally unfeasible. Furthermore, it has been shown that Eq \ref{MP} does not always give a good fit to calculated defect formation energies, creating doubt regarding the predictive power of this scheme \cite{FNV}. A number of alternative schemes have been proposed that do not require the use of increasing supercell sizes \cite{MP, LeslieGillan, PeterSchultz, Lany_defects, FNV, kumagai_oba}, here the LZ \cite{Lany_defects} and FNV \cite{FNV} schemes will be outlined as these methods will be used to calculate defect formation energies and the results will be compared in section \ref{defect_benchmark}.
+
+%\begin{figure}[h!]
+  %\centering
+ %   \includegraphics[width=0.8\textwidth]{figures/LZ_ic.png}
+%    \caption{A defect supercell of volume $\Omega$ in an environment (env) of periodic images of the defect (left) and in an environment of surrounding perfect, unperturbed supercells of the host lattice (right). Figure taken from Ref. %\citenum{Lany_defects}.}
+%  \label{LZ_ic}
+%\end{figure}
+
+The MP scheme \cite{MP} discussed above was developed for molecular systems and when calculating Q in Eq. \ref{MP} the part of the defect charge density due to the electronic screening from the host crystal is not included \cite{Lany_defects_2008, Lany_defects}. However, it has been shown that Q is dominated by this contribution in crystalline solids \cite{Lany_defects_2008}. The LZ scheme, as outlined in Ref. \citenum{Lany_defects}, was devised to resolve this situation when calculating the IIC for charged defects in crystalline solids.
+This method involves a practical approximation to Q that has been determined for supercells with cubic geometry and an isotropic dielectric response \cite{Durrant_defects}.
+
+The LZ method firstly involves the assumption that bound charge is drawn uniformly from the host supercell. For this reason, the method depends on the material having an isotropic response. The polarisation of the bound charge is used to define Q. The LZ scheme effectively involves scaling the MP1 term as shown in Eq. \ref{LZ_Ecorr} where $c_{sh}$ is the shape factor, which only depends on the shape of the supercell. The relation between the LZ and MP schemes (with only odd powers of L) suggests that the LZ methods also makes the assumption of a cubic supercell with zero charge density for even powers of L \cite{Durrant_defects}. In the LZ scheme the potential alignment correction is performed independently of the image-charge correction.
 \begin{equation}\label{LZ_Ecorr}
-E_{corr}^{LZ} = [1 + c_{sh} (1 - \epsilon^{-1}) ] E_{MP1}
+E_{IIC}^{LZ} = [1 + c_{sh} (1 - \epsilon^{-1}) ] E_{MP1}
 \end{equation}
-In the LZ scheme the potential alignment correction is performed independently of the image-charge correction.
+The FNV scheme, as outlined in Ref. \citenum{FNV}, differs from the LZ scheme in that it does not depend upon the shape of the supercell and does not involve a separate potential alignment step. In this approach, the defect-induced charge density is modelled as a Gaussian distribution. The electrostatic potential of the model system and the DFT calculation are aligned at regions far from the defect to account for extra polarisation effects when calculating the IIC.
 
-The FNV scheme, as outlined in Ref. \citenum{FNV}, differs from the LZ scheme in that it does not depend upon the shape of the supercell and does not involve a separate potential alignment step, this is instead incorporated in the image-charge correction with the `alignment-like' term. The FNV scheme considers two contributions to the correction term: the interaction energy of a defect with periodic images ($E^{inter}$) and the interaction energy of the background charge with the defect inside the reference supercell ($E^{intra}$).
-These contributions are combined to give the correction term shown in Eq. \ref{FNV_corr}.
-\begin{equation}\label{FNV_corr}
-E_{corr}^{FNV} = E^{inter} + E^{intra} = E^{latt}_q - q\Delta_{q/0}
-\end{equation}
-where
-\begin{equation}\label{E_latt}
-E^{latt}_q = \int_{\Omega} d^3 \mathbf{r} \Big[ \frac{1}{2} [q_d(\mathbf{r}) + n ] [\tilde{V}^{lr}_q(\mathbf{r}) - V^{lr}_q(\mathbf{r}) ] + nV^{lr}_q(\mathbf{r}) \Big]
-\end{equation}
-and
-\begin{equation}\label{alignmentlike}
-\Delta_{q/0} = \frac{1}{\Omega} \int_{\Omega} d^3 \mathbf{r} V^{sr}_{q/0}(\mathbf{r})
-\end{equation}
-$q_d(\mathbf{r})$ is the unscreened charge density of the defect which is assumed to be contained entirely within the supercell. $\Omega$ is the volume of the supercell. $V_{q}$ is the electrostatic potential for defect with charge q, $q/0$ corresponds to the electrostatic potential for the charged defect with charge q minus that for a neutral defect (where q=0). Tildes are used to denotes values for the system from the periodic electronic structure calculation. The $lr$ and $sr$ superscripts correspond to the long range and short range components of the potential, where the lr will be dominated by the macroscopically screened Coulomb potential and sr accounts for variations in the microscopic screening.
-%FNV eq6
-%FNV eq7
-
-A value for Eq. \ref{E_latt} can be obtained by taking a suitable approximation for the defect charge density in the supercell, $q_d$, such as a point charge or a Gaussian and then performing an Ewald summation.
-Eq. \ref{alignmentlike} is the `alignment-like' term in the FNV scheme and $V^{sr}_{q/0}$ is given by Eq. \ref{alignmentlike2}. In this expression $\tilde{V}_{q/0}(\mathbf{r})$ is obtained directly from the electronic structure calculation and the alignment constant, C, is determined by plotting average potentials in the xy plane as a function of z and taking the difference between plots of $\tilde{V}_{q/0}$ and $\tilde{V}^{lr}_{q}$ where the two plots plateau.
-\begin{equation}\label{alignmentlike2}
-V^{sr}_{q/0} =  \tilde{V}_{q/0}(\mathbf{r}) - \tilde{V}^{lr}_{q}(\mathbf{r}) - C 
-\end{equation}
+A scheme proposed recently by Durrant et al \cite{Durrant_defects} is quite closely related to the LZ scheme, but makes use of DFT charge density differences and therefore avoids the need of an approximate form for the defect-induced charge distribution. This scheme therefore does not depend on a supercell having cubic geometry or that the dielectric response of the host material is isotropic. The work also systematically decomposes the contributions to the potential alignment to decouple contributions to the potential alignment from those in the image-interaction correction. The study showed that the potential alignment correction was only partly account for by their IIC.
 
 
 \subsubsection{Band filling correction}
-
-%Key sections of \cite{Lany_defects_2008}:
-%\begin{itemize}
-%\item Section II, D. “Postprocessor” corrections to supercell energies, 3. Band-filling correction (SSE)
-%\item Section IV, B. Finite-size effects due to host and impurity band dispersion, 1. Total-energy contributions due to band filling
-%\item Summary last para
-%\item + ref 5 \cite{CIS_defects}
-%\end{itemize}
 
 The above correction methodologies require that the charge of the defect is localised within the supercell unit. However, this is not always the case. Large finite-size effects that converge slowly with increased supercell size have been observed for some defects, even in charge neutral states. This has been attributed to ‘band filling’ effects from high defect concentrations in typical finite-size supercells \cite{Lany_defects_2008, CIS_defects, pylada}. This effect is typically more pronounced for shallower defects. Shallower defects typically have more delocalised wavefunctions associated with them, therefore increasing the likelihood of the defect wavefunction extending beyond the boundary of the supercell unit. Consequently, it is possible for even neutral defects to interact with defect-images in adjacent supercells. 
 
@@ -1298,6 +1256,20 @@ This work was primarily conducted during a collaboration visit to Duke Universit
 
 \section{Outlook: Large-scale screening with material properties databases}
 
+c.f. Lee's slack message:
+materials project ->
+polar space groups: 14,466 compounds
+ less than 24 mev above convex hull: 4,797 compounds
+   band gap less than 1.5 ev: 2,114 compounds
+     band gap more than 0 ev: 1368 compounds
+       no element more rare than Pt or f-block: 870 compounds
+         no number greater than 9 in formula: 535 compounds
+then we reduced this to no number greater than 4 to get it down to ~300
+there were a bunch a few of the existing candidates that didnt run successfully at the boltztrap stage which need reruning and yeah the new symmetries need to be pooled in with this method
+we’ll need to revisit the selection rules for stage 3 after they’re all done
+because we want to whittle it down to a managable number
+just doing a quick check now there are 1,931 compounds with symmetries 156-161 so it does make a difference\\
+
 Overview of screening process:
 \begin{itemize}
 \item Stable - energy below convex hull
@@ -1315,7 +1287,7 @@ In the study in the previous section, three candidate photoferroic materials wer
 As we do not start from a dataset of naturally occurring minerals in this extension, we limit our search space to only stable materials by considering only compounds with energies below the convex hull **GET MP REF FOR CONVEX HULL**. We also only consider compounds composed of 4 or less elements to avoid materials that are likely to be particularly challenging to synthesise. In the interests of identifying suitable candidates for large-scale and environmentally friendly solar cells, we rule out compounds containing rare or toxic elements **double check with Lee** (maybe just screened by abundance??).
 
 After this initial screening, we apply similar screening criteria to the previous project. We also screen by polar space group but as opposed to using the streak colour as an indication that the band gap is likely to be within the visible range, we use the calculated band gaps for the compounds contained in the Materials Project database. Calculations for the material properties contained in the Materials Project database are performed at the GGA \cite{GGA}.
-The underestimation of the band gaps in the Materials Project database is roughly 20% **GET REF**. We use 0 to 1.5 eV as the range of band gap for our candidates. Effective masses were calculated for the three candidate photoferroic minerals in the previous study, in this study high-throughput calculations of effective mass tensors are performed for ??? candidates using calculated band structure from the Materials Project and the BoltzTrapp code \cite{BoltzTrapp} with temperature set to the typical operating temperature of a solar cell at ?? and carrier concentration assumed to be ??. 
+The underestimation of the band gaps in the Materials Project database is roughly 40\% (see refs in sulfosalts band alignment paper)*. We use 0 to 1.5 eV as the range of band gap for our candidates. Effective masses were calculated for the three candidate photoferroic minerals in the previous study, in this study high-throughput calculations of effective mass tensors are performed for ??? candidates using calculated band structure from the Materials Project and the BoltzTrapp code \cite{BoltzTrapp} with temperature set to the typical operating temperature of a solar cell at ?? and carrier concentration assumed to be ??. 
 With this substantially larger number of candidate photoferroic materials, we were able to be more stringent in our standards for charge carrier effective masses. We first screened by the isotropic average… and then by components of the effective mass tensor so that we were left with candidates with the potential for with isotropically high carrier mobility.
 
 Preliminary results: maybe just comment on number of candidates with m* for BOTH electrons and holes below 0.5 me? (Check with Lee) - 'This is an on-going work but so far results from the initial screening have shown ?? number of compounds that have polar space groups, band gaps within the range for solar absorption and effective masses for both electrons and holes less than 0.5m$_e$. Further work will involve a closer examination of their optoelectronic properties and potential as solar cell absorber layers.'\\
@@ -1349,12 +1321,18 @@ Introduce paper for FHI-aims defects benchmark study with Volker and Tong + add 
 
 Possibly different treatment for `jellium' than VASP and hence different correction? no pa??\\
 
-Note from Komsa paper: Possibly contributions to need for pa from variations in the average value of the local pseudopotential which depends on the number and kind of atoms in the supercell, would not also be present in FHI-aims?
+Note from Komsa paper: Possibly contributions to need for pa from variations in the average value of the local pseudopotential which depends on the number and kind of atoms in the supercell, would not also be present in FHI-aims?\\
+
+Personal contributions: Electronic structure calculations with FHI-aims for GaAs defect clusters and supercells performed by Tong Zhu, me: post-processing of defect supercells with aide + assisted with analysis and interpretaton of data and documentation??
 
 
 \section{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
 
-** Update: Just do for enargite? Use aide to post-process with LZ method, draw comparisons to CZTS, CIS and explore role of multivalence of As. Look into most recent MIT defect-tolerance work and discuss analysis wrt CIS with Stephan? Also, maybe discuss non-radiative defect recombination for enargite with Sam and Aron?? **
+** Update: Just do for enargite? Use aide to post-process with LZ method, draw comparisons to CZTS, CIS and explore role of multivalence of As. Look into most recent MIT defect-tolerance work and discuss analysis wrt CIS with Stephan? Also, maybe discuss non-radiative defect recombination for enargite with Sam and Aron?? **\\
+
+Justify choice of continuing with just enargite: less options for defects and decomposition into secondary phases (more facile synthesis?) for a ternary than a quaternary compound? (ref Sunghyun's paper with CZTS phase diagram and very narrow stable region) + similar pDOS of enargite allows us to make statements about expected defect physics by analogy to CZTS and CIGS, while bournonite (as shown in sulfosalts paper 1) had very different pDOS and composition at band extrema.\\
+
+Use whichever finite-size correction scheme for enargite with aide that showed best agreement to GaAs cluster in benchmark study??\\
 
 State that we expect extended cation disorder to be present to a lesser extent than in CZTS due to less chemical similarity? Also that understanding defect physics from a point-defect perspective is an important foundation to build for understanding the complicate defect physics of a multi-component material? e.g. next step would be pairs, etc.
 
