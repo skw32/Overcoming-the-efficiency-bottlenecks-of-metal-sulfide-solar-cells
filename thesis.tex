@@ -902,7 +902,8 @@ The electronic band structure of a semiconductor provides a rich source of infor
 There are several types of possible defects in solids, some of which were described in section \ref{defects_impact}. 
 
 In this section, approaches developed in the literature for periodic electronic structure calculations of the formation energy of isolated point defects, i.e. in the dilute limit, are discussed. 
-These methods are applied in section \ref{sulfosalt_defects} to provide the first insights into the defect physics (and likely associated impact on PV performance) of some of the candidate photoferroic absorbers identified in \autoref{chap:screening}. These methods are also compared to an aperiodic calculation on a defect embedded in a large cluster in section \ref{defect_benchmark}.
+These methods are applied in section \ref{sulfosalt_defects} to provide the first insights into the defect physics (and likely associated impact on PV performance) of some of the candidate photoferroic absorbers identified in \autoref{chap:screening}. 
+%These methods are also compared to an aperiodic calculation on a defect embedded in a large cluster in section \ref{defect_benchmark}.
 Defect formation energies under specific synthesis conditions can be used to infer the likely concentrations of particular defects, which may have different impacts on PV performance \cite{Aron_defect_tolerance}. 
 In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in materials with large extents of substitutional disorder, beyond what would be considered as the dilute limit. In this case, the methodology is used to investigate high concentrations of Cu-Zn disorder in {\CZTS}. 
 
@@ -946,7 +947,8 @@ In theory, it is possible to continually increase the supercell dimensions to al
 
 Due to computational limitations, it is usually not feasible to perform calculations with sufficiently large supercells to remove all spurious defect-defect interactions, especially for the long-ranged Coulombic interaction of charged defects, as depicted in Fig. \ref{defect_PBCs}b.
 Furthermore, the band gap error in standard-DFT can cause large errors in the calculated properties of defects \cite{Lany_defects}. For this reason, methods beyond standard-DFT such as hybrid-DFT (outlined in section \ref{elec_struc}) may be used to more accurately predict the electronic structure. However, the computational expense for such methods is increased further, hence performing calculations for larger supercells becomes a less feasible endeavor.
-Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various finite-size correction schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. These correction schemes have been compared to the extrapolation scheme described above to compare their relative effectiveness for various types of defects \cite{komsa}, although uncertainties in the extrapolation method could be comparable to the errors between different correction schemes \cite{Durrant_defects}. Some of the existing finite-size correction schemes are outlined in the next section and a study conducted to compare defect formation energies obtained from different finite-size correction schemes for defect supercells to a defect embedded in a large, aperiodic cluster is presented in section \ref{defect_benchmark}.
+Methods such as the supercell approach are used to minimise the impact of defect-defect interactions on calculated properties and various finite-size correction schemes have been developed to correct a posteriori for any remaining effects whenever possible \cite{freysoldt_rev}. These correction schemes have been compared to the extrapolation scheme described above to compare their relative effectiveness for various types of defects \cite{komsa}, although uncertainties in the extrapolation method could be comparable to the errors between different correction schemes \cite{Durrant_defects}. Some of the existing finite-size correction schemes are outlined in the next section. 
+%and a study conducted to compare defect formation energies obtained from different finite-size correction schemes for defect supercells to a defect embedded in a large, aperiodic cluster is presented in section \ref{defect_benchmark}.
 
 \subsection{Finite-size corrections to defect supercells}
 
@@ -982,7 +984,8 @@ E^{MP}_{corr} = E_{MP1} + E_{MP2} + ... = \frac{q^2\alpha}{2 \epsilon L} - \frac
 The $E_{MP1}$ in Eq. \ref{MP} is equivalent to the corrections applied by LG where $\epsilon$ is the dielectric constant of the host crystal and $\alpha$ is the Madelung constant which is only dependant upon the shape of the host supercell. The is the first-order Markov-Payne (MP) correction for cubic supercells.
 MP derived a less approximate form for the defect-induced charge density that is still localised, but allowed to be more extended than a point charge \cite{MP}. Later terms in Eq. \ref{MP} are due to a multipole expansion of the charge density for higher-order terms. An example of a multipole expansion of a charge density is shown in Fig. \ref{IIC}b. Eq. \ref{MP} only shows odd powers of L as the even powers of L are zero for charge distributions with cubic symmetry \cite{Durrant_defects}.
 
-However, Q in Eq. \ref{MP} cannot be calculated directly for defects in crystalline materials \cite{Lany_defects_2008}. Therefore in practise when using the MP scheme $E^{MP}_{corr}$ is usually not calculated but is estimated by fitting Eq. \ref{MP} to the formation energies calculated for defects with increased supercell size and then extrapolating to the infinite supercell limit. As already discussed, at high levels of theory such large systems may be computationally unfeasible. Furthermore, it has been shown that Eq \ref{MP} does not always give a good fit to calculated defect formation energies, creating doubt regarding the predictive power of this scheme \cite{FNV}. A number of alternative schemes have been proposed that do not require the use of increasing supercell sizes \cite{MP, LeslieGillan, PeterSchultz, Lany_defects, FNV, kumagai_oba}, here the LZ \cite{Lany_defects} and FNV \cite{FNV} schemes will be outlined as these methods will be used to calculate defect formation energies and the results will be compared in section \ref{defect_benchmark}.
+However, Q in Eq. \ref{MP} cannot be calculated directly for defects in crystalline materials \cite{Lany_defects_2008}. Therefore in practise when using the MP scheme $E^{MP}_{corr}$ is usually not calculated but is estimated by fitting Eq. \ref{MP} to the formation energies calculated for defects with increased supercell size and then extrapolating to the infinite supercell limit. As already discussed, at high levels of theory such large systems may be computationally unfeasible. Furthermore, it has been shown that Eq \ref{MP} does not always give a good fit to calculated defect formation energies, creating doubt regarding the predictive power of this scheme \cite{FNV}. A number of alternative schemes have been proposed that do not require the use of increasing supercell sizes \cite{MP, LeslieGillan, PeterSchultz, Lany_defects, FNV, kumagai_oba}. Next some such schemes will be outlined. 
+%the LZ \cite{Lany_defects} and FNV \cite{FNV} schemes will be outlined as these methods will be used to calculate defect formation energies and the results will be compared in section \ref{defect_benchmark}.
 
 %\begin{figure}[h!]
   %\centering
@@ -1171,6 +1174,9 @@ Personal contribution: The bespoke Monte Carlo code, Eris (doi: 10.5281/zenodo.1
 \includepdf[pages={1-},scale=1.0]{papers/ErisPaper1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/Eris1_SI.pdf}
 
+\subsection{Personal contribution}
+\subsection{Access statement}
+
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
 %\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
@@ -1218,7 +1224,7 @@ Plan for discussion of eris band tailing results:
 
 \chapter{Screening for candidate photoferroic solar absorbers}\label{chap:screening}
 
-\section{Observations of photoferroic phenomena}\label{ferroPVsection}
+\section{Observed phenomena in photoferroic materials}\label{ferroPVsection}
 % ** Cite Rappe about shift current (+BPE?) possible in any crystal that lacks centre of inversion symmetry, not just FE materials
 A ferroelectric material possesses a spontaneous electric polarisation that can be switched between two or more states using an electric field \cite{new_FE_PV_1}. Many interesting PV phenomena have been observed in ferroelectric (FE) materials such as the bulk photovoltaic effect (BPE) and the anomalous photovoltaic effect (APE) \cite{keith}. 
 %Ferroelectric materials usually have a high dielectric constant (which was mentioned in section \ref{PV_properties} as an important parameter for a photovoltaic material) and they possess a spontaneous electric polarization that can be switched between two or more states using an electric field \cite{new_FE_PV_1}.
@@ -1235,7 +1241,9 @@ However, most of the commonly used ferroelectric materials such as LiNbO$_3$ and
 This then leads on to the second component of this study: to identify new candidate solar absorber materials that may exhibit ferroelectricity and have band gaps within the optimal range for the absorption of sunlight. The screening criteria used to identify these candidate absorber layers will be outlined further in \autoref{chap:screening}, but the basic principles are as follows: by starting from a dataset of naturally occurring minerals, it could be assumed that all candidates are likely to be thermodynamically stable. Secondly, necessary (although not sufficient) conditions are used to screen for candidate photoferroic materials. A dark streak colour for the mineral implies that the magnitude of the optical band gap may be somewhere within the visible spectrum and therefore within the ideal range for a PV absorber layer. A polar space group is a necessary, but again not sufficient, condition for a material to exhibit ferroelectricity. Even in the absence of switchable ferroelectric states, the internal crystal polarisation may be beneficial for a PV material, as mentioned earlier.
 The optoelectronic properties of the candidate materials are then investigated further to assess the likely performance of solar cells made from these absorber materials to determine those worthy of further experimental study. The identification of stable materials with a large polarisation and strong optical absorption could provide more test systems for further experimental investigation and, ideally, the development of control of the novel FE-PV phenomena outlined at the start of this section.
 
-\section{Candidate photoferroic minerals and predicted optoelectronic properties}
+\section{Candidate photoferroic absorber materials for thin-film
+solar cells from naturally occurring minerals:
+enargite, stephanite, and bournonite}
 
 %Introductory paragraph + sulfosalts paper1 + include paper SI? (put in appendix?) \\
 
@@ -1247,6 +1255,9 @@ This work was primarily conducted during a collaboration visit to Duke Universit
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
+
+\subsection{Personal contribution}
+\subsection{Access statement}
 
 
 \section{Outlook: Large-scale screening with material properties databases}
@@ -1295,7 +1306,8 @@ State that although we expect cation disorder to be less prevalent than Cu-Zn di
 
 Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
-\section{Band alignment for solar cell heterojunctions}\label{sulfosalt_band_alignment}
+\section{Solar cell heterojunctions for candidate photoferroic absorbers enargite
+and bournonite from electronic band and lattice matching}\label{sulfosalt_band_alignment}
 Introductory paragraph (new PV tech must be optimised layer-by-layer), barrier to utilisation of new tech, aim to use theory to accelerate process, often architectures optimised for different, more mature tech is used for new PV absorbers - not necessarily optimal! (e.g. of enargite paper and various others from band alignments paper intro) + sulfosalts band alignments paper\\
 
 Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction as described in section \ref{photoferroics}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation and possible new pathways to achieving high-performance devices.\\
@@ -1304,8 +1316,13 @@ Although it may be possible to achieve photovoltaic energy conversion without a 
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts_band_alignment_draft.pdf}
 
+\subsection{Personal contribution}
+\subsection{Access statement}
+
 
 \section{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
+
+\subsection{A case study with enargite ({\enargite})}
 
 ** Update: Just do for enargite? Use aide to post-process with LZ method, draw comparisons to CZTS, CIS and explore role of multivalence of As. Look into most recent MIT defect-tolerance work and discuss analysis wrt CIS with Stephan? Also, maybe discuss non-radiative defect recombination for enargite with Sam and Aron?? **\\
 
@@ -1333,21 +1350,24 @@ Introductory paragraph (power of predicting this property - determine materials 
 
 
 
-\section{Defect formation energy from periodic vs. aperiodic calculations}\label{defect_benchmark}
 
-Or rename benchmarking potential alignment for defect formation energies?? (If this work is using FNV in coFFEE, validate against VASP and quantumESPRESSO and then compare to GaAs cluster? (When introducing, refer back to methods section outlining finite-size correction, highlight need for reliable defect formation energies, read Thomas Durrant's paper that looks into different contributions to and check there for ref for inconsistent defect E's in the literature?)\\
 
-Post-processing tools for the implementation of finite-size correction schemes to defect formation energies were integrated with the electronic structure code FHI-aims \cite{FHI-aims} for the study presented in section \ref{sulfosalt_defects}. This therefore provided an opportunity to benchmark defect formation energies calculated by different electronic structure codes with different post-processing finite-size correction schemes applied…
 
-Nod to delta project DFT benchmark for bulk \cite{delta_project_paper} and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells.
+%\section{Defect formation energy from periodic vs. aperiodic calculations}\label{defect_benchmark}
 
-Introduce paper for FHI-aims defects benchmark study with Volker and Tong + add statement on personal contribution?\\
+%Or rename benchmarking potential alignment for defect formation energies?? (If this work is using FNV in coFFEE, validate against VASP and quantumESPRESSO and then compare to GaAs cluster? (When introducing, refer back to methods section outlining finite-size correction, highlight need for reliable defect formation energies, read Thomas Durrant's paper that looks into different contributions to and check there for ref for inconsistent defect E's in the literature?)\\
 
-Possibly different treatment for `jellium' than VASP and hence different correction? no pa??\\
+%Post-processing tools for the implementation of finite-size correction schemes to defect formation energies were integrated with the electronic structure code FHI-aims \cite{FHI-aims} for the study presented in section \ref{sulfosalt_defects}. This therefore provided an opportunity to benchmark defect formation energies calculated by different electronic structure codes with different post-processing finite-size correction schemes applied…
 
-Note from Komsa paper: Possibly contributions to need for pa from variations in the average value of the local pseudopotential which depends on the number and kind of atoms in the supercell, would not also be present in FHI-aims?\\
+%Nod to delta project DFT benchmark for bulk \cite{delta_project_paper} and highlight importance of a similar benchmark for defect calculations/ finite-size corrections to defect supercells.
 
-Personal contributions: Electronic structure calculations with FHI-aims for GaAs defect clusters and supercells performed by Tong Zhu, me: post-processing of defect supercells with aide + assisted with analysis and interpretaton of data and documentation??
+%Introduce paper for FHI-aims defects benchmark study with Volker and Tong + add statement on personal contribution?\\
+
+%Possibly different treatment for `jellium' than VASP and hence different correction? no pa??\\
+
+%Note from Komsa paper: Possibly contributions to need for pa from variations in the average value of the local pseudopotential which depends on the number and kind of atoms in the supercell, would not also be present in FHI-aims?\\
+
+%Personal contributions: Electronic structure calculations with FHI-aims for GaAs defect clusters and supercells performed by Tong Zhu, me: post-processing of defect supercells with aide + assisted with analysis and interpretaton of data and documentation??
 
 
 
