@@ -68,11 +68,11 @@ Write last, ideas:
 
 \section*{Publications during the course of the PhD}
 \begin{etaremune}
-\item Enargite defects paper? (w/ aide post-processing?)
+\item Enargite defects paper? (w/ aide post-processing?) -- post-thesis?
+\item GaAs aperioidic defect clusters vs. periodic supercells benchmark study with Volker and Tong? -- post-thesis?
 \item Photoferroic materials project screening with Lee?
-\item Defects benchmark study with Volker and Tong?
 \item Eris band tailing letter?
-\item Disorder processes during the Cu-Zn order-disorder transition in {\CZTS} from Monte Carlo simulations
+\item Disorder processes during the Cu-Zn order-disorder transition in {\CZTS} from Monte Carlo simulations?
 \item Solar cell heterojunctions for candidate photoferroic absorbers enargite
 and bournonite from electronic band and lattice matching
 \item Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite, and bournonite\\
@@ -197,7 +197,7 @@ Current mainstream solar cell technologies, such as Si wafers and thin-film CdTe
 Models have quantified such statements with a predicted In-constrained growth potential of power generation from CIGS PV technology of ~20 GW per year in 2020 due to competing applications of In, such as in liquid crystal displays \cite{culprit_5_3}.
 To significantly increase the contribution of solar power to the global power supply, it is therefore necessary to develop more economically viable earth-abundant materials for sustainable PV electricity generation. Furthermore, there must be considerable technological breakthroughs that would enable low-cost manufacturing of highly efficient devices with enough of a cost benefit to outweigh the initial cost outlay in optimising the manufacturing process of the whole device as has been done for silicon over the past 60 years. For this purpose, there is a drive for solar absorber materials with more optimal properties, such as a direct and sunlight matched band gap (as in thin-film technologies such as CdTe and CIGS), but also for materials that are composed of only earth-abundant components.\\
 
-** Add data on elemental abundance here and comment on in text?? **
+%** Add data on elemental abundance here and comment on in text?? **
 
 \subsection{Examples of emerging metal sulfide solar absorbers}
 
@@ -210,7 +210,7 @@ The record device efficiencies are more than double that of SnS-based solar cell
 
 \section{The role of computational modeling in material design and optimisation}
 The discovery of new functional materials by experimental methods is largely hindered by high costs and the optimisation of time-consuming synthesis procedures \cite{high_tp}.
-However, with the rapid increase in computational processing power and the availability of large-scale supercomputers, we are entering a very exciting era in computational materials design \cite{WMD_material_design_review}. Furthermore, electronic structure theory has advanced to a level where it is possible to obtain good quantitative agreement with experiment without using adjustable parameters fit to experiment, i.e. from first principles. The only inputs into these calculations are electronic mass, electronic charge, atomic numbers and masses of the constituent atoms in the material. From this, it is possible to obtain to fairly high accuracy the structure, lattice constants, charge densities and various electronic, magnetic, optical and transport properties \cite{elec_structure_theory}. Therefore theory and simulation of materials has reached a point of possessing some predictive power for material properties relevant for various applications, completely independent of experimental measurement.
+However, with the rapid increase in computational processing power and the availability of large-scale supercomputers, we are entering a very exciting era in computational materials design \cite{WMD_material_design_review}. Furthermore, electronic structure theory has advanced to a level where it is possible to obtain good quantitative agreement with experiment without using adjustable parameters fit to experiment, i.e. from first principles. The only inputs into these calculations are electronic mass, electronic charge, atomic numbers and masses of the constituent atoms in the material. From this, it is possible to obtain to fairly high accuracy the structure, lattice constants, charge densities and various electronic, magnetic, optical and transport properties \cite{RichardMartin_Ch1}. Therefore theory and simulation of materials has reached a point of possessing predictive power for material properties relevant for various applications, completely independent of experimental measurement.
 
 There are two main contributions that computational simulations could make towards the technological breakthroughs needed for economically-viable, large-scale solar energy generation. Firstly, by predicting relevant properties of materials that are not currently utilised in solar cells and screening for certain desirable properties, material simulations are able to aid in the discovery of new materials that may be capable of out-performing current solar cell technologies. Such an approach allows for a less time-consuming screening of potential new materials for a given application before attempting to prepare just the most promising candidates in the laboratory. Experimental validation of predicted properties, however, is always an important follow up to account for additional features of the physical system not initially accounted for in the model. In the case of candidate solar absorbers, for example, the optical properties are often initially predicted for the perfect bulk crystal. In reality materials contain various types of defects. Methods exist to model different forms of defects in a crystalline system, some of which are discussed later in this work. However, this typically quite complex and idiosyncratic feature of the system is often not considered initially, largely due to the vast range of possible defect features in a material. The defect physics of a material is a prime example of an area in which knowledge and understanding is developed symbiotically between works from experiment and theory. Secondly, material simulations are able to provide valuable, atomistic insight on scales that cannot be probed experimentally to improve fundamental understanding of known photovoltaic materials, which may enable improvements in existing solar cell technologies. Defect physics is again a prime example of this, where theory can probe on the atomic scale to aid in the interpretation of experimental data obtained from a variety of different measurements.
 
@@ -555,8 +555,9 @@ Quantum mechanical systems can be described by the Schr{\"o}dinger equation, whi
 \begin{equation} \label{SE}
 \left( - \frac{\hbar^2}{2m} \nabla^2 + \hat{V} \right)\psi(r,t) = i\text{ } \hbar\frac{\partial \psi(r,t)}{\partial t}
 \end{equation}
-In section \ref{BandTheorySection} the one-electron Schr{\"o}dinger equation for an electron moving in a weak periodic potential with the nearly free electron approximation was used to discuss obtaining the energy eigenvalues of the electron as a function of \textbf{k}, i.e. the electronic band structure of a periodic, crystalline solid.
-However, for systems containing more than one electron we must consider the many-body Schr{\"o}dinger equation and this soon becomes a very complex problem. This is due to the many electrons in the system interacting with each other as well as with the nuclei. The Schr{\"o}dinger equation for a system containing M nuclei and N electrons is shown in equation \ref{many_SE} \cite{Lesar}, where uppercase \textbf{R} denotes nuclear coordinates and lowercase \textbf{r} denotes electron coordinates. This is a very complex mathematical problem for most systems. For example, the many-body wavefunction, $\Psi$, in equation \ref{many_SE} for 1 cm$^3$ of a typical metal would be a function of approximately $10^{23}$ variables.
+%In section \ref{BandTheorySection} the one-electron Schr{\"o}dinger equation for an electron moving in a weak periodic potential with the nearly free electron approximation was used to discuss obtaining the energy eigenvalues of the electron as a function of \textbf{k}, i.e. the electronic band structure of a periodic, crystalline solid.
+%However, 
+For systems containing more than one electron we must consider the many-body Schr{\"o}dinger equation and this soon becomes a very complex problem. This is due to the many electrons in the system interacting with each other as well as with the nuclei. The Schr{\"o}dinger equation for a system containing M nuclei and N electrons is shown in equation \ref{many_SE} \cite{Lesar}, where uppercase \textbf{R} denotes nuclear coordinates and lowercase \textbf{r} denotes electron coordinates. This is a very complex mathematical problem for most systems. For example, the many-body wavefunction, $\Psi$, in equation \ref{many_SE} for 1 cm$^3$ of a typical metal would be a function of approximately $10^{23}$ variables.
 
 \begin{multline}  \label{many_SE}
 \left\{ - \frac{\hbar^2}{2m} \left( \frac{\nabla_{n_1}^2}{m_1} + ... + \frac{\nabla_{n_M}^2}{m_M}, 
@@ -751,13 +752,15 @@ When the adjustable parameter $\omega = 0$, the LR term becomes zero and the SR 
 
 
 \subsection{Implementation for periodic solids}
+
+Concepts for the theoretical modelling of periodic solids were outlined in section \ref{crystal_models}. The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. Electronic structure calculations performed in this work are for periodic solids and therefore make use of 3D periodic boundary conditions (PBCs) to simulate an infinite, bulk solid using only a unit cell of the crystal. The only deviations from the basic implementation of PBCs, as introduced in section \ref{crystal_models}, are firstly work in section \ref{sulfosalt_band_alignment}. This work calculated surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. To simulate a 2D system (with one finite direction) with 3D periodic boundary conditions requires the use of a suitably large vacuum gap to ensure the two surfaces either end of the slab model do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig. \ref{slab_PBCs}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed much further in section \ref{defects_methods}. 
+
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.45\textwidth]{figures/slab_PBCs.png}
     \caption{Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab where a sufficiently large vacuum gap is required to ensure the surfaces from either end of the slab do not interact (direction indicated by orange arrow).}
   \label{slab_PBCs}
 \end{figure}
-Concepts for the theoretical modelling of periodic solids were outlined in section \ref{crystal_models}. The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. Electronic structure calculations performed in this work are for periodic solids and therefore make use of 3D periodic boundary conditions (PBCs) to simulate an infinite, bulk solid using only a unit cell of the crystal. The only deviations from the basic implementation of PBCs, as introduced in section \ref{crystal_models}, are firstly work in section \ref{sulfosalt_band_alignment}. This work calculated surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. To simulate a 2D system (with one finite direction) with 3D periodic boundary conditions requires the use of a suitably large vacuum gap to ensure the two surfaces either end of the slab model do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig. \ref{slab_PBCs}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed much further in section \ref{defects_methods}. 
 
 In the rest of this section, approaches used in this work for electronic structure calculations of periodic solid-state systems will be outlined with comments on their relative merits for chemical accuracy and computational efficiency. Representations of the wavefunction in different electronic structure software packages that are used in this work will first be described. Then the general workflow for geometric and electronic optimisation will be outlined. The section concludes with a discussion of determining the most appropriate setup for electronic structure calculations in terms of an optimal compromise between chemical accuracy and computational efficiency.
 
@@ -790,19 +793,26 @@ Eq. \ref{basis_set} shows the expansion of the KS orbitals in terms of known fun
 Constructing a basis set of linearly independent functions allows the use of linear matrix methods and efficient computational tools to solve the KS eigenvalue problem. There are different options for how to mathematically represent the wavefunction. In this work, two different software packages are used for electronic structure calculations, which make use of different functions for their basis sets. 
 %These are outlined next along with comments on their relative merits in terms of chemical accuracy and computational efficiency.
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.6\textwidth]{figures/aims_NACBF.png}
-    \caption{Schematic representation of a numeric atom-centred orbital (NAO) basis function as used in the FHI-aims software package. Taken from Ref. \citenum{FHI-aims_slides}.}
-  \label{aims_NACBF}
-\end{figure}
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.6\textwidth]{figures/aims_NACBF.png}
+%    \caption{Schematic representation of a numeric atom-centred orbital (NAO) basis function as used in the FHI-aims software package. Taken from Ref. \citenum{FHI-aims_slides}.}
+%  \label{aims_NACBF}
+%\end{figure}
 
-In the FHI-aims software package, numeric atom-centred orbital (NAO) basis functions, such as that shown in equation \ref{aims_basis_set}, are the basis set used. This basis set for each atomic species has been established from iterative automated construction based on dimers \cite{FHI-aims_slides}. The radial shape, $u_i(r)$, is numerically tabulated and so fully flexible, enabling the creation of optimised element-dependent basis sets that are as compact as possible to minimise computational expense. A schematic represenatation of a NAO is shown in Fig. \ref{aims_NACBF}.
+In the FHI-aims software package, numeric atom-centred orbital (NAO) basis functions, such as that shown in equation \ref{aims_basis_set}, are the basis set used. This basis set for each atomic species has been established from iterative automated construction based on dimers \cite{FHI-aims_slides}. The radial shape, $u_i(r)$, is numerically tabulated and so fully flexible, enabling the creation of optimised element-dependent basis sets that are as compact as possible to minimise computational expense. A schematic represenatation of a NAO is shown in Fig. \ref{NACBF+PP}a.
 \begin{equation}\label{aims_basis_set}
 \phi_{NAO}(\mathbf{r}) = \frac{u_i(\mathbf{r})}{r} Y_{lm}(\Omega)
 \end{equation}
 The NAO basis set used in FHI-aims is localised and highly scalable for use on modern high-performance computing (HPC) systems with multiple processors. The localised nature of the basis set has the benefit of no additional computational cost for vacuum gaps in the simulation unit cell, such as in the slab model in Fig. \ref{slab_PBCs}. This implementation of electronic structure calculations is an example of an `all-electron' approach, which has benefitted greatly from advances in HPC technology. 
 %However, other highly-successful and computationally efficient approaches for electronic structure calculations of solids have been developed, largely prior to the HPC boom, that are not all-electron but have demonstrated accurate calculated chemical properties.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/NACBF+PP.png}
+    \caption{a) Schematic representation of a numeric atom-centred orbital (NAO) basis function as used in the FHI-aims software package. Taken from Ref. \citenum{FHI-aims_slides}. b) Schematic representation of a pseudopotential and pseudo-wavefunction (both shown by red solid lines) and corresponding original Coulomb potential and wavefunction (both shown by dashed blue line), where both red and blue lines converge at distances beyond the core region. Taken from Ref. \citenum{PP_ref}.}
+  \label{NACBF+PP}
+\end{figure}
 
 In the VASP software package \cite{VASP} plane waves (PW), as shown in Eq. \ref{vasp_basis_set}, are used as the basis set.
 \begin{equation}\label{vasp_basis_set}
@@ -812,14 +822,15 @@ In principle, a plane-wave expansion is an infinite expansion and so in practise
 
 A key concept is to distinguish between `core' and `valence' electrons. Core electrons are tightly bound to the nuclei and their wavefunctions are well localised at lattice sites \cite{Prasad_ch5}. Core electrons usually do not take part in bonding between atoms, therefore it is the valence electrons far from the atom centres that are the most important for determining the bonding in solids. This is the justification for the frozen-core approximation, where core electron states are pre-calculated in an atomic environment and kept unchanged during the course of subsequent calculations for the solid-state system \cite{vasp_slides_PP1}. The strong Coulomb potential of the nucleus and effects of tightly bound core electrons are replaced by an effective ionic potential acting on valence electrons \cite{RichardMartin_Ch11}. The rapid oscillations of the frozen states, however, are used in the orthogonalized plane wave (OPW) method to accelerate the convergence of the expansion used the represent the valence electrons. All solutions of the KS equation corresponding to different energies should be orthogonal to all of the core functions \cite{Prasad_ch5}.
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.45\textwidth]{figures/PP.png}
-    \caption{Schematic representation of a pseudopotential and pseudo-wavefunction (both shown by red solid lines) and corresponding original Coulomb potential and wavefunction (both shown by dashed blue line), where both red and blue lines converge at distances beyond the core region. Taken from Ref. \citenum{PP_ref}.}
-  \label{PP}
-\end{figure}
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.45\textwidth]{figures/PP.png}
+%    \caption{Schematic representation of a pseudopotential and pseudo-wavefunction (both shown by red solid lines) and corresponding original Coulomb potential and wavefunction (both shown by dashed blue line), where both red and blue lines converge at distances beyond the core region. Taken from Ref. \citenum{PP_ref}.}
+%  \label{PP}
+%\end{figure}
 
-Furthermore, to accurately describe bonding in solids, it is not necessary to accurately describe the wavefunction at all distances from the nucleus. For a given material there will be some critical radius from the ion cores where physically relevant processes begin to take place, such as inter-atomic wavefunction overlap for bond formation. This is where the pseudopotential approximation is invoked. The true ionic potential is replaced by a much smoother pseudopotential within some critical radius. The aim is that the corresponding pseudo-wavefunction will be smooth and therefore can be represented by fewer plane waves, whilst still reproducing the original wavefunction in the physically relevant regions of space. Fig. \ref{PP} is a schematic representation of the Coulomb potential, the pseudopotential that is smoothed close to the core region and the corresponding original wavefunction and the pseudo-wavefunction. High-quality pseudopotentials are vital for accurate electronic structure calculations with this method. 
+Furthermore, to accurately describe bonding in solids, it is not necessary to accurately describe the wavefunction at all distances from the nucleus. For a given material there will be some critical radius from the ion cores where physically relevant processes begin to take place, such as inter-atomic wavefunction overlap for bond formation. This is where the pseudopotential approximation is invoked. The true ionic potential is replaced by a much smoother pseudopotential within some critical radius. The aim is that the corresponding pseudo-wavefunction will be smooth and therefore can be represented by fewer plane waves, whilst still reproducing the original wavefunction in the physically relevant regions of space. Fig. \ref{NACBF+PP}b is a schematic representation of the Coulomb potential, the pseudopotential that is smoothed close to the core region and the corresponding original wavefunction and the pseudo-wavefunction. High-quality pseudopotentials are vital for accurate electronic structure calculations with this method. 
+
 %When the pseudo-wavefunction is expanded in terms of OPWs, a projection operator is used to project the function onto the core states. In contrast to the true wavefunction, the pseudo-wavefunction is smooth and contains only a few plane waves \cite{Prasad_ch5}
 The PAW method combines ideas of the linear augmented-plane-wave (LAPW) method \cite{LAPW} with ultrasoft pseudopotential methods \cite{ultrasoft_PP, ultrasoft_PP_VASP, VASP_wiki_PAW}. Ultrasoft PPs reduce the number of plane waves needed by relaxing the norm-conservation requirement for the charge density for the PP. As the norm of the pseudo-wavefunction is not conserved, there is a charge deficit which is compensated by augmentation charges introduced into the core regions \cite{Prasad_ch5}. To combine this with ideas from the LAPW method, the all-electron valence wavefunction, $\psi_{AE}$, is separated into smooth pseudo-wavefunctions, $\psi_{PP}$, and rapidly varying contributions localised within the core region, projectors and auxiliary localised functions respectively. In the PAW approach, integrals are evaluated as a combination of integrals of smooth functions extending throughout space and localised contributions from radial integration over `muffin-tin' spheres \cite{RichardMartin_Ch11}. The $\psi_{AE}$ is related to the $\psi_{PP}$ by a linear transformation. The KS equations are solved to obtain $\psi_{PP}$, which are then transformed back to true wavefunctions (which also incorporate the localised core-region functions) before calculating the charge density and total energy \cite{Prasad_ch5}.
 Although the two electronic structure codes described here represent the wavefunction differently when performing electronic structure calculations, a benchmark study comparing results from 15 different solid-state DFT codes to compute the equation of states for 71 elemental crystals showed that all codes converged towards the same result, within error margins comparable to those of experimental measurements \cite{delta_project}. 
@@ -859,8 +870,6 @@ The general procedure for local structure optimisation involves displacing ions 
 \subsubsection{The chemical accuracy and computational efficiency compromise}\label{chem_acc_vs_eff}
 Earlier in this section the different mathematical representations of the KS orbitals (i.e. the basis sets) in the electronic structure software packages FHI-aims and VASP were discussed. However, all types of representation are an approximation. It may be necessary to use an infinite set of basis functions to completely represent the KS orbitals. In practice, the basis set must be truncated at some point and then we must check for convergence in the properties of interest with respect to this basis set truncation \cite{Prasad_ch6}. 
 
-When using FHI-aims, a user can select from a hierarchy of basis (sub)sets that have been organised into `tiers' and tabulated for expected levels of accuracy for each chemical species. The inclusion of additional radial functions (and their angular momenta) for each species are grouped into these tiers, which start from the minimal basis of free-atom like radial functions but users are always recommended to add at least one set of further radial functions that have been optimised to describe a chemical bond with that species.  When using predefined calculation settings (`species\_defaults'), additional radial functions are included in the basis set for each species until the required accuracy is reached for settings referred to as `light', `intermediate', `tight' and `really\_tight'. These species\_default settings also define other parameters used in the calculation to achieve the desired level of accuracy, such as the highest order used in the multipole decomposition of the electron density for the calculation of the Hartree potential and the integration grid when the Hamiltonian matrix elements are numerically integrated. The default tight settings are intended to provide meV-level converged energy differences \cite{FHI-aims_manual}. However, users are still encouraged to test the convergence for particular systems. Higher tiers may be required for problematic systems, but it may also be the case that less are required to achieve the desired level of accuracy and hence the computational expense of the calculation could be reduced. Fig. \ref{FHI-aims_tiers} shows the radial wavefunctions necessary to achieve the `tight' level of convergence for Ni, where `H' in the figure refers to hydrogen-like orbitals. 
-
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.95\textwidth]{figures/FHI-aims_tiers.png}
@@ -868,9 +877,9 @@ When using FHI-aims, a user can select from a hierarchy of basis (sub)sets that 
   \label{FHI-aims_tiers}
 \end{figure}
 
-The equivalent to the process described above for FHI-aims for electronic structure calculations with VASP is to converge the cutoff energy of the plane wave basis set to achieve the level of convergence desired for the property of interest. As already mentioned, in principle an infinite number of plane waves of increasing frequency (and hence energy) may be necessary in the plane wave expansion. However, in practise this set must be truncated at some point too. Similar to the process described above for FHI-aims, the size of the plane wave basis set (determined by the cutoff energy) must be tested to ensure the desired property, often the total energy of the material, is converged to within an acceptable range. Smoother and weaker pseudopotentials require lower cutoff energies \cite{Prasad_ch6}.
+When using FHI-aims, a user can select from a hierarchy of basis (sub)sets that have been organised into `tiers' and tabulated for expected levels of accuracy for each chemical species. The inclusion of additional radial functions (and their angular momenta) for each species are grouped into these tiers, which start from the minimal basis of free-atom like radial functions but users are always recommended to add at least one set of further radial functions that have been optimised to describe a chemical bond with that species.  When using predefined calculation settings (`species\_defaults'), additional radial functions are included in the basis set for each species until the required accuracy is reached for settings referred to as `light', `intermediate', `tight' and `really\_tight'. These species\_default settings also define other parameters used in the calculation to achieve the desired level of accuracy, such as the highest order used in the multipole decomposition of the electron density for the calculation of the Hartree potential and the integration grid when the Hamiltonian matrix elements are numerically integrated. The default tight settings are intended to provide meV-level converged energy differences \cite{FHI-aims_manual}. However, users are still encouraged to test the convergence for particular systems. Higher tiers may be required for problematic systems, but it may also be the case that less are required to achieve the desired level of accuracy and hence the computational expense of the calculation could be reduced. Fig. \ref{FHI-aims_tiers} shows the radial wavefunctions necessary to achieve the `tight' level of convergence for Ni, where `H' in the figure refers to hydrogen-like orbitals. 
 
-For both software packages, the inclusion of a larger basis set increases the computational expense of the calculation, but takes the approximate representations of the KS orbitals closer to the true form and hence improves the accuracy of the calculated material properties for the given electron density functional. Determining the optimal compromise between computational expense and chemical accuracy for the material property of interest is an important process in electronic structure calculations. The other calculation setting that must be considered in such a way is the density of the \textit{k}-grid when sampling the Brillouin zone.
+The equivalent to the process described above for FHI-aims for electronic structure calculations with VASP is to converge the cutoff energy of the plane wave basis set to achieve the level of convergence desired for the property of interest. As already mentioned, in principle an infinite number of plane waves of increasing frequency (and hence energy) may be necessary in the plane wave expansion. However, in practise this set must be truncated at some point too. Similar to the process described above for FHI-aims, the size of the plane wave basis set (determined by the cutoff energy) must be tested to ensure the desired property, often the total energy of the material, is converged to within an acceptable range. Smoother and weaker pseudopotentials require lower cutoff energies \cite{Prasad_ch6}.
 
 \begin{figure}[h!]
   \centering
@@ -878,6 +887,8 @@ For both software packages, the inclusion of a larger basis set increases the co
     \caption{a) The energy dispersion relation for electrons moving in a crystal, illustrating how the function can be approximately represented by a finite number of \textit{k}-points, forming an equally-spaced mesh. Figure adapted from reference \citenum{vasp_k-sampling_slides}. b) convergence of total energy and c) optical dielectric function for the same material.}
   \label{k_sampling}
 \end{figure}
+
+For both software packages, the inclusion of a larger basis set increases the computational expense of the calculation, but takes the approximate representations of the KS orbitals closer to the true form and hence improves the accuracy of the calculated material properties for the given electron density functional. Determining the optimal compromise between computational expense and chemical accuracy for the material property of interest is an important process in electronic structure calculations. The other calculation setting that must be considered in such a way is the density of the \textit{k}-grid when sampling the Brillouin zone.
 
 %** Check over below (taken from transfer report) **
 % periodic DFT calculations, the total energy is also converged with respect to the number of \textit{k}-points used to sample the Brillouin zone.
@@ -954,7 +965,13 @@ Methods such as the supercell approach are used to minimise the impact of defect
 
 \subsubsection{Potential alignment}
 The formation energy of a charged defect depends on the Fermi level, as shown in Eq. \ref{defect_charged} and this is referenced to the VBM of the host as the defect formation energy is related to the energy required to add or remove electrons to or from the VBM of the host from or to a Fermi reservoir \cite{Alex_defects}.
-However, there are a number of differences between the perfect, bulk system and the charged defect supercell which will cause the average of the potential (even at distances far from the defect) to differ between the perfect and defect supercell.
+However, there are a number of differences between the perfect, bulk system and the charged defect supercell which will cause the average of the potential (even at distances far from the defect) to differ between the perfect and defect supercell, as shown in Fig. \ref{pa}.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.7\textwidth]{figures/pa.png}
+    \caption{The difference in the atom-site potentials $V_{Ga}$ and $V_{As}$ between a supercell containing a vacancy $V_{As}^{3+}$ and the defect-free host. Taken from Ref. \citenum{Lany_defects}.}
+  \label{pa}
+\end{figure}
 
 Firstly, as the formation of a defect involves addition or removal of ions, this will cause a change in the potential of the system when forming a defect. Secondly, ionic relaxations during defect formation will also perturb the electrostatic potential in the system. Lastly, as already mentioned, when a charged defect is embedded in a supercell in a periodic electronic structure calculation, there will also be a compensating background charge. Otherwise, the Ewald summation performed in the electronic structure code to calculate the electrostatic energy of the system diverges, i.e. the system has an infinite charge. The effect of including a compensating homogeneous background charge is equivalent to setting the average electrostatic potential to zero \cite{freysoldt_rev}. 
 In practise this corresponds to removing a constant in the Fourier transform of the electrostatic potential and the consequence of this treatment is that the eigenvalues are defined only up to an undetermined constant \cite{kumagai_oba, kumagai_oba_9}.
@@ -1029,7 +1046,7 @@ In this section defects and disorder is considered on much larger scales than is
 Here, the fundamentals of utilising the Monte Carlo method to describe thermodynamic substitutional disorder are outlined. This is equivalent to investigating interacting extended antisite defects at higher defect concentrations than would be considered as the `dilute', non-interacting limit. This method is applied to study Cu-Zn disorder in {\CZTS} in \autoref{chap:CZTS}.
 %**Introduce general method (see transfer report + cross-ref extra textbooks** \cite{MC} = Newman, \cite{MC_Landau} and \cite{MC3} (Topic in current physics)
 
-\subsection{The Monte Carlo method for equilibrium thermodynamics}
+\subsection{The Monte Carlo method for thermodynamic disorder}
 The Monte Carlo (MC) method allows for the simulation of systems with many degrees of freedom. Its name derives from its use of (pseudo-)random numbers to simulate statistical fluctuations in order to numerically generate probability distributions \cite{MC3}.
 The MC method in statistical physics is a special case of the more general MC method.
 Starting from a model hamiltonian, the method can be used to calculate thermodynamic information about a system of N interacting ions represented on a 3D lattice by using classical statistics, considering only two-body forces and assuming that the potential field of an ion is spherically symmetric. If we know the positions of the N interacting ions on the lattice then the potential energy of the system can be calculated using equation \ref{pot_E}, where V is the Coulombic potential between two ions and $d_{ij}$ is the minimum distance between ions i and j \cite{Metropolis}.
@@ -1070,7 +1087,7 @@ and if
 \Delta E = E_{\beta} - E_{\alpha} > 0   \quad   then   \quad   \frac{p_{\beta}}{p_{\alpha}} < 1
 \end{equation}
 
-The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration. In the case of the study presented in section \ref{CZTS_MC} this would be a substitution between a Cu and a Zn ion in an on-lattice model of {\CZTS}. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. If the relative probability is  $\geq$ 1, as shown in equation \ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $e^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}. Provided a sufficiently large number of trial moves have been made, from this procedure it is possible to obtain equilibrium disordered configurations for the ions in {\CZTS} at various simulation temperatures. The model developed for {\CZTS} is discussed further in the section \ref{Eris}.
+The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration. In the case of the study presented in section \ref{CZTS_MC} this would be a substitution between a Cu and a Zn ion in an on-lattice model of {\CZTS}. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. As shown above, the relative probabilities of two states are determined by their energy difference. In the case of the on-lattice model of {\CZTS}, the change in lattice energy before and after a proposed Cu/ Zn substitution is evaluated for every trial MC move. If the relative probability is  $\geq$ 1, as shown in equation \ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $e^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}. Provided a sufficiently large number of trial moves have been made, from this procedure it is possible to obtain equilibrium disordered configurations for the ions in {\CZTS} at various simulation temperatures. The model developed for {\CZTS} is discussed further in the section \ref{Eris}.
 
 
  
@@ -1093,10 +1110,11 @@ Thin-film PV is a desirable contender for terawatt-scale renewable energy genera
 Electronic structure calculations for the formation energies of point defects and point defect pairs in the dilute limit have already been calculated for {\CZTS}, where the [$Cu_{Zn}^- + Zn_{Cu}^+$] defect pair was found to have a particularly low formation energy \cite{defects_Chen}.
 The calculations performed in Ref. \citenum{defects_Chen} were performed using the GGA functional with a rigid shift applied to the defect levels to account for the band gap error at this level of theory \cite{Lany_defects}. In Ref. \citenum{defects_Chen} one defect calculation was performed using a hybrid functional where it was found that the formation energy of the test defect differed by 0.1 eV. We therefore repeated the calculation of the formation energy for the defect pair of interest for our study.
 
-For our calculation of the formation energy of the nearest-neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] defect pair, we make use of the Heyd-Scuseria-Ernzerhof (HSE06) hybrid-functional \cite{HSE} for the exchange-correlation functional as implemented in the Vienna Ab-initio Simulation Package (VASP) \cite{VASP}. This functional mixes 25\% of screened Hartree-Fock exchange to the Perdew-Burke-Ernzerhof (PBE) exchange functional \cite{PBE}. Projector augmented-wave potentials \cite{PAW} were used to describe the core electrons with an energy cut-off of 500 eV for the plane-wave basis set. Calculations were initially performed at the gamma point (a 1x1x1 \textit{k}-point mesh) until forces on the ions converged to within 0.01 eV/ $\AA$. 
-A single geometry step was then performed with a 2x2x2 \textit{k}-point mesh centred on the gamma point as these parameters were found to be sufficient for the total energy to converge to within $<$2 meV  per atom with respect to increased plane-wave cut-off energy and for the external pressure to be $<$1 kbar. However, performing the full calculation with a 2x2x2 \textit{k}-point mesh was found to be too computationally expensive. 
+For our calculation of the formation energy of the nearest-neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] charge-neutral defect pair, we construct a 64-atom supercell from a $2\times2\times1$ expansion of the conventional unit cell of {\CZTS}. This was the most isotropic and largest supercell that could feasibly be used for our calculations at the level of theory desired.
+The HSE06 hybrid-functional \cite{HSE} (described toward the end of section \ref{hse_theory}) was used for the exchange-correlation functional as implemented in the Vienna Ab-initio Simulation Package (VASP) \cite{VASP} with an energy cut-off of 500 eV for the plane-wave basis set during relaxation of the defect-pair supercell. Calculations were initially performed at the gamma point (a 1x1x1 \textit{k}-point mesh) until forces on the ions converged to within 0.01 eV/ $\AA$. 
+A single geometry step was then performed with a 2x2x2 \textit{k}-point mesh centred on the gamma point as these parameters were found to be sufficient for the total energy to converge to within $<$2 meV per atom with respect to increased plane-wave cut-off energy and for the external pressure to be $<$1 kbar. However, performing the full calculation with a 2x2x2 \textit{k}-point mesh was found to be too computationally expensive. 
 %Data for the convergence test is given is table \ref{conv_test}. 
-From our calculation, we predict a defect formation energy of 0.30 eV.
+As the defect pair is charge neutral, we were able to use Eq. \ref{defect_neutral} to calculate the formation energy. From our calculation, we predict a defect formation energy of 0.30 eV. While the value from a previous study using a GGA functional was approximately 30\% less than this value at 0.21 eV \cite{defects_Chen}.
 
 \begin{figure}[h!]
   \centering
@@ -1115,7 +1133,7 @@ Even `low-temperature' synthesis procedures for {\CZTS} use annealing temperatur
 Furthermore, there is experimental evidence of high concentrations of disorder \cite{Scragg, pot_fluc_4, neutron, Schorr}, indicating the likely formation of extended defect structures beyond point defects and pairs. To simulate such defect structures in {\CZTS} a bespoke Monte Carlo model was developed. This will be outlined in the next section and is applied in the study presented in section \ref{CZTS_MC}.
 
 
-\section{Custom on-lattice Monte Carlo code for Cu-Zn disorder in {\CZTS}}\label{Eris}
+\section{Bespoke on-lattice Monte Carlo code for Cu-Zn disorder in {\CZTS}}\label{Eris}
 The Monte Carlo model for Cu-Zn disorder is analogous to the Ising model of a ferromagnet, descriptions of which can be found in many textbooks such as references \citenum{MC} and \citenum{MC_Landau}. 
 The Ising model uses interactions between spins, whereas our model considers the Coulombic interaction between the bare formal charges of ions in the lattice of {\CZTS}.
 In the case of an Ising model, the trial moves in the Metropolis algorithm are spin flips, whereas in our model the trial moves are swaps between Cu and Zn ions. Typically, when performing simulations of an Ising model the calculated quantities of interest are the internal energy and average magnetization of the system as a function of temperature obtained by summing over the distribution of atomic spins. In the case of our system, the quantities of interest are the spatial arrangement of the Cu and Zn ions due to thermodynamic substitutions between the two species and the resulting distribution of electrostatic potential across the system for the implications this could have on band tailing. 
@@ -1162,20 +1180,22 @@ For {\CZTS} a lot of attention in the literature has been paid to disorder among
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.
 
-Personal contribution: The bespoke Monte Carlo code, Eris (doi: 10.5281/zenodo.1248445), developed for this publication is based on the Starry Night code (doi: 10.5281/zenodo.10543) written by Jarvist Moore Frost (JMF) to simulate dipole-dipole interactions and ferroelectric domains in a hybrid organic-inorganic perovskite solar cell. Eris was originally adapted by JMF from Starry Night to simulate thermodynamic Cu-Zn disorder in {\CZTS}. My personal contributions to the project involved both implementation and of development of the Eris code. Contributions from implementation of the code include running simulations to test for finite size effects in the model, generating data and developing post-processing tools to quantify and visualise Cu-Zn disorder in the system. My developments of the Eris code include writing routines for:
+\subsection{Personal contribution}
+The Bespoke Monte Carlo model, Eris, (doi: 10.5281/zenodo.1248445) developed for this publication is based on the Starry Night code (doi: 10.5281/zenodo.10543) written by Jarvist Moore Frost (JMF) to simulate dipole-dipole interactions and ferroelectric domains in a hybrid organic-inorganic perovskite solar cell. Eris was originally adapted by JMF from Starry Night to simulate thermodynamic Cu-Zn disorder in {\CZTS}. My personal contributions to the project involved both implementation and of development of the Eris code. Contributions from implementation of the code include running simulations to test for finite size effects in the model, generating data and developing post-processing tools to quantify and visualise Cu-Zn disorder in the system. My developments of the Eris code include writing routines for:
 \begin{itemize}
     \item Lattice initialisation methods to ensure a stoichiometric {\CZTS} crystal
     \item Testing the convergence in the electrostatic summations for calculating the change in lattice energy when performing a Monte Carlo move
     \item Developing and testing methods to check that the equilibrium disordered configuration was achieved for each simulation temperature
     \item Additional outputs from the code including: data to compute an order parameter, tests for convergence when computing on-site electrostatic potentials and outputting lattice on-site electrostatic potentials in various forms for further analysis
-    \item Extending the model to include Cu/Zn disorder between the planes, i.e. allowing Zn from Cu-Zn layers to substitute into Cu-Sn planes
+    \item Extending the model to include Cu/Zn disorder between the planes, i.e. allowing Zn from Cu-Zn layers to substitute onto Cu sites in the Cu-Sn planes
 \end{itemize}
+
+\subsection{Access statement}
+Eris doi and data doi??
 
 \includepdf[pages={1-},scale=1.0]{papers/ErisPaper1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/Eris1_SI.pdf}
 
-\subsection{Personal contribution}
-\subsection{Access statement}
 
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
@@ -1224,7 +1244,7 @@ Plan for discussion of eris band tailing results:
 
 \chapter{Screening for candidate photoferroic solar absorbers}\label{chap:screening}
 
-\section{Observed phenomena in photoferroic materials}\label{ferroPVsection}
+\section{Observed phenomena in photoactive ferroelectric materials}\label{ferroPVsection}
 % ** Cite Rappe about shift current (+BPE?) possible in any crystal that lacks centre of inversion symmetry, not just FE materials
 A ferroelectric material possesses a spontaneous electric polarisation that can be switched between two or more states using an electric field \cite{new_FE_PV_1}. Many interesting PV phenomena have been observed in ferroelectric (FE) materials such as the bulk photovoltaic effect (BPE) and the anomalous photovoltaic effect (APE) \cite{keith}. 
 %Ferroelectric materials usually have a high dielectric constant (which was mentioned in section \ref{PV_properties} as an important parameter for a photovoltaic material) and they possess a spontaneous electric polarization that can be switched between two or more states using an electric field \cite{new_FE_PV_1}.
@@ -1247,20 +1267,19 @@ enargite, stephanite, and bournonite}
 
 %Introductory paragraph + sulfosalts paper1 + include paper SI? (put in appendix?) \\
 
-In the previous chapter, it was demonstrated that high concentrations of Cu-Zn disorder is inevitable in the solar absorber material {\CZTS} and the contribution of electrostatic potential fluctuations from this type of disorder to the observed band tailing was quantified. In this chapter, a screening procedure is conducted to look for alternative absorber materials. The motivation of this study was to identify candidate `photoferroic’ or photoactive ferroelectric materials. Photoferroic phenomena were outlined in section \ref{photoferroic}. The mechanisms behind such phenomena are not yet fully understood, however it may be possible to achieve improvements in solar cell performance from enhanced local carrier separation from the internal electric fields of polar crystals, possibly providing new pathways to achieving high-performance devices.
-Additionally, the band tailing from prevalent cation disorder (as investigated for {\CZTS}) would be expected to be less prevalent in these materials (as has been demonstrated in AZTS **REF FROM PAPER* and BCTS **REF FROM PAPER**) due to the materials containing less chemically similar components.
+In the previous chapter, it was demonstrated that high concentrations of Cu-Zn disorder is inevitable in the solar absorber material {\CZTS} and the contribution of electrostatic potential fluctuations from this type of disorder to the observed band tailing was quantified. In this chapter, a screening procedure is conducted to look for alternative absorber materials. The motivation of this study was to identify candidate `photoferroic’ or photoactive ferroelectric materials, discussed in the previous section. The mechanisms behind such phenomena are not yet fully understood, however it may be possible to achieve improvements in solar cell performance from enhanced local carrier separation from the internal electric fields of polar crystals, possibly providing new pathways to achieving high-performance devices.
+Additionally, the band tailing from prevalent cation disorder (as investigated for {\CZTS}) would be expected to be less prevalent in these materials due to the materials containing less chemically similar components, as has been demonstrated when substituting with Ag \cite{Gerschon_AZTSe} or Ba \cite{distant_cations, Tong_Ba-CZTS} into {\CZTS} (or similarly, into the corresponding selenide or sulfo-selenide alloy).
 
-This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package and calculations of spontaneous lattice polarisation were performed by Katrine Svane at the University of Bath.
+\subsection{Personal contribution}
+This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package and calculations of spontaneous lattice polarisation were performed by Katrine Svane at the University of Bath using the VASP electronic structure software package \cite{VASP}.
 
+\subsection{Access statement}
+data doi from paper???
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
 
-\subsection{Personal contribution}
-\subsection{Access statement}
-
-
-\section{Outlook: Large-scale screening with material properties databases}
+\section{Outlook: High-throughput screening for candidate photoferroics}
 
 c.f. Lee's slack message:
 materials project ->
@@ -1302,41 +1321,50 @@ Preliminary results: maybe just comment on number of candidates with m* for BOTH
 
 
 \chapter{Theoretical insights for new solar absorbers}\label{chap:insights}
-State that although we expect cation disorder to be less prevalent than Cu-Zn disorder in {\CZTS}, this does not rule out other limitations on performance (such as defects and non-optimal device architectures). Here we take inspiration from more mature or successful PV tech and use insights from theory to assess the potential of two of the three minerals from \autoref{chap:screening}.\\
+State that although we expect cation disorder to be less prevalent than Cu-Zn disorder in {\CZTS}, this does not rule out other limitations on performance (such as defects and non-optimal device architectures). Here we take inspiration from more mature or successful PV tech and use insights from theory to assess the potential of two of the three minerals from \autoref{chap:screening}.
 
 Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
 \section{Solar cell heterojunctions for candidate photoferroic absorbers enargite
 and bournonite from electronic band and lattice matching}\label{sulfosalt_band_alignment}
-Introductory paragraph (new PV tech must be optimised layer-by-layer), barrier to utilisation of new tech, aim to use theory to accelerate process, often architectures optimised for different, more mature tech is used for new PV absorbers - not necessarily optimal! (e.g. of enargite paper and various others from band alignments paper intro) + sulfosalts band alignments paper\\
+Introductory paragraph (new PV tech must be optimised layer-by-layer), barrier to utilisation of new tech, aim to use theory to accelerate process, often architectures optimised for different, more mature tech is used for new PV absorbers - not necessarily optimal! (e.g. of enargite paper and various others from band alignments paper intro) + sulfosalts band alignments paper
 
-Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction as described in section \ref{photoferroics}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation and possible new pathways to achieving high-performance devices.\\
+Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction as described in section \ref{photoferroics}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation and possible new pathways to achieving high-performance devices.
 
-+ Add statement on personal contribution (Slabs cut by Yoyo, MD and ELS codes by Keith, calculations performed by me, ELS extended by me to include workflow for CBOs and VBOs of interest for PV)
+\subsection{Personal contribution}
+Add statement on personal contribution (Slabs cut by Yoyo, MD and ELS codes by Keith, calculations performed by me, ELS extended by me to include workflow for CBOs and VBOs of interest for PV)
+\subsection{Access statement}
+git repos at data doi???
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts_band_alignment_draft.pdf}
 
-\subsection{Personal contribution}
-\subsection{Access statement}
 
 
 \section{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
 
 \subsection{A case study with enargite ({\enargite})}
 
-** Update: Just do for enargite? Use aide to post-process with LZ method, draw comparisons to CZTS, CIS and explore role of multivalence of As. Look into most recent MIT defect-tolerance work and discuss analysis wrt CIS with Stephan? Also, maybe discuss non-radiative defect recombination for enargite with Sam and Aron?? **\\
-
-Justify choice of continuing with just enargite: less options for defects and decomposition into secondary phases (more facile synthesis?) for a ternary than a quaternary compound? (ref Sunghyun's paper with CZTS phase diagram and very narrow stable region) + similar pDOS of enargite allows us to make statements about expected defect physics by analogy to CZTS and CIGS, while bournonite (as shown in sulfosalts paper 1) had very different pDOS and composition at band extrema.\\
-
-Use whichever finite-size correction scheme for enargite with aide that showed best agreement to GaAs cluster in benchmark study?? Or add results to enargite finished as far as possible and lit review for CIS and CZTS??\\
+Introductory paragraph (power of predicting this property - determine materials worthy of further study, inform synthesis procedures for faster optimisation) + sulfosalts defects work as complete as possible (write last, aim to have as much of paper written as possible first!)
 
 State that we expect extended cation disorder to be present to a lesser extent than in CZTS due to less chemical similarity? Also that understanding defect physics from a point-defect perspective is an important foundation to build for understanding the complicate defect physics of a multi-component material? e.g. next step would be pairs, etc.
 
-Introductory paragraph (power of predicting this property - determine materials worthy of further study, inform synthesis procedures for faster optimisation) + sulfosalts defects work as complete as possible (write last, aim to have as much of paper written as possible first!)\\
+** Update: Just do for enargite? Use aide to post-process with LZ method, draw comparisons to CZTS, CIS and explore role of multivalence of As. Look into most recent MIT defect-tolerance work and discuss analysis wrt CIS with Stephan? Also, maybe discuss non-radiative defect recombination for enargite with Sam and Aron?? **
 
-+ Add statement on personal contribution
+Justify choice of continuing with just enargite: less options for defects and decomposition into secondary phases (more facile synthesis?) for a ternary than a quaternary compound? (ref Sunghyun's paper with CZTS phase diagram and very narrow stable region) + similar pDOS of enargite allows us to make statements about expected defect physics by analogy to CZTS and CIGS, while bournonite and stephanite (as shown in sulfosalts paper 1) had very different pDOS at band extremas.
 
-\includepdf[pages={1-},scale=1.0]{papers/sulfosalts_defects_draft.pdf}
+Use whichever finite-size correction scheme for enargite with aide that showed best agreement to GaAs cluster in benchmark study?? Or add results to enargite finished as far as possible and lit review for CIS and CZTS??
+
+\begin{itemize}
+\item Begin with overview of why enargite is an interesting system to study here and review defects literature for CIS and CZTS
+\item Show enargite unit cell to supercell and outline need to relax full unit cell for this study
+\item Outline use of Transformer library to determine all symmetrically-distinct antisites and vacancies in enargite (link to notebook?)
+\item Show two unique interstitial sites identified by eye (take from powerpoint slides?)
+\item Present table of 'uncorrected' total energies of defects in various charge states
+\item Present calculation of ionic dielectric constant with VASP (and refer to RPA calc of electronic component from sulfosalts paper1)
+\item Present CPLAP phase diagrams for enargite
+\item Finish with further work to apply finite size corrections to the charged defects (as outlined in methodology section) and compute defect formation energies
+\item Further analysis: determine `deep' defects and species chemical potentials to suppress formation of such defects, discuss possibility of benign defect pairs (c.f. Aron's defect-tolerance review) and encouraging formation to passivate detrimental defects, refer to Sunghyun's CZTS work on non-rad recombination and discuss possible analogous problems of redox/ multivalence in As and in Sn
+\end{itemize}
 
 %\section{The quest for universal descriptors for predicting solar cell performance}
 %Mention high-throughput material screening (in broader research field) here again.\\
