@@ -30,6 +30,7 @@
 %\usepackage[linktocpage=true]{hyperref}
 
 \usepackage{pdfpages}
+\usepackage{booktabs}
 
 
 \title{Overcoming the efficiency bottleneck of metal sulfide solar cells}
@@ -254,9 +255,11 @@ original discrete energy levels are broadened into new energy levels that are so
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.7\textwidth]{figures/band_Elevels.png}
-    \caption[Electron energy levels of a single atom (left) and the formation of a quasi-continuous band of allowed energies in a solid crystal when many atoms are brought close together (right).]{Electron energy levels of a single atom (left) and the formation of a quasi-continuous band of allowed energies in a solid crystal when many atoms are brought close together (right). Figure taken from \citenum{mat_prop1}.}
+    \caption[Electron energy levels of a single atom (left) and the formation of a quasi-continuous band of allowed energies in a solid crystal when many atoms are brought close together (right).]{Electron energy levels of a single atom (left) and the formation of a quasi-continuous band of allowed energies in a solid crystal when many atoms are brought close together (right). Figure taken from Ref. \citenum{mat_prop1}.}
   \label{band_Elevels}
 \end{figure}
+
+\subsection{Bloch's theorem}
 
 To understand the behaviour of electrons in solids, the electron is considered as a wave propagating in a periodic structure \cite{small_semiconductor1}. The Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
 The energy of a single, independent electron in a perfect crystal is described by the one-electron Schr{\"o}dinger equation, shown in equation \ref{single_SE}. The first term in equation \ref{single_SE} is the kinetic energy of the electron, V(\textbf{r}) is the effective periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and $\epsilon$ is the eigenenergy of the electron.
@@ -286,6 +289,8 @@ A plot of $E(\textbf{k})$ versus \textbf{k} is known as the energy dispersion re
   \label{bs1}
 \end{figure}
 
+\subsection{Energy dispersion relation}
+
 The impact of a medium with a discrete structure, such as a crystal lattice, on the energy dispersion relation of a free electron can be seen by comparing Fig \ref{bs1}a to Fig. \ref{bs1}b.
 The band structure, E(\textbf{k}), of a material is usually plotted against $|\textbf{k}|$ just for the most important directions in the crystal, such as that shown in Fig. \ref{bs1}c. A periodic medium does not suppress the propagation of waves, as would be expected in disordered or amorphous structures, but introduces limiting frequencies and wavelengths for the propagation. 
 The parabola of the free electron is modified in a periodic crystal by the introduction of discontinuities at values of $|\textbf{k}|$ corresponding to multiples of $\frac{\pi}{a}$, as shown by Fig. \ref{bs1}b \cite{small_semiconductor2}. The point $|\textbf{k}| = \frac{\pi}{a}$ is the Brillouin zone boundary. At these points the electron wavefunction is a standing wave and the gradient of E(\textbf{k}) disappears \cite{Nelson3}.
@@ -310,6 +315,8 @@ The influence of the effective mass of charge carriers in a solar absorber mater
 %\psi_k(\mathbf{r}) = \sum_k A_k \phi_k(\mathbf{r}) = \sum_k A_kU_k(\mathbf{r}) e^{i\mathbf{k \cdot r}} 
 %\end{equation}
 %Due to the translational symmetry of a crystal lattice, an eigenfunction of the one-electron Schr{\"o}dinger equation can be expressed as a sum of Bloch functions such as that shown in equation \ref{bloch}, to give equation \ref{bloch_sum}. The one-electron wavefunctions therefore can be indexed by constants \textbf{k}, which are the wave vectors of the plane waves forming the `backbone' of the Bloch function. A plot of the electron eigenenergies from equation \ref{single_SE} versus \textbf{k} is known as the electronic band structure of the crystal \cite{fund_semi}.
+
+\subsection{Electrical conductivity}
 
 The band theory of a semiconductor can also be used to understand the electrical conductivity of the material. At 0 K, electrons have no kinetic energy and therefore occupy the lowest energy states available, where the energy of the highest energy state filled is called the Fermi energy, E$_F$. However at finite-temperatures, electrons may have sufficient kinetic energy to access higher energy states above E$_F$, leaving behind some empty states below E$_F$. The distribution for electrons in thermal equilibrium at finite-temperatures is described by Fermi-Dirac statistics, where Eq. \ref{fermi-dirac} gives the probability that an electronic state of energy E will be occupied at some temperature T, where k$_B$ is the Boltzmann constant \cite{Nelson3}.
 \begin{equation}\label{fermi-dirac}
@@ -357,7 +364,7 @@ For a metal, $\Phi_W$ is defined by the electron affinity (EA) (indicated in Fig
 In early PV devices, the asymmetric junction was a Schottky barrier contact between a metal and a semiconductor but now more effective p-n junctions are used in solar cells, which are formed by joining together p-type and n-type semiconductors \cite{Nelson1}.
 In both types of junction, the photovoltage generated is related to the difference in $\Phi_W$ of the two materials either side of the junction and the junction will develop a photovoltage provided that it presents a barrier to majority carrier currents \cite{Nelson5}. In the next sections the formation of an electrical asymmetry at a metal-semiconductor is outlined, the limitations of this type of junction in a solar cell is explained and then the formation of an electrical asymmetry at a semiconductor-semiconductor junction is outlined.
 
-\subsubsection{Equilibrium electrical asymmetry at a metal-semiconductor junction}
+\subsection{Metal-semiconductor junctions}
 \begin{figure}[h!]
   \centering
     \includegraphics[width=1.0\textwidth]{figures/schottky_schematic.png}
@@ -382,7 +389,7 @@ There are now different distribution functions for electrons in the CB and holes
 
 A Schottky barrier junction can therefore facilitate photovoltaic energy conversion, but it suffers from certain limitations which impact the maximum achievable photovoltages. For example, a barrier height greater than approximately half of the band gap of the semiconductor will cause minority carriers to outnumber majority carriers close to the interface region, causing an inversion layer. The junction then becomes carrier rich and cannot sustain a photovoltage. Also if the barrier region at the junction is small and the semiconductor layer is highly doped, tunneling of majority carriers across the junction may occur, reducing the effectiveness of the barrier. Many of these problems can be overcome by using a semiconductor-semiconductor p-n junction \cite{Nelson5}, outlined next.
 
-\subsubsection{Equilibrium electrical asymmetry at a semiconductor p-n junction}
+\subsection{Semiconductor p-n junctions}
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.85\textwidth]{figures/p-n_schematic.png}
@@ -398,6 +405,8 @@ For many of the materials being studied for use as absorber layers in thin-film 
 
 \section{Absorber material properties for efficient solar cells}\label{PV_properties}
 The most fundamental, necessary requirement for a solar absorber material in a PV device is that it possesses a band gap across which an electron can be excited. As discussed in the previous section, the magnitude of this band gap must also be somewhere within the energy range of the solar spectrum so that sunlight can induce this excitation. The next most fundamental requirement of a solar absorber material is that it must allow for the transport of charge carriers out of the absorber material layer, into a collection electrode and on to an external circuit in order to do electrical work. Provided these necessary conditions are met and some sort of spatial asymmetry (outlined above) is present to drive electrons away from their point of promotion, the material should exhibit the PVE \cite{Nelson2}. However, how well it will actually peform in a solar cell is determined by more stringent criteria and other material properties. 
+
+\subsection{Electronic band gap and optical absorption}
 
 Firstly the actual value of the band gap within the range of the solar spectrum (shown in Fig. \ref{PV_schematic}b) is of importance. It is ideal for the value to be as close as possible to the region of photon energies that make up the majority of the solar spectrum. The optimal range for the band gap under typical radiation conditions is approximately 1.0 to 1.7 eV \cite{PV_E_range}. The upper limit of the power conversion efficiency (PCE) of incident photon energy into electrical energy by a device made from a particular absorber material based on its band gap was first calculated by Shockley and Quiesser in 1961 \cite{SQ_1961}. A plot of theoretical efficiency limit as a function of band gap was shown in figure \ref{SQ}, as well as the record efficiencies of various PV technologies.
 
@@ -424,6 +433,8 @@ The implication of the differing $\alpha$ and therefore different optical penetr
 On the other hand materials with a weaker onset of absorption, as is often the case for materials with an indirect band gap such as Si, a thicker layer of absorber material is required to absorb the same amount of light \cite{PV_bands_book}. This is undesirable if the particular material contains rare or expensive components and also results in higher demands on material quality as charge carriers must be transported through the absorber material in order to be collected.
 Thin-film PV technologies typically require a less high-quality and defect-free absorber layer as charge carriers do not have to travel through as much of the material in order to reach a collection electrode. However, defects in the absorber layer do still play a decisive role in determining the device performance of thin-film film PV technology, and this point is discussed much more in section \ref{defects_impact}.
 
+\subsection{Charge-carrier effective mass}
+
 As mentioned in section \ref{BandTheorySection}, another property of importance that can be derived from the electronic band structure of a material, i.e. the plot of E(\textbf{k}) vs. k, is the effective mass, m*. m* is related to the curvature of the band at the top of the valence band (for holes) or at the bottom of the conduction band (for electrons). m* are calculated by a quadratic least-squares fit to the band extrema when using the parabolic approximation. The curvature of the plot can then be used to obtain m* with Eq. \ref{m*_fit}.
 \begin{equation}\label{m*_fit}
 m^* = \left( \frac{1}{\hbar}\frac{\partial^2 E}{\partial k^2} \right)^{-1}
@@ -437,6 +448,8 @@ However m* should just be considered as a necessary but not a sufficient conditi
 %Refer to: pg 160 \cite{fund_semi}, pg 51, 52, 64 \cite{thin_film_Boer}, pg 63 + 65 \cite{phys_semicond}\\
 Although the main framework for modeling solid-state systems (as outlined at the start of this chapter) is built around perfect, periodic systems; in reality absolutely perfect systems do not exist. Deviations from the perfect crystal lattice structure (i.e. defects) can strongly influence the performance of electronic devices. There is an energy cost associated with the creation of a defect, but in many cases the free energy of a system can be lowered by the incorporation of a certain concentration of defects due to an increase in the configurational entropy of the system \cite{AshcroftMermin_general}. Methods for modeling defects in solids are discussed in section \ref{defects_methods}, but here the impact of defects in the absorber layers on the performance of solar cells is discussed.
 
+\subsection{Types of crystal defect}
+
 There are many different possible types of crystal defect. If a defect does not involve any atoms that are foreign to the host crystal, then the defect is called an intrinsic or native defect. Defects involving foreign atoms, or impurities, are referred to as extrinsic defects. Fig. \ref{defects}b and \ref{defects}c show some examples of extrinsic and intrinsic defects. This work is primarily interested in the fundamental material properties of candidate solar absorber materials, so only intrinsic defects are considered. In real systems however, impurities are sometimes unintentionally present in the growth or processing environment.
 Defects are usually classified as point or extended defects. Point defects usually involve isolated atoms in localised regions of a host crystal, such as those shown in Fig. \ref{defects}b and \ref{defects}c. There are a number of different possible point defects, such as: vacancies, interstitials and antisites, which correspond to the removal, insertion or substitution of species from the perfect host lattice respectively. Extended defects may involve rows of atoms, such as a dislocation defect. An example of a line defect is shown in figure \ref{defects}a. Another possible type of defect is a defect complex, which is composed of a small number of point defects.
 
@@ -449,24 +462,43 @@ Defects are usually classified as point or extended defects. Point defects usual
 
 The electrical properties of semiconductors can be modified significantly by the incorporation of very small amounts of impurities or defects. It is often the case that less than one defect per million of host atoms is sufficient to alter the properties of a semiconductor \cite{fund_semi}. This sensitivity to defects is one of the reasons why semiconductors find many uses in device applications. For example, luminescence centres in wide-band-gap materials can be used to emit light at specific wavelengths or single-spin centres provided by defects can act as artificial atoms and serve as a qubit in a quantum computer \cite{defects_tutorial}. In order to control the electrical properties of a material by introducing defects, typically processes must first be developed to produce a fairly defect-free material, before intentionally introducing particular defects \cite{fund_semi}. In the case of solar cell devices, however, the presence of defects can be detrimental depending on the nature of the defect \cite{Aron_defect_tolerance}, which will be discussed next. 
 
-Certain point defects result in additional energy levels in between the valance-band maximum (VBM) and conduction-band minimum (CBM), i.e. within the band gap of the material. Electrically active defects have at least one charge state for the defect that produces a defect level in the band gap. This level then has an associated defect wavefunction, a state to which the electron is added to or removed when the charge state of the defect changes. If the defect level is positioned close enough to the band edges such that the defect is likely to be thermally ionised at room temperature, then the defect is conventionally referred to as a `shallow'. If the defect produces a level in the band gap and far from the band-edge, it is a referred to as `deep'.  Another way of defining a defect as `shallow' or `deep' is based on the degree of localisation of the wavefunction. If a defect wavefunction is delocalised (on the order of many lattice constants) then the defect has the characteristics of a shallow defect. If the wavefunction is instead localised on the length scale of an atomic bond then this indicates a deep level defect \cite{defects_tutorial}. 
+\subsection{Optical properties of defective solids}
+\subsubsection{Low defect concentrations}
+
+Certain point defects result in additional energy levels in between the valance-band maximum (VBM) and conduction-band minimum (CBM), i.e. within the band gap of the material. An example for intrinsic point defects in the absorber material {\CZTS} is shown in Fig. \ref{defects_CZTS}. Electrically active defects have at least one charge state for the defect that produces a defect level in the band gap. This level then has an associated defect wavefunction, a state to which the electron is added to or removed when the charge state of the defect changes. If the defect level is positioned close enough to the band edges such that the defect is likely to be thermally ionised at room temperature, then the defect is conventionally referred to as a `shallow'. If the defect produces a level in the band gap and far from the band-edge, it is a referred to as `deep'.  Another way of defining a defect as `shallow' or `deep' is based on the degree of localisation of the wavefunction. If a defect wavefunction is delocalised (on the order of many lattice constants) then the defect has the characteristics of a shallow defect. If the wavefunction is instead localised on the length scale of an atomic bond then this indicates a deep level defect \cite{defects_tutorial}. 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.7\textwidth]{figures/Chen_CZTS_defects.png}
+    \caption[Ionisation levels of intrinsic point defects in the band gaps of {\CZTS}]{Ionisation levels of intrinsic point defects in the band gaps of {\CZTS}. Taken from Ref. \citenum{defects_Chen}.}
+  \label{defects_CZTS}
+\end{figure}
 
 Typically deep levels are thought to be the most detrimental to solar cell device performance \cite{Stoneham_killer_defects}. 
 Defects that produce mid-gap states act as Shockley-Read-Hall recombination sites \cite{SRH}, which is regarded as the most important recombination process in real, non-perfect semiconductors. It is a form of non-radiative recombination where a charge carrier is trapped in the defect state before recombining with a charge carrier of opposite polarity. This type of recombination is known to be detrimental to device performance as, essentially, it results in energy input from sunlight not being converted into electricity \cite{Nelson4}.
 In the case of {\CZTS}, predictions for the defect formation energy and defect levels in reference \citenum{defects_Chen} suggest that defects which would be expected to produce a deep defect level, also have a high formation energy so would be expected to be less likely to form.
 However, a recent theoretical study has revisited the defect physics of {\CZTS} to demonstrate that similar detrimental effects may also be possible with some shallower defects \cite{Sunghyun_killer_defects}.
 
-The energy band model described in section \ref{BandTheorySection} has been successful in explaining many aspects of the behaviour of solids and a large amount of experimental data has supported the theoretical predictions made using the model. Its main drawback however is that it assumes a perfect, or nearly perfect, crystal lattice. It applies well to single crystals and polycrystalline substances, but omits important physical characteristics when used to study materials that are amorphous or heavily disordered so that the structure deviates significantly from the periodicity of the crystal \cite{small_semiconductor1}.
-Low concentrations of impurities and defects can be modeled by considering, for example, the introduction of distinct additional donor and acceptor energy levels within the band gap of a material and the scattering of electrons and holes in the solid. However, in {\CZTS} the presence of a large extent of disorder amongst Cu and Zn, and hence high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites, has been inferred from calculations of defect formation energy \cite{defects_Chen} and confirmed from experiment \cite{Schorr, CZTS_Xray, CZTS_TEM}. 
-At higher defect concentrations, defect levels interact to form a band. For example, for high n-type doping the impurity band merges with the conduction band, causing a rigid shift of the conduction band towards the valence band \cite{Pankove}. The band profile can be modified with increasing donor density as shown in figure \ref{bs2}a-c. 
-%to give rise to conductivity even at temperatures that are too low to produce excitation of carriers into the free conduction bands, called impurity band conduction \cite{small_semiconductor2}.
-In heavily-doped semiconductors it is possible to observe a phenomena called `band tailing', where the valence and conduction bands are shifted towards each other resulting in a narrowing of the band gap, as shown in figure \ref{bs2}d \cite{Pankove}. The heavy-doping effects then result in a different emitted spectrum which can be detected by techniques such as photoluminescence (PL) spectroscopy. 
+\subsubsection{High defect concentrations}
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.9\textwidth]{figures/bs2+pankove.png}
     \caption[The influence of increased donor impurity density on the conduction band profile showing low (a), medium (b) and high (c) densities of impurities. (d) Schematic of band tailing. $\zeta_{n,p}$ are the quasi-Fermi level for electrons and holes respectively. The narrow line denotes the unperturbed density of states (DOS), while the heavy line depicts the DOS modified by heavy-doping effects. Both valence and conduction bands are shifted towards each other to give a narrowing of the band gap and the DOS is distorted, showing band tails.]{The influence of increased donor impurity density on the conduction band profile showing low (a), medium (b) and high (c) densities of impurities. Figure taken from reference \citenum{small_semiconductor2}. (d) Schematic of band tailing. $\zeta_{n,p}$ are the quasi-Fermi level for electrons and holes respectively. The narrow line denotes the unperturbed density of states (DOS), while the heavy line depicts the DOS modified by heavy-doping effects. Both valence and conduction bands are shifted towards each other to give a narrowing of the band gap and the DOS is distorted, showing band tails. Figure taken from reference \citenum{Pankove}.}
   \label{bs2}
+\end{figure}
+
+The energy band model described in section \ref{BandTheorySection} has been successful in explaining many aspects of the behaviour of solids and a large amount of experimental data has supported the theoretical predictions made using the model. Its main drawback however is that it assumes a perfect, or nearly perfect, crystal lattice. It applies well to single crystals and polycrystalline substances, but omits important physical characteristics when used to study materials that are amorphous or heavily disordered so that the structure deviates significantly from the periodicity of the crystal \cite{small_semiconductor1}.
+Low concentrations of impurities and defects can be modeled by considering, for example, the introduction of distinct additional donor and acceptor energy levels within the band gap of a material (as discussed above) and the scattering of electrons and holes in the solid. However, in {\CZTS} the presence of a large extent of disorder amongst Cu and Zn, and hence high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites, has been inferred from calculations of defect formation energy \cite{defects_Chen} and confirmed from experiment \cite{Schorr, CZTS_Xray, CZTS_TEM}. 
+At higher defect concentrations, defect levels interact to form a band. For example, for high n-type doping the impurity band merges with the conduction band, causing a rigid shift of the conduction band towards the valence band \cite{Pankove}. The band profile can be modified with increasing donor density as shown in figure \ref{bs2}a-c. 
+%to give rise to conductivity even at temperatures that are too low to produce excitation of carriers into the free conduction bands, called impurity band conduction \cite{small_semiconductor2}.
+In heavily-doped semiconductors it is possible to observe a phenomena called `band tailing', where the valence and conduction bands are shifted towards each other resulting in a narrowing of the band gap, as shown in figure \ref{bs2}d \cite{Pankove}. The heavy-doping effects then result in a different emitted spectrum which can be detected by techniques such as photoluminescence (PL) spectroscopy. 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{figures/PL_transitions.png}
+    \caption[Basic optical transitions involved in a measurement during photoluminescence spectroscopy (a). Common emission transitions detected during photoluminescence measurements, including transitions involving defect levels (b).]{Basic optical transitions involved in a measurement during photoluminescence spectroscopy (a). Common emission transitions detected during photoluminescence measurements, including transitions involving defect levels (b). Figures taken from reference \citenum{PL_transitions} and \citenum{Pankove} respectively.}
+  \label{PL_transitions}
 \end{figure}
 
 %\begin{figure}[h!]
@@ -478,11 +510,13 @@ In heavily-doped semiconductors it is possible to observe a phenomena called `ba
 
 In a PL experiment, photons with energies larger than that of the band gap excite electrons from the valence band to the conduction band, as shown in figure \ref{PL_transitions}a. In addition, electrons can be excited from or to defect levels, as shown in figure \ref{PL_transitions}b. When the excited electrons transition to lower energy levels, they can emit light to conserve energy, resulting in a peak in the PL spectrum. In a photoluminescence excitation (PLE) experiment, the PL intensity is measured as a function of excitation photon energy. This gives an absorption profile for the defect. PL measurements are able to pick up optical signatures of defects even if they are only present at low concentrations with high resolution. PL measurements alone however cannot be used to identify the character of a defect, this is an area where first-principles defect calculations can provide some insight \cite{defects_tutorial}. 
 
+\subsection{Impact of defects on {\CZTS} solar cells}
+
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=1.0\textwidth]{figures/PL_transitions.png}
-    \caption[Basic optical transitions involved in a measurement during photoluminescence spectroscopy (a). Common emission transitions detected during photoluminescence measurements, including transitions involving defect levels (b).]{Basic optical transitions involved in a measurement during photoluminescence spectroscopy (a). Common emission transitions detected during photoluminescence measurements, including transitions involving defect levels (b). Figures taken from reference \citenum{PL_transitions} and \citenum{Pankove} respectively.}
-  \label{PL_transitions}
+    \includegraphics[width=1.0\textwidth]{figures/CZTS+CIGS_PL.png}
+    \caption[The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV).]{The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV). Figure taken from reference \citenum{band_tail}.}
+  \label{CZTS+CIGS_PL}
 \end{figure}
 
 Several PL studies have been performed on kesterite-structured samples of {\CZTS}, Cu$_2$ZnSnSe$_4$ and alloys of the two. PL measurements have been performed on both full devices and polycrystalline thin-films \cite{band_tail, Gershon, Gershon_ref18, Romero, Miyamoto, Unold} and single crystals \cite{Halliday, Levcenko, Hones}. Reference \citenum{Halliday} compares the PL spectra for varying compositions of the sample, whereas in reference \citenum{band_tail} measurements on both CIGSSe and record-efficiency CZTSSe thin films are performed in an attempt to account for the difference in the performance of these two technologies by comparing their defect-influenced PL emission spectra. Polycrystalline samples are more similar to those likely to be used in thin-film CZTS photovoltaic devices, however comparison between those measurements with single crystal measurements could enable the isolation of recombination at grain boundaries and interfaces from those due to defects in the bulk of the absorber layer. 
@@ -493,17 +527,9 @@ Fig. \ref{CZTS+CIGS_PL} shows photoluminescence (PL) spectroscopy measurements p
 %The PL spectra of kesterite samples usually features a much broader peak than that observed in CIGSSe samples, such as that shown in figure \ref{CZTS+CIGS_PL}. The energy of the maximum PL peaks of kesterite samples is also usually considerably red-shifted compared to the energy of the band gap. These two features are usually attributed to band tailing caused by either spatial band gap variations or electrostatic potential fluctuations in the absorber material.  Both effects lead to a non-zero density of states (DOS) within the band gap \cite{culprit, band_tail}. 
 Measurements performed in reference \citenum{band_tail} found the tailing in CZTSSe to be roughly twice as severe as that observed in higher-performing CIGSSe devices.
 
-
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=1.0\textwidth]{figures/CZTS+CIGS_PL.png}
-    \caption[The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV).]{The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV). Figure taken from reference \citenum{band_tail}.}
-  \label{CZTS+CIGS_PL}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.75\textwidth]{figures/Voc.png}
+    \includegraphics[width=0.85\textwidth]{figures/Voc.png}
     \caption[V$_{OC}$ versus band gap of high performance CZTSSe devices ($>$9\% efficiency) indicated by circles with best devices based on other photovoltaic materials shown for comparison by diamond symbols: Methyl-ammonium lead iodide (MAPI), amorphous silicon (a-Si), organic photovoltaic films (OPV), crystalline silicon (c-Si) and polycrystalline silicon (pc-Si). The oblique lines give a constant V$_{OC}$ deficit from 0.8 V to 0 V. The green points correspond to CZTSSe films that are partially ordered (PO) or partially disordered (PD) due to disorder amongst Cu and Zn.]{V$_{OC}$ versus band gap of high performance CZTSSe devices ($>$9\% efficiency) indicated by circles with best devices based on other photovoltaic materials shown for comparison by diamond symbols: Methyl-ammonium lead iodide (MAPI), amorphous silicon (a-Si), organic photovoltaic films (OPV), crystalline silicon (c-Si) and polycrystalline silicon (pc-Si). The oblique lines give a constant V$_{OC}$ deficit from 0.8 V to 0 V. The green points correspond to CZTSSe films that are partially ordered (PO) or partially disordered (PD) due to disorder amongst Cu and Zn. Figure taken from reference \citenum{culprit}.}
   \label{Voc}
 \end{figure}
@@ -537,9 +563,9 @@ In general, the main cause of V$_{OC}$ deficit in a PV device is the recombinati
 
 Observed band tailing can be caused by either spatial band gap variations or electrostatic potential fluctuations in the material \cite{band_tail}. In the case of the latter, it is the inhomogeneous distribution of ionised defects that cause the fluctuations. An ionised donor exerts and attractive force on conduction electrons and a repulsive force on valence holes. As the defects are distributed randomly, the local interaction varies depending on the crowding of the defects. In this case the energy gap between the valence band and conduction band is maintained, as shown in figure \ref{pankove_elec_fluc} and the states of each tail are spatially separated \cite{Pankove}. Defects can also result in fluctuations in the band gap of a material. For example, if an impurity atom is of a different size to the atoms of the host lattice, then this can result in a local mechanical strain, as shown in figure \ref{pankove_band_fluc}b which results in a deformation potential, such as that shown in figure \ref{pankove_band_fluc}c for an edge dislocation defect. Local strains can alter the separation of atoms in the crystal and, as figure \ref{pankove_band_fluc}a shows, the atomic separation within a crystal has a significant impact on the band structure. Additionally, due to the narrow region of phase stability for {\CZTS}, it is also possible there may be compositional inhomogeneity and secondary phases present \cite{SandS}, which could also produce local band gap fluctuations. 
 
-In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow for the investigation of the possible contribution to band tailing in {\CZTS} from the potential fluctuations of high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites. In section \ref{sulfosalt_defects} we perform electronic structure calculations for point defects to investigate the defects physics of candidate `photoferroic' solar absorber materials for which no experimental measurements have yet been made.
+In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow for the investigation of the possible contribution to band tailing in {\CZTS} from the potential fluctuations of high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites. In section \ref{sulfosalt_defects} we perform electronic structure calculations for point defects to provide the first insights into the defects physics of candidate `photoferroic' solar absorber materials for which no experimental measurements have yet been made.
 
-** Maybe should add discussion of defect-mediated non-radiative recombination mechanisms? c.f. Sunghyun's work with CZTS and revisit this section after writing enargite defects results section **
+%** Maybe should add discussion of defect-mediated non-radiative recombination mechanisms? c.f. Sunghyun's work with CZTS and revisit this section after writing enargite defects results section **
 
 \chapter{Methodology}
 
@@ -1267,11 +1293,11 @@ The optoelectronic properties of the candidate materials are then investigated f
 
 \section{Candidate photoferroic absorber materials for thin-film
 solar cells from naturally occurring minerals:
-enargite, stephanite, and bournonite}
+enargite, stephanite, and bournonite}\label{sulfosalts1}
 
 %Introductory paragraph + sulfosalts paper1 + include paper SI? (put in appendix?) \\
 
-In the previous chapter, it was demonstrated that high concentrations of Cu-Zn disorder is inevitable in the solar absorber material {\CZTS} and the contribution of electrostatic potential fluctuations from this type of disorder to the observed band tailing was quantified. In this chapter, a screening procedure is conducted to look for alternative absorber materials. The motivation of this study was to identify candidate `photoferroic’ or photoactive ferroelectric materials, discussed in the previous section. The mechanisms behind such phenomena are not yet fully understood, however it may be possible to achieve improvements in solar cell performance from enhanced local carrier separation from the internal electric fields of polar crystals, possibly providing new pathways to achieving high-performance devices.
+In the previous chapter, it was demonstrated that high concentrations of Cu-Zn disorder is inevitable in the solar absorber material {\CZTS} and the contribution of electrostatic potential fluctuations from this type of disorder to the observed band tailing was quantified. In this chapter, a screening procedure is conducted to look for alternative absorber materials. The motivation of this study was to identify candidate `photoferroic' or photoactive ferroelectric materials, discussed in the previous section. The mechanisms behind such phenomena are not yet fully understood, however it may be possible to achieve improvements in solar cell performance from enhanced local carrier separation from the internal electric fields of polar crystals, possibly providing new pathways to achieving high-performance devices.
 Additionally, the band tailing from prevalent cation disorder (as investigated for {\CZTS}) would be expected to be less prevalent in these materials due to the materials containing less chemically similar components, as has been demonstrated when substituting with Ag \cite{Gerschon_AZTSe} or Ba \cite{distant_cations, Tong_Ba-CZTS} into {\CZTS} (or similarly, into the corresponding selenide or sulfo-selenide alloy).
 
 \subsection{Personal contribution}
@@ -1299,79 +1325,219 @@ data doi from paper???
 %because we want to whittle it down to a managable number
 %just doing a quick check now there are 1,931 compounds with symmetries 156-161 so it does make a difference\\
 
-** Review this section again later + statement about work conducted by Lee **
+%** Review this section again later + statement about work conducted by Lee **
 
-In the study in the previous section, three candidate photoferroic materials were identified from the dataset of approximately 200 naturally occurring minerals. This choice of initial dataset was motivated by the high stability that could be expected for naturally occurring minerals. However, with the availability of materials properties databases and tools for screening such databases, there are much larger search spaces for materials discovery and it may be possible to identify better materials from such a resource. For this reason, an ongoing study is being conducted in collaboration with Lee A. Burton to perform a similar screening procedure using the Materials Project \cite{materials_project}. Here, just the motivations, modified screening criteria and some preliminary results of this subsequent search are outlined.
+In the study in the previous section, three candidate photoferroic materials were identified from the dataset of approximately 200 naturally occurring minerals. This choice of initial dataset was motivated by the high stability that could be expected for naturally occurring minerals. However, with the availability of materials properties databases and tools for screening such databases, there are much larger search spaces for materials discovery and it may be possible to identify better materials from such a resource. For this reason, an ongoing study is being conducted in collaboration with Lee A. Burton to perform a similar screening procedure using the Materials Project \cite{materials_project}. Here, just the motivations and modified screening criteria are outlined.
+%and some preliminary results of this subsequent search are outlined.
 
-As we do not start from a dataset of naturally occurring minerals in this extension, we limit our search space to only stable materials by considering only compounds with energies less than 24 meV above the convex hull **GET MP REF FOR CONVEX HULL**. We also only consider compounds composed of 4 or less elements to avoid materials that are likely to be particularly challenging to synthesise. 
+As we do not start from a dataset of naturally occurring minerals in this extension, we limit our search space to only stable materials by considering only compounds with energies less than 24 meV above the convex hull. We also only consider compounds composed of 4 or less elements to avoid materials that are likely to be particularly challenging to synthesise. 
 Otherwise, we apply similar screening criteria to the previous project. We also screen by polar space group but as opposed to using the streak colour as an indication that the band gap is likely to be within the visible range, we use the calculated band gaps for the compounds contained in the Materials Project database. Calculations for the material properties contained in the Materials Project database are performed at the GGA level of theory.
 The underestimation of the band gaps in the Materials Project database is stated to be approximately 40\% \cite{MP_bandgaps, MP_highthroughput}. With the optimal range for a PV absorber being approximately 1.1 to 1.7 eV, we use 0 to 1.5 eV as the range of band gap for our candidates to account for the typical underestimation of the band gap. 
 
-Effective masses were calculated for the three candidate photoferroic minerals in the previous study by fits to the extrema of the calculated electronic band structures. In this study, the Boltzmann transport equations will be solved to obtain effective mass tensors for the compounds from the initial screening procedure using calculated band structures from the Materials Project and the BoltzTraP code \cite{Boltztrap}. In the calculations, the temperature will be set to the typical operating temperature of a solar cell at ?? and carrier concentration assumed to be in the ideal range at ??, as this is a property than could be tuned experimentally for the most promising candidates through doping, subject to the doping limits of the material. 
-With this substantially larger number of candidate photoferroic materials, we were able to be more stringent in our standards for charge carrier effective masses. We first screened by the isotropic average… and then by components of the effective mass tensor so that we were left with candidates satisfying the necessary condition for isotropic high carrier mobility for both electrons and holes at the CBM and VBM respectively.
+Effective masses were calculated for the three candidate photoferroic minerals in the previous study by fits to the extrema of the calculated electronic band structures. In this study, charge-carrier transport properties for the compounds from the initial screening procedure will be determined by solving the Boltzmann transport equations using calculated band structures from the Materials Project and the BoltzTraP code \cite{Boltztrap}. In the calculations, the temperature will be set to the typical operating temperature of a solar cell at and carrier concentration will assumed to be in the ideal range, as this is a property than could be tuned experimentally for the most promising candidates through doping, subject to the doping limits of the material \cite{Zhang_doping_limits}. 
+With the substantially larger number of candidate photoferroic materials, we are able to be more stringent in our standards for charge carrier effective masses. We will first screen by the isotropic average and then by components of the effective mass tensor so that we were left with candidates satisfying the necessary condition for isotropic high carrier mobility for both electrons and holes at the CBM and VBM respectively.
 
-** Check preliminary results with Lee **\\
-
-This is an on-going work but so far results from the initial screening have shown ?? number of compounds that have polar space groups, band gaps within the range for solar absorption and effective masses for both electrons and holes less than 0.5m$_e$. Further work will involve a closer examination of their optoelectronic properties and potential as solar cell absorber layers.
+%This is an on-going work but so far results from the initial screening have shown ?? number of compounds that have polar space groups, band gaps within the range for solar absorption and effective masses for both electrons and holes less than 0.5m$_e$. Further work will involve a closer examination of their optoelectronic properties and potential as solar cell absorber layers.
 
 
 \chapter{Theoretical insights for new solar absorbers}\label{chap:insights}
-State that although we expect cation disorder to be less prevalent than Cu-Zn disorder in {\CZTS}, this does not rule out other limitations on performance (such as defects and non-optimal device architectures). Here we take inspiration from more mature or successful PV tech and use insights from theory to assess the potential of two of the three minerals from \autoref{chap:screening}.
 
-Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
+In \autoref{chap:CZTS} possible factors limiting the performance of {\CZTS} solar cells were discussed and a Monte Carlo model was developed to simulate cation disorder to investigate one possible explanation for the performance deficit. In \autoref{chap:screening} three candidate photoferroic materials were identified and necessary optoelectronic properties for an absorber layer to form a high-performance solar cell were predicted from electronic structure calculations. The focus of this chapter is to use further predicted material properties as well as insights from previous studies on more mature PV technologies to further assess the likely performance of the candidate absorber layers in PV devices and, where possible, to provide guidance to optimise performance.
+
+%Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
 \section{Solar cell heterojunctions for candidate absorbers enargite
 and bournonite from electronic band and lattice matching}\label{sulfosalt_band_alignment}
-Introductory paragraph (new PV tech must be optimised layer-by-layer), barrier to utilisation of new tech, aim to use theory to accelerate process, often architectures optimised for different, more mature tech is used for new PV absorbers - not necessarily optimal! (e.g. of enargite paper and various others from band alignments paper intro with CIGS architecture) + sulfosalts band alignments paper
 
-Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction as described in section \ref{photoferroics}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation and possible new pathways to achieving high-performance devices.
+To develop a high-performance solar cell device, the full device architecture must be optimised for the specific absorber layer. This optimisation process can be a barrier to the utilisation of new solar cell technologies. It is often the case that device architectures optimised for different absorber materials are used for new PV absorbers, which are not necessarily optimal, resulting in reduced device performance. Examples include the use of a typical architecture optimised for Cu(In,Ga)Se$_2$ (CIGS) solar cell technologies for CuSbS$_2$ \cite{CAS_alignment} and also for one of the candidate absorber layers in this study {\enargite} \cite{enargite_SC}. In this work the aim is to use theory to accelerate device optimisation with suggestions for suitable solar cell heterojunction partners for two of the candidate absorber layers identified in \autoref{chap:screening}. 
+
+Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction for photoferroic absorbers, as described in section \ref{ferroPVsection}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation. The following work is a data mining procedure to determine suitable junction partners for two of the candidate absorber materials from \autoref{chap:screening}. Insights for optimal electronic band offsets for a solar cell heterojunction are based on studies performed for PV absorbers CdTe \cite{CdTe_spike}, CIGS \cite{p-type_spike} and ZnSnN$_2$ \cite{Elisabetta}.
 
 \subsection{Personal contribution}
 Add statement on personal contribution: Slabs cut by Yoyo, MD and ELS codes by Keith (refer to github dois), calculations performed by me with VASP software package \cite{VASP} and ELS workflow developed by me for an interactive 3-step python scripts to scan for CBOs and VBOs of interest for PV, screen for min strain candidates and generate an input for band structure plots with the bapt software package \cite{bapt}. Add ELS additions as appendix?
 \subsection{Access statement}
 git repos for MD, ELS and bapt + data doi???
 
-\includepdf[pages={1-},scale=1.0]{papers/sulfosalts_band_alignment_draft.pdf}
+\includepdf[pages={1-},scale=1.0]{papers/sulfosalt_devices.pdf}
+\includepdf[pages={1-},scale=1.0]{papers/sulfosalt_devices_SI.pdf}
 
 
 
 \section{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
 
-Introductory paragraph (power of predicting this property - determine materials worthy of further study, inform synthesis procedures for faster optimisation)
-
-Review literature on defect-tolerance and recent works by MIT
-
-State that we expect extended cation disorder to be present to a lesser extent than in CZTS due to less chemical similarity? Also that understanding defect physics from a point-defect perspective is an important foundation to build for understanding the complicate defect physics of a multi-component material? e.g. next step would be pairs, etc.
+Although cation disorder is expected to be less prevalent in the multi-component absorber materials identified in \autoref{chap:screening} than Cu-Zn disorder in {\CZTS} (which was the topic of \autoref{chap:CZTS}), this does not rule out other origins of performance limitation for these materials. For example there is the possibility of other types of defects and non-optimal device architectures, which could have a detrimental impact on solar cell performance. For the latter, the work in the previous section proposed solar cell heterojunction partners for {\enargite} and {\bournonite} as a contribution towards an optimised device architecture for these absorber layers. This section focuses on the defect physics of new solar cell absorber layers and using knowledge gained from studies of more mature PV technologies to infer the likely impact of defects on the PV performance of new absorber layers. Although \autoref{chap:CZTS} dealt with large-scale extended antisite defects in {\CZTS}, for new absorber materials an important foundation for understanding the defect physics is to first consider point defects as, essentially, larger-scale disordered structures are formed from these smaller units. In this section, the defect physics of {\enargite} is explored to assess the likely impact of defects on device performance and to determine if the impact of defects could be minimised through tuning of the synthesis conditions of the absorber layer.
 
 
 \subsection{A case study with enargite, {\enargite}}
-** Update: Just do for enargite? Use aide to post-process with LZ method (if possible!), draw comparisons to CZTS, CIS and explore role of multivalence of As. Look into most recent MIT defect-tolerance work and discuss analysis wrt CIS with Stephan? Also, maybe discuss non-radiative defect recombination for enargite with Sam and Aron?? **
 
-Justify choice of continuing with just enargite: less options for defects and decomposition into secondary phases (more facile synthesis?) for a ternary than a quaternary compound? (ref Sunghyun's paper with CZTS phase diagram and very narrow stable region) + similar pDOS of enargite allows us to make statements about expected defect physics by analogy to CZTS and CIGS, while bournonite and stephanite (as shown in sulfosalts paper 1) had very different pDOS at band extremas.
+%\begin{itemize}
+%\item Begin with overview of why enargite is an interesting system to study here and review defects literature for CIS and CZTS (look in old Hoffmann JC talk comparing pDOS of enargite, CZTS and CIS?)
+%\item Show enargite unit cell to supercell and outline need to relax full unit cell for this study
+%\item Outline use of Transformer library to determine all symmetrically-distinct antisites and vacancies in enargite (link to notebook or add as appendix?: https://github.com/skw32/FHI-aims\_for\_PV/blob/master/defects\_workflow/defects\_workflow\_test.ipynb)
+%\item Show two unique interstitial sites identified by eye (take from powerpoint slides?)
+%\item Add table of raw data (total energies of defect supercells in various charge states, perfect supercell and atomic dH's) to appendix
+%\item Present calculation of ionic dielectric constant with VASP (and refer to RPA calc of electronic component from sulfosalts paper1)
+%\item Present CPLAP phase diagrams for enargite and tables of formation enthalpies as appendix? (inc. why some with E certain range above hull)
+%\item Finish with further work to apply finite size corrections to the charged defects (as outlined in methodology section) with outputs from FHI-aims electronic structure calculations and then compute defect formation energies (ongoing collaborative project with VB, TZ and AJJ to integrate with exiting finite-size correction scheme implementations using aide software package (cite repo?))
+%\item Further analysis: determine `deep' defects and species chemical potentials to suppress formation of such defects, discuss possibility of benign defect pairs (c.f. Aron's defect-tolerance review) and encouraging formation to passivate detrimental defects, refer to Sunghyun's CZTS work on non-rad recombination (would require study of el-ph coupling?) and discuss possible analogous problems of redox/ multivalence in As and in Sn
+%\end{itemize}
 
-Use whichever finite-size correction scheme for enargite with aide that showed best agreement to GaAs cluster in benchmark study?? Or add results to enargite finished as far as possible and lit review for CIS and CZTS??
+\subsubsection{Construction of defect supercells}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/enargite_supercell.png}
+    \caption{a) Unit cell of enargite ({\enargite}) and b) $2\times2\times2$ supercell containing 128 atoms with dimensions $14.86\times12.91\times12.33 \AA^3$.}
+    \label{enargite_supercell}
+\end{figure}
+
+Electronic structure calculations to predict the formation energy of isolated point defects in {\enargite} are performed using the methodology outlined in section \ref{defects_methods} using the supercell method with the all-electron electronic structure code FHI-aims. A $2\times2\times2$ supercell of the enargite unit cell was constructed (shown in Fig. \ref{enargite_supercell}b and \ref{enargite_supercell}a respectively). The $2\times2\times2$ supercell contains 128 atoms with dimensions of $14.86\times12.91\times12.33 \AA^3$. This is the largest and most isotropic system for the desired level of theory (outlined next). As mentioned in the methodology section, standard DFT methodology often results in underestimation of the electronic band gap, which can lead to inaccurate defect calculations \cite{Lany_defects}. For this reason, calculations are performed using the HSE06 hybrid-DFT functional, outlined in the methodology section.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/enargite_interstitials.png}
+    \caption{a) Two unique pores identified in the unit cell of enargite ({\enargite}) and examples of Cu interstitials in each pore (b) and (c).}
+    \label{enargite_interstitials}
+\end{figure}
+
+The supercell is constructed from a unit cell where the volume has been relaxed until forces converge to within $0.5\time10^{-3}$ per atom with the HSE06 functional, including spin-orbit coupling (SOC), a $4\times4\times4$ \textit{k}-grid and tabulated `tight' basis set species defaults for the FHI-aims software package. It is important that the unit cell volume is relaxed before constructing the defect supercells as even slight difference in the lattice parameters for the given functional relative to the experimental values used in the study in section \ref{sulfosalts1} could result in spurius relaxations in the defect supercell to compensate for the strain.
+For the relaxation of the defect supercells however, the lattice parameters are fixed and only internal atomic coordinates are relaxed. Allowing lattice parameters to relax in the defective supercells could result in excessive defect-induced relaxation which would be expected for a higher defect density than for isolated point defects in the dilute limit, which is being simulated here. Relaxations of the defect supercells are also performed using HSE06+SOC. The structures are first pre-relaxed with the `light' species default, this is often recommended when using FHI-aims to reduce the number of geometry steps required at the tight level of accuracy. The resulting structures are then relaxed with tight basis set species defaults. Relaxation is performed at the gamma point and then a single-shot calculation is performed with a $2\times2\times2$ \textit{k}-grid and including SOC.
+
+To generate all structures for intrinsic defects in {\enargite}, the Transformer libraries (based on spglib crystal symmetry python libraries) developed by J. M. Skelton were incorporated into a workflow, which can be found at:
+
+github.com/skw32/FHI-aims\_for\_PV/blob/master/defects\_workflow/defects\_workflow\_test.ipynb
+
+This workflow allows for the automatic generation of all symmetrically inequivalent antisites and vacancies in a crystal geometry file. Unique pores for interstitial defects were indentified by visual inspection and generated manually. These are shown in Fig. \ref{enargite_interstitials}.
+
+
+
+\subsubsection{Construction of phase diagram}
+As discussed in section \ref{defects_methods}, to obtain the formation energy of a defect it is necessary to know the chemical potentials of species added to or removed from the system when a defect is formed. We therefore need to know the phase-stable range of chemical potentials for the synthesis of phase-pure material. For this, the formation energies of the constitutent elements and all competing secondary phases needed to be computed at the same level of theory used for the defect calculations.
+
+The range of chemical potentials must satisfy certain thermodynamic conditions for the desired compound to be thermodynamically stable without coexistence of unwanted secondary phased. Firstly, the sum of chemical potentials of the component elements should be at equilibrium with the formation energy of the compound. Secondly the formation of the secondary compounds should be avoided. Lastly, all component elements should favour the formation of the compound, as opposed to pure elemental phases \cite{defects_Chen}. Examples of such conditions for enargite are shown in Eq. \ref{enargite_tc1}, \ref{enargite_tc2} and \ref{enargite_tc3}, where $As_2S_3$ is an example of an unwanted competing phase and $\Delta H_f$ is the formation energy of a compound.
+\begin{equation}\label{enargite_tc1}
+3\mu_{Cu} + \mu_{As} + 4\mu_{S} = \Delta H_f(Cu_3AsS_4)    
+\end{equation}
+\begin{equation}\label{enargite_tc2}
+2\mu_{As} + 3\mu_{s} < \Delta H_f(As_2S_3)
+\end{equation}
+\begin{equation}\label{enargite_tc3}
+\mu_{Cu}, \mu_{As}, \mu_{S} < 0    
+\end{equation}
+To determine the range of chemical potentials satisfying the above conditions, the CPLAP software package is used \cite{cplap}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/enargite_p_d.png}
+    \caption[Phase diagram for enargite ({\enargite}) calculated with the HSE06 functional and including spin-orbit coupling.]{Phase diagram for enargite ({\enargite}) calculated with the HSE06 functional and including spin-orbit coupling. Plot generated using thr CPLAP software package \cite{cplap}.}
+    \label{enargite_p_d}
+\end{figure}
+
+To determine all competing secondary phases for {\enargite} the Materials Project \cite{materials_project} database was searched for all compounds containing Cu, As and S that were stable or with formation energy up to 0.1 eV per atom above the convex hull. The volume of the unit cells were relaxed with the HSE06 functional and including SOC. The light basis sets species defaults were used for the relaxation followed by a single-shot calculation with tight basis set species defaults to ensure the level of theory matched that of the defect calculations of {\enargite}. \textit{k}-grid densities were set for a total number of \textit{k}-points of 2000/(no. of atoms in unit cell) for insulators but a more dense setting of 1000/ (no. of atoms in unit cell) was used for metals.
+
+\begin{table}[h!]
+\begin{tabular}{@{}llll@{}}
+\toprule
+Element & Total energy (eV) & No. atoms in unit cell & dH$_f$ (eV)      \\ \midrule
+Cu      & -180982.2338      & 4                      & -45245.55846 \\
+As      & -371370.7794      & 6                      & -61895.12991 \\
+S       & -348162.585       & 32                     & -10880.08078 \\ \bottomrule
+\end{tabular}
+\caption{Elemental energies of components in enargite ({\enargite}) calculated with the HSE06 functional and including SOC.}\label{enargite_elements}
+\end{table}
+
+\begin{table}[]\label{enargite_elements}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Compound      & Total energy (eV) & F.U. in unit cell & dH$_f$ (eV)     \\ \midrule
+Cu$_3$AsS$_4$ & -482309.0632      & 2                 & -2.403177229 \\
+As$_2$S$_3$         & -625725.232       & 4                 & -0.805839386 \\
+AsS           & -1164408.821      & 16                & -0.340613732 \\ 
+Cu$_12$As$_4$S$_13$    & -1863952.98       & 2                 & -8.218599995 \\
+Cu$_6$As$_4$S$_9$      & -1233959.866      & 2                 & -5.335745759 \\
+Cu$_7$S$_4$         & -1440968.101      & 4                 & -2.7928978   \\
+CuS$_2$          & -134011.9191      & 2                 & -0.239548997 \\
+CuAsS         & -472086.2164      & 4                 & -0.784957703 \\
+CuS           & -336756.8533      & 6                 & -0.502980657 \\ \bottomrule
+\end{tabular}
+\caption{Formation energies of stable secondary phases for the phase diagram of {\enargite} calculated with the HSE06 functional and including SOC.}\label{enargite_stable}
+\end{table}
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Compound & Energy above hull  & Total energy (eV) & F.U. in unit cell & dH$_f$ (eV)   \\ 
+         & (eV per atom)      &                   &                   &               \\ \midrule
+As$_4$S$_3$    & 0.004                           & -1120887.027      & 4                 & -0.994716177 \\
+As$_4$S$_5$    & 0.003                           & -603964.775       & 2                 & -1.4639701   \\
+As$_8$S$_9$    & 0.003                           & -1186169.186      & 2                 & -2.82685393  \\
+Cu$_18$S$_11$  & 0.076                           & -934107.3294      & 1                 & -6.388582409 \\
+Cu$_2$As    & 0.02                            & -304772.5447      & 2                 & -0.025548226 \\
+Cu$_2$S     & 0.01                            & -608229.9201      & 6                 & 608755.3994  \\
+Cu$_3$As    & 0.019                           & -1581055.864      & 8                 & -0.177706843 \\
+Cu$_3$AsS$_3$  & 0.032                           & -921094.5972      & 4                 & -1.601685762 \\
+Cu$_5$As$_2$   & 0.05                            & -700036.3547      & 2                 & -0.125253278 \\
+Cu$_9$S$_5$    & 0.045                           & -923227.266       & 2                 & -3.202998363 \\
+CuAs     & 0.052                           & -214280.9662      & 2                 & 0.205273276  \\
+CuAs$_2$    & 0.081                           & -338070.6814      & 2                 & 0.477572367  \\ \bottomrule
+\end{tabular}
+\caption{Formation energies of unstable secondary phases with formation energy as listed on the Materials Project database of up to 0.1 eV per atom above the convex hull for the phase diagram of {\enargite} calculated with the HSE06 functional and including SOC.}\label{enargite_above_hull}
+\end{table}
+
+
+Total energies of relaxed structures were used to determine the formation energies. Elemental energies are given in Table \ref{enargite_elements}, formation energies computed from these are given for stable compounds in Table \ref{enargite_stable} and for unstable competing phases with formation energy as listed on the Materials Project database of up to 0.1 eV per atom above the convex hull are given in Table \ref{enargite_above_hull}.
+The formation energy, $\Delta H_f$, of a compound is determine from the energy of their elemental components in their standard states and is given by the difference in energy between reactants and products.
+The formation energy for the elemental species were obtained as the total energy of the structure in the standard state divided by the number of atoms in the unit cell. The formation energies of the compounds were then determined by dividing the total energy of the compound by the number of formula units in the unit cell and subtracting the formation energies of the elemental components.
+
+The phase diagram for enargite is shown in Fig. \ref{enargite_p_d} with a, b and c corresponding to fixed chemical potential for Cu, S and As respectively. The grey region in each plot shows the region of phase stability for {\enargite}. This therefore determines the maximum range that could be tuned to influence the defect physics of {\enargite} for atomic chemical potentials to synthesis phase-pure material.
+
+
+
+
+\subsubsection{Calculation of dielectric constant}
+
+As outlined in section \ref{defects_methods}, the dielectric constant, $\epsilon$, is required to implement existing finite-size correction schemes for electronic structure calculations of charged defects with the supercell method and periodic calculations. 
+In a solid in the absence of free dipole rotations, the dielectric response to a static perturbing electric field, such as that from a charged defect within the host lattice, is described by the electronic and ionic components of the dielectric constant of the solid, as shown in Eq. \ref{dielectric_total}. 
+\begin{equation} \label{dielectric_total}
+\epsilon = \epsilon_{\infty} + \epsilon_{ionic}
+\end{equation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{figures/enargite_ionic_dielectric.pdf}
+    \caption{Ionic dielectric constant of enargite ({\enargite}) calculated from density functional perturbation theory with the PBEsol functional with increasing \textit{k}-grid density.}
+    \label{enargite_ionic_dielectric}
+\end{figure}
+
+We take the static limit of $\epsilon_{\infty}$, $\epsilon_{\infty}(\omega \rightarrow 0)$, from the optical dielectric function calculated using the random phase approximation as implemented in FHI-aims for {\enargite} in the study presented in section \ref{sulfosalts1}.
+The ionic dielectric constant is calculated with density functional perturbation theory (DFPT) with the PBEsol functional and implemented in the VASP \cite{VASP} software package. The volume of the unit cell is first relaxed with VASP with the PBEsol functional with a \textit{k}-grid density of $6\times6\times6$ and a plane wave cut off energy of 500 eV. Before computing the ionic dielectric constant it is important to have a well-optimised relaxed structure for the unit cell, for this reason strict relaxation criteria are used. The allowed error in total energy (i.e. the exit criteria for the electronic scf cycle) is reduced from the default value of $10^{-4}$ to $10^{-8}$ and ionic relaxtion is performed until forces converge to within 0.001 eV per $\AA$. The ionic dielectric constant is then computed with DFPT for this relaxed unit cell with increasing \textit{k}-grid density. This is shown in Fig. \ref{enargite_ionic_dielectric}.
+
+** Quantify non-convergence of xx component (use value at 10x10x10 k-points and state how much it changes when k-points are doubled **
+
+Ionic components at 10x10x10: xx =1.787551, yy= 1.028917, zz= 1.278897, at 20x20x20 xx= 2.223704 (combine components with those of optical from paper1)
+
+\subsubsection{Defect formation energies}
+
+Table containing all formation energies for all defect structures in all charge states? (Column for pre- and post-corrections for charged defects?)
+
+Perform FNV correction to charged defects with sxdefectsalign or coFFEE? - work on automating process with coFFEE if possible? (c.f. Sunghyun's work with sxdefectsalign)
+
+Defect concentration maps
+
+From conc maps (formation E vs fermi energy, Ef) comment on:
 \begin{itemize}
-\item Begin with overview of why enargite is an interesting system to study here and review defects literature for CIS and CZTS (look in old Hoffmann JC talk comparing pDOS of enargite, CZTS and CIS?)
-\item Show enargite unit cell to supercell and outline need to relax full unit cell for this study
-\item Outline use of Transformer library to determine all symmetrically-distinct antisites and vacancies in enargite (link to notebook or add as appendix?: https://github.com/skw32/FHI-aims\_for\_PV/blob/master/defects\_workflow/defects\_workflow\_test.ipynb)
-\item Show two unique interstitial sites identified by eye (take from powerpoint slides?)
-\item Add table of raw data (total energies of defect supercells in various charge states, perfect supercell and atomic dH's) to appendix
-\item Present calculation of ionic dielectric constant with VASP (and refer to RPA calc of electronic component from sulfosalts paper1)
-\item Present CPLAP phase diagrams for enargite and tables of formation enthalpies as appendix? (inc. why some with E certain range above hull)
-\item Finish with further work to apply finite size corrections to the charged defects (as outlined in methodology section) with outputs from FHI-aims electronic structure calculations and then compute defect formation energies (ongoing collaborative project with VB, TZ and AJJ to integrate with exiting finite-size correction scheme implementations using aide software package (cite repo?))
-\item Further analysis: determine `deep' defects and species chemical potentials to suppress formation of such defects, discuss possibility of benign defect pairs (c.f. Aron's defect-tolerance review) and encouraging formation to passivate detrimental defects, refer to Sunghyun's CZTS work on non-rad recombination (would require study of el-ph coupling?) and discuss possible analogous problems of redox/ multivalence in As and in Sn
+\item Flat line = neutral, positive gradient for donors, negative for acceptors, twice as steep for doubly charged (grad prop to q*Ef)
+\item Likely n- or p-type (based on acceptor or donor lowest E defects) - link to suggestions for junction partners in band alignments study
+\item Link to literature for e and b (p- for e, n- from minerals or p- from theory for b)
+\item Possibly Fermi level pinning (limiting quasi fermi level splitting) from any points defect formation E becomes spontaneous or crossing points between acceptor and donors (roughly point at which compensation will happen in eithr direction)
+\item + See Ji-Sang/ Sunghyun/ Zijuan review
 \end{itemize}
 
-%\section{The quest for universal descriptors for predicting solar cell performance}
-%Mention high-throughput material screening (in broader research field) here again.\\
+\subsubsection{Impact of defects on device performance}
 
-%See Thomas Kirchartz recent review 'What makes a good solar cell'.\\
+Ideas for analysis? c.f. CISe based on pDOS and redox/ multivalence of As c.f. Sn in CZTS?
 
-%Nod to SQ, SLME and Thomas Kirchartz's detailed balance theoretical maximum efficiencies when introducing this section? + works on predicting defect-tolerance by MIT\\ 
-
-
-%Dielectric function review? (finished/ collab with Jacob or as finished as far as possible?) Comment on dielectric constants of enargite and bournonite calculated as part of defects study here?\\
+Further analysis: determine `deep' defects and species chemical potentials to suppress formation of such defects, discuss possibility of benign defect pairs (c.f. Aron's defect-tolerance review) and encouraging formation to passivate detrimental defects, refer to Sunghyun's CZTS work on non-rad recombination (would require study of el-ph coupling?) and discuss possible analogous problems of redox/ multivalence in As and in Sn
 
 
 
