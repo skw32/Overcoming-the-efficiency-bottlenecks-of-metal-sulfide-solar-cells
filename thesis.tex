@@ -964,9 +964,9 @@ As discussed in section \ref{crystal_models}, models of crystalline solids are b
 The supercell method is a common approach to simulate defects in the dilute limit and is the method that is utilised in section \ref{sulfosalt_defects}. This approach involves repeating the primitive unit cell a finite number of times in 3D and then embedding the defect within this larger unit cell so that the defect will be separated from its periodic image by a greater distance. If this distance is sufficiently large, the properties of an isolated defect can be represented by this model \cite{freysoldt_rev}.
 
 \subsubsection{Charge neutral point defects}
-The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell of the host crystal and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to ($n_i > 0 $) or removed from ($n_i < 0$) the system when the defect is formed. $\mu_i$ is the chemical potential of species i \cite{ZhangNorthup_defect_formation}, referenced to the total energy of the pure element in its standard state, $E_i$. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species. If $\mu_i = 0$ then the element is so rich that the pure element phase can form \cite{defects_Chen}.
+The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell of the host crystal and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to ($n_i > 0 $) or removed from ($n_i < 0$) the chemical reservoir when the defect is formed. $\mu_i$ is the chemical potential of species i \cite{ZhangNorthup_defect_formation}, referenced to the total energy of the pure element in its standard state, $E_i$. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species. If $\mu_i = 0$ then the element is so rich that the pure element phase can form \cite{defects_Chen}.
 \begin{equation}\label{defect_neutral}
-\Delta H_{D,q=0} = E_{D,q=0} - E_{host} - \sum_i n_i (E_i + \mu_i )
+\Delta H_{D,q=0} = E_{D,q=0} - E_{host} + \sum_i n_i (E_i + \mu_i )
 \end{equation}
 
 \subsubsection{Charged point defects}
@@ -974,7 +974,7 @@ However, additional complexities arise when attempting to obtain the formation e
 Secondly, the charge of the defect system does not match that of the perfect bulk reference system. It is therefore necessary to introduce a chemical potential to account for the change in energy when electrons are added to or removed from the system when creating a defect in a given charge state.
 Thirdly, electronic structure calculations with PBCs for a charged unit cell (effectively) include a neutralising homogeneous background charge to avoid infinite charge, which is not present in the calculation for the perfect equivalent supercell \cite{freysoldt_rev}. Consequently, the expression for the defect formation energy given in Eq. \ref{defect_neutral} for a charge neutral defect must be modified to that shown in Eq. \ref{defect_charged}.
 \begin{equation}\label{defect_charged}
-\Delta H_{D,q} = E_{D,q} - E_{host} - \sum_i n_i (E_i + \mu_i) + q[\epsilon_F + \epsilon_{\nu} + \Delta \nu_{0/b}] + E^q_{corr}
+\Delta H_{D,q} = E_{D,q} - E_{host} + \sum_i n_i (E_i + \mu_i) + q[\epsilon_F + \epsilon_{\nu} + \Delta \nu_{0/b}] + E^q_{corr}
 \end{equation}
 Additional terms in Eq. \ref{defect_charged} compared to Eq. \ref{defect_neutral} are: q (the charge state of the defect), $\epsilon_F$ (position of the Fermi level in the band gap),  $q \epsilon_{\nu}$ (energy of bulk VBM) and $\Delta \nu_{0/b}$ (term used to align the electrostatic potential of the VBM for the bulk and defect supercells) and $E^q_{corr}$ (usually represents multiple post-DFT calculation corrections, one such correction is that for interactions between a charged defect and its periodic images, the `image-charge' correction but another is the `band filling' correction, both of which are outlined later). The latter term is to account for the introduction of the homogeneous background charge in electronic structure calculations of charged supercells, which is discussed further in the next section. The terms in Eq. \ref{defect_charged} are explained pictorially in Fig. \ref{pylada_eq}.
 \begin{figure}[h!]
@@ -1409,7 +1409,7 @@ Electronic structure calculations to predict the formation energy of isolated po
 The supercell is constructed from a unit cell where the volume has been relaxed until forces converge to within $0.5\time10^{-3}$ per atom with the HSE06 functional, including spin-orbit coupling (SOC), a $4\times4\times4$ \textit{k}-grid and tabulated `tight' basis set species defaults for the FHI-aims software package. It is important that the unit cell volume is relaxed before constructing the defect supercells as even slight difference in the lattice parameters for the given functional relative to the experimental values used in the study in section \ref{sulfosalts1} could result in spurius relaxations in the defect supercell to compensate for the strain.
 For the relaxation of the defect supercells however, the lattice parameters are fixed and only internal atomic coordinates are relaxed. Allowing lattice parameters to relax in the defective supercells could result in excessive defect-induced relaxation which would be expected for a higher defect density than for isolated point defects in the dilute limit, which is being simulated here. Relaxations of the defect supercells are also performed using HSE06+SOC. The structures are first pre-relaxed with the `light' species default, this is often recommended when using FHI-aims to reduce the number of geometry steps required at the tight level of accuracy. The resulting structures are then relaxed with tight basis set species defaults. Relaxation is performed at the gamma point and then a single-shot calculation is performed with a $2\times2\times2$ \textit{k}-grid and including SOC.
 
-To generate all structures for intrinsic defects in {\enargite}, the Transformer libraries (based on spglib crystal symmetry python libraries) developed by J. M. Skelton were incorporated into a workflow, which can be found at:
+To generate all structures for intrinsic defects in {\enargite}, the Transformer libraries \cite{Transformer} (based on spglib crystal symmetry python libraries) developed by J. M. Skelton were incorporated into a workflow, which can be found at:
 
 github.com/skw32/FHI-aims\_for\_PV/blob/master/defects\_workflow/defects\_workflow\_test.ipynb
 
@@ -1540,17 +1540,41 @@ Ionic components at 10x10x10: xx =1.787551, yy= 1.028917, zz= 1.278897, at 20x20
 
 \subsubsection{Defect formation energies}
 
-** Calculate formation energy for neutral defects first with chem pots from cplap? (Present table with neutral formation energies for each intersection point in chemical potential space from cplap phase diagram)**\\
+To calculate the formation energy of charge neutral defects equation \ref{defect_neutral} is used with the total energies of the relaxed defect supercells, the total energy of an equivalent perfect, bulk supercell and the total energy per atom in the standard states for elements added to or removed from the host are taken from Table \ref{enargite_elements}. All ten intersection points in the chemical potential space from Table \ref{enargite_int_points} are used. The intention here is to determine the values for the species chemical potentials that increase the formation energy of the defects, especially any with transition levels deepest in the band gap. The defect formation energies for charged defects at each intersection point are given in Table \ref{enargite_neutral_Ef}.\\
+
+\begin{table}[]
+\begin{tabular}{@{}llllllllllll@{}}
+\toprule
+\multirow{Defect} & \multirow{E$_{tot}$ (eV)} & \multicolumn{10}{l}{$\Delta H_{D, q=0}$ at all 10 intersection points for $\mu_i$ (eV)} \\ \cmidrule(l){3-12} 
+                        &                                 & 1      & 2      & 3      & 4      & 5      & 6      & 7      & 8      & 9      & 10     \\ \cmidrule(r){1-12}
+$V_{S, q=0}$, sg1       & -3847591.66                     & 0.78   & 0.90   & 0.56   & 0.44   & 0.44   & 0.90   & 0.71   & 0.82   & 0.54   & 0.82   \\
+$V_{S, q=0}$, sg6, s1   & -3847591.62                     & 0.81   & 0.94   & 0.60   & 0.47   & 0.47   & 0.94   & 0.75   & 0.85   & 0.57   & 0.85   \\
+$V_{S, q=0}$, sg6, s2   & -3847591.81                     & 0.62   & 0.75   & 0.41   & 0.28   & 0.28   & 0.75   & 0.56   & 0.66   & 0.39   & 0.66   \\
+$V_{Cu, q=0}$, sg1      & -3813225.74                     & 0.77   & 0.67   & 0.99   & 1.34   & 1.16   & 1.34   & 0.86   & 0.79   & 1.02   & 1.34   \\
+$V_{Cu, q=0}$, sg6      & -3813225.75                     & 0.77   & 0.66   & 0.98   & 1.33   & 1.15   & 1.33   & 0.85   & 0.78   & 1.01   & 1.33   \\
+$V_{As, q=0}$, sg6      & -3796572.40                     & 4.89   & 4.71   & 5.11   & 4.57   & 5.11   & 2.71   & 4.89   & 4.71   & 5.11   & 3.06   \\
+$As_{Cu, q=0}$, sg1     & -3875119.61                     & 2.25   & 2.34   & 2.25   & 3.15   & 2.42   & 5.00   & 2.34   & 2.45   & 2.28   & 4.66   \\
+$As_{Cu, q=0}$, sg6     & -3875119.40                     & 2.46   & 2.54   & 2.46   & 3.35   & 2.62   & 5.21   & 2.54   & 2.66   & 2.49   & 4.86   \\
+$Cu_{As, q=0}$, sg6     & pending                         &        &        &        &        &        &        &        &        &        &        \\
+$Cu_{i, q=0}$, p1    & pending                         &        &        &        &        &        &        &        &        &        &        \\
+$Cu_{i, q=0}$, p2    & pending                         &        &        &        &        &        &        &        &        &        &        \\
+$As_{i, q=0}$, p1    & pending                         &        &        &        &        &        &        &        &        &        &        \\
+$As_{i, q=0}$, p2    & pending                         &        &        &        &        &        &        &        &        &        &        \\
+$S_{i, q=0}$, p1     & pending                         &        &        &        &        &        &        &        &        &        &        \\
+$S_{i, q=0}$, p2     & pending                         &        &        &        &        &        &        &        &        &        &        \\ \bottomrule
+\end{tabular}
+\caption[The formation energy, $\Delta H_{D, q = 0}$ of all charge neutral defects in enargite ({\enargite}) at all 10 intersection points in the chemical potential space for enargite from Table \ref{enargite_int_points} and shown in the phase diagram in Fig. \ref{enargite_p_d}. E$_{tot}$ are total energies of the defective supercells and defects are labelled according to their spacegroup (sg) and unique structure (s) as identified by crystal symmetry using Tranformer libraries. Unique pores for interstitials were shown in Fig. \ref{enargite_interstitials}.]{The formation energy, $\Delta H_{D, q = 0}$ of all charge neutral defects in enargite ({\enargite}) at all 10 intersection points in the chemical potential space for enargite from Table \ref{enargite_int_points} and shown in the phase diagram in Fig. \ref{enargite_p_d}. E$_{tot}$ are total energies of the defective supercells and and defects are labelled according to their spacegroup (sg) and unique structure (s) as identified by crystal symmetry using Tranformer libraries \cite{Transformer}. Unique pores for interstitials (p1 and p2) were shown in Fig. \ref{enargite_interstitials}.}\label{enargite_neutral_Ef}
+\end{table}
+
+To calculate the formation energy of charged defects, it is necessary to apply finite-size corrections to the supercells, as discussed in section \ref{defects_methods}. For this the coFFEE code \cite{coFFEE} has been integrated with FHI-aims to perform the FNV correction scheme \cite{FNV}.\\
+
+** Table with Ef for charged defects before and after applying FNV correction (inc. column with value of $E_{corr}$), placeholders for calculations still running? **\\
 
 Leave all subsequent sections as further work if not complete before December submission? (On-going collaborative studies to integrate FHI-aims with the coFFEE code developed to implement the FNV finite-size correction scheme for charged defects with quantumESPRESSO for a reusable workflow for FHI-aims users and benchmark study to compare defect formation energy of a charged V-Ga in GaAs with the supercell method to the formation energy of the defect embedded in a large, aperiodic cluster.)\\ 
 
-Table containing all formation energies for all defect structures in all charge states? (Column for pre- and post-corrections for charged defects?)
+** Defect concentration maps wrt fermi energy (use sc-fermi? or work with Stephan/ Jie?) **\\
 
-Perform FNV correction to charged defects with sxdefectsalign or coFFEE? - work on automating process with coFFEE if possible? (c.f. Sunghyun's work with sxdefectsalign)
-
-Defect concentration maps
-
-From conc maps (formation E vs fermi energy, Ef) comment on:
+From concentration maps (formation E vs fermi energy, Ef) comment on:
 \begin{itemize}
 \item Flat line = neutral, positive gradient for donors, negative for acceptors, twice as steep for doubly charged (grad prop to q*Ef)
 \item Likely n- or p-type (based on acceptor or donor lowest E defects) - link to suggestions for junction partners in band alignments study
@@ -1561,7 +1585,9 @@ From conc maps (formation E vs fermi energy, Ef) comment on:
 
 \subsubsection{Impact of defects on device performance}
 
-Ideas for analysis? c.f. CISe based on pDOS and redox/ multivalence of As c.f. Sn in CZTS?
+** Defect transition levels w.r.t Eg **\\
+
+Ideas for analysis? c.f. CISe based on pDOS and redox/ multivalence of As c.f. Sn in CZTS?\\
 
 Further analysis: determine `deep' defects and species chemical potentials to suppress formation of such defects, discuss possibility of benign defect pairs (c.f. Aron's defect-tolerance review) and encouraging formation to passivate detrimental defects, refer to Sunghyun's CZTS work on non-rad recombination (would require study of el-ph coupling?) and discuss possible analogous problems of redox/ multivalence in As and in Sn
 
@@ -1595,9 +1621,9 @@ Again outline two main components of work: exploring one possible bottleneck on 
 \section{Cu/ Zn disorder in {\CZTS} solar cells}
 Summarise results of paper1 + could also adapt our MC model to simulate off-stoichiometric CZTS to see if Cu-Zn disorder could be suppressed in these systems. Summarise results of band tailing letter. If band tails from Cu-Zn disorder are small, maybe here would be a good point to mention possibility of reduced Sn defect formation energy in regions of inhomogeneous electrostatic potential due to Cu-Zn disorder??
 \begin{itemize}
-\item Highlight main conclusion from Eris work and broader implications for PV design principles
-\item Extensions with Eris: Off-stoichiometric types (explanation for higher-performance of Cu-poor?) and Sn disorder
-\item Maybe broader implications from Eris – defect formation energy in a typical supercell method perhaps not applicable in materials with high levels of disorder? (If Sn point defect formation E can be reduced by presence of Cu-Zn disorder)
+\item Highlight main conclusion from Eris work and broader implications for PV design principles (i.e. band tailing, cation disorder in multicomponent semiconductors with chemically similar components... tunability of optical properties at expense of ease of fabrication and implications for defect physics?)
+\item 3D Cu/ Zn disorder and quantified contributions to band tailing?
+\item Extensions with Eris: Off-stoichiometric types (explanation for higher-performance of Cu-poor?) and Sn defect formation energy possibly altered by fluctuations in potential from Cu/ Zn disorder? Broader implications from Eris – could imply defect formation energy in a typical supercell method perhaps not applicable in materials with high levels of disorder? (If Sn point defect formation E can be reduced by presence of Cu-Zn disorder)
 \end{itemize}
 
 
