@@ -934,7 +934,10 @@ This approximation is illustrated in figure \ref{k_sampling}a. The choice here w
 
 
 
-\section{**Should add calculation methodology relevant for band alignments study?**}
+\section{**First principles prediction of electronic band offsets}
+\subsection{Electron affinity rule}
+\subsection{Absolute electron energies}
+\subsection{Macroscopic averaging of planar potential}
 
 
 \section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
@@ -961,9 +964,9 @@ As discussed in section \ref{crystal_models}, models of crystalline solids are b
 The supercell method is a common approach to simulate defects in the dilute limit and is the method that is utilised in section \ref{sulfosalt_defects}. This approach involves repeating the primitive unit cell a finite number of times in 3D and then embedding the defect within this larger unit cell so that the defect will be separated from its periodic image by a greater distance. If this distance is sufficiently large, the properties of an isolated defect can be represented by this model \cite{freysoldt_rev}.
 
 \subsubsection{Charge neutral point defects}
-The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell of the host crystal and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to ($n_i > 0 $) or removed from ($n_i < 0$) the system when the defect is formed and $\mu_i$ is the chemical potential of species i \cite{ZhangNorthup_defect_formation}. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species.
+The formation energy, $\Delta H_{D,q=0}$, of charge neutral point defects in a supercell can be obtained by comparing the total energy calculated for the defective supercell to that of an equivalent perfect supercell of the host crystal and then considering the species added to or removed from the perfect supercell when the particular defect is formed. $\Delta H_{D,q=0}$ for a charge neutral defect is shown in Eq. \ref{defect_neutral} where $E_{D,q=0}$ is the total energy of the defective supercell, $E_{host}$ is the total energy of an equivalent supercell of the perfect, bulk host crystal, $n_i$ is the number of atoms of species i added to ($n_i > 0 $) or removed from ($n_i < 0$) the system when the defect is formed. $\mu_i$ is the chemical potential of species i \cite{ZhangNorthup_defect_formation}, referenced to the total energy of the pure element in its standard state, $E_i$. The chemical potential of a species i is the change in energy when one particle of type i is added to the system \cite{chem_pot}. In Eq. \ref{defect_neutral} $\mu_i$ allows us to describe the formation energy for defects in various growth conditions, such as rich or poor in particular species. If $\mu_i = 0$ then the element is so rich that the pure element phase can form \cite{defects_Chen}.
 \begin{equation}\label{defect_neutral}
-\Delta H_{D,q=0} = E_{D,q=0} - E_{host} - \sum_i n_i \mu_i
+\Delta H_{D,q=0} = E_{D,q=0} - E_{host} - \sum_i n_i (E_i + \mu_i )
 \end{equation}
 
 \subsubsection{Charged point defects}
@@ -971,7 +974,7 @@ However, additional complexities arise when attempting to obtain the formation e
 Secondly, the charge of the defect system does not match that of the perfect bulk reference system. It is therefore necessary to introduce a chemical potential to account for the change in energy when electrons are added to or removed from the system when creating a defect in a given charge state.
 Thirdly, electronic structure calculations with PBCs for a charged unit cell (effectively) include a neutralising homogeneous background charge to avoid infinite charge, which is not present in the calculation for the perfect equivalent supercell \cite{freysoldt_rev}. Consequently, the expression for the defect formation energy given in Eq. \ref{defect_neutral} for a charge neutral defect must be modified to that shown in Eq. \ref{defect_charged}.
 \begin{equation}\label{defect_charged}
-\Delta H_{D,q} = E_{D,q} - E_{host} - \sum_i n_i \mu_i + q[\epsilon_F + \epsilon_{\nu} + \Delta \nu_{0/b}] + E^q_{corr}
+\Delta H_{D,q} = E_{D,q} - E_{host} - \sum_i n_i (E_i + \mu_i) + q[\epsilon_F + \epsilon_{\nu} + \Delta \nu_{0/b}] + E^q_{corr}
 \end{equation}
 Additional terms in Eq. \ref{defect_charged} compared to Eq. \ref{defect_neutral} are: q (the charge state of the defect), $\epsilon_F$ (position of the Fermi level in the band gap),  $q \epsilon_{\nu}$ (energy of bulk VBM) and $\Delta \nu_{0/b}$ (term used to align the electrostatic potential of the VBM for the bulk and defect supercells) and $E^q_{corr}$ (usually represents multiple post-DFT calculation corrections, one such correction is that for interactions between a charged defect and its periodic images, the `image-charge' correction but another is the `band filling' correction, both of which are outlined later). The latter term is to account for the introduction of the homogeneous background charge in electronic structure calculations of charged supercells, which is discussed further in the next section. The terms in Eq. \ref{defect_charged} are explained pictorially in Fig. \ref{pylada_eq}.
 \begin{figure}[h!]
@@ -1205,7 +1208,7 @@ Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions wi
 
 
 
-\section{Disorder processes during the Cu-Zn order-disorder transition in {\CZTS}}\label{CZTS_MC}
+\section{2D and 3D Cu/ Zn order-disorder transitions in {\CZTS} from Monte Carlo simulations}\label{CZTS_MC}
 For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We simulate thermodynamic disorder in the Cu-Zn sublattice and quantify a baseline level of disorder to be expected for an optimally processed material with no kinetic limitations on cation ordering.
@@ -1230,7 +1233,7 @@ Eris doi and data doi??
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
 %\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
-\section{Electronic band tailing in {\CZTS} from Cu-Zn disorder}\label{eris_band_tailing}
+\section{Electronic band tailing in {\CZTS} from Cu/ Zn disorder}\label{eris_band_tailing}
 
 ** Band tailing letter here **\\
 
@@ -1270,6 +1273,9 @@ Plan for discussion of eris band tailing results:
 %Look for Jarv's work on band tailing in MAPI to discuss how Eris could be similarly applied to extract band tails in CZTS\\
 
 %Discuss NREL works on extended antisites? (see other notes on Sn disorder) Key paper for discussing Sn disorder: https://doi.org/10.1016/j.solmat.2017.11.005\\
+
+\subsection{Personal contribution}
+\subsection{Access statement}
 
 
 \chapter{Screening for candidate photoferroic solar absorbers}\label{chap:screening}
@@ -1426,13 +1432,6 @@ The range of chemical potentials must satisfy certain thermodynamic conditions f
 \end{equation}
 To determine the range of chemical potentials satisfying the above conditions, the CPLAP software package is used \cite{cplap}. 
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.95\textwidth]{figures/enargite_p_d.png}
-    \caption[Phase diagram for enargite ({\enargite}) calculated with the HSE06 functional and including spin-orbit coupling.]{Phase diagram for enargite ({\enargite}) calculated with the HSE06 functional and including spin-orbit coupling. Plot generated using thr CPLAP software package \cite{cplap}.}
-    \label{enargite_p_d}
-\end{figure}
-
 To determine all competing secondary phases for {\enargite} the Materials Project \cite{materials_project} database was searched for all compounds containing Cu, As and S that were stable or with formation energy up to 0.1 eV per atom above the convex hull. The volume of the unit cells were relaxed with the HSE06 functional and including SOC. The light basis sets species defaults were used for the relaxation followed by a single-shot calculation with tight basis set species defaults to ensure the level of theory matched that of the defect calculations of {\enargite}. \textit{k}-grid densities were set for a total number of \textit{k}-points of 2000/(no. of atoms in unit cell) for insulators but a more dense setting of 1000/ (no. of atoms in unit cell) was used for metals.
 
 \begin{table}[h!]
@@ -1453,7 +1452,7 @@ Compound      & Total energy (eV) & F.U. in unit cell & dH$_f$ (eV)     \\ \midr
 Cu$_3$AsS$_4$ & -482309.0632      & 2                 & -2.403177229 \\
 As$_2$S$_3$         & -625725.232       & 4                 & -0.805839386 \\
 AsS           & -1164408.821      & 16                & -0.340613732 \\ 
-Cu$_12$As$_4$S$_13$    & -1863952.98       & 2                 & -8.218599995 \\
+Cu$_{12}$As$_4$S$_{13}$    & -1863952.98       & 2                 & -8.218599995 \\
 Cu$_6$As$_4$S$_9$      & -1233959.866      & 2                 & -5.335745759 \\
 Cu$_7$S$_4$         & -1440968.101      & 4                 & -2.7928978   \\
 CuS$_2$          & -134011.9191      & 2                 & -0.239548997 \\
@@ -1471,7 +1470,7 @@ Compound & Energy above hull  & Total energy (eV) & F.U. in unit cell & dH$_f$ (
 As$_4$S$_3$    & 0.004                           & -1120887.027      & 4                 & -0.994716177 \\
 As$_4$S$_5$    & 0.003                           & -603964.775       & 2                 & -1.4639701   \\
 As$_8$S$_9$    & 0.003                           & -1186169.186      & 2                 & -2.82685393  \\
-Cu$_18$S$_11$  & 0.076                           & -934107.3294      & 1                 & -6.388582409 \\
+Cu$_{18}$S$_{11}$  & 0.076                           & -934107.3294      & 1                 & -6.388582409 \\
 Cu$_2$As    & 0.02                            & -304772.5447      & 2                 & -0.025548226 \\
 Cu$_2$S     & 0.01                            & -608229.9201      & 6                 & 608755.3994  \\
 Cu$_3$As    & 0.019                           & -1581055.864      & 8                 & -0.177706843 \\
@@ -1484,13 +1483,36 @@ CuAs$_2$    & 0.081                           & -338070.6814      & 2           
 \caption{Formation energies of unstable secondary phases with formation energy as listed on the Materials Project database of up to 0.1 eV per atom above the convex hull for the phase diagram of {\enargite} calculated with the HSE06 functional and including SOC.}\label{enargite_above_hull}
 \end{table}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/enargite_p_d.png}
+    \caption[Phase diagram for enargite ({\enargite}) calculated with the HSE06 functional and including spin-orbit coupling.]{Phase diagram for enargite ({\enargite}) calculated with the HSE06 functional and including spin-orbit coupling. Plot generated using thr CPLAP software package \cite{cplap}.}
+    \label{enargite_p_d}
+\end{figure}
+
+\begin{table}[]
+\begin{tabular}{@{}lll@{}}
+\toprule
+$\mu_{Cu}$ & $\mu_{As}$ & $\mu_{S}$ \\ \midrule
+-0.5629    & -0.2160    & -0.1246   \\
+-0.6668    & -0.4029    & 0.0000    \\
+-0.3469    & 0.0000     & -0.3406   \\
+0.0000     & -0.5444    & -0.4647   \\
+-0.1815    & 0.0000     & -0.4647   \\
+0.0000     & -2.4032    & 0.0000    \\
+-0.4779    & -0.2160    & -0.1884   \\
+-0.5506    & -0.4029    & -0.0871   \\
+-0.3159    & 0.0000     & -0.3639   \\
+0.0000     & -2.0546    & -0.0871   \\ \bottomrule
+\end{tabular}
+\caption{Intersection points in chemical potential space from the phase diagram for enargite ({\enargite}) show in Fig. \ref{enargite_p_d}, where $\mu_i$ is referenced to the total energy of the element phase in its standard state.}\label{enargite_int_points}
+\end{table}
 
 Total energies of relaxed structures were used to determine the formation energies. Elemental energies are given in Table \ref{enargite_elements}, formation energies computed from these are given for stable compounds in Table \ref{enargite_stable} and for unstable competing phases with formation energy as listed on the Materials Project database of up to 0.1 eV per atom above the convex hull are given in Table \ref{enargite_above_hull}.
 The formation energy, $\Delta H_f$, of a compound is determine from the energy of their elemental components in their standard states and is given by the difference in energy between reactants and products.
 The formation energy for the elemental species were obtained as the total energy of the structure in the standard state divided by the number of atoms in the unit cell. The formation energies of the compounds were then determined by dividing the total energy of the compound by the number of formula units in the unit cell and subtracting the formation energies of the elemental components.
 
-The phase diagram for enargite is shown in Fig. \ref{enargite_p_d} with a, b and c corresponding to fixed chemical potential for Cu, S and As respectively. The grey region in each plot shows the region of phase stability for {\enargite}. This therefore determines the maximum range that could be tuned to influence the defect physics of {\enargite} for atomic chemical potentials to synthesis phase-pure material.
-
+The phase diagram for enargite is shown in Fig. \ref{enargite_p_d} with a, b and c corresponding to fixed chemical potential for Cu, S and As respectively. The grey region in each plot shows the region of phase stability for {\enargite}. This therefore determines the maximum range that could be tuned to influence the defect physics of {\enargite} for atomic chemical potentials to synthesis phase-pure material. The intersection points in chemical potential space from the enargite phase diagram are given in Table \ref{enargite_int_points}
 
 
 
@@ -1518,6 +1540,10 @@ Ionic components at 10x10x10: xx =1.787551, yy= 1.028917, zz= 1.278897, at 20x20
 
 \subsubsection{Defect formation energies}
 
+** Calculate formation energy for neutral defects first with chem pots from cplap? (Present table with neutral formation energies for each intersection point in chemical potential space from cplap phase diagram)**\\
+
+Leave all subsequent sections as further work if not complete before December submission? (On-going collaborative studies to integrate FHI-aims with the coFFEE code developed to implement the FNV finite-size correction scheme for charged defects with quantumESPRESSO for a reusable workflow for FHI-aims users and benchmark study to compare defect formation energy of a charged V-Ga in GaAs with the supercell method to the formation energy of the defect embedded in a large, aperiodic cluster.)\\ 
+
 Table containing all formation energies for all defect structures in all charge states? (Column for pre- and post-corrections for charged defects?)
 
 Perform FNV correction to charged defects with sxdefectsalign or coFFEE? - work on automating process with coFFEE if possible? (c.f. Sunghyun's work with sxdefectsalign)
@@ -1528,7 +1554,7 @@ From conc maps (formation E vs fermi energy, Ef) comment on:
 \begin{itemize}
 \item Flat line = neutral, positive gradient for donors, negative for acceptors, twice as steep for doubly charged (grad prop to q*Ef)
 \item Likely n- or p-type (based on acceptor or donor lowest E defects) - link to suggestions for junction partners in band alignments study
-\item Link to literature for e and b (p- for e, n- from minerals or p- from theory for b)
+\item Link to literature for enargite indicating p-type conductivity
 \item Possibly Fermi level pinning (limiting quasi fermi level splitting) from any points defect formation E becomes spontaneous or crossing points between acceptor and donors (roughly point at which compensation will happen in eithr direction)
 \item + See Ji-Sang/ Sunghyun/ Zijuan review
 \end{itemize}
@@ -1566,7 +1592,7 @@ Further analysis: determine `deep' defects and species chemical potentials to su
 \chapter{Closing remarks}
 Again outline two main components of work: exploring one possible bottleneck on performance of existing PV tech and also identifying new absorber materials to enable exploration of alternative pathways to high-performance solar cell.
 
-\section{Cu-Zn disorder in {\CZTS} solar cells}
+\section{Cu/ Zn disorder in {\CZTS} solar cells}
 Summarise results of paper1 + could also adapt our MC model to simulate off-stoichiometric CZTS to see if Cu-Zn disorder could be suppressed in these systems. Summarise results of band tailing letter. If band tails from Cu-Zn disorder are small, maybe here would be a good point to mention possibility of reduced Sn defect formation energy in regions of inhomogeneous electrostatic potential due to Cu-Zn disorder??
 \begin{itemize}
 \item Highlight main conclusion from Eris work and broader implications for PV design principles
