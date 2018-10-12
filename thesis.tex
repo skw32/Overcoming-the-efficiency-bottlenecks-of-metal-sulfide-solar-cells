@@ -213,7 +213,7 @@ There are two main contributions that computational simulations could make towar
 
 In this work, materials modeling techniques are developed and applied to make both types of contribution to the field. A model is developed to improve current atomic-scale understanding of the candidate earth-abundant, non-toxic solar absorber material {\CZTS} (CZTS) and to provide a tool for assessing possible origins of the under-performance of this particular solar cell technology. This is the subject of \autoref{chap:CZTS}. Materials modeling is also used to predict the relevant properties of candidate photoferroic absorbers that are not currently utilised in solar cell technologies to identify those that are most likely to be worthy of further study. In \autoref{chap:screening}, the screening criteria and methodologies used in this study for identifying candidate photoferroic absorbers are discussed and some relevant calculated material properties for the candidates are presented. In \autoref{chap:insights}, the use of material simulations and theoretical insights to assess the likely performance of a material in a solar cell device is discussed further. In particular, knowledge gained from previous studies on more mature PV technologies is drawn upon when examining the potential of the candidate photoferroic materials for solar cell applications.
 
-\section{Format of thesis}
+\section{**Format of thesis}
 Statement about incorporating papers into thesis (and which sections correspond to papers)? Need a statement about personal contributions or just include with papers?
 
 \chapter{Theoretical background} 
@@ -936,10 +936,10 @@ This approximation is illustrated in figure \ref{k_sampling}a. The choice here w
 
 
 \section{**First principles prediction of electronic band offsets}
-\subsection{Electron affinity rule}
-\subsection{Absolute electron energies}
+\subsection{**Electron affinity rule}
+\subsection{**Absolute electron energies}
 Outline slab models, vacuum ref level, etc.?
-\subsection{Macroscopic averaging of planar potential}
+\subsection{**Macroscopic averaging of planar potential}
 
 
 \section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
@@ -1210,7 +1210,7 @@ Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions wi
 
 
 
-\section{2D and 3D Cu/ Zn order-disorder transitions in {\CZTS} from Monte Carlo simulations}\label{CZTS_MC}
+\section{**2D and 3D Cu/ Zn order-disorder transitions in {\CZTS} from Monte Carlo simulations}\label{CZTS_MC}
 For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. 
@@ -1228,9 +1228,10 @@ The Bespoke Monte Carlo model, Eris, (doi: 10.5281/zenodo.1248445) developed for
     \item Additional outputs from the code including: data to compute an order parameter, tests for convergence when computing on-site electrostatic potentials and outputting lattice on-site electrostatic potentials in various forms for further analysis
     \item Extending the model to include Cu/Zn disorder between the planes, i.e. allowing Zn from Cu-Zn layers to substitute onto Cu sites in the Cu-Sn planes
 \end{itemize}
+Support and discussions were provided by Jarvist Moore Frost and Aron Walsh throughout this study.
 
-\subsection{Data access statement}
-Eris doi and data doi??
+\subsection{**Data access statement}
+Eris doi and data doi?? - take from final paper
 
 \includepdf[pages={1-},scale=1.0]{papers/ErisPaper1_re-write.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/Eris1_SI_re-write.pdf}
@@ -1239,7 +1240,7 @@ Eris doi and data doi??
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
 %\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
-\section{Electronic band tailing in {\CZTS} from Cu/ Zn disorder}\label{eris_band_tailing}
+\section{**Electronic band tailing in {\CZTS} from Cu/ Zn disorder}\label{eris_band_tailing}
 Although $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects have been predicted to produce only shallow defect levels within the band gap of the material \cite{defects_Chen}, their presence could be linked to band tailing in the material, as described in section \ref{defects_impact}. 
 Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge relative to that of a perfect material, such as that shown in Fig. \ref{pankove_elec_fluc}. Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. 
 \begin{figure}[h!]
@@ -1263,7 +1264,10 @@ As discussed in  section \ref{CZTS_defects_lit}, fluctuations in electrostatic p
 To quantify the contribution to electronic band tailing from fluctuations in electrostatic potential caused by $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites, we use the distribution of on-site electrostatic potentials of species in our disordered lattice configurations to infer perturbations to the band edges compared to the perfect, bulk material. From the study presented in the previous section, we showed that 3D Cu/ Zn disorder was an important mechanism in the Cu/ Zn ODT, we therefore use configurations generated from our Monte Carlo model with 3D Cu/ Zn disorder. The electronic band structure of {\CZTS} and composition of the frontier orbitals is shown in Fig. \ref{CZTS_band_structure}. Due to the composition of the VBM and CBM of {\CZTS} we use the distribution of Cu and Sn potentials to infer band tailing of the VBM and CBM respectively. This investigation is presented in the following paper.
 
 \subsection{Personal contribution}
-\subsection{Data access statement}
+I generated the disordered lattice configurations in this investigation using the bespoke Monte Carlo model (Eris) outlined in the previous section, added additional routines to the Eris code to output lattice potentials in various formats for this investigation and developed post-processing scripts to analyse data. Support and discussions were provided by Jarvist Moore Frost and Aron Walsh throughout this study.
+
+\subsection{**Data access statement}
+Take from paper??\\
 
 ** Band tailing letter here **
 
@@ -1313,15 +1317,21 @@ In the previous chapter, it was demonstrated that high concentrations of Cu-Zn d
 Additionally, the band tailing from prevalent cation disorder (as investigated for {\CZTS}) would be expected to be less prevalent in these materials due to the materials containing less chemically similar components, as has been demonstrated when substituting with Ag \cite{Gerschon_AZTSe} or Ba \cite{distant_cations, Tong_Ba-CZTS} into {\CZTS} (or similarly, into the corresponding selenide or sulfo-selenide alloy).
 
 \subsection{Personal contribution}
-This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package. The only calculations I did not perform for this work were those of electron localisation functions (presented in the SI) and spontaneous lattice polarisations (presented in the main body of the paper and the SI) which were performed by Katrine Svane at the University of Bath using the VASP electronic structure software package \cite{VASP}.
+This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package: V. Blum, W. P Huhn and T. Zhu. The only calculations I did not perform for this work were those of electron localisation functions (presented in the SI) and spontaneous lattice polarisations (presented in the main body of the paper and the SI) which were performed by Katrine Svane at the University of Bath using the VASP electronic structure software package \cite{VASP}. Support when performing the electronic structure calculations with FHI-aims was provided by V. Blum, W. P Huhn and T. Zhu and discussions were provided by all co-authors throughout this study.
 
 \subsection{Data access statement}
-data doi from paper???
+The optimised crystal structures of the three minerals studied are available at:
+
+https://github.com/wmd-group/crystal\_structures
+
+The input and output files for the DFT calculations are available from the online  repository NOMAD at: 
+
+http://dx.doi.org/10.17172/nomad/2017.05.16-1
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
 
-\section{Outlook: High-throughput screening for candidate photoferroics}
+\section{**Outlook: High-throughput screening for candidate photoferroics}
 
 %c.f. Lee's slack message:
 %materials project ->
@@ -1358,7 +1368,7 @@ In \autoref{chap:CZTS} possible factors limiting the performance of {\CZTS} sola
 
 %Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
-\section{Solar cell heterojunctions for candidate absorbers enargite
+\section{**Solar cell heterojunctions for candidate absorbers enargite
 and bournonite from electronic band and lattice matching}\label{sulfosalt_band_alignment}
 
 To develop a high-performance solar cell device, the full device architecture must be optimised for the specific absorber layer. This optimisation process can be a barrier to the utilisation of new solar cell technologies. It is often the case that device architectures optimised for different absorber materials are used for new PV absorbers, which are not necessarily optimal, resulting in reduced device performance. Examples include the use of a typical architecture optimised for Cu(In,Ga)Se$_2$ (CIGS) solar cell technologies for CuSbS$_2$ \cite{CAS_alignment} and also for one of the candidate absorber layers in this study {\enargite} \cite{enargite_SC}. In this work the aim is to use theory to accelerate device optimisation with suggestions for suitable solar cell heterojunction partners for two of the candidate absorber layers identified in \autoref{chap:screening}. 
@@ -1366,9 +1376,10 @@ To develop a high-performance solar cell device, the full device architecture mu
 Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction for photoferroic absorbers, as described in section \ref{ferroPVsection}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation. The following work is a data mining procedure to determine suitable junction partners for two of the candidate absorber materials from \autoref{chap:screening}. Insights for optimal electronic band offsets for a solar cell heterojunction are based on studies performed for PV absorbers CdTe \cite{CdTe_spike}, CIGS \cite{p-type_spike} and ZnSnN$_2$ \cite{Elisabetta}.
 
 \subsection{Personal contribution}
-Add statement on personal contribution: Slabs cut by Yoyo, MD and ELS codes by Keith (refer to github dois), calculations performed by me with VASP software package \cite{VASP} and ELS workflow developed by me for an interactive 3-step python scripts to scan for CBOs and VBOs of interest for PV, screen for min strain candidates and generate an input for band structure plots with the bapt software package \cite{bapt}. Add ELS additions as appendix?
-\subsection{Data access statement}
-git repos for MD, ELS and bapt + data doi + Materials Project???
+For this study I performed electronic structure calculations with the VASP \cite{VASP} software package for the volume relaxation of bulk unit cells from which Y. Hinuma cut all non-polar, symmetric slab terminations using methodology in Ref. \citenum{Yoyo}. I then performed electronic structure calculations, again with VASP, for the the slab models. Ionisation potentials of the slab models were obtained using MacroDensity python libraries (doi: 10.5281/zenodo.884521). The workflow I used for screening by electronic band offsets and minimal strain interfaces utilised ElectronLatticeMatch python libraries \cite{ELS}, developed by K. T. Butler. Band alignment plots were generated using the bapt software package \cite{bapt}. Throughout this work, support and discussions were provided by K. T. Butler for utilising the python libraries and performing electronic structure calculations for the slab models.
+
+\subsection{**Data access statement}
+git repos for MD, ELS and bapt + data doi + Materials Project?? - take from paper?
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalt_devices.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalt_devices_SI.pdf}
@@ -1380,7 +1391,7 @@ git repos for MD, ELS and bapt + data doi + Materials Project???
 Although cation disorder is expected to be less prevalent in the multi-component absorber materials identified in \autoref{chap:screening} than Cu-Zn disorder in {\CZTS} (which was the topic of \autoref{chap:CZTS}), this does not rule out other origins of performance limitation for these materials. For example there is the possibility of other types of defects and non-optimal device architectures, which could have a detrimental impact on solar cell performance. For the latter, the work in the previous section proposed solar cell heterojunction partners for {\enargite} and {\bournonite} as a contribution towards an optimised device architecture for these absorber layers. This section focuses on the defect physics of new solar cell absorber layers and using knowledge gained from studies of more mature PV technologies to infer the likely impact of defects on the PV performance of new absorber layers. Although \autoref{chap:CZTS} dealt with large-scale extended antisite defects in {\CZTS}, for new absorber materials an important foundation for understanding the defect physics is to first consider point defects as, essentially, larger-scale disordered structures are formed from these smaller units. In this section, the defect physics of {\enargite} is explored to assess the likely impact of defects on device performance and to determine if the impact of defects could be minimised through tuning of the synthesis conditions of the absorber layer.
 
 
-\subsection{A case study with enargite, {\enargite}}
+\subsection{**A case study with enargite, {\enargite}}
 
 %\begin{itemize}
 %\item Begin with overview of why enargite is an interesting system to study here and review defects literature for CIS and CZTS (look in old Hoffmann JC talk comparing pDOS of enargite, CZTS and CIS?)
@@ -1579,12 +1590,9 @@ To calculate the formation energy of charged defects, it is necessary to apply f
 Leave all subsequent sections as further work if not complete before December submission? (On-going collaborative studies to integrate FHI-aims with the coFFEE code developed to implement the FNV finite-size correction scheme for charged defects with quantumESPRESSO for a reusable workflow for FHI-aims users and benchmark study to compare defect formation energy of a charged V-Ga in GaAs with the supercell method to the formation energy of the defect embedded in a large, aperiodic cluster.)\\ 
 
 \subsubsection{Impact of defects on device performance}
-
-** Defect transition levels w.r.t Eg **\\
-
 ** Defect concentration maps wrt fermi energy (use sc-fermi? or work with Stephan/ Jie?) Pick intersection point for chem pot where dH for deepest defects is highest? **\\
 
-(If don't have concentration maps in time, just show e.g. from Chen paper and comment that a number of insights can be gained on the defect physics and tunability, such as...)\\
+(If don't have concentration maps in time, just show e.g. from Chen paper, outline procedure and maybe ref sc-fermi? and comment that a number of insights can be gained on the defect physics and tunability, such as...)\\
 From concentration maps (formation E vs fermi energy, Ef) comment on:
 \begin{itemize}
 \item Flat line = neutral, positive gradient for donors, negative for acceptors, twice as steep for doubly charged (grad prop to q*Ef)
@@ -1592,7 +1600,10 @@ From concentration maps (formation E vs fermi energy, Ef) comment on:
 \item Link to literature for enargite indicating p-type conductivity
 \item Possibly Fermi level pinning (limiting quasi fermi level splitting) from any points defect formation E becomes spontaneous or crossing points between acceptor and donors (roughly point at which compensation will happen in eithr direction)
 \item + See Ji-Sang/ Sunghyun/ Zijuan review
+\item Obtain defect transition levels wrt Eg from turning points of concentration map (use these to determine if necessary conditions for strong impact of defects is expected for enargite)
 \end{itemize}
+
+** Defect transition levels w.r.t Eg, see S5.2 of \cite{defects_Chen_large} for overview of obtaining defect transition levels: obtain from turning points between different defect charge states in concentration map.\\
 
 Ideas for analysis? c.f. CISe based on pDOS and redox/ multivalence of As c.f. Sn in CZTS?\\
 
