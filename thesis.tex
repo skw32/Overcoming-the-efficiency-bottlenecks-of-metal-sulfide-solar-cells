@@ -261,7 +261,7 @@ original discrete energy levels are broadened into new energy levels that are so
 
 \subsection{Bloch's theorem}
 
-To understand the behaviour of electrons in solids, the electron is considered as a wave propagating in a periodic structure \cite{small_semiconductor1}. The Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
+To understand the behaviour of electrons in solids, Bloch's theorem is invoked to describe the wave functions of a particle in a periodic potential. The electron is considered as a wave propagating in a periodic structure, i.e. the periodic crystal lattice \cite{small_semiconductor1}. The Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
 The energy of a single, independent electron in a perfect crystal is described by the one-electron Schr{\"o}dinger equation, shown in equation \ref{single_SE}. The first term in equation \ref{single_SE} is the kinetic energy of the electron, V(\textbf{r}) is the effective periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and $\epsilon$ is the eigenenergy of the electron.
 \begin{equation} \label{single_SE}
 \left[ \left(-\frac{\hbar^2}{2m}\right)\nabla^2 + V(\mathbf{r})\right]\psi = \epsilon \psi 
@@ -289,7 +289,7 @@ A plot of $E(\textbf{k})$ versus \textbf{k} is known as the energy dispersion re
   \label{bs1}
 \end{figure}
 
-\subsection{Energy dispersion relation}
+\subsection{Electronic states in crystalline solids}
 
 The impact of a medium with a discrete structure, such as a crystal lattice, on the energy dispersion relation of a free electron can be seen by comparing Fig \ref{bs1}a to Fig. \ref{bs1}b.
 The band structure, E(\textbf{k}), of a material is usually plotted against $|\textbf{k}|$ just for the most important directions in the crystal, such as that shown in Fig. \ref{bs1}c. A periodic medium does not suppress the propagation of waves, as would be expected in disordered or amorphous structures, but introduces limiting frequencies and wavelengths for the propagation. 
@@ -938,6 +938,7 @@ This approximation is illustrated in figure \ref{k_sampling}a. The choice here w
 \section{**First principles prediction of electronic band offsets}
 \subsection{Electron affinity rule}
 \subsection{Absolute electron energies}
+Outline slab models, vacuum ref level, etc.?
 \subsection{Macroscopic averaging of planar potential}
 
 
@@ -1228,7 +1229,7 @@ The Bespoke Monte Carlo model, Eris, (doi: 10.5281/zenodo.1248445) developed for
     \item Extending the model to include Cu/Zn disorder between the planes, i.e. allowing Zn from Cu-Zn layers to substitute onto Cu sites in the Cu-Sn planes
 \end{itemize}
 
-\subsection{Data Data access statement}
+\subsection{Data access statement}
 Eris doi and data doi??
 
 \includepdf[pages={1-},scale=1.0]{papers/ErisPaper1_re-write.pdf}
@@ -1262,7 +1263,7 @@ As discussed in  section \ref{CZTS_defects_lit}, fluctuations in electrostatic p
 To quantify the contribution to electronic band tailing from fluctuations in electrostatic potential caused by $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites, we use the distribution of on-site electrostatic potentials of species in our disordered lattice configurations to infer perturbations to the band edges compared to the perfect, bulk material. From the study presented in the previous section, we showed that 3D Cu/ Zn disorder was an important mechanism in the Cu/ Zn ODT, we therefore use configurations generated from our Monte Carlo model with 3D Cu/ Zn disorder. The electronic band structure of {\CZTS} and composition of the frontier orbitals is shown in Fig. \ref{CZTS_band_structure}. Due to the composition of the VBM and CBM of {\CZTS} we use the distribution of Cu and Sn potentials to infer band tailing of the VBM and CBM respectively. This investigation is presented in the following paper.
 
 \subsection{Personal contribution}
-\subsection{Data Data access statement}
+\subsection{Data access statement}
 
 ** Band tailing letter here **
 
@@ -1314,7 +1315,7 @@ Additionally, the band tailing from prevalent cation disorder (as investigated f
 \subsection{Personal contribution}
 This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package. The only calculations I did not perform for this work were those of electron localisation functions (presented in the SI) and spontaneous lattice polarisations (presented in the main body of the paper and the SI) which were performed by Katrine Svane at the University of Bath using the VASP electronic structure software package \cite{VASP}.
 
-\subsection{Data Data access statement}
+\subsection{Data access statement}
 data doi from paper???
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
