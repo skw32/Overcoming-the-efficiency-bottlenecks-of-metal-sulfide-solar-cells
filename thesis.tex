@@ -1158,7 +1158,7 @@ As the defect pair is charge neutral, we were able to use Eq. \ref{defect_neutra
   \label{Cu-Zn_eqm_conc}
 \end{figure}
 
-When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting \cite{Stoneham_defect_lim}. Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects as a function of temperature can be obtained \cite{thermodynamics}. This is shown in equation \ref{defect_conc}, where N is the number of sites, $\Delta H$ is the defect formation energy, $k_B$ is the Boltzmann constant and T is the temperature of the system.
+When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting \cite{Stoneham_defect_lim}. Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects as a function of temperature can be obtained \cite{thermodynamics}, as shown in equation \ref{defect_conc}, where N is the number of sites, $\Delta H$ is the defect formation energy, $k_B$ is the Boltzmann constant and T is the temperature of the system. This expression will be discussed further in section \ref{enargite_defects}, but for now it is just applied to determine the regime of defect concentration we are dealing with for the present investigation.
 \begin{equation} \label{defect_conc}
 n = Ne^{\frac{-\Delta H}{k_BT}}
 \end{equation}
@@ -1240,7 +1240,7 @@ Eris doi and data doi?? - take from final paper
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
 %\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
-\section{**Electronic band tailing in {\CZTS} from Cu/ Zn disorder}\label{eris_band_tailing}
+\section{**Electronic band tailing in {\CZTS} from Monte Carlo simulations of Cu/ Zn disorder}\label{eris_band_tailing}
 Although $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects have been predicted to produce only shallow defect levels within the band gap of the material \cite{defects_Chen}, their presence could be linked to band tailing in the material, as described in section \ref{defects_impact}. 
 Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge relative to that of a perfect material, such as that shown in Fig. \ref{pankove_elec_fluc}. Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. 
 \begin{figure}[h!]
@@ -1317,7 +1317,7 @@ In the previous chapter, it was demonstrated that high concentrations of Cu-Zn d
 Additionally, the band tailing from prevalent cation disorder (as investigated for {\CZTS}) would be expected to be less prevalent in these materials due to the materials containing less chemically similar components, as has been demonstrated when substituting with Ag \cite{Gerschon_AZTSe} or Ba \cite{distant_cations, Tong_Ba-CZTS} into {\CZTS} (or similarly, into the corresponding selenide or sulfo-selenide alloy).
 
 \subsection{Personal contribution}
-This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package: V. Blum, W. P Huhn and T. Zhu. The only calculations I did not perform for this work were those of electron localisation functions (presented in the SI) and spontaneous lattice polarisations (presented in the main body of the paper and the SI) which were performed by Katrine Svane at the University of Bath using the VASP electronic structure software package \cite{VASP}. Support when performing the electronic structure calculations with FHI-aims was provided by V. Blum, W. P Huhn and T. Zhu and discussions were provided by all co-authors throughout this study.
+This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package: V. Blum, W. P Huhn and T. Zhu. The only calculations I did not perform for this work were those of electron localisation functions (presented in the SI) and spontaneous lattice polarisations (presented in the main body of the paper and the SI) which were performed by Katrine Svane at the University of Bath using the VASP electronic structure software package \cite{VASP}. Python script to obtain fits to the band extrema to compute charge carrier effective masses with band structures in the format outputted by FHI-aims was written by T. Zhu and used with permission. Support when performing the electronic structure calculations with FHI-aims was provided by V. Blum, W. P Huhn and T. Zhu and discussions were provided by all co-authors throughout this study.
 
 \subsection{Data access statement}
 The optimised crystal structures of the three minerals studied are available at:
@@ -1391,7 +1391,7 @@ git repos for MD, ELS and bapt + data doi + Materials Project?? - take from pape
 Although cation disorder is expected to be less prevalent in the multi-component absorber materials identified in \autoref{chap:screening} than Cu-Zn disorder in {\CZTS} (which was the topic of \autoref{chap:CZTS}), this does not rule out other origins of performance limitation for these materials. For example there is the possibility of other types of defects and non-optimal device architectures, which could have a detrimental impact on solar cell performance. For the latter, the work in the previous section proposed solar cell heterojunction partners for {\enargite} and {\bournonite} as a contribution towards an optimised device architecture for these absorber layers. This section focuses on the defect physics of new solar cell absorber layers and using knowledge gained from studies of more mature PV technologies to infer the likely impact of defects on the PV performance of new absorber layers. Although \autoref{chap:CZTS} dealt with large-scale extended antisite defects in {\CZTS}, for new absorber materials an important foundation for understanding the defect physics is to first consider point defects as, essentially, larger-scale disordered structures are formed from these smaller units. In this section, the defect physics of {\enargite} is explored to assess the likely impact of defects on device performance and to determine if the impact of defects could be minimised through tuning of the synthesis conditions of the absorber layer.
 
 
-\subsection{**A case study with enargite, {\enargite}}
+\subsection{**A case study with enargite, {\enargite}}\label{enargite_defects}
 
 %\begin{itemize}
 %\item Begin with overview of why enargite is an interesting system to study here and review defects literature for CIS and CZTS (look in old Hoffmann JC talk comparing pDOS of enargite, CZTS and CIS?)
@@ -1556,6 +1556,15 @@ The ionic dielectric constant is calculated with density functional perturbation
 Ionic components at 10x10x10: xx =1.787551, yy= 1.028917, zz= 1.278897, at 20x20x20 xx= 2.223704 (combine components with those of optical from paper1)
 
 \subsubsection{Defect formation energies}
+Calculating the formation energy, $\Delta H_{D,q}$ of various types of defects in the absorber material can provide valuable insights for determining the performance of a solar cell made from the absorber. Impacts of defects on solar cell performance were discussed in section \ref{defects_impact}. When a defect forms, there is a trade-off in the cost of breaking bonds and the gain in configurational entropy, $S$. The resulting crystal configuration will be that which minimises the Gibbs free energy, $G$, shown in Eq. \ref{freeE} where $H$ is the enthalpy. 
+\begin{equation}\label{freeE}
+G = H - TS
+\end{equation}
+The trade-off between $H$ and $TS$ results in an equilibrium defect concentration, $n$, which depends on the formation energy of the defect and the number of lattice sites, $N$, as shown in Eqn. \ref{defect_conc2}.
+\begin{equation}\label{defect_conc2}
+n = N e^{\frac{-\Delta H_{D,q}}{k_B T}}
+\end{equation}
+As shown in Eq. \ref{defect_neutral} and \ref{defect_charged}, $\Delta H_{D,q}$ directly depends on the chemical potential of the species involved in the creation of the defect, $\mu_i$. $\mu_i$ can be tuned experimentally as it is a function of temperature and pressure \cite{Adam_sulfur}. Consequently, this allows for some tunability in the concentrations of particular defects in an absorber material through the synthesis conditions.
 
 To calculate the formation energy of charge neutral defects equation \ref{defect_neutral} is used with the total energies of the relaxed defect supercells, the total energy of an equivalent perfect, bulk supercell and the total energy per atom in the standard states for elements added to or removed from the host are taken from Table \ref{enargite_elements}. All ten intersection points in the chemical potential space from Table \ref{enargite_int_points} are used. The intention here is to determine the values for the species chemical potentials that increase the formation energy of the defects, especially any with transition levels deepest in the band gap. The defect formation energies for charged defects at each intersection point are given in Table \ref{enargite_neutral_Ef}.\\
 
@@ -1583,14 +1592,15 @@ $S_{i, q=0}$, p2     & pending                         &        &        &      
 \caption[The formation energy, $\Delta H_{D, q = 0}$ of all charge neutral defects in enargite ({\enargite}) at all 10 intersection points in the chemical potential space for enargite from Table \ref{enargite_int_points} and shown in the phase diagram in Fig. \ref{enargite_p_d}. E$_{tot}$ are total energies of the defective supercells and defects are labelled according to their spacegroup (sg) and unique structure (s) as identified by crystal symmetry using Transformer libraries. Unique pores for interstitials were shown in Fig. \ref{enargite_interstitials}.]{The formation energy, $\Delta H_{D, q = 0}$ of all charge neutral defects in enargite ({\enargite}) at all 10 intersection points in the chemical potential space for enargite from Table \ref{enargite_int_points} and shown in the phase diagram in Fig. \ref{enargite_p_d}. E$_{tot}$ are total energies of the defective supercells and and defects are labelled according to their spacegroup (sg) and unique structure (s) as identified by crystal symmetry using Transformer libraries \cite{Transformer}. Unique pores for interstitials (p1 and p2) were shown in Fig. \ref{enargite_interstitials}.}\label{enargite_neutral_Ef}
 \end{table}
 
-To calculate the formation energy of charged defects, it is necessary to apply finite-size corrections to the supercells, as discussed in section \ref{defects_methods}. For this the coFFEE code \cite{coFFEE} has been integrated with FHI-aims to perform the FNV correction scheme \cite{FNV}.\\
+To calculate the formation energy of charged defects, it is necessary to apply finite-size corrections to the supercells, as discussed in section \ref{defects_methods}. For this the CoFFEE code \cite{coFFEE} will be used to perform the FNV correction scheme \cite{FNV}, with the dielectric constant of enargite presented in the section above for modelling the dielectric screening of the host in the charge model used for the image-interaction correction in the FNV scheme. The fermi level is initially referenced to the VBM of the perfect host to calculate to formation energy, but this will later be tuned to determine the transition levels between different charge states of an ionised defect.\\
 
 ** Table with Ef for charged defects before and after applying FNV correction (inc. column with value of $E_{corr}$), placeholders for calculations still running? **\\
 
-Leave all subsequent sections as further work if not complete before December submission? (On-going collaborative studies to integrate FHI-aims with the coFFEE code developed to implement the FNV finite-size correction scheme for charged defects with quantumESPRESSO for a reusable workflow for FHI-aims users and benchmark study to compare defect formation energy of a charged V-Ga in GaAs with the supercell method to the formation energy of the defect embedded in a large, aperiodic cluster.)\\ 
+Leave all subsequent sections as further work if not complete before December submission? + mention collaborative benchmark study to compare defect formation energy of a charged V-Ga in GaAs with the supercell method and FNV finite-size corrections to the formation energy of the defect embedded in a large, aperiodic cluster? (test the validity of the finite-size correction scheme utilised above)\\ 
 
 \subsubsection{Impact of defects on device performance}
-** Defect concentration maps wrt fermi energy (use sc-fermi? or work with Stephan/ Jie?) Pick intersection point for chem pot where dH for deepest defects is highest? **\\
+
+** Defect concentration maps wrt fermi energy (use sc-fermi? or work with Stephan/ Jie?) Pick intersection point for chem pot where dH for deepest defects is highest? (may have to do this iteratively after producing conc maps?) **\\
 
 (If don't have concentration maps in time, just show e.g. from Chen paper, outline procedure and maybe ref sc-fermi? and comment that a number of insights can be gained on the defect physics and tunability, such as...)\\
 From concentration maps (formation E vs fermi energy, Ef) comment on:
@@ -1600,18 +1610,21 @@ From concentration maps (formation E vs fermi energy, Ef) comment on:
 \item Link to literature for enargite indicating p-type conductivity
 \item Possibly Fermi level pinning (limiting quasi fermi level splitting) from any points defect formation E becomes spontaneous or crossing points between acceptor and donors (roughly point at which compensation will happen in eithr direction)
 \item + See Ji-Sang/ Sunghyun/ Zijuan review
-\item Obtain defect transition levels wrt Eg from turning points of concentration map (use these to determine if necessary conditions for strong impact of defects is expected for enargite)
+\item Obtain defect transition levels wrt Eg from turning points of concentration map (use these to determine if necessary conditions for strong impact of defects is expected for enargite) - may have to do this iteratively after producing conc maps?
 \end{itemize}
 
 ** Defect transition levels w.r.t Eg, see S5.2 of \cite{defects_Chen_large} for overview of obtaining defect transition levels: obtain from turning points between different defect charge states in concentration map.\\
 
-Ideas for analysis? c.f. CISe based on pDOS and redox/ multivalence of As c.f. Sn in CZTS?\\
+Determine `deep' defects and species chemical potentials to suppress formation of such defects, discuss possibility of benign defect pairs (c.f. Aron's defect-tolerance review) and encouraging formation to passivate detrimental defects
 
-Further analysis: determine `deep' defects and species chemical potentials to suppress formation of such defects, discuss possibility of benign defect pairs (c.f. Aron's defect-tolerance review) and encouraging formation to passivate detrimental defects, refer to Sunghyun's CZTS work on non-rad recombination (would require study of el-ph coupling?) and discuss possible analogous problems of redox/ multivalence in As and in Sn
+\subsubsection{Hypotheses to test for predicting the defect physics of new solar absorbers}
 
-
-
-
+\begin{itemize}
+\item Determine if any trends can be extracted through comparison to similar, but more well-studied materials such as CIS and CZTS
+\item Present pDOS of enargite, CIS and CZTS and discuss MIT work on defect tolerance and bonding character of band extrema (Riley Brandt and Rachel Kirchin)
+\item Look into Sunghyun's latest work on multivalence/ redox of Sn in CZTS between 4+ and 2+ and relate to As in enargite? + Stephan's paper on multivalence of Sn in CZTS
+\item Outline the challenge of trying to relate defect physics of different systems and determining universal descriptors of defect-tolerance that is applicable across a broad range of material systems, but also nod to the immense value for predicting high-performance PV materials as this is such a decisive property for PV performance, which would be incredibly powerful if coupled with high-throughput screening techniques (refer to work by Brand and works attributing solution-processed MAPI's exceptional PV performance to its unique defect physics: Yanfa Yan, Joe Berry, etc.)
+\end{itemize}
 
 
 %\section{Defect formation energy from periodic vs. aperiodic calculations}\label{defect_benchmark}
