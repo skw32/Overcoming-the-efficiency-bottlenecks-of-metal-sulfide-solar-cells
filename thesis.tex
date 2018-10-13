@@ -936,10 +936,13 @@ This approximation is illustrated in figure \ref{k_sampling}a. The choice here w
 
 
 \section{**First principles prediction of electronic band offsets}
-\subsection{**Electron affinity rule}
-\subsection{**Absolute electron energies}
-Outline slab models, vacuum ref level, etc.?
+The methodology outline here is used in the study presented in section \ref{sulfosalt_band_alignment}.
+
+\subsection{**Absolute electron energies and surface models}
+Outline slab models, vacuum ref level, etc.? Refer back to Fig. \ref{slab_PBCs}.
+
 \subsection{**Macroscopic averaging of planar potential}
+\subsection{**Electron affinity rule}
 
 
 \section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
@@ -947,11 +950,11 @@ When a solid forms a regular crystal the energies of the bands, i.e. the band st
 The electronic band structure of a semiconductor provides a rich source of information for how the material may perform as a solar cell absorber layer. However, in reality, absolutely perfect systems do not exist. The energy cost associated with the creation of a defect can often be countered by the increase in the configurational entropy of the system from the addition of the defect \cite{AshcroftMermin_general}.
 There are several types of possible defects in solids, some of which were described in section \ref{defects_impact}. 
 
-In this section, approaches developed in the literature for periodic electronic structure calculations of the formation energy of isolated point defects, i.e. in the dilute limit, are discussed. 
+Defects are usually present in materials in very small concentrations, such that the concentrations are quantified in units of parts per million of host atoms. For this reason, models of defects often aim to simulate the `dilute limit' where defect-defect interactions are negligible. This section outlines approaches developed in the literature for periodic electronic structure calculations of the formation energy of isolated point defects in the dilute limit.
 These methods are applied in section \ref{sulfosalt_defects} to provide the first insights into the defect physics (and likely associated impact on PV performance) of some of the candidate photoferroic absorbers identified in \autoref{chap:screening}. 
 %These methods are also compared to an aperiodic calculation on a defect embedded in a large cluster in section \ref{defect_benchmark}.
 Defect formation energies under specific synthesis conditions can be used to infer the likely concentrations of particular defects, which may have different impacts on PV performance \cite{Aron_defect_tolerance}. 
-In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in materials with large extents of substitutional disorder, beyond what would be considered as the dilute limit. In this case, the methodology is used to investigate high concentrations of Cu-Zn disorder in {\CZTS}. 
+However, in cases where defect concentrations exceed that which would be considered the dilute limit alternative modelling approaches are necessary \cite{high_defect_conc_method, defects_beyond_dilute_lim}. In section \ref{MC}, a method is outlined which is used in \autoref{chap:CZTS} to simulate extended antisite defects in a material with large extents of substitutional disorder, beyond what would be considered as the dilute limit. In this case, the methodology is used to investigate high concentrations of Cu/ Zn disorder in {\CZTS}. 
 
 \subsection{The problem of periodicity}
 As discussed in section \ref{crystal_models}, models of crystalline solids are built around the translational symmetry of periodic crystal lattices. This property is exploited in electronic structure calculations where, typically, the smallest possible unit cell is used to represent the crystal structure and periodic boundary conditions (PBCs) are used to simulate an infinite, bulk crystal. It is then possible to predict the bulk properties of the material by solving quantum mechanical equations for the electronic structure of just this small unit cell. However, the introduction of a point defect into this simulated system produces a situation such as that shown in 2D for a slice of the system in Fig. \ref{defect_PBCs}a. With the implementation of 3-dimensional PBCs for a 3D system, this would correspond to an infinite 3D array of highly concentrated point defects. Defect wavefunctions in adjacent unit cells may overlap. However, in real, crystalline systems defects are typically present in parts per million.  To correctly represent isolated point defects, interactions between defect periodic images must be negligible \cite{freysoldt_rev}.
@@ -1596,7 +1599,7 @@ To calculate the formation energy of charged defects, it is necessary to apply f
 
 ** Table with Ef for charged defects before and after applying FNV correction (inc. column with value of $E_{corr}$), placeholders for calculations still running? **\\
 
-Leave all subsequent sections as further work if not complete before December submission? + mention collaborative benchmark study to compare defect formation energy of a charged V-Ga in GaAs with the supercell method and FNV finite-size corrections to the formation energy of the defect embedded in a large, aperiodic cluster? (test the validity of the finite-size correction scheme utilised above)\\ 
+Leave all subsequent sections as further work if not complete before December submission? + use Chen's defects work to outline next steps for analysis of defects data
 
 \subsubsection{Impact of defects on device performance}
 
