@@ -214,7 +214,9 @@ There are two main contributions that computational simulations could make towar
 In this work, materials modeling techniques are developed and applied to make both types of contribution to the field. A model is developed to improve current atomic-scale understanding of the candidate earth-abundant, non-toxic solar absorber material {\CZTS} (CZTS) and to provide a tool for assessing possible origins of the under-performance of this particular solar cell technology. This is the subject of \autoref{chap:CZTS}. Materials modeling is also used to predict the relevant properties of candidate photoferroic absorbers that are not currently utilised in solar cell technologies to identify those that are most likely to be worthy of further study. In \autoref{chap:screening}, the screening criteria and methodologies used in this study for identifying candidate photoferroic absorbers are discussed and some relevant calculated material properties for the candidates are presented. In \autoref{chap:insights}, the use of material simulations and theoretical insights to assess the likely performance of a material in a solar cell device is discussed further. In particular, knowledge gained from previous studies on more mature PV technologies is drawn upon when examining the potential of the candidate photoferroic materials for solar cell applications.
 
 \section{**Format of thesis}
-Statement about incorporating papers into thesis (and which sections correspond to papers)? Need a statement about personal contributions or just include with papers?
+Statement about incorporating papers into thesis (and which sections correspond to papers) - all first author papers but I provide a breakdown on contributions from co-authors.
+
+Move paper SI's to appendix??
 
 \chapter{Theoretical background} 
 
@@ -784,14 +786,7 @@ When the adjustable parameter $\omega = 0$, the LR term becomes zero and the SR 
 
 \subsection{Implementation for periodic solids}
 
-Concepts for the theoretical modelling of periodic solids were outlined in section \ref{crystal_models}. The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. Electronic structure calculations performed in this work are for periodic solids and therefore make use of 3D periodic boundary conditions (PBCs) to simulate an infinite, bulk solid using only a unit cell of the crystal. The only deviations from the basic implementation of PBCs, as introduced in section \ref{crystal_models}, are firstly work in section \ref{sulfosalt_band_alignment}. This work calculated surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. To simulate a 2D system (with one finite direction) with 3D periodic boundary conditions requires the use of a suitably large vacuum gap to ensure the two surfaces either end of the slab model do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig. \ref{slab_PBCs}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed much further in section \ref{defects_methods}. 
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.45\textwidth]{figures/slab_PBCs.png}
-    \caption{Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab where a sufficiently large vacuum gap is required to ensure the surfaces from either end of the slab do not interact (direction indicated by orange arrow).}
-  \label{slab_PBCs}
-\end{figure}
+Concepts for the theoretical modelling of periodic solids were outlined in section \ref{crystal_models}. The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. Electronic structure calculations performed in this work are for periodic solids and therefore make use of 3D periodic boundary conditions (PBCs) to simulate an infinite, bulk solid using only a unit cell of the crystal. The only deviations from the basic implementation of PBCs are firstly work in section \ref{sulfosalt_band_alignment}. This work calculated surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. Methodology for this study will be outlined in section \ref{band_alignment_methods}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed further in section \ref{defects_methods}. 
 
 In the rest of this section, approaches used in this work for electronic structure calculations of periodic solid-state systems will be outlined with comments on their relative merits for chemical accuracy and computational efficiency. Representations of the wavefunction in different electronic structure software packages that are used in this work will first be described. Then the general workflow for geometric and electronic optimisation will be outlined. The section concludes with a discussion of determining the most appropriate setup for electronic structure calculations in terms of an optimal compromise between chemical accuracy and computational efficiency.
 
@@ -935,14 +930,64 @@ This approximation is illustrated in figure \ref{k_sampling}a. The choice here w
 
 
 
-\section{**First principles prediction of electronic band offsets}
-The methodology outline here is used in the study presented in section \ref{sulfosalt_band_alignment}.
+\section{First principles prediction of electronic band offsets}\label{band_alignment_methods}
+The methodology outlined here is used in the study presented in section \ref{sulfosalt_band_alignment} to screen for candidate junction partners that are predicted to have optimal electronic band offsets for forming a solar cell heterojunction with the absorber layers of interest in the study. The vital function of a solar cell heterojunction (as discussed in section \ref{junctions}) is the separation of photoexcited minority charge-carriers. When selecting a junction partner, therefore, want to know if electrons will easily flow between the conduction bands or holes between the valence bands of the two materials forming the junction. The important material properties to determine this are the electron affinities (EAs) and ionisation potentials (IPs) of the two materials. These are shown schematically in Fig. \ref{slabs}a. The EA and IP are referenced to the energy of the vacuum level. The EA corresponds to the energy involved in adding an electron to the CB of a material while the IP corresponds the the energy involved in removing an electron from the VB of the material. These quantities are influenced by the bulk binding energy of the material, but also, as electrons are added to or removed from the surface of a material, are influenced by the dipole that arises from the redistribution of charges at a surface. It is therefore necessary to also simulate the surface of the material to compute these quantities.
 
-\subsection{**Absolute electron energies and surface models}
-Outline slab models, vacuum ref level, etc.? Refer back to Fig. \ref{slab_PBCs}.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/slab_figs.png}
+    \caption[a) Energy diagram of a semiconductor with flat bands to the surface. Indicating the band edges (CBM/LUMO and VBM/HOMO), vacuum level (E$_{VAC}$), work function (WF), band gap E$_G$, ionization energy IE and electron affinity EA. b) Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab where a sufficiently large vacuum gap is required to ensure the surfaces from either end of the slab do not interact (direction indicated by orange arrow).]{a) Energy diagram of a semiconductor with flat bands to the surface. Indicating the band edges (CBM/LUMO and VBM/HOMO), vacuum level (E$_{VAC}$), work function (WF), band gap E$_G$, ionization energy IE and electron affinity EA. Taken from Ref. \citenum{electronic_band_edges}. b) Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab where a sufficiently large vacuum gap is required to ensure the surfaces from either end of the slab do not interact (direction indicated by orange arrow).}
+  \label{slabs}
+\end{figure}
 
-\subsection{**Macroscopic averaging of planar potential}
-\subsection{**Electron affinity rule}
+\subsection{Surface models}
+To simulate a 2D surface with 3D periodic boundary conditions, it is necessary to use a suitably large vacuum gap to ensure that the two surfaces either end of the slab model do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig. \ref{slabs}b.
+For a given crystal structure, there are a large number of possible surface terminations when creating the slab model. Where experimental data is available, often this can provide guidance for which terminations are likely to be the most energetically likely to form or to be of the greatest technological interest and therefore inform the design of the slab models. In cases where there is no such experimental data, surface terminations with no net dipole perpendicular to the surface are expected to have the lower surface energies and therefore be more likely to form \cite{Tasker}. The latter informed the choice of surface terminations for the slab models used in section \ref{sulfosalt_band_alignment}.
+
+
+\subsection{Calculation of ionisation potentials}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.6\textwidth]{figures/MD_eg.png}
+    \caption[Planar average (blue line) and macroscopic average (orange line) of the potential across the finite direction of a slab model indicating the slab region, vacuum gap and surface dipole, $D_s$.]{Planar average (blue line) and macroscopic average (orange line) of the potential across the finite direction of a slab model indicating the slab region, vacuum gap and surface dipole, $D_s$. Plot generated using the MacroDensity python library \cite{MacroDensity}.}
+  \label{MD_eg}
+\end{figure}
+
+The alignment of the valence band energy to the vacuum level, i.e. the IP, is a physically well-defined quantity and can be measured using techniques such as photoelectron spectroscopy or Kelvin probe microscopy. The IP can also be quantified using first-principles calculations. In section \ref{sulfosalt_band_alignment}, the macroscopic average technique is used to decompose contributions from the bulk and the surface of the material when calculating the IP \cite{macro_pot_IP}.
+Firstly, in the slab models discussed above, if we define the \textit{z}-axis as the finite direction (i.e. normal to the surface), then the geometry of the slab models is periodic in the (x, y) planes. This allows for the simplification of the charge density to a function of the \textit{z}-coordinate only by taking planar averages \cite{band_engineering}, as shown in Eq. \ref{planar_av} where S is the surface area of planar slices.
+\begin{equation}\label{planar_av}
+\bar{f}(z) = \frac{1}{S}\int_S f(x,y,z)dxdy
+\end{equation}
+The macroscopic average is then obtained from Eq. \ref{macro_av} where a is the unit cell length in the finite direction.
+\begin{equation}\label{macro_av}
+\bar{\bar{f}}(z) = \frac{1}{a} \int_{z-\frac{a}{2}}^{z+\frac{a}{2}}  \bar{f}(z) dz
+\end{equation}
+
+Fig. \ref{MD_eg} shows the rapid oscillations in the planar average of the potential for each layer in the slab, the plateau far from the slab into the vacuum gap (blue line) and also the smoother macroscopic average of the planar potential (orange line).
+The difference between the macroscopic average of the vacuum potential and the bulk-like region of the surface slab is then used to obtain the surface dipole, $D_s$, as shown in Fig \ref{MD_eg}.  The eigenvalue of the valence band maximum (VBM) of the bulk, $\epsilon_{VBM}$ and $D_s$ are then used to obtain IP as shown in Eq. \ref{IP}.
+\begin{equation}\label{IP}
+IP = D_s - \epsilon_{VBM}
+\end{equation}
+The other important quantity for determining band offsets at semiconductor-semiconductor junctions in the EA. As shown in Fig. \ref{slabs}a, this is defined as the conduction band energy with respect to the vacuum level and can be obtained by subtracting the value of the electronic band gap from the IP of the material. 
+
+
+
+
+\subsection{Electron affinity rule}
+Once the IPs and EAs of the two materials forming the heterojunction have been determined, the electron affinity (or Anderson's) rule can be used to calculate offsets between the conduction bands and valence bands of two semiconductors brought into contact \cite{Anderson_rule, keith_contacts}.
+To obtain the band offsets from the electron affinity rule, the vacuum level of the two heterojunctions either side of the heterojunction are aligned to the same energy, the difference between the distance between the CBM and the vacuum (EA) of each material is used to predict the CBO, as shown in Eq. \ref{CBO_calc}, where $EA_{abs}$ denotes the electron affinity of the absorber layer and $EA_{jp}$ is that of the wider-gap heterojunction partner. If $E_g$ of each material is also taken into account then the same model can be used to predict the VBO through the difference in the ionisation potentials ($IP = EA + E_g$). 
+\begin{equation}\label{CBO_calc}
+\Delta E_c = EA_{jp} - EA_{abs}
+\end{equation}
+\begin{equation}\label{VBO_calc}
+\begin{aligned}
+\Delta E_v & = E_{g,jp} - E_{g,abs} - \Delta E_c \\
+& = (EA_{abs }+ E_{g, abs}) - (EA_{jp} + E_{g,jp}) \\
+& = IP_{abs} - IP_{jp}
+\end{aligned}
+\end{equation}
+It is worth noting that this method is an idealised model. The band energies for each junction partner are calculated in the limit of a large vacuum, while the vacuum separation between the two materials is taken to zero when forming the electrical contact. It does not account for possible interface effects, such as intermixing of species at a heterojunction, or consider the effects of finite temperature on band offsets \cite{Bartomeu_T_effects}. However this method is used in the study in section \ref{sulfosalt_band_alignment} to provide the initial screening process to limit the search space for device optimisation of the absorber layers in that study.
 
 
 \section{Modeling imperfect solids: Point defects in the dilute limit}\label{defects_methods}
@@ -1334,7 +1379,7 @@ http://dx.doi.org/10.17172/nomad/2017.05.16-1
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
 
-\section{**Outlook: High-throughput screening for candidate photoferroics}
+\section{Outlook: High-throughput screening for candidate photoferroics}
 
 %c.f. Lee's slack message:
 %materials project ->
