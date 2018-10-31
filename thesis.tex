@@ -70,19 +70,15 @@ Write last, ideas:
 
 \section*{Publications during the course of the PhD}
 \begin{etaremune}
-\item Enargite defects paper? (w/ sxdefectsalign or coFFEE) -- post-thesis?
-\item GaAs aperiodic defect clusters vs. periodic supercells w/ various finite-size correction schemes benchmark study with Volker and Tong? -- post-thesis?
-\item Photoferroic materials project screening with Lee?
-\item Help with Jacob's review?
-\item Eris band tailing letter?
-\item Disorder processes during the Cu-Zn order-disorder transition in {\CZTS} from Monte Carlo simulations?
-\item Solar cell heterojunctions for candidate photoferroic absorbers enargite
-and bournonite from electronic band and lattice matching
+\item Jacob's review and Lee's photoferroics screening?
+\item Electronic band tailing in {\CZTS} from Monte Carlo simulations
+\item 2D and 3D Cu/ Zn order-disorder transitions in {\CZTS} from Monte Carlo simulations
+\item Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching
 \item Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite, and bournonite\\
 SK Wallace, KL Svane, WP Huhn, T Zhu, DB Mitzi, V Blum, A Walsh\\ Sustainable Energy \& Fuels  (6), 1339-1350 (2017)
 \item The steady rise of Kesterite solar cells\\ SK Wallace, DB Mitzi, A Walsh\\ ACS Energy Letters 2 (4), 776-779 (2017)
-\item Vibrational spectra and lattice thermal conductivity of kesterite-structured Cu2ZnSnS4 and Cu2ZnSnSe4\\ JM Skelton, AJ Jackson, M Dimitrievska, SK Wallace, A Walsh\\ APL Materials 3 (4), 041102 (2015)
-\item Don't include???\\ Facet-dependent electron trapping in TiO2 nanocrystals\\ SK Wallace, KP Mckenna\\ The Journal of Physical Chemistry C 119 (4), 1913-1920 (2015)
+\item Vibrational spectra and lattice thermal conductivity of kesterite-structured Cu$_2$ZnSnS$_4$ and Cu$_2$ZnSnSe$_4$\\ JM Skelton, AJ Jackson, M Dimitrievska, SK Wallace, A Walsh\\ APL Materials 3 (4), 041102 (2015)
+\item Don't include???\\ Facet-dependent electron trapping in TiO$_2$ nanocrystals\\ SK Wallace, KP Mckenna\\ The Journal of Physical Chemistry C 119 (4), 1913-1920 (2015)
 \end{etaremune}
 
 
@@ -216,7 +212,8 @@ In this work, materials modeling techniques are developed and applied to make bo
 \section{**Format of thesis}
 Statement about incorporating papers into thesis (and which sections correspond to papers) - all first author papers but I provide a breakdown on contributions from co-authors.
 
-Move paper SI's to appendix??
+Supplemental material for publications are included as appendices. 
+** Make sure these are up to date! **
 
 \chapter{Theoretical background} 
 
@@ -234,7 +231,7 @@ The spatial properties of a crystal can be described as a sum of components in F
     \includegraphics[width=0.5\textwidth]{figures/Wigner-Seitz.png}
     \caption[The Wigner-Seitz cell for the body-centred cubic Bravais lattice where there is a lattice point at its centre and on each vertex (a) and the face-centred cubic Bravais lattice (b).]{The Wigner-Seitz cell for the body-centred cubic Bravais lattice where there is a lattice point at its centre and on each vertex (a) and the face-centred cubic Bravais lattice (b). 
     %The hexagonal faces bisect the lines joining the central point to the points on the vertices. The square faces bisect the lines joining the central point to the central points in each of the six neighbouring cubic cells. 
-    Figure taken from reference \citenum{AshcroftMermin2}.}
+    Figure taken from Ref. \citenum{AshcroftMermin2}.}
   \label{Wigner-Seitz}
 \end{figure}
 
@@ -243,7 +240,7 @@ The first Brillouin zone is the Wigner-Seitz primitive cell of the reciprocal la
 
 
 
-\section{Electronic band structure of semiconductors}\label{BandTheorySection}
+\section{Electrons in periodic solids}\label{BandTheorySection}
 
 %** + cross-ref Prasad Ch4 **
 
@@ -252,7 +249,9 @@ The first Brillouin zone is the Wigner-Seitz primitive cell of the reciprocal la
 %The band theory of solids provides a means to explain the difference in the electrical conductivity of conductors, semiconductors and insulators. 
 Electrons bound to an atom in atomic orbitals have a number of possible discrete energy levels. When a pair of atoms are brought together to form a molecule, the atomic orbitals combine to form pairs of molecular orbitals arranged with energy levels slightly higher and slightly lower in energy than the original energy levels. When a large number of atoms are brought together to form a solid the 
 %it becomes impossible to assign individual electrons to individual atoms. Instead, the electrons are considered to be shared amongst the atomic nuclei. A consequence of this sharing would be a large number of electrons occupying the same energy state, which violates the Pauli Exclusion Principle. The 
-original discrete energy levels are broadened into new energy levels that are so closely spaced that they are considered to be a quasi-continuous band of allowed energies. This is illustrated in Fig. \ref{band_Elevels}. The energy distribution of the bands depends upon the electronic properties of the constituent atoms of the crystal and the strength of the bonds between them. Bands are occupied if the original molecular orbitals were occupied. The highest occupied band (containing the valence electrons) is the valence band (VB). The lowest unoccupied band is the conduction band (CB). If the VB is only partially filled or if it overlaps in energy with the CB, then the solid is a metal. The availability of empty states at energies close to that of the occupied states facilitates easy scattering of valence electrons into neighbouring states, thereby allowing for the transport of heat and charge. Hence metals conduct both heat and electric current. In a semiconductor or insulator, the VB is completely full and separated from the next unoccupied CB by an energy gap called the optical band gap, E$_g$ \cite{Nelson3}. In the simplest model, the CB is separated from the VB by a constant band gap. This is called the flat band model and is often shown in schematics of junctions for PV device architectures, which will be discussed in section \ref{junctions}. In real structures, the band architecture is more complicated than this simple model, like the band structures shown later in figure \ref{Si_and_GaAs} \cite{Tilley}.
+original discrete energy levels are broadened into new energy levels that are so closely spaced that they are considered to be a quasi-continuous band of allowed energies. This is illustrated in Fig. \ref{band_Elevels}. 
+
+The energy distribution of the bands depends upon the electronic properties of the constituent atoms of the crystal and the strength of the bonds between them. Bands are occupied if the original molecular orbitals were occupied. The highest-energy occupied band (containing the valence electrons) is the valence band (VB). The lowest unoccupied band is the conduction band (CB). If the VB is only partially filled or if it overlaps in energy with the CB, then the solid is a metal. The availability of empty states at energies close to that of the occupied states facilitates easy scattering of valence electrons into neighbouring states, thereby allowing for the transport of heat and charge. Hence metals conduct both heat and electric current. In a semiconductor or insulator, the VB is completely full and separated from the next unoccupied CB by an energy gap called the optical band gap, E$_g$ \cite{Nelson3}. In the simplest model, the CB is separated from the VB by a constant band gap. This is called the flat band model and is often shown in schematics of junctions for PV device architectures, which will be discussed in section \ref{junctions}. In real structures, the band architecture is more complicated than this simple model, like the band structures shown later in figure \ref{Si_and_GaAs} \cite{Tilley}.
 
 \begin{figure}[h!]
   \centering
@@ -263,8 +262,8 @@ original discrete energy levels are broadened into new energy levels that are so
 
 \subsection{Bloch's theorem}
 
-To understand the behaviour of electrons in solids, Bloch's theorem is invoked to describe the wave functions of a particle in a periodic potential. The electron is considered as a wave propagating in a periodic structure, i.e. the periodic crystal lattice \cite{small_semiconductor1}. The Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
-The energy of a single, independent electron in a perfect crystal is described by the one-electron Schr{\"o}dinger equation, shown in equation \ref{single_SE}. The first term in equation \ref{single_SE} is the kinetic energy of the electron, V(\textbf{r}) is the effective periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and $\epsilon$ is the eigenenergy of the electron.
+To understand the behaviour of electrons in solids, Bloch's theorem is invoked to describe the wave function of a particle in a periodic potential. The electron is considered as a wave propagating in a periodic structure, i.e. the periodic crystal lattice \cite{small_semiconductor1}. The Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
+The energy of a single, independent electron in a perfect crystal is described by the one-electron SE, shown in equation \ref{single_SE}. The first term in equation \ref{single_SE} is the kinetic energy of the electron, V(\textbf{r}) is the effective periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and $\epsilon$ is the eigenenergy of the electron.
 \begin{equation} \label{single_SE}
 \left[ \left(-\frac{\hbar^2}{2m}\right)\nabla^2 + V(\mathbf{r})\right]\psi = \epsilon \psi 
 \end{equation}
@@ -281,20 +280,23 @@ Bloch's theorem states that the wavefunction which satisfies equation \ref{singl
 \begin{equation} \label{bloch_sum}
 \psi_k(\mathbf{r}) = \sum_k A_k \phi_k(\mathbf{r}) = \sum_k A_{i\mathbf{k}}U_{i\mathbf{k}}(\mathbf{r}) e^{i\mathbf{k \cdot r}} 
 \end{equation}
-Due to the translational symmetry of a crystal lattice, an eigenfunction of the one-electron Schr{\"o}dinger equation can be expressed as a sum of Bloch functions such as that shown in equation \ref{bloch}, to give Eq. \ref{bloch_sum}. The one-electron wavefunctions can be indexed by constants \textbf{k} and i \cite{fund_semi}. 
-$U_{i\mathbf{k}}(\mathbf{r})$ and electron eigenenergies, $E(\mathbf{k})$, from Eq. \ref{single_SE} are found by solving the SE for each band i and for each \textbf{k} \cite{Nelson3}.
-A plot of $E(\textbf{k})$ versus \textbf{k} is known as the energy dispersion relation or electronic band structure of the crystal \cite{fund_semi}.
+Due to the translational symmetry of a crystal lattice, an eigenfunction of the one-electron SE can be expressed as a sum of Bloch functions such as that shown in Eq. \ref{bloch}, to give Eq. \ref{bloch_sum}. 
+
+
+\subsection{Electronic band structure}
+
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.95\textwidth]{figures/bs1_2.png}
     \caption[Energy-wave vector diagrams: (a) the free electron parabola, (b) modification due to a periodic crystal lattice.]{Energy-wave vector diagrams: (a) the free electron parabola, (b) modification due to a periodic crystal lattice. Figures a and b taken from Ref. \citenum{small_semiconductor1}, figure c taken from Ref. \citenum{Nelson3}.}
   \label{bs1}
 \end{figure}
-
-\subsection{Electronic states in crystalline solids}
-
+The one-electron wavefunctions can be indexed by constants \textbf{k} and i \cite{fund_semi}. 
+$U_{i\mathbf{k}}(\mathbf{r})$ and electron eigenenergies, $E(\mathbf{k})$, from Eq. \ref{single_SE} are found by solving the SE for each band i and for each \textbf{k} \cite{Nelson3}.
+A plot of $E(\textbf{k})$ versus \textbf{k} is known as the energy dispersion relation or electronic band structure of the crystal \cite{fund_semi}.
 The impact of a medium with a discrete structure, such as a crystal lattice, on the energy dispersion relation of a free electron can be seen by comparing Fig \ref{bs1}a to Fig. \ref{bs1}b.
 The band structure, E(\textbf{k}), of a material is usually plotted against $|\textbf{k}|$ just for the most important directions in the crystal, such as that shown in Fig. \ref{bs1}c. A periodic medium does not suppress the propagation of waves, as would be expected in disordered or amorphous structures, but introduces limiting frequencies and wavelengths for the propagation. 
+
 The parabola of the free electron is modified in a periodic crystal by the introduction of discontinuities at values of $|\textbf{k}|$ corresponding to multiples of $\frac{\pi}{a}$, as shown by Fig. \ref{bs1}b \cite{small_semiconductor2}. The point $|\textbf{k}| = \frac{\pi}{a}$ is the Brillouin zone boundary. At these points the electron wavefunction is a standing wave and the gradient of E(\textbf{k}) disappears \cite{Nelson3}.
 The lower limit of the wavelength is set by the lattice spacing, giving an upper limit of the wave vector, $|\textbf{k}|$, of $\frac{\pi}{a}$, where a is the spacing of the planes of atoms in the direction E(\textbf{k}) has been plotted.  The appearance of such energy gaps implies that electrons in a periodic crystal may only have kinetic energies corresponding to certain bands, whilst being free to propagate in the lattice \cite{small_semiconductor2}.
 Due to the periodicity of the crystal lattice, $|\textbf{k}|$  that differ by multiples of $\frac{2\pi}{a}$ cannot be distinguished and E(\textbf{k}) repeats for $|\textbf{k}| > \frac{\pi}{a}$. For most crystals, E(\textbf{k}) is identical to E(\textbf{-k}) since states with positive and negative $|\textbf{k}|$ are degenerate. Therefore all information for the energy dispersion relation, E(\textbf{k}) vs. $|\textbf{k}|$, of the material is contained in the range $0 < |\textbf{k}| < \frac{\pi}{a}$ and so only this region needs to be plotted, as in Fig \ref{bs1}c \cite{Nelson3}. 
@@ -318,7 +320,7 @@ The influence of the effective mass of charge carriers in a solar absorber mater
 %\end{equation}
 %Due to the translational symmetry of a crystal lattice, an eigenfunction of the one-electron Schr{\"o}dinger equation can be expressed as a sum of Bloch functions such as that shown in equation \ref{bloch}, to give equation \ref{bloch_sum}. The one-electron wavefunctions therefore can be indexed by constants \textbf{k}, which are the wave vectors of the plane waves forming the `backbone' of the Bloch function. A plot of the electron eigenenergies from equation \ref{single_SE} versus \textbf{k} is known as the electronic band structure of the crystal \cite{fund_semi}.
 
-\subsection{Electrical conductivity}
+\subsection{Electrical conductivity of semiconductors}
 
 The band theory of a semiconductor can also be used to understand the electrical conductivity of the material. At 0 K, electrons have no kinetic energy and therefore occupy the lowest energy states available, where the energy of the highest energy state filled is called the Fermi energy, E$_F$. However at finite-temperatures, electrons may have sufficient kinetic energy to access higher energy states above E$_F$, leaving behind some empty states below E$_F$. The distribution for electrons in thermal equilibrium at finite-temperatures is described by Fermi-Dirac statistics, where Eq. \ref{fermi-dirac} gives the probability that an electronic state of energy E will be occupied at some temperature T, where k$_B$ is the Boltzmann constant \cite{Nelson3}.
 \begin{equation}\label{fermi-dirac}
@@ -1132,10 +1134,11 @@ Here, the fundamentals of utilising the Monte Carlo method to describe thermodyn
 \subsection{The Monte Carlo method for thermodynamic disorder}
 The Monte Carlo (MC) method allows for the simulation of systems with many degrees of freedom. Its name derives from its use of (pseudo-)random numbers to simulate statistical fluctuations in order to numerically generate probability distributions \cite{MC3}.
 The MC method in statistical physics is a special case of the more general MC method.
-Starting from a model hamiltonian, the method can be used to calculate thermodynamic information about a system of N interacting ions represented on a 3D lattice by using classical statistics, considering only two-body forces and assuming that the potential field of an ion is spherically symmetric. If we know the positions of the N interacting ions on the lattice then the potential energy of the system can be calculated using equation \ref{pot_E}, where V is the Coulombic potential between two ions and $d_{ij}$ is the minimum distance between ions i and j \cite{Metropolis}.
+Starting from a model hamiltonian, the method can be used to calculate thermodynamic information about a system of N interacting ions represented on a 3D lattice by using classical statistics, considering only two-body forces and assuming that the potential field of an ion is spherically symmetric. If we know the positions of the N interacting ions on the lattice then the potential energy of the system can be calculated using Eq. \ref{pot_E}, where $d_{ij}$ is the minimum distance between ions \textit{i} and \textit{j} with charge $q_i$ and $q_j$  \cite{Metropolis}.
 \begin{equation}\label{pot_E}
-E = \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N V d_{ij}
+U = \frac{1}{2} \sum_{i=1}^N q_i \sum_{j=1}^{N(j \neq i)} \frac{1}{4 \pi \epsilon_0}\frac{q_j}{d_{ij}}
 \end{equation}
+
 To calculate the properties of the system, the canonical ensemble is used where the temperature, number of ions and volume are all constant. In this ensemble, the equilibrium value for any quantity of interest, B, is given by equation \ref{av}, where $E_\alpha$ is the energy of the system when in state $\alpha$ and $p_\alpha$ is the probability of the system being in state $\alpha$.
 \begin{equation}\label{av}
 <B> = \frac{ \sum_\alpha e^{-\frac{E_\alpha}{k_bT}} B_\alpha}{ \sum_\alpha e^{-\frac{E_\alpha}{k_bT}}} = \frac{ \sum_\alpha e^{-\frac{E_\alpha}{k_bT}} B_\alpha}{Z} = \sum_\alpha B_\alpha p_\alpha
@@ -1184,7 +1187,9 @@ The Metropolis algorithm creates a list of configurations through configuration 
 
 \chapter{Performance bottlenecks of {\CZTS} solar cells}\label{chap:CZTS}
 \section{Motivations and challenges for {\CZTS} solar cells}
-Thin-film PV is a desirable contender for terawatt-scale renewable energy generation. Kesterite-structured {\CZTS} stands out for its potential for large-scale deployment due to the abundance and non-toxicity of its elemental components, as well as sunlight-matched direct band gap of 1.5 eV \cite{CZTS_rev}. In the following letter we outline some of the main bottlenecks for the advancement of this solar cell technology.
+Thin-film PV is a desirable contender for terawatt-scale renewable energy generation. Kesterite-structured {\CZTS} stands out for its potential for large-scale deployment due to the abundance and non-toxicity of its elemental components, as well as sunlight-matched direct band gap of 1.5 eV \cite{CZTS_rev}. In the following letter we outline the motivations for {\CZTS} solar cells and some of the main bottlenecks of the advancement of this technology.
+
+\subsection{**Statement of authorship for: `The Steady Rise of Kesterite Solar Cells'}
 
 \includepdf[pages={1-},scale=1.0]{papers/CZTS_lett.pdf}
 
@@ -1267,7 +1272,7 @@ In the following paper, we have developed a Monte Carlo model to gain atomistic 
 Previous experimental studies have suggested that 2D Cu/ Zn disorder is the dominant disorder mechanism for the Cu/ Zn order-disorder transition (ODT) and that disorder on Cu 2\textit{a} sites only occurs after the ODT \cite{disorder_july}. However, more recent studies have suggested that this disorder mechanism is a part of the ODT \cite{Cu2a_expt, Cu2a_theory}.
 We extract the critical temperatures, T$_C$, for the Cu/ Zn ODT for these two Cu/ Zn disorder mechanisms, find that Zn readily substitutes into Cu-Sn planes even before the ODT and present spatial distributions of antisites from thermodynamic Cu/ Zn disorder our model.
 
-\subsection{Personal contribution}
+\subsection{**Statement of authorship}
 The Bespoke Monte Carlo model, Eris, (doi: 10.5281/zenodo.1248445) developed for this publication is based on the Starry Night code (doi: 10.5281/zenodo.10543) written by Jarvist Moore Frost (JMF) to simulate dipole-dipole interactions and ferroelectric domains in a hybrid organic-inorganic perovskite solar cell. Eris was originally adapted by JMF from Starry Night to simulate thermodynamic Cu-Zn disorder in {\CZTS}. My personal contributions to the project involved both implementation and of development of the Eris code. Contributions from implementation of the code include running simulations to test for finite size effects in the model, generating data and developing post-processing tools to quantify and visualise Cu-Zn disorder in the system. My developments of the Eris code include writing routines for:
 \begin{itemize}
     \item Lattice initialisation methods to ensure a stoichiometric {\CZTS} crystal
@@ -1282,7 +1287,7 @@ Support and discussions were provided by Jarvist Moore Frost and Aron Walsh thro
 Eris doi and data doi?? - take from final paper
 
 \includepdf[pages={1-},scale=1.0]{papers/ErisPaper1_re-write.pdf}
-\includepdf[pages={1-},scale=1.0]{papers/Eris1_SI_re-write.pdf}
+
 
 
 
@@ -1311,7 +1316,7 @@ As discussed in  section \ref{CZTS_defects_lit}, fluctuations in electrostatic p
 
 To quantify the contribution to electronic band tailing from fluctuations in electrostatic potential caused by $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites, we use the distribution of on-site electrostatic potentials of species in our disordered lattice configurations to infer perturbations to the band edges compared to the perfect, bulk material. From the study presented in the previous section, we showed that 3D Cu/ Zn disorder was an important mechanism in the Cu/ Zn ODT, we therefore use configurations generated from our Monte Carlo model with 3D Cu/ Zn disorder. The electronic band structure of {\CZTS} and composition of the frontier orbitals is shown in Fig. \ref{CZTS_band_structure}. Due to the composition of the VBM and CBM of {\CZTS} we use the distribution of Cu and Sn potentials to infer band tailing of the VBM and CBM respectively. This investigation is presented in the following paper.
 
-\subsection{Personal contribution}
+\subsection{**Statement of authorship}
 I generated the disordered lattice configurations in this investigation using the bespoke Monte Carlo model (Eris) outlined in the previous section, added additional routines to the Eris code to output lattice potentials in various formats for this investigation and developed post-processing scripts to analyse data. Support and discussions were provided by Jarvist Moore Frost and Aron Walsh throughout this study.
 
 \subsection{**Data access statement}
@@ -1364,7 +1369,7 @@ enargite, stephanite, and bournonite}\label{sulfosalts1}
 In the previous chapter, it was demonstrated that high concentrations of Cu-Zn disorder is inevitable in the solar absorber material {\CZTS} and the contribution of electrostatic potential fluctuations from this type of disorder to the observed band tailing was quantified. In this chapter, a screening procedure is conducted to look for alternative absorber materials. The motivation of this study was to identify candidate `photoferroic' or photoactive ferroelectric materials, discussed in the previous section. The mechanisms behind such phenomena are not yet fully understood, however it may be possible to achieve improvements in solar cell performance from enhanced local carrier separation from the internal electric fields of polar crystals, possibly providing new pathways to achieving high-performance devices.
 Additionally, the band tailing from prevalent cation disorder (as investigated for {\CZTS}) would be expected to be less prevalent in these materials due to the materials containing less chemically similar components, as has been demonstrated when substituting with Ag \cite{Gerschon_AZTSe} or Ba \cite{distant_cations, Tong_Ba-CZTS} into {\CZTS} (or similarly, into the corresponding selenide or sulfo-selenide alloy).
 
-\subsection{Personal contribution}
+\subsection{**Statement of authorship}
 This work was primarily conducted during a collaboration visit to Duke University with developers of the FHI-aims \cite{FHI-aims} electronic structure software package: V. Blum, W. P Huhn and T. Zhu. The only calculations I did not perform for this work were those of electron localisation functions (presented in the SI) and spontaneous lattice polarisations (presented in the main body of the paper and the SI) which were performed by Katrine Svane at the University of Bath using the VASP electronic structure software package \cite{VASP}. Python script to obtain fits to the band extrema to compute charge carrier effective masses with band structures in the format outputted by FHI-aims was written by T. Zhu and used with permission. Support when performing the electronic structure calculations with FHI-aims was provided by V. Blum, W. P Huhn and T. Zhu and discussions were provided by all co-authors throughout this study.
 
 \subsection{Data access statement}
@@ -1377,7 +1382,6 @@ The input and output files for the DFT calculations are available from the onlin
 http://dx.doi.org/10.17172/nomad/2017.05.16-1
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1.pdf}
-\includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
 
 \section{Outlook: High-throughput screening for candidate photoferroics}
 
@@ -1416,21 +1420,19 @@ In \autoref{chap:CZTS} possible factors limiting the performance of {\CZTS} sola
 
 %Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
-\section{**Solar cell heterojunctions for candidate absorbers enargite
-and bournonite from electronic band and lattice matching}\label{sulfosalt_band_alignment}
+\section{**Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching}\label{sulfosalt_band_alignment}
 
 To develop a high-performance solar cell device, the full device architecture must be optimised for the specific absorber layer. This optimisation process can be a barrier to the utilisation of new solar cell technologies. It is often the case that device architectures optimised for different absorber materials are used for new PV absorbers, which are not necessarily optimal, resulting in reduced device performance. Examples include the use of a typical architecture optimised for Cu(In,Ga)Se$_2$ (CIGS) solar cell technologies for CuSbS$_2$ \cite{CAS_alignment} and also for one of the candidate absorber layers in this study {\enargite} \cite{enargite_SC}. In this work the aim is to use theory to accelerate device optimisation with suggestions for suitable solar cell heterojunction partners for two of the candidate absorber layers identified in \autoref{chap:screening}. 
 
 Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction for photoferroic absorbers, as described in section \ref{ferroPVsection}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation. The following work is a data mining procedure to determine suitable junction partners for two of the candidate absorber materials from \autoref{chap:screening}. Insights for optimal electronic band offsets for a solar cell heterojunction are based on studies performed for PV absorbers CdTe \cite{CdTe_spike}, CIGS \cite{p-type_spike} and ZnSnN$_2$ \cite{Elisabetta}.
 
-\subsection{Personal contribution}
+\subsection{**Statement of authorship}
 For this study I performed electronic structure calculations with the VASP \cite{VASP} software package for the volume relaxation of bulk unit cells from which Y. Hinuma cut all non-polar, symmetric slab terminations using methodology in Ref. \citenum{Yoyo}. I then performed electronic structure calculations, again with VASP, for the the slab models. Ionisation potentials of the slab models were obtained using MacroDensity python libraries (doi: 10.5281/zenodo.884521). The workflow I used for screening by electronic band offsets and minimal strain interfaces utilised ElectronLatticeMatch python libraries \cite{ELS}, developed by K. T. Butler. Band alignment plots were generated using the bapt software package \cite{bapt}. Throughout this work, support and discussions were provided by K. T. Butler for utilising the python libraries and performing electronic structure calculations for the slab models.
 
 \subsection{**Data access statement}
 git repos for MD, ELS and bapt + data doi + Materials Project?? - take from paper?
 
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalt_devices.pdf}
-\includepdf[pages={1-},scale=1.0]{papers/sulfosalt_devices_SI.pdf}
 
 
 
@@ -1644,6 +1646,12 @@ To calculate the formation energy of charged defects, it is necessary to apply f
 
 ** Table with Ef for charged defects before and after applying FNV correction (inc. column with value of $E_{corr}$), placeholders for calculations still running? **\\
 
+Justification for considering antisite and vacancies first?:
+Interstitials don't survive kinetically?
+https://journals.aps.org/prmaterials/pdf/10.1103/PhysRevMaterials.2.103803
+'They calculated the diffusion barriers and the defect concentrations vs annealing time'
++ c.f Stoneham -- 'Stoneham often argues that interstitials are not kinetically stable and even if formed they will be “swept” out in most cases. He had good intuition'\\
+
 Leave all subsequent sections as further work if not complete before December submission? + use Chen's defects work to outline next steps for analysis of defects data
 
 \subsubsection{Impact of defects on device performance}
@@ -1672,6 +1680,7 @@ Determine `deep' defects and species chemical potentials to suppress formation o
 \item Present pDOS of enargite, CIS and CZTS and discuss MIT work on defect tolerance and bonding character of band extrema (Riley Brandt and Rachel Kirchin)
 \item Look into Sunghyun's latest work on multivalence/ redox of Sn in CZTS between 4+ and 2+ and relate to As in enargite? + Stephan's paper on multivalence of Sn in CZTS
 \item Outline the challenge of trying to relate defect physics of different systems and determining universal descriptors of defect-tolerance that is applicable across a broad range of material systems, but also nod to the immense value for predicting high-performance PV materials as this is such a decisive property for PV performance, which would be incredibly powerful if coupled with high-throughput screening techniques (refer to work by Brand and works attributing solution-processed MAPI's exceptional PV performance to its unique defect physics: Yanfa Yan, Joe Berry, etc.)
+\item Notes from CZTS book: Bonds in Cu-based quaternaries are weaker than in group-IV, III-V or II-VI binaries, former have Cu-d-S/Se-p antibonding states (+sp3) while latter have purely sp3 which are stronger bonds. V-Cu is typically low E because only 1 valence s-like electron, it is therefore easy to grow off-stoichiometric CZTS with Cu-defects -- think about relating to enargite pDOS and likey defect physics and perhaps explanation for observed p-type conducctivity?
 \end{itemize}
 
 
@@ -1697,17 +1706,17 @@ Determine `deep' defects and species chemical potentials to suppress formation o
 \chapter{Closing remarks}
 Again outline two main components of work: exploring one possible bottleneck on performance of existing PV tech and also identifying new absorber materials to enable exploration of alternative pathways to high-performance solar cell.
 
-\section{Cu/ Zn disorder in {\CZTS} solar cells}
+\section{**Cu/ Zn disorder in {\CZTS} solar cells}
 Summarise results of paper1 + could also adapt our MC model to simulate off-stoichiometric CZTS to see if Cu-Zn disorder could be suppressed in these systems. Summarise results of band tailing letter. If band tails from Cu-Zn disorder are small, maybe here would be a good point to mention possibility of reduced Sn defect formation energy in regions of inhomogeneous electrostatic potential due to Cu-Zn disorder??
 \begin{itemize}
 \item Highlight main conclusion from Eris work and broader implications for PV design principles (i.e. band tailing, cation disorder in multicomponent semiconductors with chemically similar components... tunability of optical properties at expense of ease of fabrication and implications for defect physics?)
 \item 3D Cu/ Zn disorder and quantified contributions to band tailing?
-\item Extensions with Eris: Off-stoichiometric types (explanation for higher-performance of Cu-poor?) and Sn defect formation energy possibly altered by fluctuations in potential from Cu/ Zn disorder? Broader implications from Eris – could imply defect formation energy in a typical supercell method perhaps not applicable in materials with high levels of disorder? (If Sn point defect formation E can be reduced by presence of Cu-Zn disorder)
+\item Extensions with Eris: Off-stoichiometric types (explanation for higher-performance of Cu-poor?) and Sn defect formation energy possibly altered by fluctuations in potential from Cu/ Zn disorder? Broader implications from Eris – could imply defect formation energy in a typical supercell method perhaps not applicable in materials with high levels of disorder? (If Sn point defect formation E can be reduced by presence of Cu-Zn disorder), c.f. \cite{NREL_CZTS2}
 \item Discuss if it is possible to infer that Sn-on-Zn antisites (which has been linked to defect clusters that impact band gap) may be more likely to form due to potential distribution. e.g. Sn4+ more likely to be on a Zn2+ site in negative potential region? c.f. end of S4 in doi: 10.1016/j.solmat.2017.11.005
 \end{itemize}
 
 
-\section{Candidate photoferroic absorbers in solar cells}
+\section{**Candidate photoferroic absorbers in solar cells}
 Overview of optical properties predicted in paper1. Opportunity to explore possible FE-PV phenomena in these materials. Suggested device architecture and processing conditions for minimising Voc loss at junctions and deep level defects + overview of expected defect properties of the materials.
 \begin{itemize}
 \item Insights (and limitations) of PV performance predictions for sulfosalts
@@ -1717,10 +1726,30 @@ Overview of optical properties predicted in paper1. Opportunity to explore possi
 %\item Possibility of studying effect of Rashba splitting on PL lifetimes with bournonite by tuning splitting with applied E-field? (provide insights onto role this feature of band structure of MAPI is having on performance?)
 \end{itemize}
 
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{unsrt}
+\bibliography{thesis}
+
+
 \appendix
 % appendices come here
+\chapter{Appendix}
 
-%\chapter{Appendix}
+\section{**Supplemental material for: `2D and 3D Cu/ Zn order-disorder transitions in {\CZTS} from Monte Carlo simulations'}
+\includepdf[pages={1-},scale=1.0]{papers/Eris1_SI_re-write.pdf}
+
+
+\section{**Supplemental material for: `Electronic band tailing in {\CZTS} from Monte Carlo simulations'}
+
+\section{Supplemental material for: `Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite and bournonite'}
+\includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
+
+
+\section{**Supplemental material for: `Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching'}
+\includepdf[pages={1-},scale=1.0]{papers/sulfosalt_devices_SI.pdf}
+
+
 %\section{Review of photoluminescence spectra of \CZTS}\label{CZTS_PL_section}
 %Photoluminescence (PL) spectroscopy is a popular method to inspect solar cell materials as it does not require a full functioning device and can be a powerful tool for probing defects in semiconductors. There are a large number of possible optical transitions that can be detected by PL measurements, some of which were illustrated in figure \ref{PL_transitions}. For this reason, low-temperature PL can be a particularly powerful tool for probing defects as energy level occupancy is dependent upon temperature and so not all PL recombinations will occur at the same temperature, allowing for the isolation of different types of recombination transitions \cite{spatial_resolved_book}. There are also other variations in the set up of a PL measurement that can be altered to provide more information on the band structure and how it is altered by the presence of defects. Firstly the intensity of the laser can be increased to determine if states are localized (such as those introduced by defects) or extended states (such as the conduction and valence bands) by if it is possible to saturate the states in the case of localized states such that an increase in laser intensity no longer increases the intensity of the PL peak \cite{Gershon}. Secondly, time-resolved PL (TRPL) measurements  can be used to differentiate between recombination mechanisms with different carrier lifetimes. Slower optical transitions usually involve carriers in localized states, whereas faster transitions usually involve delocalized states \cite{Gershon}.
 
@@ -1734,8 +1763,5 @@ Overview of optical properties predicted in paper1. Opportunity to explore possi
 %For measurements performed on polycrystalline kesterite samples, some studies attribute the spectra to spatially fluctuating band tail states \cite{Romero}, whereas others suggest that recombination in CZTS is dominated by the distinct energy levels introduced by DAPs \cite{Unold, Miyamoto}. In other studies, an explanation that is almost a combination of the two is proposed \cite{Gershon, Gershon_ref18}. These studies refer to a quasi-donor-acceptor-pair (QDAP) model, where the word `quasi' is used to indicate a deviation from the classical DAP model for recombinations, such as that shown in figure \ref{PL_transitions}, due to interactions between defects. In reference \citenum{Gershon_ref18} they note that distinguishing between DAP recombination and spatially fluctuating band tails caused by spatially varying densities of ionized donor and acceptor defects is particularly complicated as a high density of compensating DAPs is necessarily co-incident with spatial fluctuation in electrostatic potential. In the same work, they note that the dominance of donor and acceptor pairs on PL spectra is in agreement with theoretical predictions such as those by Chen et al \cite{defect1} that antisite DAPs such as $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ should be abundant due to the low formation energy of the defect complex and also experimental observations of cation disorder by neutron diffraction, synchrotron radiation x-ray diffraction and aberration corrected scanning transmission electron microscopy respectively \cite{Schorr, CZTS_Xray, CZTS_TEM}.
 
 
-\addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{unsrt}
-\bibliography{thesis}
 
 \end{document}
