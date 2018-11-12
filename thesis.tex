@@ -1479,7 +1479,7 @@ Electronic structure calculations to predict the formation energy of isolated po
 The supercell is constructed from a unit cell where the volume has been relaxed until forces converge to within $0.5\time10^{-3}$ per atom with the HSE06 functional, including spin-orbit coupling (SOC), a $4\times4\times4$ \textit{k}-grid and tabulated `tight' basis set species defaults for the FHI-aims software package. It is important that the unit cell volume is relaxed before constructing the defect supercells as even slight difference in the lattice parameters for the given functional relative to the experimental values used in the study in section \ref{sulfosalts1} could result in spurius relaxations in the defect supercell to compensate for the strain.
 For the relaxation of the defect supercells however, the lattice parameters are fixed and only internal atomic coordinates are relaxed. Allowing lattice parameters to relax in the defective supercells could result in excessive defect-induced relaxation which would be expected for a higher defect density than for isolated point defects in the dilute limit, which is being simulated here. Relaxations of the defect supercells are also performed using HSE06+SOC. The structures are first pre-relaxed with the `light' species default, this is often recommended when using FHI-aims to reduce the number of geometry steps required at the tight level of accuracy. The resulting structures are then relaxed with tight basis set species defaults. Relaxation is performed at the gamma point and then a single-shot calculation is performed with a $2\times2\times2$ \textit{k}-grid and including SOC.
 
-To generate all structures for intrinsic defects in {\enargite}, the Transformer libraries \cite{Transformer} (based on spglib crystal symmetry python libraries) developed by J. M. Skelton were incorporated into a workflow, which can be found at:
+To generate all structures for intrinsic defects in {\enargite}, the Transformer libraries \cite{Transformer} developed by J. M. Skelton (which utilise spglib crystal symmetry python libraries \cite{spglib}) were incorporated into a workflow, which can be found at:
 
 github.com/skw32/FHI-aims\_for\_PV/blob/master/defects\_workflow/defects\_workflow\_test.ipynb
 
@@ -1490,7 +1490,7 @@ This workflow allows for the automatic generation of all symmetrically inequival
 \subsubsection{Construction of phase diagram}
 As discussed in section \ref{defects_methods}, to obtain the formation energy of a defect it is necessary to know the chemical potentials of species added to or removed from the system when a defect is formed. We therefore need to know the phase-stable range of chemical potentials for the synthesis of phase-pure material. For this, the formation energies of the constitutent elements and all competing secondary phases needed to be computed at the same level of theory used for the defect calculations.
 
-The range of chemical potentials must satisfy certain thermodynamic conditions for the desired compound to be thermodynamically stable without coexistence of unwanted secondary phased. Firstly, the sum of chemical potentials of the component elements should be at equilibrium with the formation energy of the compound. Secondly the formation of the secondary compounds should be avoided. Lastly, all component elements should favour the formation of the compound, as opposed to pure elemental phases \cite{defects_Chen}. Examples of such conditions for enargite are shown in Eq. \ref{enargite_tc1}, \ref{enargite_tc2} and \ref{enargite_tc3}, where $As_2S_3$ is an example of an unwanted competing phase and $\Delta H_f$ is the formation energy of a compound.
+The range of chemical potentials must satisfy certain thermodynamic conditions for the desired compound to be thermodynamically stable without coexistence of unwanted secondary phased. Firstly, the sum of chemical potentials of the component elements should be at equilibrium with the formation energy of the compound. Secondly the formation of the secondary compounds should be avoided. Lastly, all component elements should favour the formation of the compound, as opposed to pure elemental phases \cite{defects_Chen}. Examples of such conditions for enargite are shown in Eq. \ref{enargite_tc1}, \ref{enargite_tc2} and \ref{enargite_tc3}, where As$_2$S$_3$ is an example of an unwanted competing phase and $\Delta H_f$ is the formation energy of a compound.
 \begin{equation}\label{enargite_tc1}
 3\mu_{Cu} + \mu_{As} + 4\mu_{S} = \Delta H_f(Cu_3AsS_4)    
 \end{equation}
@@ -1502,15 +1502,15 @@ The range of chemical potentials must satisfy certain thermodynamic conditions f
 \end{equation}
 To determine the range of chemical potentials satisfying the above conditions, the CPLAP software package is used \cite{cplap}. 
 
-To determine all competing secondary phases for {\enargite} the Materials Project \cite{materials_project} database was searched for all compounds containing Cu, As and S that were stable or with formation energy up to 0.1 eV per atom above the convex hull. The volume of the unit cells were relaxed with the HSE06 functional and including SOC. The light basis sets species defaults were used for the relaxation followed by a single-shot calculation with tight basis set species defaults to ensure the level of theory matched that of the defect calculations of {\enargite}. \textit{k}-grid densities were set for a total number of \textit{k}-points of 2000/(no. of atoms in unit cell) for insulators but a more dense setting of 1000/ (no. of atoms in unit cell) was used for metals.
+To determine all competing secondary phases for {\enargite} the Materials Project \cite{materials_project} database was searched for all compounds containing Cu, As and S that were stable or with formation energy up to 0.1 eV per atom above the thermodynamic convex hull. The volume of the unit cells were relaxed with the HSE06 functional and including SOC. The light basis sets species defaults were used for the relaxation followed by a single-shot calculation with tight basis set species defaults to ensure the level of theory matched that of the defect calculations of {\enargite}. \textit{k}-grid densities were set for a total number of \textit{k}-points of 2000/(no. of atoms in unit cell) for insulators but a more dense setting of 10,000/ (no. of atoms in unit cell) was used for metals.
 
 \begin{table}[h!]
 \begin{tabular}{@{}llll@{}}
 \toprule
 Element & Total energy (eV) & No. atoms in unit cell & dH$_f$ (eV)      \\ \midrule
-Cu      & -180982.2338      & 4                      & -45245.55846 \\
-As      & -371370.7794      & 6                      & -61895.12991 \\
-S       & -348162.585       & 32                     & -10880.08078 \\ \bottomrule
+Cu      & -180982.234      & 4                      & -45245.558 \\
+As      & -371370.779      & 6                      & -61895.130 \\
+S       & -348162.585       & 32                     & -10880.081 \\ \bottomrule
 \end{tabular}
 \caption{Elemental energies of components in enargite ({\enargite}) calculated with the HSE06 functional and including SOC.}\label{enargite_elements}
 \end{table}
@@ -1519,15 +1519,15 @@ S       & -348162.585       & 32                     & -10880.08078 \\ \bottomru
 \begin{tabular}{@{}llll@{}}
 \toprule
 Compound      & Total energy (eV) & F.U. in unit cell & dH$_f$ (eV)     \\ \midrule
-Cu$_3$AsS$_4$ & -482309.0632      & 2                 & -2.403177229 \\
-As$_2$S$_3$         & -625725.232       & 4                 & -0.805839386 \\
-AsS           & -1164408.821      & 16                & -0.340613732 \\ 
-Cu$_{12}$As$_4$S$_{13}$    & -1863952.98       & 2                 & -8.218599995 \\
-Cu$_6$As$_4$S$_9$      & -1233959.866      & 2                 & -5.335745759 \\
-Cu$_7$S$_4$         & -1440968.101      & 4                 & -2.7928978   \\
-CuS$_2$          & -134011.9191      & 2                 & -0.239548997 \\
-CuAsS         & -472086.2164      & 4                 & -0.784957703 \\
-CuS           & -336756.8533      & 6                 & -0.502980657 \\ \bottomrule
+Cu$_3$AsS$_4$ & -482309.063      & 2                 & -2.403 \\
+As$_2$S$_3$         & -625725.232       & 4                 & -0.806 \\
+AsS           & -1164408.821      & 16                & -0.341 \\ 
+Cu$_{12}$As$_4$S$_{13}$    & -1863952.980       & 2                 & -8.219 \\
+Cu$_6$As$_4$S$_9$      & -1233959.866      & 2                 & -5.336 \\
+Cu$_7$S$_4$         & -1440968.101      & 4                 & -2.793   \\
+CuS$_2$          & -134011.919      & 2                 & -0.240 \\
+CuAsS         & -472086.216      & 4                 & -0.785 \\
+CuS           & -336756.853      & 6                 & -0.503 \\ \bottomrule
 \end{tabular}
 \caption{Formation energies of stable secondary phases for the phase diagram of {\enargite} calculated with the HSE06 functional and including SOC.}\label{enargite_stable}
 \end{table}
@@ -1537,18 +1537,18 @@ CuS           & -336756.8533      & 6                 & -0.502980657 \\ \bottomr
 \toprule
 Compound & Energy above hull  & Total energy (eV) & F.U. in unit cell & dH$_f$ (eV)   \\ 
          & (eV per atom)      &                   &                   &               \\ \midrule
-As$_4$S$_3$    & 0.004                           & -1120887.027      & 4                 & -0.994716177 \\
-As$_4$S$_5$    & 0.003                           & -603964.775       & 2                 & -1.4639701   \\
-As$_8$S$_9$    & 0.003                           & -1186169.186      & 2                 & -2.82685393  \\
-Cu$_{18}$S$_{11}$  & 0.076                           & -934107.3294      & 1                 & -6.388582409 \\
-Cu$_2$As    & 0.02                            & -304772.5447      & 2                 & -0.025548226 \\
-Cu$_2$S     & 0.01                            & -608229.9201      & 6                 & 608755.3994  \\
-Cu$_3$As    & 0.019                           & -1581055.864      & 8                 & -0.177706843 \\
-Cu$_3$AsS$_3$  & 0.032                           & -921094.5972      & 4                 & -1.601685762 \\
-Cu$_5$As$_2$   & 0.05                            & -700036.3547      & 2                 & -0.125253278 \\
-Cu$_9$S$_5$    & 0.045                           & -923227.266       & 2                 & -3.202998363 \\
-CuAs     & 0.052                           & -214280.9662      & 2                 & 0.205273276  \\
-CuAs$_2$    & 0.081                           & -338070.6814      & 2                 & 0.477572367  \\ \bottomrule
+As$_4$S$_3$    & 0.004                           & -1120887.027      & 4                 & -0.995 \\
+As$_4$S$_5$    & 0.003                           & -603964.775       & 2                 & -1.464   \\
+As$_8$S$_9$    & 0.003                           & -1186169.186      & 2                 & -2.827  \\
+Cu$_{18}$S$_{11}$  & 0.076                           & -934107.329      & 1                 & -6.389 \\
+Cu$_2$As    & 0.02                            & -304772.545      & 2                 & -0.026 \\
+Cu$_2$S     & 0.01                            & -608229.920      & 6                 & -0.456  \\
+Cu$_3$As    & 0.019                           & -1581055.864      & 8                 & -0.178 \\
+Cu$_3$AsS$_3$  & 0.032                           & -921094.597      & 4                 & -1.602 \\
+Cu$_5$As$_2$   & 0.05                            & -700036.355      & 2                 & -0.125 \\
+Cu$_9$S$_5$    & 0.045                           & -923227.266       & 2                 & -3.203 \\
+CuAs     & 0.052                           & -214280.966      & 2                 & 0.205  \\
+CuAs$_2$    & 0.081                           & -338070.681      & 2                 & 0.478  \\ \bottomrule
 \end{tabular}
 \caption{Formation energies of unstable secondary phases with formation energy as listed on the Materials Project database of up to 0.1 eV per atom above the convex hull for the phase diagram of {\enargite} calculated with the HSE06 functional and including SOC.}\label{enargite_above_hull}
 \end{table}
@@ -1561,21 +1561,21 @@ CuAs$_2$    & 0.081                           & -338070.6814      & 2           
 \end{figure}
 
 \begin{table}[]
-\begin{tabular}{@{}lll@{}}
+\begin{tabular}{@{}llll@{}}
 \toprule
-$\mu_{Cu}$ & $\mu_{As}$ & $\mu_{S}$ \\ \midrule
--0.5629    & -0.2160    & -0.1246   \\
--0.6668    & -0.4029    & 0.0000    \\
--0.3469    & 0.0000     & -0.3406   \\
-0.0000     & -0.5444    & -0.4647   \\
--0.1815    & 0.0000     & -0.4647   \\
-0.0000     & -2.4032    & 0.0000    \\
--0.4779    & -0.2160    & -0.1884   \\
--0.5506    & -0.4029    & -0.0871   \\
--0.3159    & 0.0000     & -0.3639   \\
-0.0000     & -2.0546    & -0.0871   \\ \bottomrule
+Int. point & $\mu_{Cu}$ & $\mu_{As}$ & $\mu_{S}$ \\ \midrule
+1 & -0.563    & -0.216    & -0.125   \\
+2 & -0.667    & -0.403    & 0.000    \\
+3 & -0.347    & 0.000     & -0.341   \\
+4 & 0.000     & -0.544    & -0.465   \\
+5 & -0.182    & 0.000     & -0.465   \\
+6 & 0.000     & -2.403    & 0.000    \\
+7 & -0.478    & -0.216    & -0.188   \\
+8 & -0.551    & -0.403    & -0.087   \\
+9 & -0.316    & 0.000     & -0.364   \\
+10 & 0.000     & -2.055    & -0.087   \\ \bottomrule
 \end{tabular}
-\caption{Intersection points in chemical potential space from the phase diagram for enargite ({\enargite}) show in Fig. \ref{enargite_p_d}, where $\mu_i$ is referenced to the total energy of the element phase in its standard state.}\label{enargite_int_points}
+\caption{Intersection points in chemical potential space from the phase diagram for enargite ({\enargite}) shown in Fig.~\ref{enargite_p_d}, where $\mu_i$ is referenced to the total energy of the element phase in its standard state.}\label{enargite_int_points}
 \end{table}
 
 Total energies of relaxed structures were used to determine the formation energies. Elemental energies are given in Table \ref{enargite_elements}, formation energies computed from these are given for stable compounds in Table \ref{enargite_stable} and for unstable competing phases with formation energy as listed on the Materials Project database of up to 0.1 eV per atom above the convex hull are given in Table \ref{enargite_above_hull}.
@@ -1601,7 +1601,7 @@ In a solid in the absence of free dipole rotations, the dielectric response to a
     \label{enargite_ionic_dielectric}
 \end{figure}
 
-We take the static limit of $\epsilon_{\infty}$, $\epsilon_{\infty}(\omega \rightarrow 0)$, from the optical dielectric function calculated using the random phase approximation as implemented in FHI-aims for {\enargite} in the study presented in section \ref{sulfosalts1}.
+The static limit of $\epsilon_{\infty}$ is taken, i.e.  $\epsilon_{\infty}(\omega \rightarrow 0)$, from the optical dielectric function calculated using the random phase approximation as implemented in FHI-aims for {\enargite} in the study presented in section \ref{sulfosalts1}.
 The ionic dielectric constant is calculated with density functional perturbation theory (DFPT) with the PBEsol functional and implemented in the VASP \cite{VASP} software package. The volume of the unit cell is first relaxed with VASP with the PBEsol functional with a \textit{k}-grid density of $6\times6\times6$ and a plane wave cut off energy of 500 eV. Before computing the ionic dielectric constant it is important to have a well-optimised relaxed structure for the unit cell, for this reason strict relaxation criteria are used. The allowed error in total energy (i.e. the exit criteria for the electronic scf cycle) is reduced from the default value of $10^{-4}$ to $10^{-8}$ and ionic relaxtion is performed until forces converge to within 0.001 eV per $\AA$. The ionic dielectric constant is then computed with DFPT for this relaxed unit cell with increasing \textit{k}-grid density. This is shown in Fig.~\ref{enargite_ionic_dielectric}.
 
 %** Quantify non-convergence of xx component (use value at 10x10x10 k-points and state how much it changes when k-points are doubled **
@@ -1631,7 +1631,8 @@ n = N e^{\frac{-\Delta H_{D,q}}{k_B T}}
 \end{equation}
 As shown in Eq. \ref{defect_neutral} and \ref{defect_charged}, $\Delta H_{D,q}$ directly depends on the chemical potential of the species involved in the creation of the defect, $\mu_i$. $\mu_i$ can be tuned experimentally as it is a function of temperature and pressure \cite{Adam_sulfur}. Consequently, this allows for some tunability in the concentrations of particular defects in an absorber material through the synthesis conditions.
 
-To calculate the formation energy of charge neutral defects equation \ref{defect_neutral} is used with the total energies of the relaxed defect supercells, the total energy of an equivalent perfect, bulk supercell and the total energy per atom in the standard states for elements added to or removed from the host are taken from Table \ref{enargite_elements}. All ten intersection points in the chemical potential space from Table \ref{enargite_int_points} are used. The intention here is to determine the values for the species chemical potentials that increase the formation energy of the defects, especially any with transition levels deepest in the band gap. The defect formation energies for charged defects at each intersection point are given in Table \ref{enargite_neutral_Ef}.\\
+To have a complete picture of the point defect physics of a material, and hence a full foundation to build upon to fully understand the more complex defect physics of a material, it is necessary to calculate the formation energy of all possible point defects in the material. However, in the interests of time, here vacancies, antisites and cation interstitials were calculated first. The choice to prioritise the latter is due to the smaller ionic radii of the cations.
+Some works have argued that interstitials are not kinetically stable and if they form are `swept out' in most cases \cite{defect_kinetics}. It is unclear if we can assume the same will apply to enargite, however, it seems likely that of the possible intrinsic interstitial species in enargite, the smaller species such as the Cu$^{+}$ ion is likely to have a lower formation energy and therefore may be more important and should be considered first.
 
 \begin{table}[]
 \begin{tabular}{@{}llllllllllll@{}}
@@ -1657,10 +1658,17 @@ $S_{i, q=0}$, p2     & pending                         &        &        &      
 \caption[The formation energy, $\Delta H_{D, q = 0}$ of all charge neutral defects in enargite ({\enargite}) at all 10 intersection points in the chemical potential space for enargite from Table \ref{enargite_int_points} and shown in the phase diagram in Fig. \ref{enargite_p_d}. E$_{tot}$ are total energies of the defective supercells and defects are labelled according to their spacegroup (sg) and unique structure (s) as identified by crystal symmetry using Transformer libraries. Unique pores for interstitials were shown in Fig. \ref{enargite_interstitials}.]{The formation energy, $\Delta H_{D, q = 0}$ of all charge neutral defects in enargite ({\enargite}) at all 10 intersection points in the chemical potential space for enargite from Table \ref{enargite_int_points} and shown in the phase diagram in Fig. \ref{enargite_p_d}. E$_{tot}$ are total energies of the defective supercells and and defects are labelled according to their spacegroup (sg) and unique structure (s) as identified by crystal symmetry using Transformer libraries \cite{Transformer}. Unique pores for interstitials (p1 and p2) were shown in Fig. \ref{enargite_interstitials}.}\label{enargite_neutral_Ef}
 \end{table}
 
-To calculate the formation energy of charged defects, it is necessary to apply finite-size corrections to the supercells, as discussed in section \ref{defects_methods}. For this the CoFFEE code \cite{coFFEE} will be used to perform the FNV correction scheme \cite{FNV}, with the dielectric constant of enargite presented in the section above for modelling the dielectric screening of the host in the charge model used for the image-interaction correction in the FNV scheme. The fermi level is initially referenced to the VBM of the perfect host to calculate to formation energy, but this will later need to be tuned to determine the transition levels between different charge states of an ionised defect.
+To calculate the formation energy of charge neutral defects equation \ref{defect_neutral} is used with the total energies of the relaxed defect supercells, the total energy of an equivalent perfect host supercell and the total energy per atom in the standard states for elements added to or removed from the host are taken from Table \ref{enargite_elements}. All ten intersection points in the chemical potential space from Table \ref{enargite_int_points} are used. The intention here is to determine the values for the species chemical potentials that increase the formation energy of the defects, especially any with transition levels deepest in the band gap. The defect formation energies for neutral defects at each intersection point are given in Table \ref{enargite_neutral_Ef}.
 
-To have a complete picture of the point defect physics of a material, and hence a full foundation to build upon to fully understand the more complex defect physics of a material, it is necessary to calculate the formation energy of all possible point defects in the material. However, in the interests of time, here vacancies, antisites and Cu interstitials were calculated first.
-Some works have argued that interstitials are not kinetically stable and if they form are `swept out' in most cases \cite{defect_kinetics}. It is unclear if we can assume the same will apply to enargite, however, it seems likely that of the possible intrinsic interstitial species in enargite, the smaller species such as the Cu ion will have the lower formation energy and therefore may be more important and should be considered first.
+To calculate the formation energy of charged defects, it is necessary to apply finite-size corrections to the supercells, as discussed in section \ref{defects_methods}. For this the CoFFEE code \cite{coFFEE} is used to perform the FNV correction scheme \cite{FNV}, with the dielectric constant of enargite presented in the section above for modelling the dielectric screening of the host in the charge model used for the image-interaction model in the FNV scheme. The fermi level is initially referenced to the VBM of the perfect host and set to zero to calculate to formation energy, but this will later need to be tuned to determine the transition levels between different charge states of an ionised defect with the other extreme in the electron chemical potential being the CBM of the host. This analysis will be discussed in the next section. The formation energies for charged defects obtained so far are presented in Table \ref{enargite_charged_Ef}.
+
+%** Discuss different ionic radii for which to consider as interstitials, see
+
+%(https://www.webelements.com/copper/atom\_sizes.html),
+
+%Cu(I) - 74 (in tetrahedral bonding) or 96 (Pauling radius),
+%S(-II) - 184 (Pauling radius),
+%As(V) - 47.5 (in tetrahedral bonding) or 47 (Pauling radius)
 
 ** Table with Ef for charged defects before and after applying FNV correction (inc. column with value of $E_{corr}$), placeholders for calculations still running? **\\
 
@@ -1672,13 +1680,13 @@ Some works have argued that interstitials are not kinetically stable and if they
 %+ c.f Stoneham -- 'Stoneham often argues that interstitials are not kinetically stable and even if formed they will be “swept” out in most cases. He had good intuition'\\
 
 \subsubsection{Outlook: Impact of defects on device performance}
-In this section, analysis that could be performed on the complete datasets from Tables \ref{enargite_neutral_Ef} and \ref{enargite_charged_Ef} is discussed. In the final section of this chapter recent literature on the impact of defect physics on the performance of PV materials and defect tolerance studies are discussed. The chapter ends with some hypotheses which could be tested with a complete dataset from this case study.\\
+In this section, analysis that could be performed once the datasets from Tables \ref{enargite_neutral_Ef} and \ref{enargite_charged_Ef} have been completed is discussed. In the final section of this chapter recent literature on the impact of defect physics on the performance of PV materials and defect tolerance studies are discussed. The chapter ends by outlining some hypotheses for predicting the impact of defects on device performance which could be tested with a complete dataset from this case study.\\
 
 Next just show e.g. of analysis from Chen's paper (with concentration maps, discuss transition levels and bullet point analysis, possible importance of considering defect pairs and clusters in multicomponent semiconductors + finish with defect physics hypotheses which could be tested with this case study and highlight recent PV material defect physics literature and defect tolerance studies.\\
 
-** Defect concentration maps wrt fermi energy (use sc-fermi? or work with Stephan/ Jie?) Pick intersection point for chem pot where dH for deepest defects is highest? (may have to do this iteratively after producing conc maps?) **\\
++ refer to sc-fermi for generating concentration maps as a function of electron chemical potential.
+Comment that this procedure would have to be performed for all 10 chemical potential intersection points to find the optimal experimental conditions to suppress the formation of detrimental defects?\\
 
-(If don't have concentration maps in time, just show e.g. from Chen paper, outline procedure and maybe ref sc-fermi? and comment that a number of insights can be gained on the defect physics and tunability, such as...)\\
 From concentration maps (formation E vs fermi energy, Ef) comment on:
 \begin{itemize}
 \item Flat line = neutral, positive gradient for donors, negative for acceptors, twice as steep for doubly charged (grad prop to q*Ef)
