@@ -1274,7 +1274,7 @@ Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions wi
 
 
 
-\section{**Publication: `Order-disorder transition in {\CZTS} from Monte Carlo simulations'}\label{CZTS_MC}
+\section{Publication: `Order-disorder transition in {\CZTS} from Monte Carlo simulations'}\label{CZTS_MC}
 For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
 During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. 
@@ -1283,7 +1283,9 @@ In the following paper, we have developed a Monte Carlo model to gain atomistic 
 Previous experimental studies have suggested that 2D Cu/ Zn disorder is the dominant disorder mechanism for the Cu/ Zn order-disorder transition (ODT) and that disorder on Cu 2\textit{a} sites only occurs after the ODT \cite{disorder_july}. However, more recent studies have suggested that this disorder mechanism is a part of the ODT \cite{Cu2a_expt, Cu2a_theory}.
 We extract the critical temperatures, T$_C$, for the Cu/ Zn ODT for these two Cu/ Zn disorder mechanisms, find that Zn readily substitutes into Cu-Sn planes even before the ODT and present spatial distributions of antisites from thermodynamic Cu/ Zn disorder our model.
 
-**Add statement of authorship form as pdf**
+The supplemental material for this paper is included in Appendix \ref{eris1_appendix}.
+
+\includepdf[pages={1-},scale=1.0]{papers/Eris1_soa.pdf}
 
 %\subsection{**Statement of authorship}
 %The Bespoke Monte Carlo model, Eris, (doi: 10.5281/zenodo.1248445) developed for this publication is based on the Starry Night code (doi: 10.5281/zenodo.10543) written by Jarvist Moore Frost (JMF) to simulate dipole-dipole interactions and ferroelectric domains in a hybrid organic-inorganic perovskite solar cell. Eris was originally adapted by JMF from Starry Night to simulate thermodynamic Cu-Zn disorder in {\CZTS}. My personal contributions to the project involved both implementation and of development of the Eris code. Contributions from implementation of the code include running simulations to test for finite size effects in the model, generating data and developing post-processing tools to quantify and visualise Cu-Zn disorder in the system. My developments of the Eris code include writing routines for:
@@ -1303,7 +1305,7 @@ We extract the critical temperatures, T$_C$, for the Cu/ Zn ODT for these two Cu
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
 %\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
-\section{Outlook: Electronic band tailing in {\CZTS} from Monte Carlo simulations of Cu/ Zn disorder}\label{eris_band_tailing}
+\section{**Outlook: Electronic band tailing in {\CZTS} from Monte Carlo simulations of Cu/ Zn disorder}\label{eris_band_tailing}
 Although $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects have been predicted to produce only shallow defect levels within the band gap of the material \cite{defects_Chen}, their presence could be linked to band tailing in the material, as described in section \ref{defects_impact}. 
 Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge relative to that of a perfect material, such as that shown in Fig. \ref{pankove_elec_fluc}. Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. 
 \begin{figure}[h!]
@@ -1326,10 +1328,10 @@ As discussed in  section \ref{CZTS_defects_lit}, fluctuations in electrostatic p
 
 To quantify the contribution to electronic band tailing from fluctuations in electrostatic potential caused by $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites, we use the distribution of on-site electrostatic potentials of species in our disordered lattice configurations to infer perturbations to the band edges compared to the perfect, bulk material. From the study presented in the previous section, we showed that 3D Cu/ Zn disorder was an important mechanism in the Cu/ Zn ODT, we therefore use configurations generated from our Monte Carlo model with 3D Cu/ Zn disorder. The electronic band structure of {\CZTS} and composition of the frontier orbitals is shown in Fig. \ref{CZTS_band_structure}. Due to the composition of the VBM and CBM of {\CZTS} we use the distribution of Cu and Sn potentials to infer band tailing of the VBM and CBM respectively. This investigation is presented in the following paper.
 
-**Add statement of authorship form as pdf**
+
 
 %\subsection{**Statement of authorship}
-I generated the disordered lattice configurations in this investigation using the bespoke Monte Carlo model (Eris) outlined in the previous section, added additional routines to the Eris code to output lattice potentials in various formats for this investigation and developed post-processing scripts to analyse data. Support and discussions were provided by Jarvist Moore Frost and Aron Walsh throughout this study.
+%I generated the disordered lattice configurations in this investigation using the bespoke Monte Carlo model (Eris) outlined in the previous section, added additional routines to the Eris code to output lattice potentials in various formats for this investigation and developed post-processing scripts to analyse data. Support and discussions were provided by Jarvist Moore Frost and Aron Walsh throughout this study.
 
 Ideas for band tailing letter:
 \begin{itemize}
@@ -1403,7 +1405,9 @@ The supplemental material for this paper is included in Appendix \ref{App_sulfos
 
 %** Review this section again later + statement about work conducted by Lee **
 
-In the study in the previous section, three candidate photoferroic materials were identified from the dataset of approximately 200 naturally occurring minerals. This choice of initial dataset was motivated by the high stability that could be expected for naturally occurring minerals. However, with the availability of materials properties databases and tools for screening such databases, there are much larger search spaces for materials discovery and it may be possible to identify better materials from such a resource. For this reason, an ongoing study is being conducted in collaboration with Lee A. Burton to perform a similar screening procedure using the Materials Project \cite{materials_project}. All screening of the Materials project and subsequent calculations are being conducted by L. Burton. Therefore, here just the motivations and modified screening criteria are outlined as this is my main contribution to the study.
+In the study in the previous section, three candidate photoferroic materials were identified from the dataset of approximately 200 naturally occurring minerals. This choice of initial dataset was motivated by the high stability that could be expected for naturally occurring minerals. However, the availability of various materials properties databases \cite{materials_project, aflowlib, NREL_data, TE_database, cmr, NOMAD} and utilisation of high-throughput density functional theory (DFT) calculations \cite{MP_highthroughput, HT_therm_cond, HT_properties} is opening up new avenues for materials discovery for various technologies \cite{roadmap} such as energy-generation with thermoelectrics \cite{thermoelectrics_rev, HT_thermoelectrics_1, HT_thermoelectrics_2} and photovoltaics \cite{SLME_screening, HT_PV, perovskite_screening_1, perovskite_screening_2, OPV_screening}.
+Consequently, there are much larger search spaces for materials discovery and it may be possible to identify better materials from such a resource. 
+For this reason, an ongoing study is being conducted in collaboration with Lee A. Burton to perform a similar screening procedure to that in the previous section but instead using the Materials Project \cite{materials_project} database. All screening of the Materials Project and subsequent calculations are being conducted by L. Burton. Therefore, here just the motivations and modified screening criteria are outlined as this is my main contribution to the study.
 %and some preliminary results of this subsequent search are outlined.
 
 As we do not start from a dataset of naturally occurring minerals in this extension, we limit our search space to only stable materials by considering only compounds with energies less than 24 meV above the thermodynamic convex hull. We also only consider compounds composed of 4 or less elements to avoid materials that are likely to be particularly challenging to synthesise. 
@@ -1423,7 +1427,7 @@ In \autoref{chap:screening} three candidate photoferroic materials were identifi
 
 %Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
-\section{**Publication: `Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching'}\label{sulfosalt_band_alignment}
+\section{Publication: `Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching'}\label{sulfosalt_band_alignment}
 
 To develop a high-performance solar cell device, the full device architecture must be optimised for the specific absorber layer. This optimisation process can be a barrier to the utilisation of new solar cell technologies. It is often the case that device architectures optimised for different absorber materials are used for new PV absorbers, which are not necessarily optimal, resulting in reduced device performance. Examples include the use of a typical architecture optimised for Cu(In,Ga)Se$_2$ (CIGS) solar cell technologies for CuSbS$_2$ \cite{CAS_alignment} and also for one of the candidate absorber layers in this study {\enargite} \cite{enargite_SC}. In this work the aim is to use theory to accelerate device optimisation with suggestions for suitable solar cell heterojunction partners for two of the candidate absorber layers identified in \autoref{chap:screening}. 
 
@@ -1431,7 +1435,8 @@ Although it may be possible to achieve photovoltaic energy conversion without a 
 
 The supplemental material for this work is included in Appendix \ref{jp_appendix}
 
-**Add statement of authorship form as pdf**
+%**Add statement of authorship form as pdf**
+\includepdf[pages={1-},scale=1.0]{papers/JunctionPartners_soa.pdf}
 
 %\subsection{**Statement of authorship}
 %For this study I performed electronic structure calculations with the VASP \cite{VASP} software package for the volume relaxation of bulk unit cells from which Y. Hinuma cut all non-polar, symmetric slab terminations using methodology in Ref. \citenum{Yoyo}. I then performed electronic structure calculations, again with VASP, for the the slab models. Ionisation potentials of the slab models were obtained using MacroDensity python libraries (doi: 10.5281/zenodo.884521). The workflow I used for screening by electronic band offsets and minimal strain interfaces utilised ElectronLatticeMatch python libraries \cite{ELS}, developed by K. T. Butler. Band alignment plots were generated using the bapt software package \cite{bapt}. Throughout this work, support and discussions were provided by K. T. Butler for utilising the python libraries and performing electronic structure calculations for the slab models.
@@ -1767,14 +1772,14 @@ Overview of optical properties predicted in paper1. Opportunity to explore possi
 % appendices come here
 \chapter{Appendix}
 
-\section{**Supplemental material for: `Order-disorder transitions in {\CZTS} from Monte Carlo simulations'}\label{eris1_appendix}
+\section{Supplemental material for: `Order-disorder transitions in {\CZTS} from Monte Carlo simulations'}\label{eris1_appendix}
 \includepdf[pages={1-},scale=1.0]{papers/Eris1_SI_re-write.pdf}
 
 \section{Supplemental material for: `Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite and bournonite'}\label{App_sulfosalts1}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
 
 
-\section{**Supplemental material for: `Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching'}\label{jp_appendix}
+\section{Supplemental material for: `Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching'}\label{jp_appendix}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalt_devices_SI.pdf}
 
 
