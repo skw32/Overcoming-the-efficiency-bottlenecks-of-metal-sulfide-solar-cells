@@ -328,7 +328,7 @@ The influence of the effective mass of charge carriers in a solar absorber mater
 %\end{equation}
 %Due to the translational symmetry of a crystal lattice, an eigenfunction of the one-electron Schr{\"o}dinger equation can be expressed as a sum of Bloch functions such as that shown in equation \ref{bloch}, to give equation \ref{bloch_sum}. The one-electron wavefunctions therefore can be indexed by constants \textbf{k}, which are the wave vectors of the plane waves forming the `backbone' of the Bloch function. A plot of the electron eigenenergies from equation \ref{single_SE} versus \textbf{k} is known as the electronic band structure of the crystal \cite{fund_semi}.
 
-\subsection{Electrical conductivity of semiconductors}
+%\subsection{Electrical conductivity of semiconductors}
 
 The band theory of a semiconductor can also be used to understand the electrical conductivity of the material. At 0 K, electrons have no kinetic energy and therefore occupy the lowest energy states available, where the energy of the highest energy state filled is called the Fermi energy, E$_F$. However at finite-temperatures, electrons may have sufficient kinetic energy to access higher energy states above E$_F$, leaving behind some empty states below E$_F$. The distribution for electrons in thermal equilibrium at finite-temperatures is described by Fermi-Dirac statistics, where Eq. \ref{fermi-dirac} gives the probability that an electronic state of energy E will be occupied at some temperature T, where k$_B$ is the Boltzmann constant \cite{Nelson3}.
 \begin{equation}\label{fermi-dirac}
@@ -489,27 +489,41 @@ When defects are present at sufficiently low concentrations such that defect-def
 Typically deep levels are thought to be the most detrimental to solar cell device performance \cite{Stoneham_killer_defects}. 
 Defects that produce mid-gap states act as Shockley-Read-Hall recombination sites \cite{SRH}, which is regarded as the most important recombination process in real, non-perfect semiconductors. It is a form of non-radiative recombination where a charge carrier is trapped in the defect state before recombining with a charge carrier of opposite polarity. This type of recombination is known to be detrimental to device performance as it essentially results in energy input from sunlight not being converted into electricity \cite{Nelson4}.
 
-\subsubsection{High defect concentrations}
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.9\textwidth]{figures/bs2+pankove.png}
-    \caption[The influence of increased donor impurity density on the conduction band profile showing low (a), medium (b) and high (c) densities of impurities. (d) Schematic of band tailing. $\zeta_{n,p}$ are the quasi-Fermi level for electrons and holes respectively. The narrow line denotes the unperturbed density of states (DOS), while the heavy line depicts the DOS modified by heavy-doping effects. Both valence and conduction bands are shifted towards each other to give a narrowing of the band gap and the DOS is distorted, showing band tails.]{The influence of increased donor impurity density on the conduction band profile showing low (a), medium (b) and high (c) densities of impurities. Fig.~taken from Ref.~\citenum{small_semiconductor2}. (d) Schematic of band tailing. $\zeta_{n,p}$ are the quasi-Fermi level for electrons and holes respectively. The narrow line denotes the unperturbed density of states (DOS), while the heavy line depicts the DOS modified by heavy-doping effects. Both valence and conduction bands are shifted towards each other to give a narrowing of the band gap and the DOS is distorted, showing band tails. Fig.~taken from Ref.~\citenum{Pankove}.}
-  \label{bs2}
-\end{figure}
-
-The energy band model described in section \ref{BandTheorySection} has been successful in explaining many aspects of the behaviour of solids and a large amount of experimental data has supported the theoretical predictions made using the model. Its main drawback however is that it assumes a perfect, or nearly perfect, crystal lattice. It applies well to single crystals and polycrystalline substances, but omits important physical characteristics when used to study materials that are amorphous or heavily disordered such that the structure deviates significantly from the periodicity of the crystal \cite{small_semiconductor1}.
-Low concentrations of impurities and defects can be modeled by considering the introduction of distinct additional donor and acceptor energy levels within the band gap of a material (as discussed above) and the scattering of electrons and holes in the solid. 
-However, at higher defect concentrations, defect levels interact to form a band. For example, for high n-type doping the impurity band merges with the conduction band, causing a rigid shift of the conduction band towards the valence band \cite{Pankove}. The band profile can be modified with increasing donor density as shown in Fig.~\ref{bs2}a-c. 
-%to give rise to conductivity even at temperatures that are too low to produce excitation of carriers into the free conduction bands, called impurity band conduction \cite{small_semiconductor2}.
-In heavily-doped semiconductors it is possible to observe a phenomena called `band tailing', where the valence and conduction bands are shifted towards each other resulting in a narrowing of the band gap, as shown in Fig.~\ref{bs2}d \cite{Pankove}. The heavy-doping effects then result in a different emitted spectrum which can be detected by techniques such as photoluminescence (PL) spectroscopy. 
-
 \begin{figure}[h!]
   \centering
     \includegraphics[width=1.0\textwidth]{figures/PL_transitions.png}
     \caption[Basic optical transitions involved in a measurement during photoluminescence spectroscopy (a). Common emission transitions detected during photoluminescence measurements, including transitions involving defect levels (b).]{Basic optical transitions involved in a measurement during photoluminescence spectroscopy (a). Common emission transitions detected during photoluminescence measurements, including transitions involving defect levels (b). Fig.~taken from Ref.~\citenum{PL_transitions} and \citenum{Pankove} respectively.}
   \label{PL_transitions}
 \end{figure}
+
+Photoluminescence (PL) measurements are able to pick up optical signatures of defects even if they are present at low concentrations with high resolution. 
+In a PL experiment, photons with energies larger than that of the band gap excite electrons from the valence band to the conduction band, as shown in Fig.~\ref{PL_transitions}a. In addition, electrons can be excited from or to defect levels, as shown in Fig.~\ref{PL_transitions}b. When the excited electrons transition to lower energy levels, they can emit light to conserve energy, resulting in a peak in the PL spectrum. In a PL excitation experiment, the PL intensity is measured as a function of excitation photon energy. This gives an absorption profile for the defect.
+PL measurements alone however cannot be used to identify the character of a defect, this is an area where first-principles defect calculations can provide some insight \cite{defects_tutorial}.
+
+
+\subsubsection{High defect concentrations}
+The energy band model described in section \ref{BandTheorySection} has been successful in explaining many aspects of the behaviour of solids and a large amount of experimental data has supported the theoretical predictions made using the model. Its main drawback however is that it assumes a perfect, or nearly perfect, crystal lattice. It applies well to single crystals and polycrystalline substances, but omits important physical characteristics when used to study materials that are amorphous or heavily disordered such that the structure deviates significantly from the periodicity of the crystal \cite{small_semiconductor1}.
+Low concentrations of impurities and defects can be modeled by considering the introduction of distinct additional donor and acceptor energy levels within the band gap of a material (as discussed above) and the scattering of electrons and holes in the solid. 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{figures/bs2+pankove.png}
+    \caption[The influence of increased donor impurity density on the conduction band profile showing low (a), medium (b) and high (c) densities of impurities. (d) Schematic of band tailing. $\zeta_{n,p}$ are the quasi-Fermi level for electrons and holes respectively. The narrow line denotes the unperturbed density of states (DOS), while the heavy line depicts the DOS modified by heavy-doping effects. Both valence and conduction bands are shifted towards each other to give a narrowing of the band gap and the DOS is distorted, showing band tails.]{The influence of increased donor impurity density on the conduction band profile showing low (a), medium (b) and high (c) densities of impurities. Fig.~taken from Ref.~\citenum{small_semiconductor2}. (d) Schematic of band tailing. $\zeta_{n,p}$ are the quasi-Fermi level for electrons and holes respectively. The narrow line denotes the unperturbed density of states (DOS), while the heavy line depicts the DOS modified by heavy-doping effects. Both valence and conduction bands are shifted towards each other to give a narrowing of the band gap and the DOS is distorted, showing band tails. Fig.~taken from Ref.~\citenum{Pankove}.}
+  \label{bs2}
+\end{figure}
+At higher defect concentrations, it is possible to observe a phenomena called `band tailing'. At sufficiently high concentrations, defect levels interact to form a band. For example, for high n-type doping the impurity band merges with the conduction band, causing a rigid shift of the conduction band towards the valence band \cite{Pankove}. The band profile can be modified with increasing donor density as shown in Fig.~\ref{bs2}a-c. 
+%to give rise to conductivity even at temperatures that are too low to produce excitation of carriers into the free conduction bands, called impurity band conduction \cite{small_semiconductor2}.
+%In heavily-doped semiconductors it is possible to observe a phenomena called `band tailing', where the valence and conduction bands are shifted towards each other resulting in a narrowing of the band gap, as shown in Fig.~\ref{bs2}d \cite{Pankove}. 
+%The heavy-doping effects then result in a different emitted spectrum which can be detected by techniques such as photoluminescence (PL) spectroscopy. 
+
+Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.45\textwidth]{figures/urbach_fig.png}
+    \caption[Optical absorption spectrum of a typical direct band gap semiconductor with the absorption coefficient, $\alpha_{0}$, proportional to the extended density of states in the Urbach tail.]{Optical absorption spectrum of a typical direct band gap semiconductor with the absorption coefficient, $\alpha_{0}$, proportional to the extended density of states in the Urbach tail. Fig.~taken from Ref.~\citenum{thin_film_Boer}.}
+  \label{urbach_fig}
+\end{figure}
+%For disorder due to defects with a correlation length on the order of interatomic spacing, 
+Electronic band tailing can result in the absorption coefficient, $\alpha_{0}$, (which was discussed as a key property for PV materials in section \ref{PV_properties}) showing an exponential decline. This effect, illustrated in Fig.~\ref{urbach_fig}, is referred to as the Urbach tail \cite{Urbach1953} and is widely observed in disordered semiconductors \cite{thin_film_Boer}. Such tailing can be quantified by the Urbach energy and it has recently been proposed that there is a direct link between the Urbach energy and open circuit voltage deficit in standard PV materials \cite{culprit, UrbachE_Voc}.
 
 %\begin{figure}[h!]
 %  \centering
@@ -518,70 +532,9 @@ In heavily-doped semiconductors it is possible to observe a phenomena called `ba
 %  \label{pankove_band_tailing}
 %\end{figure}
 
-In a PL experiment, photons with energies larger than that of the band gap excite electrons from the valence band to the conduction band, as shown in Fig.~\ref{PL_transitions}a. In addition, electrons can be excited from or to defect levels, as shown in Fig.~\ref{PL_transitions}b. When the excited electrons transition to lower energy levels, they can emit light to conserve energy, resulting in a peak in the PL spectrum. In a photoluminescence excitation (PLE) experiment, the PL intensity is measured as a function of excitation photon energy. This gives an absorption profile for the defect. 
-%PL measurements are able to pick up optical signatures of defects even if they are only present at low concentrations with high resolution. 
-PL measurements alone however cannot be used to identify the character of a defect, this is an area where first-principles defect calculations can provide some insight \cite{defects_tutorial}. 
-
-\subsection{Impact of defects on {\CZTS} solar cells}\label{CZTS_defects_lit}
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=1.0\textwidth]{figures/CZTS+CIGS_PL.png}
-    \caption[The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV).]{The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV). Fig.~taken from Ref.~\citenum{band_tail}.}
-  \label{CZTS+CIGS_PL}
-\end{figure}
-
-In the case of {\CZTS}, predictions for the defect formation energy and defect levels in Ref.~\citenum{defects_Chen} suggest that defects which would be expected to produce a deep defect level also have a high formation energy and hence would be expected to be less likely to form.
-However, a recent theoretical study has revisited the defect physics of {\CZTS} to demonstrate that similar detrimental effects may also be possible with some shallower defects \cite{Sunghyun_killer_defects}.
-There is currently no experimental evidence on the nature of the defects that may be responsible for the latter, however, in {\CZTS} the presence of a large extent of disorder amongst Cu and Zn, and hence high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites, has been inferred from calculations of defect formation energy \cite{defects_Chen} and confirmed from several experimental studies \cite{Schorr, CZTS_Xray, CZTS_TEM}. Although these types of defects are not predicted to produce a deep defect level or linked to the recombination mechanisms investigation in Ref.~\citenum{Sunghyun_killer_defects}, it has been proposed that they may be linked to observed band tailing in {\CZTS} \cite{band_tail}.
-
-Several PL studies have been performed on kesterite-structured samples of {\CZTS}, Cu$_2$ZnSnSe$_4$ and alloys of the two. PL measurements have been performed on both full devices and polycrystalline thin-films \cite{band_tail, Gershon, Gershon_ref18, Romero, Miyamoto, Unold} and single crystals \cite{Halliday, Levcenko, Hones}. Ref.~\citenum{Halliday} compares the PL spectra for varying compositions of the sample, whereas in Ref.~\citenum{band_tail} measurements on both CIGSSe and record-efficiency CZTSSe thin films are performed in an attempt to account for the difference in the performance of these two technologies by comparing their defect-influenced PL emission spectra. Polycrystalline samples are more similar to those likely to be used in thin-film CZTS photovoltaic devices, however comparison between those measurements with single crystal measurements could enable the isolation of recombination at grain boundaries and interfaces from those due to defects in the bulk of the absorber layer. 
-%Also measurements performed on single crystals as close to perfectly stoichiometric {\CZTS} as possible are likely to be the most directly relatable to our simulations on bulk systems. 
-One feature common to all of the PL spectra from studies on kesterite samples is clear evidence of defects and disorder from the observed band tailing. 
-Fig. \ref{CZTS+CIGS_PL} shows photoluminescence (PL) spectroscopy measurements performed on CZTSSe thin films by Gokmen et al \cite{band_tail}. The Fig.~shows that there is a shift in the PL peak to lower energies (red-shifting), below the value of the band gap obtained from internal quantum efficiency (IQE) measurements performed on the same thin films. It is also noted in this study when comparing the PL spectra of CZTSSe films to that of CIGSSe films that the PL peak for CZTSSe thin films is broader and that the red-shifting was roughly twice as severe. This effect is referred to as the `band-edge tailing', where photons of energies less than the band gap of the material are emitted following photoexcitation and subsequent relaxation back to the ground state. 
-%This effect is known to be detrimental for device performance as emitted photons may then not have sufficient energy for subsequent photoexcitations in the absorber layer, the energy of the original photon may then not be converted into electricity if the photoexcited electron-hole pair recombine before the charge is collected \cite{Nelson4}.
-%The PL spectra of kesterite samples usually features a much broader peak than that observed in CIGSSe samples, such as that shown in figure \ref{CZTS+CIGS_PL}. The energy of the maximum PL peaks of kesterite samples is also usually considerably red-shifted compared to the energy of the band gap. These two features are usually attributed to band tailing caused by either spatial band gap variations or electrostatic potential fluctuations in the absorber material.  Both effects lead to a non-zero density of states (DOS) within the band gap \cite{culprit, band_tail}. 
-Measurements performed in Ref.~\citenum{band_tail} found the tailing in CZTSSe to be roughly twice as severe as that observed in higher-performing CIGSSe devices.
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.85\textwidth]{figures/Voc.png}
-    \caption[V$_{OC}$ versus band gap of high performance CZTSSe devices ($>$9\% efficiency) indicated by circles with best devices based on other photovoltaic materials shown for comparison by diamond symbols: Methyl-ammonium lead iodide (MAPI), amorphous silicon (a-Si), organic photovoltaic films (OPV), crystalline silicon (c-Si) and polycrystalline silicon (pc-Si). The oblique lines give a constant V$_{OC}$ deficit from 0.8 V to 0 V. The green points correspond to CZTSSe films that are partially ordered (PO) or partially disordered (PD) due to disorder amongst Cu and Zn.]{V$_{OC}$ versus band gap of high performance CZTSSe devices ($>$9\% efficiency) indicated by circles with best devices based on other photovoltaic materials shown for comparison by diamond symbols: Methyl-ammonium lead iodide (MAPI), amorphous silicon (a-Si), organic photovoltaic films (OPV), crystalline silicon (c-Si) and polycrystalline silicon (pc-Si). The oblique lines give a constant V$_{OC}$ deficit from 0.8 V to 0 V. The green points correspond to CZTSSe films that are partially ordered (PO) or partially disordered (PD) due to disorder amongst Cu and Zn. Fig.~taken from Ref.~\citenum{culprit}.}
-  \label{Voc}
-\end{figure}
-
-The low open circuit voltage (V$_{OC}$) relative to the band gap has been recognised as the key limiting factor on the performance of {\CZTS} solar cells \cite{culprit}. 
-The measured current density-voltage (J-V) curve of a solar cell is used to determine the solar to electric power conversion efficiency (PCE), $\eta$. The PCE of a solar cell is the ratio of power output from the solar cell ($P_{MP}$) to the power input from the Sun ($P_{in}$). This is shown in Eq. \ref{PV_efficiency}. $P_{MP}$ is given in terms of the V$_{OC}$ (the voltage from the J-V curve of the solar cell at J = 0) and the short-circuit current density, $J_{SC}$, (the current density on the J-V curve at V = 0) in Eq. \ref{P_MP}.
-For an efficient solar cell, it is desirable to have a high $J_{SC}$, a high $V_{OC}$ and a FF that is as close to 1 as possible.
-\begin{equation} \label{P_MP}
-P_{MP} = FFV_{OC}J_{SC}
-\end{equation}
-\begin{equation} \label{PV_efficiency}
-\eta = \frac{P_{MP}}{P_{in}} = \frac{FFV_{OC}J_{SC}}{P_{in}}
-\end{equation}
-As can be seen from the position of CZTSSe devices on the plot in Fig.~\ref{Voc}, the open circuit voltages measured for these devices are considerably less than that of the higher-performing CIGS devices, which have a similar value for the band gap of the material.
-In general, the main cause of V$_{OC}$ deficit in a PV device is the recombination of photogenerated charge carriers in the bulk material or at surfaces \cite{culprit}. In {\CZTS} one explanation that has been put forward is band tailing in the bulk \cite{band_tail}.
+ 
 
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.6\textwidth]{figures/pankove_elec_fluc.png}
-    \caption[The perturbation of the band edges by Coulomb interaction with inhomogeneously distributed impurities (left), leading to the formation of tail states (right). Dashed lined show the distribution of states in the unperturbed case]{The perturbation of the band edges by Coulomb interaction with inhomogeneously distributed impurities (left), leading to the formation of tail states (right). Dashed lined show the distribution of states in the unperturbed case. Fig.~taken from Ref.~\citenum{Pankove} and adapted.}
-  \label{pankove_elec_fluc}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=1.0\textwidth]{figures/pankove_band_fluc.png}
-    \caption[Energy banding of allowed levels in diamond as a function of spacing between atoms (a). Compressional strain induced in a crystal lattice by the incorporation of a large impurity atom (b). Deformation potential in the band structure due to compressional and dilational strain from an edge dislocation defect (c).]{Energy banding of allowed levels in diamond as a function of spacing between atoms (a). Compressional strain induced in a crystal lattice by the incorporation of a large impurity atom (b). Deformation potential in the band structure due to compressional and dilational strain from an edge dislocation defect (c). Fig.~taken from Ref.~\citenum{Pankove} and adapted.}
-  \label{pankove_band_fluc}
-\end{figure}
-
-Observed band tailing can be caused by either spatial band gap variations or electrostatic potential fluctuations in the material \cite{band_tail}. In the case of the latter, it is the inhomogeneous distribution of ionised defects that cause the fluctuations. An ionised donor exerts and attractive force on conduction electrons and a repulsive force on valence holes. As the defects are distributed randomly, the local interaction varies depending on the crowding of the defects. In this case the energy gap between the valence band and conduction band is maintained, as shown in Fig.~\ref{pankove_elec_fluc} and the states of each tail are spatially separated \cite{Pankove}. Defects can also result in fluctuations in the band gap of a material. For example, if an impurity atom is of a different size to the atoms of the host lattice, then this can result in a local mechanical strain, as shown in Fig.~\ref{pankove_band_fluc}b which results in a deformation potential, such as that shown in Fig.~\ref{pankove_band_fluc}c for an edge dislocation defect. Local strains can alter the separation of atoms in the crystal and, as Fig.~\ref{pankove_band_fluc}a shows, the atomic separation within a crystal has a significant impact on the band structure. Additionally, due to the narrow region of phase stability for {\CZTS}, it is also possible there may be compositional inhomogeneity and secondary phases present \cite{SandS}, which could also produce local band gap fluctuations. 
-In \autoref{chap:CZTS} of this work, a Monte Carlo model is developed to allow for the investigation of the possible contribution to band tailing in {\CZTS} from the potential fluctuations of high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites. 
-%In section \ref{sulfosalt_defects} we perform electronic structure calculations for point defects to provide the first insights into the defects physics of candidate `photoferroic' solar absorber materials for which no experimental measurements have yet been made.
-
-%** Maybe should add discussion of defect-mediated non-radiative recombination mechanisms? c.f. Sunghyun's work with CZTS and revisit this section after writing enargite defects results section **
 
 \chapter{Methodology}
 
@@ -950,12 +903,12 @@ The methodology outlined here is used in the study presented in section \ref{sul
   \label{slabs}
 \end{figure}
 
-\subsection{Surface models}
+\subsubsection{Surface models}
 To simulate a 2D surface with 3D periodic boundary conditions, it is necessary to use a suitably large vacuum gap to ensure that the two surfaces either end of the slab model do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig. \ref{slabs}b.
 For a given crystal structure, there are a large number of possible surface terminations when creating the slab model. Where experimental data is available, often this can provide guidance for which terminations are likely to be the most energetically likely to form or to be of the greatest technological interest and therefore inform the design of the slab models. In cases where there is no such experimental data, surface terminations with no net dipole perpendicular to the surface are expected to have the lower surface energies and therefore be more likely to form \cite{Tasker}. The latter informed the choice of surface terminations for the slab models used in section \ref{sulfosalt_band_alignment}.
 
 
-\subsection{Calculation of ionisation potentials}
+\subsubsection{Calculation of ionisation potentials}
 
 \begin{figure}[h!]
   \centering
@@ -984,7 +937,7 @@ The other important quantity for determining band offsets at semiconductor-semic
 
 
 
-\subsection{Electron affinity rule}
+\subsubsection{Electron affinity rule}
 Once the IPs and EAs of the two materials forming the heterojunction have been determined, the electron affinity (or Anderson's) rule can be used to calculate offsets between the conduction bands and valence bands of two semiconductors brought into contact \cite{Anderson_rule, keith_contacts}.
 To obtain the band offsets from the electron affinity rule, the vacuum level of the two heterojunctions either side of the heterojunction are aligned to the same energy, the difference between the distance between the CBM and the vacuum (EA) of each material is used to predict the CBO, as shown in Eq. \ref{CBO_calc}, where $EA_{abs}$ denotes the electron affinity of the absorber layer and $EA_{jp}$ is that of the wider-gap heterojunction partner. If $E_g$ of each material is also taken into account then the same model can be used to predict the VBO through the difference in the ionisation potentials ($IP = EA + E_g$). 
 \begin{equation}\label{CBO_calc}
@@ -1190,12 +1143,9 @@ The Metropolis algorithm creates a list of configurations through configuration 
 
 
 
-
-
-
 \chapter{Performance bottlenecks of {\CZTS} solar cells}\label{chap:CZTS}
 \section{Motivations and challenges for {\CZTS} solar cells}
-Thin-film PV is a desirable contender for terawatt-scale renewable energy generation. Kesterite-structured {\CZTS} stands out for its potential for large-scale deployment due to the abundance and non-toxicity of its elemental components, as well as sunlight-matched direct band gap of 1.5 eV \cite{CZTS_rev}. In the following letter we outline the motivations for utilising kesterites as the absorber layer in a solar cell and compare the volume of research efforts directed towards this type of solar cell technology to that for hybrid halide perovskite solar cells. We then go on to discuss some of the most likely bottlenecks preventing the advancement of this technology.
+Thin-film PV is a desirable contender for terawatt-scale renewable energy generation. Kesterite-structured {\CZTS} stands out for its potential for large-scale deployment due to the abundance and non-toxicity of its elemental components, as well as sunlight-matched direct band gap of 1.5 eV \cite{CZTS_rev}. In the following letter we outline the motivations for utilising kesterites as the absorber layer in a solar cell and compare the volume of research efforts directed towards this type of solar cell technology to that for hybrid halide perovskite solar cells. We then go on to discuss some of the most likely bottlenecks preventing the advancement of kesterite-based solar cells.
 
 \subsection{Publication: `The steady rise of kesterite solar cells'}
 %\subsection{**Statement of authorship}
@@ -1205,9 +1155,53 @@ Thin-film PV is a desirable contender for terawatt-scale renewable energy genera
 \includepdf[pages={1-},scale=1.0]{papers/CZTS_lett.pdf}
 
 
+\section{Impact of defects on {\CZTS} solar cells}\label{CZTS_defects_lit}
+Large amounts of defects and disorder in the bulk of the absorber layer was listed as one of the possible origins of the performance deficit of {\CZTS} solar cells in the letter presented in the previous section.
+The low open circuit voltage (V$_{OC}$) relative to the band gap has been recognised as the key limiting factor on the performance of {\CZTS} solar cells \cite{culprit}. 
+The measured current density-voltage (J-V) curve of a solar cell is used to determine the solar to electric power conversion efficiency (PCE), $\eta$. The PCE of a solar cell is the ratio of power output from the solar cell ($P_{MP}$) to the power input from the Sun ($P_{in}$). This is shown in Eq. \ref{PV_efficiency}. $P_{MP}$ is given in terms of the V$_{OC}$ (the voltage from the J-V curve of the solar cell at J = 0) and the short-circuit current density, $J_{SC}$, (the current density on the J-V curve at V = 0) in Eq. \ref{P_MP}.
+For an efficient solar cell, it is desirable to have a high $J_{SC}$, a high $V_{OC}$ and a FF that is as close to 1 as possible.
+\begin{equation} \label{P_MP}
+P_{MP} = FFV_{OC}J_{SC}
+\end{equation}
+\begin{equation} \label{PV_efficiency}
+\eta = \frac{P_{MP}}{P_{in}} = \frac{FFV_{OC}J_{SC}}{P_{in}}
+\end{equation}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.85\textwidth]{figures/Voc.png}
+    \caption[V$_{OC}$ versus band gap of high performance CZTSSe devices ($>$9\% efficiency) indicated by circles with best devices based on other photovoltaic materials shown for comparison by diamond symbols: Methyl-ammonium lead iodide (MAPI), amorphous silicon (a-Si), organic photovoltaic films (OPV), crystalline silicon (c-Si) and polycrystalline silicon (pc-Si). The oblique lines give a constant V$_{OC}$ deficit from 0.8 V to 0 V. The green points correspond to CZTSSe films that are partially ordered (PO) or partially disordered (PD) due to disorder amongst Cu and Zn.]{V$_{OC}$ versus band gap of high performance CZTSSe devices ($>$9\% efficiency) indicated by circles with best devices based on other photovoltaic materials shown for comparison by diamond symbols: Methyl-ammonium lead iodide (MAPI), amorphous silicon (a-Si), organic photovoltaic films (OPV), crystalline silicon (c-Si) and polycrystalline silicon (pc-Si). The oblique lines give a constant V$_{OC}$ deficit from 0.8 V to 0 V. The green points correspond to CZTSSe films that are partially ordered (PO) or partially disordered (PD) due to disorder amongst Cu and Zn. Fig.~taken from Ref.~\citenum{culprit}.}
+  \label{Voc}
+\end{figure}
+
+As can be seen from the position of CZTSSe devices on the plot in Fig.~\ref{Voc}, the open circuit voltages measured for these devices are considerably less than that of the higher-performing CIGS devices, which have a similar value for the band gap of the material.
+In general, the main cause of V$_{OC}$ deficit in a PV device is the recombination of photogenerated charge carriers in the bulk material or at surfaces \cite{culprit}. In {\CZTS} one explanation that has been put forward is band tailing in the bulk \cite{band_tail}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{figures/CZTS+CIGS_PL.png}
+    \caption[The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV).]{The internal quantum efficiency (IQE), band gap as determined from the IQE inflection point and the photoluminescence spectra of high performance devices with thin-film absorber layers of (a) CIGSSe (E$_g$ = 1.19 eV) and (b) CZTSSe (E$_g$ = 1.13 eV). Fig.~taken from Ref.~\citenum{band_tail}.}
+  \label{CZTS+CIGS_PL}
+\end{figure}
+
+Several PL studies have been performed on kesterite-structured samples of {\CZTS}, Cu$_2$ZnSnSe$_4$ and alloys of the two. PL measurements have been performed on both full devices and polycrystalline thin-films \cite{band_tail, Gershon, Gershon_ref18, Romero, Miyamoto, Unold} and single crystals \cite{Halliday, Levcenko, Hones}. Ref.~\citenum{Halliday} compares the PL spectra for varying compositions of the sample, whereas in Ref.~\citenum{band_tail} measurements on both CIGSSe and record-efficiency CZTSSe thin films are performed in an attempt to account for the difference in the performance of these two technologies by comparing their defect-influenced PL emission spectra. Polycrystalline samples are more similar to those likely to be used in thin-film CZTS photovoltaic devices, however comparison between those measurements with single crystal measurements could enable the isolation of recombination at grain boundaries and interfaces from those due to defects in the bulk of the absorber layer. 
+%Also measurements performed on single crystals as close to perfectly stoichiometric {\CZTS} as possible are likely to be the most directly relatable to our simulations on bulk systems. 
+One feature common to all of the PL spectra from studies on kesterite samples is clear evidence of defects and disorder from the observed band tailing. 
+Fig. \ref{CZTS+CIGS_PL} shows PL spectroscopy measurements performed on CZTSSe thin films by Gokmen et al \cite{band_tail}. The Fig.~shows that there is a shift in the PL peak to lower energies (red-shifting), below the value of the band gap obtained from internal quantum efficiency (IQE) measurements performed on the same thin films. It is also noted in this study when comparing the PL spectra of CZTSSe films to that of CIGSSe films that the PL peak for CZTSSe thin films is broader and that the red-shifting was roughly twice as severe. This effect is referred to as the `band-edge tailing', where photons of energies less than the band gap of the material are emitted following photoexcitation and subsequent relaxation back to the ground state. 
+%This effect is known to be detrimental for device performance as emitted photons may then not have sufficient energy for subsequent photoexcitations in the absorber layer, the energy of the original photon may then not be converted into electricity if the photoexcited electron-hole pair recombine before the charge is collected \cite{Nelson4}.
+%The PL spectra of kesterite samples usually features a much broader peak than that observed in CIGSSe samples, such as that shown in figure \ref{CZTS+CIGS_PL}. The energy of the maximum PL peaks of kesterite samples is also usually considerably red-shifted compared to the energy of the band gap. These two features are usually attributed to band tailing caused by either spatial band gap variations or electrostatic potential fluctuations in the absorber material.  Both effects lead to a non-zero density of states (DOS) within the band gap \cite{culprit, band_tail}. 
+Measurements performed in Ref.~\citenum{band_tail} found the tailing in CZTSSe to be roughly twice as severe as that observed in higher-performing CIGSSe devices.
+
+Theoretical predictions for the defect formation energy and defect transition levels in {\CZTS} in Ref.~\citenum{defects_Chen} suggest that defects which would be expected to produce a deep defect level also have a high formation energy and hence would be expected to be less likely to form.
+However, a recent theoretical study has revisited the defect physics of {\CZTS} to demonstrate that similar detrimental effects may also be possible with some shallower defects \cite{Sunghyun_killer_defects}.
+There is currently no experimental evidence on the nature of the defects that may be responsible for the latter, however, in {\CZTS} the presence of a large extent of disorder amongst Cu and Zn, and hence high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites, has been inferred from calculations of defect formation energy \cite{defects_Chen} and confirmed from several experimental studies \cite{Schorr, CZTS_Xray, CZTS_TEM}. Although these types of defects are not predicted to produce a deep defect level or linked to the recombination mechanisms investigation in Ref.~\citenum{Sunghyun_killer_defects}, it has been proposed that they may be linked to observed band tailing in {\CZTS} due to the high-concentrations of the defects \cite{band_tail}.
+
+
+
+
 \section{Defects beyond the dilute limit in {\CZTS}}\label{CZTS_beyond_dilute}
 Electronic structure calculations for the formation energies of point defects and point defect pairs in the dilute limit have already been calculated for {\CZTS}, where the [$Cu_{Zn}^- + Zn_{Cu}^+$] defect pair was found to have a particularly low formation energy \cite{defects_Chen}.
-The calculations performed in Ref.~\citenum{defects_Chen} were performed using the GGA functional with a rigid shift applied to the defect levels to account for the band gap error at this level of theory \cite{Lany_defects}. In Ref.~\citenum{defects_Chen} one defect calculation was performed using a hybrid functional where it was found that the formation energy of the test defect differed by 0.1 eV. We therefore repeated the calculation of the formation energy for the defect pair of interest for our study.
+The calculations performed in Ref.~\citenum{defects_Chen} were performed using the GGA functional with a rigid shift applied to the defect levels to account for the band gap error at this level of theory \cite{Lany_defects}. In Ref.~\citenum{defects_Chen} one defect calculation was performed using a hybrid functional where it was found that the formation energy of the test defect differed by 0.1 eV. This section of the thesis is concerned with the possible role of Cu-Zn disorder in the performance deficit of {\CZTS} solar cells. We therefore repeated the calculation of the formation energy for the defect pair of interest for our study.
 
 For our calculation of the formation energy of the nearest-neighbour [$Cu_{Zn}^- + Zn_{Cu}^+$] charge-neutral defect pair, we construct a 64-atom supercell from a $2\times2\times1$ expansion of the conventional unit cell of {\CZTS}. This was the most isotropic and largest supercell that could feasibly be used for our calculations at the level of theory desired.
 The HSE06 hybrid-functional \cite{HSE} (described toward the end of section \ref{hse_theory}) was used for the exchange-correlation functional as implemented in the Vienna Ab-initio Simulation Package (VASP) \cite{VASP} with an energy cut-off of 500 eV for the plane-wave basis set during relaxation of the defect-pair supercell. Calculations were initially performed at the gamma point (a 1x1x1 \textit{k}-point mesh) until forces on the ions converged to within 0.01 eV/ $\AA$. 
@@ -1232,10 +1226,11 @@ Even `low-temperature' synthesis procedures for {\CZTS} use annealing temperatur
 Furthermore, there is experimental evidence of high concentrations of disorder \cite{Scragg, pot_fluc_4, neutron, Schorr}, indicating the likely formation of extended defect structures beyond point defects and pairs. To simulate such defect structures in {\CZTS} a bespoke Monte Carlo model was developed. This will be outlined in the next section and is applied in the study presented in section \ref{CZTS_MC}.
 
 
-\section{Bespoke on-lattice Monte Carlo code for Cu-Zn disorder in {\CZTS}}\label{Eris}
-The Monte Carlo model for Cu-Zn disorder is analogous to the Ising model of a ferromagnet, descriptions of which can be found in many textbooks such as Ref.~\citenum{MC} and \citenum{MC_Landau}. 
+\subsection{Monte Carlo model for Cu-Zn disorder in {\CZTS}}\label{Eris}
+The on-lattice Monte Carlo model developed to simulate thermodynamic Cu-Zn disorder is analogous to the Ising model of a ferromagnet, descriptions of which can be found in many textbooks such as Ref.~\citenum{MC} and \citenum{MC_Landau}. 
 The Ising model uses interactions between spins, whereas our model considers the Coulombic interaction between the bare formal charges of ions in the lattice of {\CZTS}.
-In the case of an Ising model, the trial moves in the Metropolis algorithm are spin flips, whereas in our model the trial moves are swaps between Cu and Zn ions. Typically, when performing simulations of an Ising model the calculated quantities of interest are the internal energy and average magnetization of the system as a function of temperature obtained by summing over the distribution of atomic spins. In the case of our system, the quantities of interest are the spatial arrangement of the Cu and Zn ions due to thermodynamic substitutions between the two species and the resulting distribution of electrostatic potential across the system for the implications this could have on band tailing. 
+In the case of an Ising model, the trial moves in the Metropolis algorithm are spin flips, whereas in our model the trial moves are swaps between Cu and Zn ions. Typically, when performing simulations of an Ising model the calculated quantities of interest are the internal energy and average magnetization of the system as a function of temperature obtained by summing over the distribution of atomic spins. In the case of our system, the quantities of interest are the spatial arrangement of the Cu and Zn ions due to thermodynamic substitutions between the two species and the resulting distribution of electrostatic potential across the system.
+%for the implications this could have on band tailing. 
 
 \begin{figure}[h!]
   \centering
@@ -1244,10 +1239,10 @@ In the case of an Ising model, the trial moves in the Metropolis algorithm are s
   \label{MC_PBCs}
 \end{figure}
 
-However, before we attempt to extract any information on thermodynamic disorder or the associated band tailing we would predict from such disorder, two important considerations for our model will be firstly to determine if the disordered configuration we obtain is in fact the equilibrated configuration at the given temperature and secondly if finite size effects are having an impact on the system properties we obtain from our simulations.
-As simulations are performed for finite lattices, in order to simulate a bulk system the edges or `boundaries' of the system must be treated carefully. The boundaries can be effectively eliminated through the use of periodic boundary conditions (PBCs). In the case of an Ising model, this means that the first spin in a row interacts with the last spin in the row as if it were a nearest neighbour, and vice versa \cite{MC_Landau}. This principle is illustrated for a two-dimensional system in Fig.~\ref{MC_PBCs}. Although this procedure effectively eliminates boundary effects, the system is still characterized by the finite lattice size, L, which limits the correlation length to $\frac{L}{2}$. Resultant properties of the simulated system may then differ from the bulk system. We therefore will need to perform simulations with increasing system size to look for any differences in the quantities of interest.
+Before we attempt to extract any information on thermodynamic disorder, two important considerations for our model will be: to determine if the disordered configuration we obtain is in fact the equilibrated configuration at the given simulation temperature and secondly if finite size effects are having an impact on the system properties we obtain from our simulations.
+As simulations are performed for finite lattices, to simulate a bulk system the edges or `boundaries' of the system must be treated carefully. The boundaries can be effectively eliminated through the use of periodic boundary conditions (PBCs). In the case of an Ising model, this means that the first spin in a row interacts with the last spin in the row as if it were a nearest neighbour, and vice versa \cite{MC_Landau}. This principle is illustrated for a two-dimensional system in Fig.~\ref{MC_PBCs}. Although this procedure effectively eliminates boundary effects, the system is still characterized by the finite lattice size, L, which limits the correlation length to $\frac{L}{2}$. Resultant properties of the simulated system may then differ from the bulk system. We therefore will need to perform simulations with increasing system size to look for any differences in the quantities of interest.
 
-Determining if our system has reached equilibration at each temperature however may require a more complicated procedure. As the Monte Carlo method is stochastic, making use of sampling many times with random numbers to determine the minimum energy configuration of the system, the trajectory to reach this final configuration will by nature be random. Therefore, we can draw no conclusions about the properties of our system from evolved states until the final configuration at the particular temperature is reached. Therefore methods were developed and tested to check for equilibration before attempting to extract any thermodynamic properties of our system.
+Determining if our system has reached equilibration at each temperature however may require a more complicated procedure. As the Monte Carlo method is stochastic, making use of sampling many times with random numbers to determine the minimum energy configuration of the system, the trajectory to reach this final configuration will by nature be random. Therefore, we can draw no conclusions about the properties of our system from evolved states until the final configuration at the particular temperature is reached. Methods were developed and tested to check for equilibration before attempting to extract any thermodynamic properties of our system.
 
 \begin{figure}[h!]
   \centering
@@ -1256,11 +1251,9 @@ Determining if our system has reached equilibration at each temperature however 
   \label{ising_equil}
 \end{figure}
 
-In the case of the Ising model when, for example, determining the average magnetisation of a system at a given temperature, the simulation must be run for a suitably long time until the system has come to equilibrium at that temperature. This is referred to as the equilibration time. Once the system has equilibrated, the quantity of interest such as the magnetisation must then be measured again over a suitably long time and averaged. 
+In the case of the Ising model when, for example, determining the average magnetisation of a system at a given temperature, the simulation must be run for a suitably long time until the system has come to equilibrium at that temperature. This is referred to as the equilibration time. 
+%Once the system has equilibrated, the quantity of interest, such as the magnetisation, must then be measured again over a suitably long time and averaged. 
 To gauge if a system has reached equilibrium, in the case of the Ising model, it is common practice to run the simulation for a large number of Monte Carlo steps (MCS) (where one MCS corresponds to attempting a trial spin-flip at all sites in the system once) and looking for how the value of a quantity of interest, such as the average magnetization across the system, changes with increasing number of MCS as the simulation progresses. Equilibration is often considered as the point at which the value of a quantity of interest, which initially changes by a large amount, eventually converges to fluctuating about a steady average value. An example of this is shown in Fig.~\ref{ising_equil}a. This is dependent upon the principle that a system in equilibrium spends the overwhelming majority of its time in a small subset of states in which its properties take a narrow range of values \cite{MC}. Provided the simulation has equilibrated, the final configuration for a given system at a given temperature should always be the same regardless of the initial configuration of the simulation, this point is illustrated in Fig.~\ref{ising_equil}b.
-
-Using this principle, one way to determine if our system has reached its equilibrium configuration could be to use perfectly ordered or disordered initial lattice configurations that. Both of these initial configurations, if the simulation is allowed to evolve over a suitable number of MCS, should eventually result in the same equilibrium system configuration. It would be difficult to distinguish differences in the atomic arrangement of one 3D lattice to another by eye, therefore comparisons of the radial distribution function (RDF) for each configuration as it evolves from either an ordered or disordered initial configuration can be made. 
-Another method to check for equilibration is analogous to that shown in Fig.~\ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of the electrostatic potential at Sn sites in the system that is of interest. As we fix Sn ions in our simulation we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu-Zn disorder. One possible method to check for equilibration could be to look for a point after which the variance of the distribution of electrostatic potentials across the system has reached a steady value. Both of these methods were tested and are discussed in the study in section \ref{CZTS_MC}.
 
 \begin{figure}[h!]
   \centering
@@ -1269,17 +1262,21 @@ Another method to check for equilibration is analogous to that shown in Fig.~\re
   \label{eris_spatial_disorder}
 \end{figure}
 
-Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions will be allowed to evolve until the equilibrium configuration in terms of the arrangement of Cu and Zn atoms at the given temperature is reached. Fig. \ref{eris_spatial_disorder} shows an example output from our simulations, where the T = 0K spatial arrangement of cations in Fig.~\ref{eris_spatial_disorder}a corresponds to the perfectly ordered system and the T= 200K configuration in Fig.~\ref{eris_spatial_disorder}b shows spatial clustering of Cu and Zn ions as the system has been allowed to evolve at a finite temperature. The model is used to investigate and quantify thermodynamic Cu-Zn disorder in {\CZTS} in section \ref{CZTS_MC}. The electrostatic potential at each site in the lattice in disordered configurations can be calculated for later analysis of the distribution of electrostatic potential across the system due to Cu-Zn disorder. This will discussed further in section \ref{eris_band_tailing}. 
+Using this principle, one way to determine if our system has reached its equilibrium configuration could be to use perfectly ordered or disordered initial lattice configurations that. Both of these initial configurations, if the simulation is allowed to evolve over a suitable number of MCS, should eventually result in the same equilibrium system configuration. It would be difficult to distinguish differences in the atomic arrangement of one 3D lattice to another by eye, therefore comparisons of the pair correlation functions (PCFs) for each configuration as it evolves from either an ordered or disordered initial configuration can be made. 
+Another method to check for equilibration is analogous to that shown in Fig.~\ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of on-site electrostatic potentials in the system that is of interest. As we fix Sn ions in our simulation, we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu-Zn disorder. To check for equilibration, we look for a point after which the variance of the distribution of electrostatic potentials of Sn ions across the system has reached a steady value. Both of these methods were tested and are discussed in the study in section \ref{CZTS_MC}.
+
+Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions will be allowed to evolve until the equilibrium configuration in terms of the arrangement of Cu and Zn atoms at the given temperature is reached. Fig.~\ref{eris_spatial_disorder} shows an example output from our simulations, where Fig.~\ref{eris_spatial_disorder}a shows a perfectly ordered system at T = 0K and Fig.~\ref{eris_spatial_disorder}b shows spatial clustering of Cu and Zn ions as the system has been allowed to evolve at a finite temperature. The model is used to investigate and quantify thermodynamic Cu-Zn disorder in {\CZTS} in the study presented in the next section. 
+%The electrostatic potential at each site in the lattice in disordered configurations can be calculated for later analysis of the distribution of electrostatic potential across the system due to Cu-Zn disorder. This will discussed further in section \ref{eris_band_tailing}. 
 
 
 
 
-\section{Publication: `Order-disorder transition in {\CZTS} from Monte Carlo simulations'}\label{CZTS_MC}
-For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ \cite{defects_Chen}.
-During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
+\subsection{Publication: `Order-disorder transition in {\CZTS} from Monte Carlo simulations'}\label{CZTS_MC}
+For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisite pair \cite{defects_Chen}.
+%During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of CZTS prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. However in this study, the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly wouldn't be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. 
 
-In the following paper, we have developed a Monte Carlo model to gain atomistic insight into disorder in the cation sublattice. We consider 2D Cu/ Zn disorder (involving just substitutions amongst the cations in Cu-Zn planes) and 3D Cu/ Zn disorder (where Zn ions may also substitute onto Cu 2\textit{a} sites in Cu-Sn planes). 
+In the following paper, we have applied a bespoke Monte Carlo model to gain atomistic insight into the spatial distribution of thermodynamic disorder in the cation sublattice. We consider 2D Cu/ Zn disorder (involving just substitutions amongst the cations in Cu-Zn planes) and 3D Cu/ Zn disorder (where Zn ions may also substitute onto Cu 2\textit{a} sites in Cu-Sn planes). 
 Previous experimental studies have suggested that 2D Cu/ Zn disorder is the dominant disorder mechanism for the Cu/ Zn order-disorder transition (ODT) and that disorder on Cu 2\textit{a} sites only occurs after the ODT \cite{disorder_july}. However, more recent studies have suggested that this disorder mechanism is a part of the ODT \cite{Cu2a_expt, Cu2a_theory}.
 We extract the critical temperatures, T$_C$, for the Cu/ Zn ODT for these two Cu/ Zn disorder mechanisms, find that Zn readily substitutes into Cu-Sn planes even before the ODT and present spatial distributions of antisites from thermodynamic Cu/ Zn disorder our model.
 
@@ -1305,19 +1302,42 @@ The supplemental material for this paper is included in Appendix \ref{eris1_appe
 
 %\section{Outlook: Band tailing and modified defect physics from Cu-Zn disorder}
 %\section{Outlook: Impact of Cu-Zn disorder on solar cell performance}\label{eris_future_work}
-\section{**Outlook: Electronic band tailing in {\CZTS} from Monte Carlo simulations of Cu/ Zn disorder}\label{eris_band_tailing}
-Although $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects have been predicted to produce only shallow defect levels within the band gap of the material \cite{defects_Chen}, their presence could be linked to band tailing in the material, as described in section \ref{defects_impact}. 
-Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge relative to that of a perfect material, such as that shown in Fig. \ref{pankove_elec_fluc}. Such a tail of band states into the band gap is often referred to as a Lifshitz tail \cite{Lifshitz1964}, it can be observed experimentally and is most noticeable in heavily doped and amorphous semiconductors \cite{thin_film_Boer}. 
+\section{Electronic band tailing in {\CZTS}}\label{eris_band_tailing}
+Electronic band tailing can be caused by either spatial band gap variations or electrostatic potential fluctuations in the material \cite{band_tail} indicated in Fig~\ref{gokmen_band_tailing}a and b respectively. In the case of the former, for example, if an impurity atom is of a different size to the atoms of the host lattice, then this can result in a local mechanical strain, as shown in Fig.~\ref{pankove_band_fluc}b which results in a deformation potential, such as that shown in Fig.~\ref{pankove_band_fluc}c for an edge dislocation defect. Local strains can alter the separation of atoms in the crystal and, as Fig.~\ref{pankove_band_fluc}a shows, the atomic separation within a crystal has a significant impact on the band structure. Additionally, due to the narrow region of phase stability for {\CZTS}, it is also possible there may be compositional inhomogeneity and secondary phases present \cite{SandS}, which could also produce local band gap fluctuations.
+
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=0.45\textwidth]{figures/urbach_fig.png}
-    \caption[Optical absorption spectrum of a typical direct band gap semiconductor with the absorption coefficient, $\alpha_{0}$, proportional to the extended density of states in the Urbach tail.]{Optical absorption spectrum of a typical direct band gap semiconductor with the absorption coefficient, $\alpha_{0}$, proportional to the extended density of states in the Urbach tail. Fig.~taken from Ref.~\citenum{thin_film_Boer}.}
-  \label{urbach_fig}
+    \includegraphics[width=1.0\textwidth]{figures/pankove_band_fluc.png}
+    \caption[Energy banding of allowed levels in diamond as a function of spacing between atoms (a). Compressional strain induced in a crystal lattice by the incorporation of a large impurity atom (b). Deformation potential in the band structure due to compressional and dilational strain from an edge dislocation defect (c).]{Energy banding of allowed levels in diamond as a function of spacing between atoms (a). Compressional strain induced in a crystal lattice by the incorporation of a large impurity atom (b). Deformation potential in the band structure due to compressional and dilational strain from an edge dislocation defect (c). Fig.~taken from Ref.~\citenum{Pankove} and adapted.}
+  \label{pankove_band_fluc}
 \end{figure}
-For disorder due to defects with a correlation length on the order of interatomic spacing, the absorption coefficient, $\alpha_{0}$ (which was discussed as a key property for PV materials in section \ref{PV_properties}) shows a exponential decline. This effect, illustrated in Fig.~\ref{urbach_fig}, is referred to as the Urbach tail \cite{Urbach1953} and is widely observed in disordered semiconductors \cite{thin_film_Boer}. Such tailing can be quantified by the Urbach energy, and it has recently been proposed that there is a direct link between the Urbach energy and open circuit voltage deficit in standard photovoltaic materials \cite{culprit, UrbachE_Voc}.
 
-As discussed in section \ref{CZTS_beyond_dilute}, concentrations of $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites in {\CZTS} are expected to be beyond the dilute limit. As outlined in section \ref{CZTS_defects_lit}, severe electronic band tailing has been observed experimentally in {\CZTS} \cite{band_tail, kesterite_band_tails}. In this section, we use lattice configurations of tens of thousands of atoms with equilibrium thermodynamic Cu/ Zn substitutional disorder from our Monte Carlo model to quantify the contribution to electronic band tailing in {\CZTS} from the spatial fluctuations in electrostatic potential due to the high concentration of $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites. 
-As discussed in  section \ref{CZTS_defects_lit}, fluctuations in electrostatic potential are not the only possibly contribution to band tailing and our model cannot account for any strain effects on the band gap (shown in Fig. \ref{pankove_band_fluc}) because it is fixed on lattice. However, there are different views in the literature as to whether electrostatic potential fluctuation or band gap fluctuation, or even Cu/ Zn disorder at all, is the main contribution to the observed band tailing and performance deficit of {\CZTS} solar cells \cite{culprit, kesterite_band_tails, band_tail}. As our model considers only one contribution, we are able to isolate and quantify this specific contribution.
+In the case of electrostatic potential fluctuations, it is the inhomogeneous distribution of ionised defects that cause the fluctuations. An ionised donor exerts and attractive force on conduction electrons and a repulsive force on valence holes. As the defects are distributed randomly, the local interaction varies depending on the crowding of the defects. In this case the energy gap between the valence band and conduction band is maintained, as shown in Fig.~\ref{gokmen_band_tailing}b and the states of each tail are spatially separated \cite{Pankove}. The broadening of the PL peak measured for {\CZTS} has been attributed to spatially fluctuating electrostatic potential in the material \cite{CZTS_TEM}.
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.6\textwidth]{figures/pankove_elec_fluc.png}
+%    \caption[The perturbation of the band edges by Coulomb interaction with inhomogeneously distributed impurities (left), leading to the formation of tail states (right). Dashed lined show the distribution of states in the unperturbed case]{The perturbation of the band edges by Coulomb interaction with inhomogeneously distributed impurities (left), leading to the formation of tail states (right). Dashed lined show the distribution of states in the unperturbed case. Fig.~taken from Ref.~\citenum{Pankove} and adapted.}
+%  \label{pankove_elec_fluc}
+%\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[width=0.6\textwidth]{figures/gokmen_band_tailing.png}
+\caption[Schematic of band gap fluctuations (a) and electrostatic potential fluctuations (b) where the band gap is only maintained in the case of (b).]{Schematic of band gap fluctuations (a) and electrostatic potential fluctuations (b) where the band gap is only maintained in the case of (b). Fig.~taken from Ref.~\citenum{band_tail}.}\label{gokmen_band_tailing}
+\end{figure}
+
+
+%Point defects in an otherwise perfect lattice can be regarded as missing lattice atoms, which are replaced by lattice defects. Therefore for every defect that creates one or more levels in the band gap of the material, the same number of levels that would have been created by the atoms in the host lattice are missing. Additionally, the lattice atoms surrounding the defect relax into shifted positions and also create states that could be shifted slightly into the band gap \cite{thin_film_Boer}. All of these states contribute to perturbations in the band edge relative to that of a perfect material, such as that shown in Fig. \ref{pankove_elec_fluc}. 
+
+%As discussed in section \ref{CZTS_beyond_dilute}, concentrations of $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites in {\CZTS} are expected to be beyond the dilute limit. As outlined in section \ref{CZTS_defects_lit}, severe electronic band tailing has been observed experimentally in {\CZTS} \cite{band_tail, kesterite_band_tails}. 
+
+%In this section, we use lattice configurations of tens of thousands of atoms with equilibrium thermodynamic Cu/ Zn substitutional disorder from our Monte Carlo model to quantify the contribution to electronic band tailing in {\CZTS} from the spatial fluctuations in electrostatic potential due to the high concentration of $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites. 
+
+
+
+\subsection{**Outlook: Quantifying the contribution of Cu-Zn disorder using Monte Carlo simulations}
+Disordered lattice configurations generated from the study presented in section \ref{CZTS_MC} could be used to quantify the possible contribution to band tailing in {\CZTS} from the potential fluctuations of due to the high concentrations of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects. 
+It is worth noting that fluctuations in electrostatic potential are not the only possible contribution to band tailing that and our model cannot account for any strain effects on the band gap (shown in Fig. \ref{pankove_band_fluc}) because it is fixed on lattice. However, there are different views in the literature as to whether electrostatic potential fluctuation or band gap fluctuation, or even Cu/ Zn disorder at all, is the main contribution to the observed band tailing and performance deficit of {\CZTS} solar cells \cite{culprit, kesterite_band_tails, band_tail}. As our model considers only one contribution, we would be able to isolate and quantify this specific contribution.
 
 \begin{figure}[h!]
   \centering
@@ -1326,21 +1346,16 @@ As discussed in  section \ref{CZTS_defects_lit}, fluctuations in electrostatic p
   \label{CZTS_band_structure}
 \end{figure}
 
-To quantify the contribution to electronic band tailing from fluctuations in electrostatic potential caused by $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites, we use the distribution of on-site electrostatic potentials of species in our disordered lattice configurations to infer perturbations to the band edges compared to the perfect, bulk material. From the study presented in the previous section, we showed that 3D Cu/ Zn disorder was an important mechanism in the Cu/ Zn ODT, we therefore use configurations generated from our Monte Carlo model with 3D Cu/ Zn disorder. The electronic band structure of {\CZTS} and composition of the frontier orbitals is shown in Fig. \ref{CZTS_band_structure}. Due to the composition of the VBM and CBM of {\CZTS} we use the distribution of Cu and Sn potentials to infer band tailing of the VBM and CBM respectively. This investigation is presented in the following paper.
+To quantify the contribution to electronic band tailing from fluctuations in electrostatic potential caused by $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites, the distribution of on-site electrostatic potentials of species in the disordered lattice configurations could be used to infer perturbations to the band edges compared to the perfect, bulk material. From the study presented in previous section \ref{CZTS_MC}, we showed that 3D Cu/ Zn disorder was an important mechanism in the Cu/ Zn ODT, we therefore would use configurations generated from our Monte Carlo model with 3D Cu/ Zn disorder. The electronic band structure of {\CZTS} and composition of the frontier orbitals is shown in Fig. \ref{CZTS_band_structure}. Due to the composition of the VBM and CBM of {\CZTS} we use the distribution of Cu and Sn potentials to infer band tailing of the VBM and CBM respectively.
 
-
-
-%\subsection{**Statement of authorship}
-%I generated the disordered lattice configurations in this investigation using the bespoke Monte Carlo model (Eris) outlined in the previous section, added additional routines to the Eris code to output lattice potentials in various formats for this investigation and developed post-processing scripts to analyse data. Support and discussions were provided by Jarvist Moore Frost and Aron Walsh throughout this study.
-
-Ideas for band tailing letter:
+Ideas for preliminary band tailing results:
 \begin{itemize}
-\item Show e.g. of 2D hist plot with region of $Zn_{Cu}^{+}$ in Cu-Sn layer and corresponding pot fluc of neighbouring Sn's and comment on scanning transmission electron microscopy measurements of clusters of $Zn_{Cu}^{+}$ \cite{Zn-on-Cu_clusters}.
-\item s.d. or range of FWHM of potential distribution w.r.t T (smoothed/ appended over multiple random seed re-runs)? - comparison between this and Q vs. T plot indicates difference between a macroscopic average and the microscopic fluctuations that will interact with photocarriers
-\item Histograms/ kde plots of potential distribution (normal dist or double pot?)
-\item 2D on-site potential - mean potential histograms (comparisons for different random seeds)
-\item Generate 1D plot along y=x to show two well and peak... relate to band fluctuation schematics in literature?
+\item Outline comparison between Eris and Gulp for calculating on-site potential not with an Ewald sum (gives error bar of approx 0.01V? - show excel fig.)
+\item Show e.g. of 2D hist plot with region of $Zn_{Cu}^{+}$ in Cu-Sn layer and corresponding pot fluc of neighbouring Sn's and comment on scanning transmission electron microscopy measurements of clusters of $Zn_{Cu}^{+}$ \cite{Zn-on-Cu_clusters} and in Mendis work (see draft letter tex doc)
+\item kde plots of potential distribution just before, during and after ODT
+\item Idea to use variance and mean of distribution to apply Gaussian broadening to electronic DOS - show e.g. of normal distributions compared to kde's? + relate back to gamma parameter in gokmen fig
 \item See band tailing ipython notebook
+\item Ideas for scaling Eris potentials/ outlook: first convert to V by multiplying by 0.534, then use comparison of on-site potentials for near-neighbours to defects in VASP and Eris to determine a scaling factor to account for screening from rearrangement of electronic structure in the closest vicinity to the defect? -- or just outline limitation that currently the model cannot account for electronic screening of defect on-site potentials
 \end{itemize}
 
 
@@ -1427,10 +1442,13 @@ In \autoref{chap:screening} three candidate photoferroic materials were identifi
 
 %Statement to justify choice of continuing study just for enargite and bournonite (high content of Ag in stephanite, solar cells already attempted with enargite, other interests in bournonite, etc (see start of sulfosalts defects write up)
 
-\section{Publication: `Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching'}\label{sulfosalt_band_alignment}
+\section{Development of solar cell device architectures}
+To develop a high-performance solar cell device, the full device architecture must be optimised for the specific absorber layer. This optimisation process can be a barrier to the utilisation of new solar cell technologies. It is often the case that device architectures optimised for different absorber materials are used for new PV absorbers, which are not necessarily optimal, resulting in reduced device performance. Examples include the use of a typical architecture optimised for Cu(In,Ga)Se$_2$ (CIGS) solar cell technologies for CuSbS$_2$ \cite{CAS_alignment} and also for one of the candidate absorber layers in this study {\enargite} \cite{enargite_SC}.
 
-To develop a high-performance solar cell device, the full device architecture must be optimised for the specific absorber layer. This optimisation process can be a barrier to the utilisation of new solar cell technologies. It is often the case that device architectures optimised for different absorber materials are used for new PV absorbers, which are not necessarily optimal, resulting in reduced device performance. Examples include the use of a typical architecture optimised for Cu(In,Ga)Se$_2$ (CIGS) solar cell technologies for CuSbS$_2$ \cite{CAS_alignment} and also for one of the candidate absorber layers in this study {\enargite} \cite{enargite_SC}. In this work the aim is to use theory to accelerate device optimisation with suggestions for suitable solar cell heterojunction partners for two of the candidate absorber layers identified in \autoref{chap:screening}. 
 
+\subsection{Publication: `Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching'}\label{sulfosalt_band_alignment}
+
+ The study presented here aims to use theory to accelerate device optimisation for two of the candidate absorber layers identified in \autoref{chap:screening} with suggestions for suitable solar cell heterojunction partners. 
 Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction for photoferroic absorbers, as described in section \ref{ferroPVsection}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation. The following work is a data mining procedure to determine suitable junction partners for two of the candidate absorber materials from \autoref{chap:screening}. Insights for optimal electronic band offsets for a solar cell heterojunction are based on studies performed for PV absorbers CdTe \cite{CdTe_spike}, CIGS \cite{p-type_spike} and ZnSnN$_2$ \cite{Elisabetta}.
 
 The supplemental material for this work is included in Appendix \ref{jp_appendix}
@@ -1447,7 +1465,7 @@ The supplemental material for this work is included in Appendix \ref{jp_appendix
 
 \section{Predicting and tuning defect-tolerance from electronic structure}\label{sulfosalt_defects}
 
-Although cation disorder could be less prevalent in the multi-component absorber materials identified in \autoref{chap:screening} than Cu-Zn disorder in {\CZTS} (which was the topic of \autoref{chap:CZTS}) due to less chemical similarity of the components, this does not rule out other origins of performance limitation for these materials. For example, there is the possibility of other types of defects and non-optimal device architectures, which could have a detrimental impact on solar cell performance. For the latter, the work in the previous section proposed solar cell heterojunction partners for {\enargite} and {\bournonite} as a contribution towards an optimised device architecture for these absorber layers. This section focuses on the defect physics of new solar cell absorber layers and using knowledge gained from studies of more mature PV technologies to infer the likely impact of defects on the PV performance of new absorber layers. Although \autoref{chap:CZTS} dealt with large-scale extended antisite defects in {\CZTS}, for new absorber materials an important foundation for understanding the defect physics is to first consider point defects as, essentially, larger-scale disordered structures are formed from these smaller units. In this section, the beginning of a study to explore the defect physics of {\enargite} is presented and hypotheses for predicting the impact of defects on PV performance are discussed as suggestions for future analysis to perform with this data.
+Although cation disorder could be less prevalent in the multi-component absorber materials identified in \autoref{chap:screening} than Cu-Zn disorder in {\CZTS} (which was the topic of \autoref{chap:CZTS}) due to less chemical similarity of the components, this does not rule out other origins of performance limitation for these materials. For example, there is the possibility of other types of defects and non-optimal device architectures, which could have a detrimental impact on solar cell performance. For the latter, the work in the previous section proposed solar cell heterojunction partners for {\enargite} and {\bournonite} as a contribution towards an optimised device architecture for these absorber layers. This section focuses on the defect physics of solar cell absorber layers and using knowledge gained from studies of more mature PV technologies to infer the likely impact of defects on the PV performance of new absorber layers. Although \autoref{chap:CZTS} dealt with large-scale extended antisite defects in {\CZTS}, for new absorber materials an important foundation for understanding the defect physics is to first consider point defects as, essentially, larger-scale disordered structures are formed from these smaller units. In this section, the beginning of a study to explore the defect physics of {\enargite} is presented and hypotheses for predicting the impact of defects on PV performance are discussed as suggestions for future analysis to perform with this data.
 
 
 
@@ -1684,7 +1702,7 @@ The fermi level is initially referenced to the VBM of the perfect host and set t
 %'They calculated the diffusion barriers and the defect concentrations vs annealing time'
 %+ c.f Stoneham -- 'Stoneham often argues that interstitials are not kinetically stable and even if formed they will be “swept” out in most cases. He had good intuition'\\
 
-\subsubsection{Outlook: Impact of defects on device performance}
+\subsubsection{Impact of defects on device performance}
 In this section, analysis that could be performed once the datasets from Tables \ref{enargite_neutral_Ef} and \ref{enargite_charged_Ef} have been completed is discussed. In the final section of this chapter recent literature on the impact of defect physics on the performance of PV materials and defect tolerance studies are discussed. The chapter ends by outlining some hypotheses for predicting the impact of defects on device performance which could be tested with a complete dataset from the case study with {\enargite}.\\
 
 Next just show e.g. of analysis from Chen's paper (with concentration maps, discuss transition levels and bullet point analysis, possible importance of considering defect pairs and clusters in multicomponent semiconductors + finish with defect physics hypotheses which could be tested with this case study and highlight recent PV material defect physics literature and defect tolerance studies.\\
@@ -1706,7 +1724,7 @@ From concentration maps (formation E vs fermi energy, Ef) comment on:
 
 Determine `deep' defects and species chemical potentials to suppress formation of such defects, discuss possibility of benign defect pairs (c.f. Aron's defect-tolerance review) and encouraging formation to passivate detrimental defects
 
-\subsubsection{Outlook: Hypotheses to test for predicting the defect physics of new solar absorbers}
+\subsubsection{Hypotheses to test for predicting the defect physics of new solar absorbers}
 
 Highlight both the challenge (very idiosyncratic property of a material with interplay of many subtle effects) but also huge reward in developing reliable predictors for the impact of defects on solar cell performance - especially given computational expense (large supercells and hse are often needed for large datasets)... and I ran out of time trying to do this during my PhD!
 
@@ -1742,7 +1760,7 @@ Highlight both the challenge (very idiosyncratic property of a material with int
 \chapter{Closing remarks}
 Again outline two main components of work: exploring one possible bottleneck on performance of existing PV tech and also identifying new absorber materials to enable exploration of alternative pathways to high-performance solar cell.
 
-\section{**Cu/ Zn disorder in {\CZTS} solar cells}
+\section{**Cu-Zn disorder in {\CZTS} solar cells}
 Summarise results of paper1 + could also adapt our MC model to simulate off-stoichiometric CZTS to see if Cu-Zn disorder could be suppressed in these systems. Summarise results of band tailing letter. If band tails from Cu-Zn disorder are small, maybe here would be a good point to mention possibility of reduced Sn defect formation energy in regions of inhomogeneous electrostatic potential due to Cu-Zn disorder??
 \begin{itemize}
 \item Highlight main conclusion from Eris work and broader implications for PV design principles (i.e. band tailing, cation disorder in multicomponent semiconductors with chemically similar components... tunability of optical properties at expense of ease of fabrication and implications for defect physics?)
