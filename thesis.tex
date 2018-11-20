@@ -54,7 +54,7 @@
 \section*{Acknowledgments}
 No man is an island, and this was certainly the case for me during my `PhD journey'. Consequently, I have many people to thank for their time, patience, insights and inspiration. 
 
-I would firstly like to thank the Centre for Doctoral Training in Sustainable Chemical Technologies at the University of Bath for the support, opportunities and diverse training the centre has provided me with. I would like to thank all members of the Walsh group for their support and knowledge during my PhD, but I would particularly like to thank: Dr.~Jarvist Frost, Dr.~Katrine Svane, Dr.~Keith Butler, Dr.~Jonathan Skelton and my primary supervisor Prof. Aron Walsh. I would like to thank my supervisor for sharing his insights with me but also for the example he set to me during my PhD: to work hard, but also to enjoy your work with his contagious enthusiasm.
+I would firstly like to thank the Centre for Doctoral Training in Sustainable Chemical Technologies at the University of Bath for the support, opportunities and diverse training the centre has provided me with. I would like to thank all members of the Walsh group for their support and knowledge during my PhD, but I would particularly like to thank: Dr.~Jarvist Frost, Dr.~Katrine Svane, Dr.~Keith Butler, Dr.~Jonathan Skelton and my primary supervisor Prof. Aron Walsh. I would like to thank my supervisor for sharing his insights with me, but also for the example he set to me during my PhD: to work hard but also to enjoy your work with his contagious enthusiasm.
 
 Next, I would like to thank specific researchers for sharing their knowledge with me during collaborative projects or placements. Firstly, developers of the FHI-aims electronic structure software package at Duke University for taking the time to (hopefully!) make me a more informed user: Prof.~Volker Blum, Dr.~William Huhn, Tong Zhu and Victor Yu. I would also like to thank Dr.~Alin Marin Elena from the EnergyMaterials:ComputationalSolutions project for computational support. I would like to thank the many experimental scientists who have taken the time to fill in the many gaps in my knowledge and (hopefully!) make me a more realistic theorist: Prof.~David Mitzi at Duke University and researchers in the PVTEAM project: Prof.~David Fermin, Dr.~Devendra Tiwari, Prof. Laurie Peter, Prof. Mark Weller and Dr.~Jake Bowers. 
 I would also like to thank Oliver Weber, Mako Ng, Prof.~Chris Bowen and Dr.~Vaia Adamaki for their patience in the lab during my masters research project.
@@ -66,16 +66,12 @@ Finally, I would like to thank my `London family' for making a big city feel lik
 
 
 \begin{abstract}
-Write last, ideas:
-\begin{itemize}
-\item Highlight impact of solar (and better solar cells) on society
-\item Theory and simulation to predict material properties, e.g. application of new solar cell tech
-\item Introduce two major contributions simulation can make to new PV tech: improve knowledge and understanding of material for performance bottlenecks to inform synthesis routes for improvement and secondly discovery and design of new materials for specific applications
-\item Touch upon benefit of metal sulfides for PV: many have desirable optical properties for application and often earth-abundant and non-toxic constituent elements
-\item Introduce {\CZTS} (earth-abundant, non-toxic) and performance limitations for commercialisation
-\item Introduce motivations for identifying candidate photoferroic materials for PV (known materials not ideal Eg, but could provide alternative route to improve performance, `polarisation-driven charge carrier separation')
-\item Highlight defect physics as key property for PV absorber materials and link to above two points?
-\end{itemize}
+The rapid increase in computational processing power and advancement of materials simulation techniques has enabled materials simulations to contribute towards the discovery and optimisation of materials for various applications. The application forming the motivation for this study is thin-film solar cells.
+There are two main contributions that simulations could make towards the advancement of such technologies. Firstly, to improve fundamental knowledge and understanding of materials to aid in the identification of origins of performance limitations. Such knowledge can be used to assist in the development of optimised synthesis procedures for the materials and devices. 
+Secondly, simulations can allow for the discovery of new materials altogether that are not currently utilised for a given application, but may have relevant properties that are superior to materials used in existing technologies.
+
+The first results chapter in this work focuses on investigating a possible origin of the under performance of solar cells based on the earth-abundant and non-toxic candidate absorber material {\CZTS}. The second results chapter identifies candidate photoactive ferroelectric (`photoferroic') solar absorbers to enable the exploration of alternative routes for possible improvements in photovoltaic performance with solar cell technologies based on these materials. The final chapter seeks to provide insights for the optimisation of new solar cell technologies based on the absorber materials identified in the previous chapter and to further assess their likely performance in a solar cell. This chapter draws on insights gained from previous studies on more mature solar cell technologies. A key theme throughout this work is understanding the role that the defect physics of an absorber material has on determining the performance of a solar cell composed of that material.
+
 \end{abstract}
 
 \section*{Publications during the course of the PhD}
@@ -86,9 +82,9 @@ Submitted
 \item Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching\\
 SK Wallace, KT Butler, Y Hinuma, A Walsh\\
 Submitted
-\item Order-disorder transition in {\CZTS} from Monte Carlo simulations \\
+\item Atomistic insights into the order-disorder transition in {\CZTS} from Monte Carlo simulations \\
 SK Wallace, JM Frost, A Walsh\\
-Submitted
+Accepted into the Journal of Materials Chemistry A
 \item Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite, and bournonite\\
 SK Wallace, KL Svane, WP Huhn, T Zhu, DB Mitzi, V Blum, A Walsh\\ Sustainable Energy \& Fuels  (6), 1339-1350 (2017)
 \item The steady rise of Kesterite solar cells\\ SK Wallace, DB Mitzi, A Walsh\\ ACS Energy Letters 2 (4), 776-779 (2017)
@@ -1281,7 +1277,7 @@ Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions wi
 
 
 
-\subsection{Publication: Order-disorder transition in {\CZTS} from Monte Carlo simulations}\label{CZTS_MC}
+\subsection{Publication: Atomistic insights into the order-disorder transition in {\CZTS} from Monte Carlo simulations}\label{CZTS_MC}
 For {\CZTS} a lot of attention in the literature has been paid to disorder amongst Cu and Zn cations with a large amount of experimental evidence for the presence of this disorder \cite{Schorr, CZTS_Xray, CZTS_TEM} and theoretical predictions for the low formation energy of the  $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisite pair \cite{defects_Chen}.
 %During the synthesis of {\CZTS}, temperatures above room temperature are used and it is possible for some of the thermal disorder associated with the system at higher temperatures to be `frozen in' to the material as it cools to room temperature.
 Near resonant Raman spectroscopy has been used to examine thin films of {\CZTS} prepared using different thermal treatments to determine if long post-annealing cooling times could produce films with a high level of order amongst Cu and Zn cations. In this study the authors postulate that achieving a very high level of order amongst Cu and Zn could require years \cite{Katharina}. This clearly would not be a practical treatment for a PV device and so it would seem that the presence of a fairly large amount of disorder amongst Cu and Zn, and hence $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites,  is inevitable in the material. 
@@ -1823,7 +1819,7 @@ Highlight both the challenge (very idiosyncratic property of a material with int
 
 
 \chapter{Closing remarks}
-The subject of this PhD thesis has been to investigate current performance limitations of metal sulfide solar cells in the interests of utilising these technologies to contribute towards achieving the goal of terawatt-scale power production from renewable energy resources. This has led my research to take two distinct directions. Firstly, to investigate possible origins of the performance deficit of solar cells based on the earth-abundant and non-toxic candidate absorber material {\CZTS}. This was the subject of \autoref{chap:CZTS}. The second major component of this work has been to identify and assess the likely photovoltaic (PV) performance of candidate photoactive ferroelectric (`photoferroic') absorber materials to enable the exploration of possible alternative pathways to high-performance solar cells. This was the subject of \autoref{chap:screening} and \autoref{chap:insights} respectively.
+The subject of this PhD thesis has been to investigate current performance limitations of metal sulfide solar cells in the interests of utilising these technologies to contribute towards achieving the goal of terawatt-scale power production from renewable energy resources. There were two major components to this study. Firstly, to investigate possible origins of the performance deficit of solar cells based on the earth-abundant and non-toxic candidate absorber material {\CZTS}. This was the subject of \autoref{chap:CZTS}. The second major component of this work has been to identify and assess the likely photovoltaic (PV) performance of candidate photoactive ferroelectric (`photoferroic') absorber materials to enable the exploration of possible alternative pathways to high-performance solar cells. This was the subject of \autoref{chap:screening} and \autoref{chap:insights} respectively.
 
 \section{Cu/ Zn disorder in {\CZTS} solar cells}
 In \autoref{chap:CZTS} various possible origins for the open circuit voltage (V$_{OC}$) deficit and hence performance deficit of {\CZTS} solar cells were discussed and a computational model was developed to investigate one possible origin. The bespoke Monte Carlo model developed to simulate thermodynamic Cu/ Zn disorder in {\CZTS} enabled atomistic insights into the Cu/ Zn order-disorder transition. Our model indicated that this disorder process involved substitutions onto the Cu 2\textit{a} sites as well as the Cu 2\textit{c} sites and we were able to investigate the spatial distribution of $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisites at various simulation temperatures.
@@ -1838,8 +1834,10 @@ The next key step for this investigation, as discussed at the end of \autoref{ch
 
 
 \section{Photoferroic solar cells}
-A number of exciting PV phenomena have been observed in ferroelectric materials, as outlined in section \ref{ferroPVsection}, which could provide alternative pathways to achieving high-performance solar cells with enhanced local carrier separation from internal electric fields of polar crystals and the possibility of increased photovoltages.
-However, at this stage it is unclear if these novel materials will provide new pathways to high-performance or result in added complexity in solar cell fabrication, such as depolarisation fields at device interfaces \cite{FE-PV_kirchartz} or if static ferroelectric domains could act as internal diodes and hinder charge-carrier transport. Building a theoretical framework to model and gain insights into such systems would be very challenging. The aim of \autoref{chap:insights} therefore was to provide insights to aid in overcoming typical barriers to performance improvements of standard PV materials, such as detrimental defects and non-optimal device architectures, to accelerate the development of these solar cell devices to enable the investigation of possible novel PV effects in these materials. Investigating defect physics is still an on-going study. However, in section \ref{junctions} we provide suggestions for junction partners for two of the candidates identified in \autoref{chap:screening}.
+A number of exciting PV phenomena have been observed in ferroelectric materials, as outlined in section \ref{ferroPVsection}, which could provide alternative pathways to achieving high-performance solar cells with enhanced local carrier separation from internal electric fields of polar crystals and the possibility of increased photovoltages. Most known ferroelectric materials have band gaps that are considerably larger than the ideal range for solar absorption. The aim of \autoref{chap:screening} was to identify candidate photoferroic absorbers with band gaps that are well-matched to the solar spectrum.
+However, at this stage it is unclear if these novel materials will provide new pathways to high-performance or result in additional complexity in solar cell fabrication, such as depolarisation fields at device interfaces \cite{FE-PV_kirchartz} and if static ferroelectric domains could act as internal diodes to hinder charge-carrier transport. 
+%Building a theoretical framework to model and gain insights into such systems would be very challenging.
+The aim of \autoref{chap:insights} was to provide insights that may accelerate the optimisation of solar cells made from these absorbers to enable the investigation of possible novel PV effects in these materials. Investigating defect physics is still an on-going study. However, in section \ref{sulfosalt_band_alignment} we provide suggestions for junction partners for two of the candidates identified in \autoref{chap:screening}, including options for `spike-like' offsets in certain cases which are thought to result in more defect-tolerant heterojunctions in CdTe and CIGS solar cells \cite{CdTe_spike, p-type_spike}.
 
 
 \addcontentsline{toc}{chapter}{Bibliography}
@@ -1851,7 +1849,7 @@ However, at this stage it is unclear if these novel materials will provide new p
 % appendices come here
 \chapter{Appendix}
 
-\section{Supplemental material for: `Order-disorder transitions in {\CZTS} from Monte Carlo simulations'}\label{eris1_appendix}
+\section{Supplemental material for: `Atomistic insights into the order-disorder transitions in {\CZTS} from Monte Carlo simulations'}\label{eris1_appendix}
 \includepdf[pages={1-},scale=1.0]{papers/Eris1_SI_re-write.pdf}
 
 \section{Supplemental material for: `Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite and bournonite'}\label{App_sulfosalts1}
