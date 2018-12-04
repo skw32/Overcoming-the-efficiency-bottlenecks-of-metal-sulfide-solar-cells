@@ -55,7 +55,7 @@
 \section*{Acknowledgments}
 No man is an island, and this was certainly the case for me during my `PhD journey'. Consequently, I have many people to thank for their time, patience, insights and inspiration. 
 
-Firstly, I would like to thank the Centre for Doctoral Training in Sustainable Chemical Technologies at the University of Bath for the support, opportunities and diverse training the centre has provided me with. I would like to thank all members of the Walsh group for their support and knowledge during my PhD, but I would particularly like to thank: Dr.~Jarvist Frost, Dr.~Katrine Svane, Dr.~Keith Butler, Dr.~Jonathan Skelton and my primary supervisor Prof.~Aron Walsh. I would like to thank my supervisor for his ceaseless enthusiasm, trust and insights, but also for the example he set to me during my PhD: to work hard, but also to enjoy your work.
+I would like to thank the Centre for Doctoral Training in Sustainable Chemical Technologies at the University of Bath for the support, opportunities and diverse training the centre has provided me with. I would like to thank all members of the Walsh group for their support and knowledge during my PhD, but I would particularly like to thank: Dr.~Jarvist Frost, Dr.~Katrine Svane, Dr.~Keith Butler, Dr.~Jonathan Skelton and my primary supervisor Prof.~Aron Walsh. I would like to thank my supervisor for his ceaseless enthusiasm, trust and insights, but also for the example he set to me during my PhD: to work hard, but also to enjoy your work.
 
 Next, I would like to thank specific researchers for sharing their knowledge with me during collaborative projects or placements. Firstly, developers of the FHI-aims electronic structure software package at Duke University for taking the time to (hopefully!) make me a more informed user: Prof.~Volker Blum, Dr.~William Huhn, Tong Zhu and Victor Yu. I would also like to thank Dr.~Alin Marin Elena from the EnergyMaterials:ComputationalSolutions project for computational support. I would like to thank the many experimental scientists who have taken the time to fill in the many gaps in my knowledge and (hopefully!) make me a more realistic theorist: Prof.~David Mitzi at Duke University and researchers in the PVTEAM project: Prof.~David Fermin, Dr.~Devendra Tiwari, Prof. Laurie Peter, Prof. Mark Weller and Dr.~Jake Bowers. 
 I would also like to thank Oliver Weber, Mako Ng, Prof.~Chris Bowen and Dr.~Vaia Adamaki for their patience in the lab during my masters research project.
@@ -80,13 +80,13 @@ The final chapter seeks to provide insights for the optimisation of new solar ce
 \begin{etaremune}
 \item Finding a junction partner for candidate solar cell absorbers enargite and bournonite from electronic band and lattice matching\\
 SK Wallace, KT Butler, Y Hinuma, A Walsh\\
-Submitted
+In review
 \item Perspective: Dielectric and Ferroic Properties of Halide Perovskite Solar Cells\\
 JN Wilson, JM Frost, SK Wallace, A Walsh\\
 In review
-\item Atomistic insights into the order-disorder transition in {\CZTS} from Monte Carlo simulations \\
+\item Atomistic insights into the order-disorder transition in {\CZTS} solar cells from Monte Carlo simulations \\
 SK Wallace, JM Frost, A Walsh\\
-Accepted into the Journal of Materials Chemistry A
+Journal of Materials Chemistry A, 2018, DOI: 10.1039/C8TA04812F
 \item Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite, and bournonite\\
 SK Wallace, KL Svane, WP Huhn, T Zhu, DB Mitzi, V Blum, A Walsh\\ Sustainable Energy \& Fuels  (6), 1339-1350 (2017)
 \item The steady rise of Kesterite solar cells\\ SK Wallace, DB Mitzi, A Walsh\\ ACS Energy Letters 2 (4), 776-779 (2017)
@@ -954,7 +954,7 @@ The other important quantity for determining band offsets at semiconductor-semic
 
 \subsubsection{Electron affinity rule}
 Once the IPs and EAs of the two materials forming the heterojunction have been determined, the electron affinity (or Anderson's) rule can be used to calculate offsets between the conduction bands and valence bands of two semiconductors brought into contact \cite{Anderson_rule, keith_contacts}.
-To obtain the band offsets from the electron affinity rule, the vacuum level of the two heterojunctions either side of the heterojunction are aligned to the same energy, the difference between the distance between the CBM and the vacuum (EA) of each material is used to predict the CBO, as shown in Eq. \ref{CBO_calc}, where $EA_{abs}$ denotes the electron affinity of the absorber layer and $EA_{jp}$ is that of the wider-gap heterojunction partner. If $E_g$ of each material is also taken into account then the same model can be used to predict the VBO through the difference in the ionisation potentials ($IP = EA + E_g$). 
+To obtain the band offsets from the electron affinity rule, the vacuum level of the two materials either side of the heterojunction are aligned to the same energy, the difference between the distance between the CBM and the vacuum (EA) of each material is used to predict the CBO, as shown in Eq. \ref{CBO_calc}, where $EA_{abs}$ denotes the electron affinity of the absorber layer and $EA_{jp}$ is that of the wider-gap heterojunction partner. If $E_g$ of each material is also taken into account then the same model can be used to predict the VBO through the difference in the ionisation potentials ($IP = EA + E_g$). 
 \begin{equation}\label{CBO_calc}
 \Delta E_c = EA_{jp} - EA_{abs}
 \end{equation}
@@ -1151,7 +1151,7 @@ and if
 \Delta E = E_{\beta} - E_{\alpha} > 0   \quad   then   \quad   \frac{p_{\beta}}{p_{\alpha}} < 1
 \end{equation}
 
-The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration. In the case of the study presented in section \ref{CZTS_MC} this would be a substitution between a Cu and a Zn ion in an on-lattice model of {\CZTS}. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. As shown above, the relative probabilities of two states are determined by their energy difference. In the case of the on-lattice model of {\CZTS}, the change in lattice energy before and after a proposed Cu/ Zn substitution is evaluated for every trial MC move. If the relative probability is  $\geq$ 1, as shown in Eq.~\ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $e^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}. Provided a sufficiently large number of trial moves have been made, from this procedure it is possible to obtain equilibrium disordered configurations for the ions in {\CZTS} at various simulation temperatures. The model developed for {\CZTS} is discussed further in the section \ref{Eris}.
+The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration. In the case of the study presented in section \ref{CZTS_MC} \cite{eris_paper} this would be a substitution between a Cu and a Zn ion in an on-lattice model of {\CZTS}. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. As shown above, the relative probabilities of two states are determined by their energy difference. In the case of the on-lattice model of {\CZTS}, the change in lattice energy before and after a proposed Cu/ Zn substitution is evaluated for every trial MC move. If the relative probability is  $\geq$ 1, as shown in Eq.~\ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $e^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}. Provided a sufficiently large number of trial moves have been made, from this procedure it is possible to obtain equilibrium disordered configurations for the ions in {\CZTS} at various simulation temperatures. The model developed for {\CZTS} is discussed further in the section \ref{Eris}.
 
 
 
@@ -1237,7 +1237,7 @@ n = Ne^{\frac{-\Delta H}{k_BT}}
 \end{equation}
 The probability of defect formation as a function of temperature is given by the exponential expression in Eq.~\ref{defect_conc}. The defect formation energy from the DFT calculations were halved to take an average of the formation energy per defect during the formation of an antisite pair before being inserted into this expression. This is plotted against temperature in Fig.~\ref{Cu-Zn_eqm_conc}. 
 Even `low-temperature' synthesis procedures for {\CZTS} use annealing temperatures over 600K \cite{low_T_CZTS}. It can be seen from Fig.~\ref{Cu-Zn_eqm_conc} that the probability of defect formation even at 600K is much higher than what would be considered as the `dilute limit'.
-Furthermore, there is experimental evidence of high concentrations of Cu/ Zn disorder \cite{Scragg, pot_fluc_4, neutron, Schorr}, indicating the likely formation of extended defect structures beyond point defects and pairs. To simulate such defect structures in {\CZTS} a bespoke Monte Carlo model was developed. This will be outlined in the next section and is applied in the study presented in section \ref{CZTS_MC}.
+Furthermore, there is experimental evidence of high concentrations of Cu/ Zn disorder \cite{Scragg, pot_fluc_4, neutron, Schorr}, indicating the likely formation of extended defect structures beyond point defects and pairs. To simulate such defect structures in {\CZTS} a bespoke Monte Carlo model was developed. This will be outlined in the next section and is applied in the study presented in section \ref{CZTS_MC} \cite{eris_paper}.
 
 
 \subsection{Monte Carlo model for Cu/ Zn disorder in {\CZTS}}\label{Eris}
@@ -1277,7 +1277,7 @@ To gauge if a system has reached equilibrium, in the case of the Ising model, it
 \end{figure}
 
 Using this principle, one way to determine if our system has reached its equilibrium configuration could be to use perfectly ordered or disordered initial lattice configurations. Both of these initial configurations, if the simulation is allowed to evolve over a suitable number of MCS, should eventually result in the same equilibrium system configuration. It would be difficult to distinguish differences in the atomic arrangement of one 3D lattice to another by eye, therefore comparisons of the pair correlation functions (PCFs) for each configuration as it evolves from either an ordered or disordered initial configuration can be made. 
-Another method to check for equilibration is analogous to that shown in Fig.~\ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of on-site electrostatic potentials in the system that is of interest. As we fix Sn ions in our simulation, we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu/ Zn disorder. To check for equilibration, we look for a point after which the variance of the distribution of electrostatic potentials of Sn ions across the system has reached a steady value. Both of these methods were tested and are discussed in the study in section \ref{CZTS_MC}.
+Another method to check for equilibration is analogous to that shown in Fig.~\ref{ising_equil}a for the Ising model. In the case of our system, it is the distribution of on-site electrostatic potentials in the system that is of interest. As we fix Sn ions in our simulation, we calculate the on-site electrostatic potential for Sn ions to study how the chemical environment of these species is altered by Cu/ Zn disorder. To check for equilibration, we look for a point after which the variance of the distribution of electrostatic potentials of Sn ions across the system has reached a steady value. Both of these methods were tested and are discussed in the study in section \ref{CZTS_MC} \cite{eris_paper}.
 
 Monte Carlo simulations of thermodynamic substitutions between Cu and Zn ions will be allowed to evolve until the equilibrium configuration in terms of the arrangement of Cu and Zn atoms at the given temperature is reached. Fig.~\ref{eris_spatial_disorder} shows an example output from our simulations, where Fig.~\ref{eris_spatial_disorder}a shows a perfectly ordered system at T = 0K and Fig.~\ref{eris_spatial_disorder}b shows spatial clustering of Cu and Zn ions as the system has been allowed to evolve at a finite temperature. The model is used to investigate and quantify thermodynamic Cu/ Zn disorder in {\CZTS} in the study presented in the next section. 
 %The electrostatic potential at each site in the lattice in disordered configurations can be calculated for later analysis of the distribution of electrostatic potential across the system due to Cu-Zn disorder. This will discussed further in section \ref{eris_band_tailing}. 
@@ -1311,7 +1311,7 @@ The supplemental material for this paper is included in Appendix \ref{eris1_appe
 %\end{itemize}
 %Support and discussions were provided by Jarvist Moore Frost and Aron Walsh throughout this study.
 
-\includepdf[pages={1-},scale=1.0]{papers/ErisPaper1_re-write.pdf}
+\includepdf[pages={1-},scale=1.0]{papers/eris_paper.pdf}
 
 
 
@@ -1354,7 +1354,7 @@ In the case of electrostatic potential fluctuations, it is the inhomogeneous dis
 
 \subsection{Outlook: Quantifying the contribution of Cu/ Zn disorder to electronic band tailing using Monte Carlo simulations}
 
-Disordered lattice configurations generated from the study presented in section \ref{CZTS_MC} could be used to quantify the possible contribution to electronic band tailing in {\CZTS} from potential fluctuations caused by high concentrations of charged $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects. 
+Disordered lattice configurations generated from the study presented in section \ref{CZTS_MC} \cite{eris_paper} could be used to quantify the possible contribution to electronic band tailing in {\CZTS} from potential fluctuations caused by high concentrations of charged $Cu_{Zn}^{-}$ and $Zn_{Cu}^{+}$ antisite defects. 
 It is worth noting that fluctuations in electrostatic potential are not the only possible contribution to band tailing, as discussed in the previous section, and that our model cannot account for any strain effects on the band gap (shown in Fig. \ref{pankove_band_fluc}) because it is fixed on-lattice. However, there are different views in the literature as to whether it is electrostatic potential fluctuations or band gap fluctuations from Cu/ Zn disorder that is the main contribution to the observed band tailing and the performance deficit of {\CZTS} solar cells, or, if Cu/ Zn disorder is the main bottleneck to improving device efficiencies at all \cite{culprit, kesterite_band_tails, band_tail}. As our model considers only one contribution, we would be able to isolate and quantify this specific contribution.
 
 \begin{figure}[h!]
@@ -1364,7 +1364,7 @@ It is worth noting that fluctuations in electrostatic potential are not the only
   \label{CZTS_band_structure}
 \end{figure}
 
-To quantify the contribution to electronic band tailing from fluctuations in electrostatic potential caused by $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites, the distribution of on-site electrostatic potentials of species in the disordered lattice configurations obtained from our Monte Carlo model could be used to infer perturbations to the band edges compared to the perfect, bulk material. From the study presented in the previous section \ref{CZTS_MC}, we showed that 3D Cu/ Zn disorder was an important mechanism in the Cu/ Zn ODT, we therefore would use configurations generated from our Monte Carlo model with 3D Cu/ Zn disorder. The electronic band structure of {\CZTS} and composition of the frontier orbitals is shown in Fig.~\ref{CZTS_band_structure}. 
+To quantify the contribution to electronic band tailing from fluctuations in electrostatic potential caused by $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisites, the distribution of on-site electrostatic potentials of species in the disordered lattice configurations obtained from our Monte Carlo model could be used to infer perturbations to the band edges compared to the perfect, bulk material. From the study presented in the previous section \ref{CZTS_MC} \cite{eris_paper}, we showed that 3D Cu/ Zn disorder was an important mechanism in the Cu/ Zn ODT, we therefore would use configurations generated from our Monte Carlo model with 3D Cu/ Zn disorder. The electronic band structure of {\CZTS} and composition of the frontier orbitals is shown in Fig.~\ref{CZTS_band_structure}. 
 The VBM of {\CZTS} is formed from the hybridisation of Cu-3d and S-3p orbitals, while the CBM is formed from the hybridisation of Sn-5s orbitals with S-3p and 3s \cite{defects_Chen_large}. Due to the composition of the frontier orbitals of {\CZTS}, we use the potential distribution of Cu and Sn ions from our model to infer band tailing of VBM and CBM respectively.
 
 
@@ -1376,9 +1376,9 @@ The VBM of {\CZTS} is formed from the hybridisation of Cu-3d and S-3p orbitals, 
   \label{eris_vs_gulp}
 \end{figure}
 
-The calculation of on-site electrostatic potentials with the model used in the study presented in section \ref{CZTS_MC} involved a summation of all pairwise interactions over the lattice but does not make use of an Ewald summation for computing long-range interactions with periodic boundary conditions. We therefore first compare results obtained for on-site potentials for a perfect lattice and a system containing one antisite defect pair for increasing lattice sizes with our model to the General Utility Lattice Program (GULP) \cite{gulp} which does use an Ewald summation.
+The calculation of on-site electrostatic potentials with the model used in the study presented in section \ref{CZTS_MC} \cite{eris_paper} involved a summation of all pairwise interactions over the lattice but does not make use of an Ewald summation for computing long-range interactions with periodic boundary conditions. We therefore first compare results obtained for on-site potentials for a perfect lattice and a system containing one antisite defect pair for increasing lattice sizes with our model to the General Utility Lattice Program (GULP) \cite{gulp} which does use an Ewald summation.
 
-Fig.~\ref{eris_vs_gulp} shows the difference between the change in on-site potential per ion between a perfect host lattice and a host lattice with a single $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisite defect pair with system size increased from $4\times4\times4$, $8\times8\times8$, up to $12\times12\times12$ ions when calculated by our model and when calculated by GULP. The difference between values calculated with our model and with GULP for the same lattices shows a clear decrease with increased lattice size and appears to approach a plateau below 0.01V for the $12\times12\times12$ lattice, which is considerably smaller than the systems studied in section \ref{CZTS_MC}. A difference between our model and GULP could also be expected for very small lattices due to possible image interactions between the defects and their periodic images in calculations with GULP. From this we could expect that the error from not using an Ewald summation in our model when calculating on-site potentials would be of the order of 0.01V or less.
+Fig.~\ref{eris_vs_gulp} shows the difference between the change in on-site potential per ion between a perfect host lattice and a host lattice with a single $[Cu_{Zn}^{-} + Zn_{Cu}^{+}]$ antisite defect pair with system size increased from $4\times4\times4$, $8\times8\times8$, up to $12\times12\times12$ ions when calculated by our model and when calculated by GULP. The difference between values calculated with our model and with GULP for the same lattices shows a clear decrease with increased lattice size and appears to approach a plateau below 0.01V for the $12\times12\times12$ lattice, which is considerably smaller than the systems studied in section \ref{CZTS_MC} \cite{eris_paper}. A difference between our model and GULP could also be expected for very small lattices due to possible image interactions between the defects and their periodic images in calculations with GULP. From this we could expect that the error from not using an Ewald summation in our model when calculating on-site potentials would be of the order of 0.01V or less.
 
 \begin{figure}[]
   \centering
@@ -1675,7 +1675,7 @@ The formation energy for the elemental species were obtained as the total energy
 Elemental energies are given in Table \ref{enargite_elements}, formation energies of competing phases computed from these elemental values and are are given in Table \ref{enargite_stable} for stable compounds and in Table \ref{enargite_above_hull} for unstable competing phases with formation energy of up to 0.1 eV per atom above the convex hull, as listed on the Materials Project database.
 
 
-The phase diagram for enargite is shown in Fig.~\ref{enargite_p_d} with a, b and c corresponding to fixed chemical potential for Cu, S and As respectively. The grey region in each plot shows the region of phase stability for {\enargite}. This therefore determines the maximum range that the atomic chemical potentials could be tuned to influence the defect physics of {\enargite} whilst allowing for the synthesis of phase-pure material. The intersection points in chemical potential space from the enargite phase diagram are given in Table \ref{enargite_int_points}
+The phase diagram for enargite is shown in Fig.~\ref{enargite_p_d} with a, b and c corresponding to fixed chemical potential for Cu, S and As respectively. The grey region in each plot shows the region of phase stability for {\enargite}. This therefore determines the maximum range that the atomic chemical potentials could be tuned to influence the defect physics of {\enargite} whilst allowing for the synthesis of phase-pure material. The intersection points in chemical potential space from the {\enargite} phase diagram are given in Table \ref{enargite_int_points}, which define the maximum range in the values of the chemical potentials for phase-pure {\enargite}.
 
 
 
@@ -1851,7 +1851,7 @@ The aim of \autoref{chap:insights} was to provide insights that may accelerate t
 
 
 \addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{unsrt}
+\bibliographystyle{ieeetr}
 \bibliography{thesis}
 
 
@@ -1859,8 +1859,8 @@ The aim of \autoref{chap:insights} was to provide insights that may accelerate t
 % appendices come here
 \chapter{Appendix}
 
-\section{Supplemental material for: `Atomistic insights into the order-disorder transition in {\CZTS} from Monte Carlo simulations'}\label{eris1_appendix}
-\includepdf[pages={1-},scale=1.0]{papers/Eris1_SI_re-write.pdf}
+\section{Supplemental material for: `Atomistic insights into the order-disorder transition in {\CZTS} solar cells from Monte Carlo simulations'}\label{eris1_appendix}
+\includepdf[pages={1-},scale=1.0]{papers/eris_SI.pdf}
 
 \section{Supplemental material for: `Candidate photoferroic absorber materials for thin-film solar cells from naturally occurring minerals: enargite, stephanite and bournonite'}\label{App_sulfosalts1}
 \includepdf[pages={1-},scale=1.0]{papers/sulfosalts1_SI.pdf}
