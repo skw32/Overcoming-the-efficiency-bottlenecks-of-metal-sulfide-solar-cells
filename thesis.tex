@@ -240,31 +240,9 @@ The following thesis is in the `alternative format' which is a thesis incorporat
 
 \section{Models of perfect, periodic solids}\label{crystal_models}
 %Refer to: pg 28 29 35 \cite{thin_film_Boer}\\
-To relate the properties observed for a material to its underlying atomic and electronic structure, and also to predict properties that have not yet been measured, it is necessary to have a suitable model for the material. Theoretical models of crystalline solids are based around the existence of translational symmetry in a crystal lattice such that the lattice can be constructed by periodically repeating a unit cell of atoms. The Bravais lattice specifies the periodic array in which the repeated units of the crystal are arranged. A crystal lattice can therefore be described by its underlying Bravais lattice and the arrangement of atoms, ions or molecules within a particular unit cell, i.e. the basis \cite{AshcroftMermin2}. This principle is also used in electronic calculations of solid state systems through the implementation of periodic boundary conditions to simulate an infinite, bulk system using only a finite unit cell. Methodologies used in electronic structure calculations will be discussed further in section \ref{elec_struc}.
- 
-Another important concept in the theoretical modelling of periodic structures is reciprocal space and the reciprocal lattice. 
-Converting to reciprocal space enables the description of periodic features with a longer-range periodicity than the unit cell in real space, such as the motion of electrons in a crystal and phonons.
-%In the same way that any quantity that varies with time can be described as a sum of Fourier components in the frequency domain; 
-The spatial properties of a crystal can be described as a sum of components in Fourier space, otherwise known as reciprocal space or \textit{k}-space. A wave in real space can be represented by a point in reciprocal space. The reciprocal lattice of a perfect single crystal is an infinite periodic 3D array of points whose spacings are inversely proportional to the distances between the planes in the lattice in real space. Vectors in real space have dimensions of length, whereas vectors in reciprocal space have dimensions of inverse length. This can be compared directly to the wavevector $ \left(k  = \frac{2\pi}{\lambda} \right)$ of an excitation such as a phonon or a moving electron and multiplication of each coordinate of the reciprocal lattice by $\hbar$ converts reciprocal space into momentum space, as for a quantised wave $\boldsymbol{p} = \hbar \boldsymbol{k}$ \cite{Blakemore1}. 
+To relate the properties observed for a material to its underlying atomic and electronic structure, and also to predict properties that have not yet been measured, it is necessary to have a suitable model for the material. Theoretical models of crystalline solids are based around the existence of translational symmetry in a crystal lattice such that the lattice can be constructed by periodically repeating a small unit cell of atoms. The Bravais lattice specifies the periodic array in which the repeated units of the crystal are arranged. A crystal lattice can therefore be described by its underlying Bravais lattice and the arrangement of atoms, ions or molecules within a particular unit cell, i.e. the basis \cite{AshcroftMermin2}. The smallest possible unit cell that can be periodically repeated to represent the bulk, periodic crystal is called the primitive unit cell.
 
-%\begin{figure}[h!]
-%  \centering
-%    \includegraphics[width=0.5\textwidth]{figures/Wigner-Seitz.png}
-%    \caption[The Wigner-Seitz cell for the body-centred cubic Bravais lattice where there is a lattice point at its centre and on each vertex (a) and the face-centred cubic Bravais lattice (b).]{The Wigner-Seitz cell for the body-centred cubic Bravais lattice where there is a lattice point at its centre and on each vertex (a) and the face-centred cubic Bravais lattice (b). 
-    %The hexagonal faces bisect the lines joining the central point to the points on the vertices. The square faces bisect the lines joining the central point to the central points in each of the six neighbouring cubic cells. 
-%    Figure reproduced with permission from Ref.~\citenum{AshcroftMermin2}.}
-%  \label{Wigner-Seitz}
-%\end{figure}
-
-The Wigner-Seitz primitive cell is the most common choice of primitive cell with the full symmetry of the Bravais lattice. It represents the region of space around a lattice point  that is closer to that point than to any other lattice point. 
-%For example, Fig.~\ref{Wigner-Seitz}a shows the truncated octahedron that is the Wigner-Seitz cell for a body-centred cubic (bcc) lattice \cite{AshcroftMermin2}.
-The first Brillouin zone is the Wigner-Seitz primitive cell of the reciprocal lattice. The reciprocal of the bcc lattice is face-centred cubic (fcc), therefore the first Brillouin zone of the bcc lattice is the fcc Wigner-Seitz primitive cell. 
-%as shown in Fig.~\ref{Wigner-Seitz}b \cite{AshcroftMermin3}. 
-As the full symmetry of the reciprocal lattice is contained within the first Brillouin zone, it is only necessary to sample \textit{k}-points within this single unit cell of the reciprocal lattice when calculating the electronic ground state of a periodic structure.
-
-
-
-\section{Electrons in periodic solids}\label{BandTheorySection}
+\subsection{Electrons in periodic solids}\label{BandTheorySection}
 
 %** + cross-ref Prasad Ch4 **
 
@@ -282,54 +260,80 @@ original discrete energy levels are broadened into new energy levels that are so
   \label{band_Elevels}
 \end{figure}
 
-The energy distribution of the bands depends upon the electronic properties of the constituent atoms of the crystal and the strength of the bonds between them. Bands are occupied if the original molecular orbitals were occupied. The highest-energy occupied band (containing the valence electrons) is the valence band (VB). The lowest unoccupied band is the conduction band (CB). If the VB is only partially filled or if it overlaps in energy with the CB, then the solid is a metal. The availability of empty states at energies close to that of the occupied states facilitates easy scattering of valence electrons into neighbouring states, thereby allowing for the transport of heat and charge. Hence metals conduct both heat and electric current. In a semiconductor or insulator, the VB is completely full and separated from the next unoccupied CB by an energy gap called the optical band gap, E$_\mathrm{g}$ \cite{Nelson3}. In the simplest model, the CB is separated from the VB by a constant E$_\mathrm{g}$. This is called the flat band model and is often shown in schematics of junctions for PV device architectures, which will be discussed in section \ref{junctions}. In real structures, the band architecture is more complicated than this simple model, like the band structures shown later in section \ref{PV_properties} \cite{Tilley}.
+The energy distribution of the bands depends upon the electronic properties of the constituent atoms of the crystal and the strength of the bonds between them. 
+%Bands are occupied if the original molecular orbitals were occupied. 
+The highest-energy band (containing the valence electrons) is the valence band (VB). The lowest unoccupied band is the conduction band (CB). If the VB is only partially filled or if it overlaps in energy with the CB, then the solid is a metal. The availability of empty states at energies close to that of the occupied states facilitates easy scattering of valence electrons into neighbouring states, thereby allowing for the transport of heat and charge. Hence metals conduct both heat and electric current. In a semiconductor or insulator, the VB is completely full and separated from the next unoccupied CB by an energy gap called the band gap, E$_\mathrm{g}$ \cite{Nelson3}. In the simplest model, the CB is separated from the VB by a constant E$_\mathrm{g}$. This is called the flat band model and is often shown in schematics of junctions for PV device architectures, which will be discussed in section \ref{junctions}. In real structures, the band architecture is more complicated than this simple model, like the band structures shown later in section \ref{PV_properties} \cite{Tilley}.
+
+\subsection{Reciprocal space and the reciprocal lattice}
+ 
+Another important concept in the theoretical modelling of periodic structures is reciprocal space and the reciprocal lattice. 
+The spatial properties of a crystal can be described as a sum of components in Fourier space, otherwise known as reciprocal space or \textit{k}-space. 
+As a simple example, the reciprocal lattice of a perfect single crystal is an infinite periodic 3D array of points with spacings that are inversely proportional to the distances between the planes in the lattice in real space.
+%Converting to reciprocal space enables the description of periodic features with a longer-range periodicity than the unit cell in real space, such as the motion of electrons in a crystal and phonons.
+Vectors in real space have dimensions of length, whereas vectors in reciprocal space have dimensions of inverse length. This can be compared directly to the wavevector $ \left(k  = \frac{2\pi}{\lambda} \right)$ of an excitation such as a phonon or a moving electron and multiplication of each coordinate of the reciprocal lattice by $\hbar$ converts reciprocal space into momentum space, as for a quantised wave $\boldsymbol{p} = \hbar \boldsymbol{k}$ \cite{Blakemore1}.
+%In the same way that any quantity that varies with time can be described as a sum of Fourier components in the frequency domain; 
+%A wave in real space can be represented by a point in reciprocal space. 
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=0.5\textwidth]{figures/Wigner-Seitz.png}
+%    \caption[The Wigner-Seitz cell for the body-centred cubic Bravais lattice where there is a lattice point at its centre and on each vertex (a) and the face-centred cubic Bravais lattice (b).]{The Wigner-Seitz cell for the body-centred cubic Bravais lattice where there is a lattice point at its centre and on each vertex (a) and the face-centred cubic Bravais lattice (b). 
+    %The hexagonal faces bisect the lines joining the central point to the points on the vertices. The square faces bisect the lines joining the central point to the central points in each of the six neighbouring cubic cells. 
+%    Figure reproduced with permission from Ref.~\citenum{AshcroftMermin2}.}
+%  \label{Wigner-Seitz}
+%\end{figure}
+
+The Wigner-Seitz primitive cell is the most common choice of primitive cell with the full symmetry of the Bravais lattice. It represents the region of space around the real space lattice point that is closer to that point than to any other lattice point. 
+%For example, Fig.~\ref{Wigner-Seitz}a shows the truncated octahedron that is the Wigner-Seitz cell for a body-centred cubic (bcc) lattice \cite{AshcroftMermin2}.
+The Wigner-Seitz primitive cell of the reciprocal lattice is called the first Brillouin zone of the real space lattice. For example, the reciprocal of the bcc lattice is face-centred cubic (fcc), therefore the first Brillouin zone of the bcc lattice is the fcc Wigner-Seitz primitive cell. 
+%as shown in Fig.~\ref{Wigner-Seitz}b \cite{AshcroftMermin3}. 
+As the full symmetry of the reciprocal lattice is contained within the first Brillouin zone, it is only necessary to sample \textit{k}-points within this single unit cell of the reciprocal lattice when calculating the electronic ground state of a periodic structure.
 
 
 \subsection{Bloch's theorem}
 
 To understand the behaviour of electrons in solids, Bloch's theorem is invoked to describe the wave function of a particle in a periodic potential. The electron is considered as a wave propagating in a periodic structure, i.e. the periodic crystal lattice \cite{small_semiconductor1}. The Schr{\"o}dinger equation (SE) must be solved to determine the energy of electrons in a solid. 
-The energy of a single, independent electron in a perfect crystal is described by the one-electron SE, shown in Eq.~\ref{single_SE}
+The energy of a single, independent electron in a perfect crystal is described by the one-electron SE
 \begin{equation} \label{single_SE}
-\left[ \left(-\frac{\hbar^2}{2m}\right)\nabla^2 + V(\boldsymbol{r})\right]\psi = \epsilon \psi .
+\left[ \left(-\frac{\hbar^2}{2m}\right)\nabla^2 + V(\boldsymbol{r})\right]\psi = \epsilon \psi ,
 \end{equation}
-The first term in Eq.~\ref{single_SE} is the kinetic energy of the electron, $V(\boldsymbol{r})$ is the effective periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and $\epsilon$ is the eigenenergy of the electron.
-For a solid, the infinite array of atomic potentials making up the crystal must be accounted for, as opposed to just the few associated with a molecule. For this purpose the periodicity of crystalline solids, outlined in section \ref{crystal_models}, is exploited to determine the probability distribution of electrons in an infinite solid \cite{Nelson3}. 
+where the first term is the kinetic energy of the electron, $V(\boldsymbol{r})$ is the effective periodic potential energy experienced by the electron in the crystal, $\psi$ is the electron wavefunction and $\epsilon$ is the eigenenergy of the electron.
+For a solid, the infinite array of atomic potentials making up the crystal must be accounted for, as opposed to just the few associated with a molecule. For this purpose the periodicity of crystalline solids is exploited to determine the probability distribution of electrons in an infinite solid \cite{Nelson3}. 
+
 The spatial dependence of the potential experienced by an outer electron in a crystal for multi-electron systems was considered by Felix Bloch. Bloch determined that the total potential is the sum of two parts. Firstly, the electrostatic potential due to the array of atomic cores. For a perfect lattice this should have the translational periodicity of the lattice. Secondly, the potential due to all other electrons. Bloch assumed that the charge density would have the same long-term average value in every unit cell of the crystal and therefore would be periodic \cite{fund_semi}.
 The periodicity of the crystal lattice means that the probability distribution of the electrons must also be periodic, with no preference for an electron to occupy a particular site within one unit cell than any others. Furthermore, as the lattice is infinite, electrons in a periodic solid should form delocalised states which extend throughout the crystal in a similar manner to an electron in free space.
 
 %** Add figure showing Bloch function?? (like group vs phase velocity??) + c.f. other theses – use Richard Martin Fig 4.11?? **
 
-Bloch's theorem states that the wavefunction which satisfies Eq.~\ref{single_SE}, subject to a periodic potential, should be of the form shown in Eq. \ref{bloch}
+Bloch's theorem states that the wavefunction which satisfies Eq.~\ref{single_SE}, subject to a periodic potential, should be of the form
 \begin{equation} \label{bloch}
-\phi_k(\boldsymbol{r}) = U_{i\boldsymbol{k}}(\boldsymbol{r}) \mathrm{e}^{i\boldsymbol{k \cdot r}} .
+\phi_{k}(\boldsymbol{r}) = U(\boldsymbol{r}) \mathrm{e}^{i\boldsymbol{k \cdot r}}.
 \end{equation}
-This Bloch function is a product of a function $U_{i\boldsymbol{k}}(\boldsymbol{r})$, which possesses the periodicity of the lattice, and a plane wave part, where $\boldsymbol{k}$ is the wavevector of an electron propagating in the crystal bands $i$ \cite{Nelson3}.
-Due to the translational symmetry of a crystal lattice, an eigenfunction of the one-electron SE can be expressed as a sum of Bloch functions such as that shown in Eq. \ref{bloch}, to give Eq. \ref{bloch_sum} 
-\begin{equation} \label{bloch_sum}
-\psi_k(\boldsymbol{r}) = \sum_k A_k \phi_k(\boldsymbol{r}) = \sum_k A_{i\boldsymbol{k}}U_{i\boldsymbol{k}}(\boldsymbol{r}) \mathrm{e}^{i\boldsymbol{k \cdot r}} .
+The Bloch function shown in Eq.~\ref{bloch} is a product of a function $U (\boldsymbol{r})$, which possesses the periodicity of the lattice, and a plane wave part, $\mathrm{e}^{i\boldsymbol{k \cdot r}}$, where $\boldsymbol{k}$ is the wavevector of an electron in the crystal
+\cite{Nelson3}.
+As $U(\boldsymbol{r})$ is periodic, a discrete Fourier transform can be taken and Eq.~\ref{bloch} can instead be written with $U(\boldsymbol{r})$ as a sum of plane waves in reciprocal space where $\boldsymbol{G}$ are the reciprocal lattice vectors
+\begin{equation} \label{bloch_FT}
+\phi_{k}(\boldsymbol{r}) = \sum_{\boldsymbol{G}} C_{\boldsymbol{k} + \boldsymbol{G}} \mathrm{e}^{i(\boldsymbol{k} + \boldsymbol{G}) \cdot \boldsymbol{r}}.
 \end{equation}
-
 
 
 \subsection{Electronic band structure}
+The one-electron wavefunctions from Eq.~\ref{single_SE} can be solved for each electronic band and wavevector, $\boldsymbol{k}$ \cite{Nelson3}, to give the energy dispersion relation or electronic band structure of the crystal, $E(\boldsymbol{k})$ versus $\boldsymbol{k}$ \cite{fund_semi}.
+The impact of a medium with a discrete structure, such as a crystal lattice, on the energy dispersion relation of a free electron can be seen by comparing Fig.~\ref{bs1}a to Fig.~\ref{bs1}b.
+$E(\boldsymbol{k})$ of a material is usually plotted against $|\boldsymbol{k}|$ just for the most important directions in the crystal, such as that shown in Fig.~\ref{bs1}c. A periodic medium does not suppress the propagation of waves, as would be expected in disordered or amorphous structures, but introduces limiting frequencies and wavelengths for the propagation. 
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.95\textwidth]{figures/new_bs1_2.png}
-    \caption[Energy-wave vector diagrams: (a) the free electron parabola, (b) modification due to a periodic crystal lattice.]{Energy-wave vector diagrams: (a) the free electron parabola, (b) modification due to a periodic crystal lattice. Figure a and b adapted from Ref.~\citenum{small_semiconductor1}, figure c adapted from Ref.~\citenum{Nelson3}.}
+    \caption[Energy-wave vector diagrams: (a) the free electron parabola, (b) modification due to a periodic crystal lattice, (c) along crystallographic directions. ]{Energy-wave vector diagrams: (a) the free electron parabola, (b) modification due to a periodic crystal lattice, (c) along crystallographic directions. Figure a and b adapted from Ref.~\citenum{small_semiconductor1}, figure c adapted from Ref.~\citenum{Nelson3}.}
   \label{bs1}
 \end{figure}
-The one-electron wavefunctions can be indexed by constants $\boldsymbol{k}$ and $i$ \cite{fund_semi}. 
-$U_{i\boldsymbol{k}}(\boldsymbol{r})$ and electron eigenenergies, $E(\boldsymbol{k})$, from Eq. \ref{single_SE} are found by solving the SE for each band $i$ and for each $\boldsymbol{k}$ \cite{Nelson3}.
-A plot of $E(\boldsymbol{k})$ versus $\boldsymbol{k}$ is known as the energy dispersion relation or electronic band structure of the crystal \cite{fund_semi}.
-The impact of a medium with a discrete structure, such as a crystal lattice, on the energy dispersion relation of a free electron can be seen by comparing Fig.~\ref{bs1}a to Fig.~\ref{bs1}b.
-$E(\boldsymbol{k})$ of a material is usually plotted against $|\boldsymbol{k}|$ just for the most important directions in the crystal, such as that shown in Fig.~\ref{bs1}c. A periodic medium does not suppress the propagation of waves, as would be expected in disordered or amorphous structures, but introduces limiting frequencies and wavelengths for the propagation. 
 
-The parabola for the free electron (shown in  Fig.~\ref{bs1}a) is modified in a periodic crystal by the introduction of discontinuities at values of $|\boldsymbol{k}|$ corresponding to multiples of $\frac{\pi}{a}$, as shown by Fig. \ref{bs1}b \cite{small_semiconductor2}. The point $|\boldsymbol{k}| = \frac{\pi}{a}$ is the Brillouin zone boundary. At these points the electron wavefunction is a standing wave and the gradient of E(\textbf{k}) disappears \cite{Nelson3}.
-The lower limit of the wavelength is set by the lattice spacing, giving an upper limit of the wave vector, $|\boldsymbol{k}|$, of $\frac{\pi}{a}$, where a is the spacing of the planes of atoms in the direction $E(\boldsymbol{k})$ has been plotted.  The appearance of such energy gaps implies that electrons in a periodic crystal may only have kinetic energies corresponding to certain bands, whilst being free to propagate in the lattice \cite{small_semiconductor2}.
+The parabola for the free electron (shown in  Fig.~\ref{bs1}a) is modified in a periodic crystal by the introduction of discontinuities at values of $|\boldsymbol{k}|$ corresponding to multiples of $\frac{\pi}{a}$, as shown by Fig. \ref{bs1}b \cite{small_semiconductor2}. The point $|\boldsymbol{k}| = \frac{\pi}{a}$ is the Brillouin zone boundary. At these points the electron wavefunction is a standing wave and the gradient of $E(\boldsymbol{k})$ disappears \cite{Nelson3}.
+The lower limit of the wavelength is set by the lattice spacing, giving an upper limit of the wave vector, $|\boldsymbol{k}|$, of $\frac{\pi}{a}$, where $a$ is the spacing of the planes of atoms in the direction $E(\boldsymbol{k})$ has been plotted.  The appearance of such energy gaps implies that electrons in a periodic crystal may only have kinetic energies corresponding to certain bands, whilst being free to propagate in the lattice \cite{small_semiconductor2}.
 Due to the periodicity of the crystal lattice, $|\boldsymbol{k}|$  that differ by multiples of $\frac{2\pi}{a}$ cannot be distinguished and $E(\boldsymbol{k})$ repeats for $|\boldsymbol{k}| > \frac{\pi}{a}$. 
 %For most crystals, E(\textbf{k}) is identical to E(\textbf{-k}) since states with positive and negative $|\textbf{k}|$ are degenerate. 
-Therefore all information for the energy dispersion relation, E(\textbf{k}) vs. $|\boldsymbol{k}|$, of the material is contained in the range $0 < |\boldsymbol{k}| < \frac{\pi}{a}$ and so only this region needs to be plotted, as in Fig \ref{bs1}c \cite{Nelson3}. 
+Therefore, all information for the energy dispersion relation, E(\textbf{k}) vs. $|\boldsymbol{k}|$, of the material is contained in the range $0 < |\boldsymbol{k}| < \frac{\pi}{a}$ and so only this region needs to be plotted, as in Fig \ref{bs1}c \cite{Nelson3}. 
 
 A useful concept used to simplify the dynamics of an electron in a crystal lattice in the band theory of solids is that of the effective mass approximation. The effective mass is a convenient parameter determined from the curvature of the maxima and minima of the VB and CB respectively along particular paths in momentum space to account for the influence of a periodic lattice on a free carrier. This approximation enables an electron in a periodic crystal to be treated as though it were a free particle but with a different mass in calculations of charge transport \cite{small_semiconductor2}.
 %$U_{i\textbf{k}}(\mathbf{r})$ depends weakly on \textbf{k}, but this dependence is neglected in the effective mass approximation \cite{Nelson3}.
@@ -352,7 +356,7 @@ The influence of the effective mass of charge carriers in a solar absorber mater
 
 %\subsection{Electrical conductivity of semiconductors}
 
-The band theory of a semiconductor can also be used to understand the electrical conductivity of the material. At \SI{0}{K} electrons have no kinetic energy and therefore occupy the lowest energy states available, where the energy of the highest energy state filled is called the Fermi energy, E$_\mathrm{F}$. However, at finite-temperatures electrons may have sufficient kinetic energy to access higher energy states above E$_\mathrm{F}$, leaving behind some empty states below E$_\mathrm{F}$. The distribution for electrons in thermal equilibrium at finite-temperatures is described by Fermi-Dirac statistics, where Eq.~\ref{fermi-dirac} gives the probability that an electronic state of energy E will be occupied at some temperature T, where k$_\mathrm{B}$ is the Boltzmann constant \cite{Nelson3}
+The band theory of a semiconductor can also be used to understand the electrical conductivity of the material. At \SI{0}{K} electrons are classically considered to have no kinetic energy and therefore occupy the lowest energy states available. Quantum mechanically, electrons are considered to possess only a `zero point' energy at \SI{0}{K} from fluctuations in their lowest energy state due to the Heisenberg uncertainty principle. The energy of the highest energy state filled is called the Fermi energy, E$_\mathrm{F}$. However, at temperatures above \SI{0}{K}, electrons may have sufficient kinetic energy to access higher energy states above E$_\mathrm{F}$, leaving behind some empty states below E$_\mathrm{F}$. The distribution for electrons in thermal equilibrium at finite-temperatures is described by Fermi-Dirac statistics, where Eq.~\ref{fermi-dirac} gives the probability that an electronic state of energy E will be occupied at some temperature T, where k$_\mathrm{B}$ is the Boltzmann constant \cite{Nelson3}
 \begin{equation}\label{fermi-dirac}
 f(E) = \frac{1}{\mathrm{e}^{(E-E_F)/k_BT}+1} .
 \end{equation}
@@ -370,8 +374,9 @@ In a semiconductor at \SI{0}{K}, the VB is fully occupied by electrons and the C
 %  \label{energy_dispersion}
 %\end{figure}
 
+\section{Solar cell devices}
 
-\section{The photovoltaic effect}
+\subsection{The photovoltaic effect}
 A solar cell device converts incident solar energy directly into electrical energy. Solar energy can be described as either a spectrum of electromagnetic radiation, in the classical-wave theory of light, or as a flux of packets of energy (photons), in the quantum theory of light. Electrical energy is a flow of charge carriers able to do work in an external circuit \cite{spatial_resolved_book}. Voltage is generated in a solar cell device by the photovoltaic effect (PVE). The terms `solar cell' and `photovoltaic (PV) cell' are therefore often used interchangeably. The explanation for the PVE uses ideas from the quantum theory of light \cite{Nelson1}.
 
 \begin{figure}[h!]
@@ -387,19 +392,28 @@ In the absence of a driving force to separate the photoexcited electron and hole
 
 
 
-\section{Solar cell junctions}\label{junctions}
+\subsection{Solar cell junctions}\label{junctions}
 As discussed in the previous section, an electrical asymmetry is vital for the PVE. A light absorber material must be connected to an external circuit by paths of different resistance for positive and negative charge carriers, i.e. for holes and electrons. This can be provided by spatial variation in the electronic environment, such as the junction between two electronically distinct materials.
-An electrostatic field can be established by creating a junction with a gradient in the work function ($\mathrm{\Phi_W}$), electron affinity (EA) or band gap ($\mathrm{E_g}$), which are all labelled in Fig.~\ref{schottky_schematic}. The fields established by gradients in EA or $\mathrm{E_g}$ are usually small, whereas more substantial electric fields can be achieved by a gradient in $\mathrm{\Phi_W}$ \cite{Nelson5}.
-$\mathrm{\Phi_W}$ is the energy required to remove the least tightly bound electron from a material and is given in Eq.~\ref{workfunction}
+An electrostatic field can be established by creating a junction with a gradient in the work function ($\mathrm{\Phi_W}$), electron affinity (EA) or band gap ($\mathrm{E_g}$), which are all labelled in Fig.~\ref{schottky_schematic} for both a semiconductor and a metal. 
+The fields established by gradients in EA or $\mathrm{E_g}$ are usually small, whereas more substantial electric fields can be achieved by a gradient in $\mathrm{\Phi_W}$ \cite{Nelson5}.
+$\mathrm{\Phi_W}$ is the energy required to remove the least tightly bound electron from a material and is given by
 \begin{equation}\label{workfunction}
 \Phi_W = E_{vac} - E_F,
 \end{equation}
-where $E_{vac}$ is the energy of the vacuum level and $E_F$ is the Fermi level, which are both indicated in Fig.~\ref{schottky_schematic}. 
-For a metal, $\mathrm{\Phi_W}$ is defined by EA (indicated in Fig.~\ref{schottky_schematic}). For a semiconductor, $\mathrm{\Phi_W}$ is controlled by the doping of the material, since $\mathrm{E_F}$ within the band gap is dependant upon the doping. For instance, a semiconductor doped n-type will have $\mathrm{E_F}$ closer to the CB and has a smaller $\mathrm{\Phi_W}$ than if it was doped p-type. The potential difference across the junction is then the difference in $\mathrm{\Phi_W}$ of the two materials \cite{Nelson5}.
-In early PV devices, the asymmetric junction was a Schottky barrier contact between a metal and a semiconductor but now more effective p-n junctions are used in solar cells, which are formed by joining together p-type and n-type semiconductors \cite{Nelson1}.
-In both types of junction, the photovoltage generated is related to the difference in $\mathrm{\Phi_W}$ of the two materials either side of the junction and the junction will develop a photovoltage provided that it presents a barrier to majority carrier currents \cite{Nelson5}. In the next sections the formation of an electrical asymmetry at a metal-semiconductor is outlined, the limitations of this type of junction in a solar cell is explained and then the formation of an electrical asymmetry at a semiconductor-semiconductor junction is outlined.
+where $E_{vac}$ and $E_F$ are both labelled in Fig.~\ref{schottky_schematic}. $E_{vac}$ is the energy of the vacuum level (where an electron is considered to be completely separated from the material). 
+It is worth noting that the concept of the `vacuum level' here is different to that used in theoretical materials modelling (discussed later in section \ref{band_alignment_methods}) where the `vacuum level' is considered to be the energy of an electron infinitely separated from the material.
+$E_F$ is the Fermi level. At temperatures above \SI{0}{K}, $\mathrm{E_F}$ is considered the energy at which there is a 50\% chance of the state being occupied. For a metal, $\mathrm{\Phi_W}$ is defined by EA (indicated in Fig.~\ref{schottky_schematic}). For a semiconductor, $\mathrm{\Phi_W}$ can be controlled by doping of the material since $\mathrm{E_F}$ is dependant upon the doping. Doping can introduce additional possible energy states into the band gap of material, therefore doping can influence the energy of the state that has a 50\% chance of the state being occupied. For instance, a semiconductor doped n-type will have $\mathrm{E_F}$ closer to the CB and has a smaller $\mathrm{\Phi_W}$ than if it was doped p-type. 
 
-\subsection{Metal-semiconductor junctions}
+When creating a junction between materials with different $\mathrm{\Phi_W}$, the potential difference to drive photoexcited charge carriers across the junction is created by the difference in $\mathrm{\Phi_W}$ of the two materials \cite{Nelson5}.
+In early PV devices, the asymmetric junction was a Schottky barrier contact between a metal and a semiconductor but now more effective p-n junctions are used in solar cells, which are formed by joining together p-type and n-type semiconductors \cite{Nelson1}.
+In both types of junction, the junction will develop a photovoltage provided that it presents a barrier to majority carrier currents \cite{Nelson5}. In the next sections the formation of an electrical asymmetry at a metal-semiconductor is outlined, the limitations of this type of junction in a solar cell is explained and then the formation of an electrical asymmetry at a semiconductor-semiconductor junction is outlined.
+
+\subsubsection{Metal-semiconductor junctions}
+When two materials are isolated, their $\mathrm{E_F}$ are independent. When they are brought into electrical contact and allowed to reach thermal equilibrium there is no net current flow. Therefore, by definition, $\mathrm{E_F}$ must be constant across the junction \cite{PV_bands_book}. The Fermi levels must line up across the junction as shown on the right hand side of Fig.~\ref{schottky_schematic}. 
+If the two materials have different $\mathrm{\Phi_W}$, $E_{vac}$ must then change between the two materials by an amount equal to the difference in $\mathrm{\Phi_W}$ between the two materials. 
+The electrostatic field created by a gradient in the vacuum level energy is $\frac{1}{q} \nabla E_{vac}$.
+To achieve this gradient, free carriers at the junction redistribute themselves. 
+
 \begin{figure}[h!]
   \centering
     \includegraphics[width=1.0\textwidth]{figures/schottky_schematic.png}
@@ -407,13 +421,11 @@ In both types of junction, the photovoltage generated is related to the differen
   \label{schottky_schematic}
 \end{figure}
 
-When two materials are isolated, their $\mathrm{E_F}$ are independent. When they are brought into electrical contact and allowed to reach thermal equilibrium there is no net current flow. Therefore by definition $\mathrm{E_F}$ must be constant across the junction \cite{PV_bands_book}, i.e. the Fermi levels must line up as shown in Fig.~\ref{schottky_schematic}. 
-If the two materials have different $\mathrm{\Phi_W}$, the vacuum level must then change between the two materials by an amount equal to the difference in $\mathrm{\Phi_W}$ between the two materials. The electrostatic field created by a gradient in the vacuum level energy is $\frac{1}{q} \nabla E_{vac}$.
-To achieve this gradient, free carriers at the junction redistribute themselves. In the case of a junction between a metal and an n-type semiconductor, if the metal has a larger $\mathrm{\Phi_W}$ than the n-type semiconductor, electrons flow from the semiconductor to the metal. A layer of fixed positive charge in the semiconductor and a negative charge on the metal are left behind until a charge gradient builds up that is large enough to prevent any further transport of charge carriers. An electric field that still exists in a material in equilibrium is called a `built-in' electric field \cite{Nelson5}. In this case, the field would drive any excess electrons towards the positively charged side of the junction (the n-type semiconductor) and holes towards the metal side, i.e. it will provide a barrier to the flow of majority n-type carriers from the semiconductor to the metal.
+In the case of a junction between a metal and an n-type semiconductor, if the metal has a larger $\mathrm{\Phi_W}$ than the n-type semiconductor, electrons flow from the semiconductor to the metal. A layer of fixed positive charge in the semiconductor and a negative charge on the metal are left behind until a charge gradient builds up that is large enough to prevent any further transport of charge carriers. An electric field that still exists in a material in equilibrium is called a `built-in' electric field \cite{Nelson5}. In this case, the field would drive any excess electrons towards the positively charged side of the junction (the n-type semiconductor) and holes towards the metal side, i.e. it will provide a barrier to the flow of majority n-type carriers from the semiconductor to the metal.
 
 As can be seen in Fig.~\ref{schottky_schematic}, once the semiconductor-metal junction has formed, the CB of the bulk semiconductor is lower than that at the interface, resulting in a spatial variation in electrostatic potential towards the semiconductor-metal interface. This is the region where $\mathrm{E_{vac}}$ is changing, the materials possess a net charge and it is called the space-charge or depletion region as it is devoid of any charge carriers \cite{PV_bands_book}. The potential is distributed across the two materials at the interface but drops off further from the interface and the electric field falls to zero.  As metals do not store charge as in a semiconductor, this distance is vanishingly small on the metal side of the junction, but on the semiconductor side this region is typically around 1 micron. The $\mathrm{E_g}$ and EA of the semiconductor do not vary, therefore the VB and CB levels change in parallel with $\mathrm{E_{vac}}$ at the interface, this effect is called `band bending' and the amount the bands bend is called the `built-in bias', $\mathrm{V_{bi}}$.
 In the case of a junction between a p-type semiconductor and a metal, if the metal has a smaller $\mathrm{\Phi_W}$ than the semiconductor, the semiconductor band instead bends downwards at the interface and presents a barrier to the flow of holes from the semiconductor into the metal, which are now the majority carriers.
-If instead $\mathrm{\Phi_W}$ of the metal is larger than that of a p-type semiconductor or smaller than that of an n-type semiconductor, the bands will instead bend in such a way as to encourage majority carrier transport across the junction. Majority carriers therefore do not accumulate at the interface to develop the potential difference at the interface necessary for the PVE. This is an Ohmic contact, as opposed to a barrier. 
+If instead $\mathrm{\Phi_W}$ of the metal is larger than that of a p-type semiconductor or smaller than that of an n-type semiconductor, the bands will instead bend in such a way as to encourage majority carrier transport across the junction. Majority carriers therefore do not accumulate at the interface to develop the potential difference at the interface necessary for the PVE. This is an Ohmic contact, as opposed to a barrier and is not the type of `solar cell junction' that provides a means for electron-hole separation. 
 %Under illumination, photoexcited charge carriers pass easily across the junction and the photovoltage measured at the terminals will be negligible. 
 
 If incident photons have an energy greater than the $\mathrm{E_g}$ of the semiconductor in a Schottky barrier junction, then an electron-hole pair can be photoexcited (as depicted in Fig.~\ref{PV_schematic}). The system is now no longer in equilibrium as the density of electrons and holes has increased and is no longer described by the Fermi-Dirac equilibrium distribution function given in Eq. \ref{fermi-dirac}. 
@@ -424,7 +436,7 @@ There are now different distribution functions for electrons in the CB and holes
 
 A Schottky barrier junction can therefore facilitate photovoltaic energy conversion, but it suffers from certain limitations which impact the maximum achievable photovoltages. For example, a barrier height greater than approximately half of the band gap of the semiconductor will cause minority carriers to outnumber majority carriers close to the interface region, causing an inversion layer. The junction then becomes carrier rich and cannot sustain a photovoltage. Also if the barrier region at the junction is small and the semiconductor layer is highly doped, tunneling of majority carriers across the junction may occur, reducing the effectiveness of the barrier. Many of these problems can be overcome by using a semiconductor-semiconductor p-n junction \cite{Nelson5}, outlined next.
 
-\subsection{Semiconductor p-n junctions}
+\subsubsection{Semiconductor p-n junctions}
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.9\textwidth]{figures/new_p-n_schematic.png}
@@ -572,7 +584,7 @@ Electronic band tailing can result in the absorption coefficient, $\alpha_{0}$, 
 
 %** See Prasad ch1 (intro) + ch2 for SE\\
 
-The properties of materials are determined by their constituent electrons and nuclei and how they interact with each other. Nuclei are massive (compared to electrons) and can usually be described using classical mechanics with interactions via Coulomb's law. However, as hypothesised by de Broglie in 1924 and later demonstrated experimentally by Davisson and Germer and also by Thomson with electron diffraction, electrons exhibit wave-like behavior in addition to particle-like behavior and do not obey classical mechanics \cite{quantum_intro}. The behaviour of the electrons largely determines the physical and chemical properties of a material \cite{Prasad_ch2}, such as the bonding that holds the material together and many of the observed macroscopic properties such as the optical, electrical and magnetic properties \cite{RichardMartin_Ch1}. To describe the behaviour of electrons, it is necessary to use quantum mechanics.
+The properties of materials are determined by their constituent electrons and nuclei and how they interact with each other. Nuclei are massive (compared to electrons) and can usually be described using classical mechanics with interactions via Coulomb's law. However, as hypothesised by de Broglie in his PhD thesis in 1924 \cite{debroglie_thesis, debroglie_rev} and demonstrated experimentally by Davisson and Germer in 1928 \cite{Davisson_Germer} with electron diffraction, electrons exhibit wave-like behavior in addition to particle-like behavior and do not obey classical mechanics \cite{quantum_intro}. The behaviour of the electrons largely determines the physical and chemical properties of a material \cite{Prasad_ch2}, such as the bonding that holds the material together and many of the observed macroscopic properties such as the optical, electrical and magnetic properties \cite{RichardMartin_Ch1}. To describe the behaviour of electrons, it is necessary to use quantum mechanics.
 
 Quantum mechanical systems can be described by the Schr{\"o}dinger equation (SE), which can describe the energy of the electrons and nuclei within a material where electrons interact with the positively charged atomic nuclei through an electrostatic potential \cite{Lesar}. The time-dependent SE for a one-electron system is given by
 \begin{equation} \label{SE}
@@ -806,8 +818,10 @@ When the adjustable parameter $\omega = 0$, the LR term becomes zero and the SR 
 
 
 \subsection{Implementation for periodic solids}
-
-Concepts for the theoretical modelling of periodic solids were outlined in section \ref{crystal_models}. The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. Electronic structure calculations performed in this work are for periodic solids and therefore make use of 3D periodic boundary conditions (PBCs) to simulate infinite, bulk solids using only a unit cell of the crystal. The only deviations from the basic implementation of PBCs are in section \ref{sulfosalt_band_alignment}. This work involved calculating surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. Methodology for this study will be outlined in section \ref{band_alignment_methods}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed further in section \ref{defects_methods}. 
+Concepts for the theoretical modelling of periodic solids were outlined at the start of section \ref{crystal_models}. 
+These principles are also used in electronic calculations of solid state systems through the implementation of periodic boundary conditions (PBCs) to simulate an infinite, bulk system using only a unit cell of the crystal.
+The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. 
+The only deviations from the basic implementation of PBCs are in section \ref{sulfosalt_band_alignment}. This work involved calculating surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. Methodology for this study will be outlined in section \ref{band_alignment_methods}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed further in section \ref{defects_methods}. 
 
 In the rest of this section, approaches used in this work for electronic structure calculations of periodic solid-state systems will be outlined with comments on their relative merits for chemical accuracy and computational efficiency. Representations of the wavefunction in different electronic structure software packages that are used in this work will first be described. Then the general workflow for geometric and electronic optimisation will be outlined. The section concludes with a discussion of determining the most appropriate setup for electronic structure calculations in terms of an optimal compromise between chemical accuracy and computational efficiency.
 
@@ -972,7 +986,9 @@ This approximation is illustrated in Fig.~\ref{k_sampling}a. The choice here whe
 
 
 \section{First principles prediction of electronic band offsets}\label{band_alignment_methods}
-The methodology outlined here is used in the study presented in section \ref{sulfosalt_band_alignment} to screen for candidate junction partners that are predicted to have optimal electronic band offsets for forming a solar cell heterojunction with the absorber layers of interest in the study. The vital function of a solar cell heterojunction (as discussed in section \ref{junctions}) is the separation of photoexcited minority charge-carriers. When selecting a junction partner, therefore, want to know if electrons will easily flow between the conduction bands or holes between the valence bands of the two materials forming the junction. The important material properties to determine this are the electron affinities (EAs) and ionisation potentials (IPs) of the two materials. These are shown schematically in Fig.~\ref{slabs}a. The EA and IP are referenced to the energy of the vacuum level. The EA corresponds to the energy involved in adding an electron to the CB of a material while the IP corresponds the the energy involved in removing an electron from the VB of the material. These quantities are influenced by the bulk binding energy of the material, but as electrons are added to or removed from the surface of a material, are also influenced by the dipole that arises from the redistribution of charges at a surface. It is therefore necessary to also simulate the surface of the material to compute these quantities.
+The methodology outlined here is used in the study presented in section \ref{sulfosalt_band_alignment} to screen for candidate junction partners that are predicted to have optimal electronic band offsets for forming a solar cell heterojunction with the absorber layers of interest in the study. The vital function of a solar cell heterojunction (as discussed in section \ref{junctions}) is the separation of photoexcited minority charge-carriers. When selecting a junction partner, therefore, want to know if electrons will easily flow between the conduction bands or holes between the valence bands of the two materials forming the junction. 
+The important material properties to determine this are the electron affinities (EAs) and ionisation potentials (IPs) of the two materials. These are shown schematically in Fig.~\ref{slabs}a. The EA and IP are referenced to the energy of the vacuum level ($\mathrm{E_{vac}}$). The concept of the `vacuum level' used here for theoretical modelling of surfaces differs from that discussed in section \ref{junctions}. Here, $\mathrm{E_{vac}}$ is the energy of an electron infinitely separated from the material.
+The EA corresponds to the energy involved in adding an electron to the CB of a material while the IP corresponds the the energy involved in removing an electron from the VB of the material. These quantities are influenced by the bulk binding energy of the material, but as electrons are added to or removed from the surface of a material, are also influenced by the dipole that arises from the redistribution of charges at a surface. It is therefore necessary to also simulate the surface of the material to compute these quantities.
 
 \begin{figure}[h!]
   \centering
@@ -982,7 +998,7 @@ The methodology outlined here is used in the study presented in section \ref{sul
 \end{figure}
 
 \subsubsection{Surface models}
-It is common to simulate a 2D surface with 3D periodic boundary conditions, where only two directions are intended to be bulk-like. Atoms interact with neighbours across a boundary in 3D, therefore a sufficiently large vacuum gap is required in the `finite direction' to ensure that the surfaces from either end of the slab do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig.~\ref{slabs}b where the orange arrow indicated interactions in the finite direction with atoms separated by a large vacuum gap.
+It is common to simulate a 2D surface with 3D periodic boundary conditions, where only two directions are intended to be bulk-like. Atoms interact with neighbours across a boundary in 3D, therefore a sufficiently large vacuum gap is required in the `finite direction' to ensure that the surfaces from either end of the slab do not interact with each other \cite{Prasad_ch6}. This is shown schematically in Fig.~\ref{slabs}b where the orange arrow indicates interactions in the finite direction with atoms separated by a large vacuum gap.
 
 For a given crystal structure, there are a large number of possible surface terminations when creating the slab model. Where experimental data is available, often this can provide guidance for which terminations are likely to be the most energetically likely to form or to be of the greatest technological interest and therefore inform the design of the slab models. In cases where there is no such experimental data, surface terminations with no net dipole perpendicular to the surface are expected to have the lower surface energies and therefore be more likely to form \cite{Tasker}. The latter informed the choice of surface terminations for the slab models used in section \ref{sulfosalt_band_alignment}.
 
@@ -1290,7 +1306,7 @@ In general, the main cause of V$_{OC}$ deficit in a PV device is the recombinati
 Several photoluminescence (PL) studies have been performed on kesterite-structured samples of {\CZTS}, Cu$_2$ZnSnSe$_4$ and alloys of the two. 
 PL measurements are able to pick up optical signatures of defects even if they are present at low concentrations with high resolution. 
 In a PL experiment, photons with energies larger than that of the band gap excite electrons from the valence band to the conduction band. In addition, electrons can be excited from or relax to defect levels. When the excited electrons transition to lower energy levels, they can emit light to conserve energy, resulting in a peak in the PL spectrum. In a PL excitation experiment, the PL intensity is measured as a function of excitation photon energy. This gives an absorption profile for the defects.
-PL measurements alone however cannot be used to identify the character of a defect, this is an area where first-principles defect calculations can provide some insight \cite{defects_tutorial}.
+PL measurements alone however cannot be used to identify the character of a defect, here first-principles defect calculations can provide some insight \cite{defects_tutorial}.
 
 PL measurements have been performed on both full devices and polycrystalline thin-films \cite{band_tail, Gershon, Gershon_ref18, Romero, Miyamoto, Unold} and single crystals \cite{Halliday, Levcenko, Hones} of CZTS. Ref.~\citenum{Halliday} compares the PL spectra for varying compositions of the samples, whereas in Ref.~\citenum{band_tail} measurements on both CIGSSe and record-efficiency CZTSSe thin films are performed in an attempt to account for the difference in the performance of these two technologies by comparing their defect-influenced PL emission spectra. In thin-film photovoltaic devices, the absorber layers are most likely to be polycrystalline. However, comparison between measurements with single crystals and polycrystalline samples could enable the isolation of recombination at grain boundaries and interfaces from those due to defects in the bulk of the absorber layer. 
 %Also measurements performed on single crystals as close to perfectly stoichiometric {\CZTS} as possible are likely to be the most directly relatable to our simulations on bulk systems. 
