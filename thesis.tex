@@ -424,7 +424,7 @@ $\mathrm{\Phi_W}$ is the energy required to remove the least tightly bound elect
 \Phi_W = E_{vac} - E_F,
 \end{equation}
 where $E_{vac}$ and $E_F$ are both labelled in Fig.~\ref{schottky_schematic}. $E_{vac}$ is the energy of the vacuum level (where an electron is considered to be completely separated from the material). 
-It is worth noting that the concept of the `vacuum level' here is different to that used in theoretical materials modelling (discussed later in section \ref{band_alignment_methods}) where the `vacuum level' is considered to be the energy of an electron infinitely separated from the material.
+It is worth noting that the concept of the `vacuum level' here is different to that used in theoretical materials modelling (discussed later in section \ref{band_alignment_methods}) where the `vacuum level' is considered to be the energy of an electron \textit{infinitely} separated from the material.
 $E_F$ is the Fermi level. At temperatures above \SI{0}{K}, $\mathrm{E_F}$ is considered the energy at which there is a 50\% chance of the state being occupied. For a metal, $\mathrm{\Phi_W}$ is defined by EA (indicated in Fig.~\ref{schottky_schematic}). For a semiconductor, $\mathrm{\Phi_W}$ can be controlled by doping of the material since $\mathrm{E_F}$ is dependant upon the doping. Doping can introduce additional possible energy states into the band gap of material, therefore doping can influence the energy of the state that has a 50\% chance of the state being occupied. For instance, a semiconductor doped n-type will have $\mathrm{E_F}$ closer to the CB and has a smaller $\mathrm{\Phi_W}$ than if it was doped p-type. 
 
 When creating a junction between materials with different $\mathrm{\Phi_W}$, the potential difference to drive photoexcited charge carriers across the junction is created by the difference in $\mathrm{\Phi_W}$ of the two materials \cite{Nelson5}.
@@ -505,7 +505,7 @@ Thin-film PV technologies typically require a less high-quality and defect-free 
 
 \subsection{Charge-carrier effective mass}
 
-As mentioned in section \ref{BandTheorySection}, another property of importance that can be derived from the electronic band structure of a material, i.e. the plot of $E(\boldsymbol{k})$ vs. $k$, is the effective mass, $m^*$. $m^*$ is related to the curvature of the band at the top of the VB (for holes) or at the bottom of the CB (for electrons). $m^*$ can be calculated by a quadratic least-squares fit to the band extrema when using the parabolic approximation. The curvature of the plot can then be used to obtain $m^*$ with Eq. \ref{m*_fit}
+As mentioned in section \ref{BandTheorySection}, another property of importance that can be derived from the electronic band structure of a material, i.e. the plot of $E(\boldsymbol{k})$ vs. $k$, is the effective mass, $m^*$. $m^*$ is related to the curvature of the band at the top of the VB (for holes) or at the bottom of the CB (for electrons). $m^*$ can be calculated by a quadratic least-squares fit to the band extrema when using the parabolic approximation. The curvature of the plot can then be used to obtain $m^*$ with
 \begin{equation}\label{m*_fit}
 m^* = \left( \frac{1}{\hbar^2}\frac{\partial^2 E}{\partial k^2} \right)^{-1} .
 \end{equation}
@@ -545,7 +545,7 @@ When defects are present at sufficiently low concentrations such that defect-def
 \end{figure}
 
 There are different `flavours' of defects \cite{Aron_defect_tolerance}. Shallow defects can be beneficial to improve electrical conductivity for carrier extraction from an absorber materials. Typically deep levels are thought to be the most detrimental to solar cell device performance \cite{Stoneham_killer_defects}. 
-Defects that produce mid-gap states act as Shockley-Read-Hall recombination sites \cite{SRH}, which is regarded as the most important recombination process in real, non-perfect semiconductors. It is a form of non-radiative recombination where a charge carrier is trapped in the defect state before recombining with a charge carrier of opposite polarity. This type of recombination is known to be detrimental to device performance as it essentially results in energy input from sunlight not being converted into electricity \cite{Nelson4}.
+Defects that produce mid-gap states act as Shockley-Read-Hall recombination sites \cite{SRH}, which is regarded as the most important recombination process in real, non-perfect semiconductors. It is a form of non-radiative recombination where a charge carrier is trapped in the defect state before recombining with a charge carrier of opposite polarity. This type of recombination is known to be detrimental to device performance as it results in energy input from sunlight not being converted into electricity \cite{Nelson4}.
 
 %\begin{figure}[h!]
 %  \centering
@@ -843,7 +843,7 @@ When the adjustable parameter $\omega = 0$, the LR term becomes zero and the SR 
 \subsection{Implementation for periodic solids}
 Concepts for the theoretical modelling of periodic solids were outlined at the start of section \ref{crystal_models}. 
 These principles are also used in electronic calculations of solid state systems through the implementation of periodic boundary conditions (PBCs) to simulate an infinite, bulk system using only a unit cell of the crystal.
-The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. 
+%The use of Bloch's theorem to account for the effect of a periodic lattice potential on a state described by a single-electron wavefunction was outlined in section \ref{BandTheorySection}. 
 The only deviations from the basic implementation of PBCs are in section \ref{sulfosalt_band_alignment}. This work involved calculating surface properties of candidate solar absorber materials to investigate possible candidate solar cell heterojunction partners. Methodology for this study will be outlined in section \ref{band_alignment_methods}. The other deviation from simple PBCs for electronic structure calculations in this work is the simulation of point defects in the dilute limit using the supercell method \cite{SupercellMethodDefects}. This method will be discussed further in section \ref{defects_methods}. 
 
 In the rest of this section, approaches used in this work for electronic structure calculations of periodic solid-state systems will be outlined with comments on their relative merits for chemical accuracy and computational efficiency. Representations of the wavefunction in different electronic structure software packages that are used in this work will first be described. Then the general workflow for geometric and electronic optimisation will be outlined. The section concludes with a discussion of determining the most appropriate setup for electronic structure calculations in terms of an optimal compromise between chemical accuracy and computational efficiency.
@@ -995,9 +995,9 @@ For both software packages, the inclusion of a larger basis set increases the co
 %** Check over below (taken from transfer report) **
 % periodic DFT calculations, the total energy is also converged with respect to the number of \textit{k}-points used to sample the Brillouin zone.
 As discussed in section \ref{crystal_models}, only the first Brillouin zone of the crystal is needed to fully describe the influence of the periodic lattice on electrons in the solid.
-Each electron occupies a state of definite $\mathbf{k}$. In an infinite, periodic crystal structure an infinite number of electrons would result in an infinite number of \textit{k}-points. For many properties of interest, it is necessary to integrate over the Brillouin zone, such as 
+Each electron occupies a state of definite $\boldsymbol{k}$. In an infinite, periodic crystal structure an infinite number of electrons would result in an infinite number of \textit{k}-points. For many properties of interest, it is necessary to integrate over the Brillouin zone, such as 
 \begin{equation}\label{BZ_int}
-\frac{1}{\Omega_{BZ}} \int_{BZ} F(E)\delta(E_{n\boldsymbol{k}}-E)d\boldsymbol{k},    
+\frac{1}{\Omega_{BZ}} \int_{BZ} F(E)\delta(E_{n\boldsymbol{k}}-E)\mathrm{d}\boldsymbol{k},    
 \end{equation}
 which is used to obtain the density of electronic states \cite{vasp_k-sampling_slides}.
 
@@ -1016,7 +1016,7 @@ The EA corresponds to the energy involved in adding an electron to the CB of a m
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.9\textwidth]{figures/new_slab_figs.png}
-    \caption[a) Energy diagram of a semiconductor with flat bands to the surface. Indicating the band edges (CBM/LUMO and VBM/HOMO), vacuum level ($\mathrm{E_{VAC}}$), work function (WF), band gap $\mathrm{E_G}$, ionisation potential (IP) and electron affinity (EA). b) Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab model (finite direction indicated by the orange arrow).]{a) Energy diagram of a semiconductor with flat bands to the surface. Indicating the band edges (CBM/LUMO and VBM/HOMO), vacuum level ($\mathrm{E_{VAC}}$), work function (WF), band gap $\mathrm{E_G}$, ionisation potential (IP) and electron affinity (EA). Figure adapted from Ref.~\citenum{electronic_band_edges}. b) Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab model (finite direction indicated by the orange arrow).}
+    \caption[a) Energy diagram of a semiconductor with flat bands to the surface. Indicating the band edges (CBM/LUMO and VBM/HOMO), vacuum level ($\mathrm{E_{VAC}}$), work function (WF), band gap $\mathrm{E_g}$, ionisation potential (IP) and electron affinity (EA). b) Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab model (finite direction indicated by the orange arrow).]{a) Energy diagram of a semiconductor with flat bands to the surface. Indicating the band edges (CBM/LUMO and VBM/HOMO), vacuum level ($\mathrm{E_{VAC}}$), work function (WF), band gap $\mathrm{E_g}$, ionisation potential (IP) and electron affinity (EA). Figure adapted from Ref.~\citenum{electronic_band_edges}. b) Schematic representation of the implementation of 3D periodic boundary conditions for a 2D surface slab model (finite direction indicated by the orange arrow).}
   \label{slabs}
 \end{figure}
 
@@ -1212,11 +1212,11 @@ A correction step for such effects has been proposed \cite{CIS_defects, Lany_def
 To correct the total energy of the finite supercell due to the band-filling effects, the higher energy populations are subtracted \cite{CIS_defects}.
 For a given \textit{k}-point set (weighted sum, $w_k$) and band occupations, $\eta_{n,k}$, the correction for a shallow donor is obtained from 
 \begin{equation}\label{band_filling_donor}
-E_{BF} = - \sum_{n,k} w_k \eta_{n,k} [e_{n,k} - \tilde{e}_c]
+E_{BF} = - \sum_{n,k} w_k \eta_{n,k} [e_{n,k} - \tilde{e}_c],
 \end{equation}
 and for a shallow acceptor from
 \begin{equation}\label{band_filling_acceptor}
-E_{BF} = - \sum_{n,k} w_k (1 - \eta_{n,k}) [e_{n,k} - \tilde{e}_v]
+E_{BF} = - \sum_{n,k} w_k (1 - \eta_{n,k}) [e_{n,k} - \tilde{e}_v],
 \end{equation}
 where $e_{n,k}$ are the band energies in the defect calculation, $\tilde{e}_c$ and $\tilde{e}_v$ are the CBM and VBM energies respectively of the pure host after performing the potential alignment step within the LZ scheme \cite{pylada}.
 However, if the intention is to simulate defects in highly doped semiconductors, the corrections in Eq.~\ref{band_filling_donor} and \ref{band_filling_acceptor} should be zero or at least smaller since the formation of defect bands with band dispersion and heavy band filling should be present in a system where defect-defect interactions are a correct physical representation \cite{CIS_defects}.
@@ -1246,21 +1246,21 @@ p_\alpha = \frac{  \mathrm{e}^{-\frac{E_\alpha}{k_bT}} }{ \sum_{\alpha} \mathrm{
 \end{equation}
 $Z$ in Eq.~\ref{av} is called the partition function. For most systems calculating the value of the partition function requires the summation over a large number of states. When applying the Monte Carlo method to a system of particles, the summation over discrete states for $Z$ is replaced by a set of integrals
 \begin{equation}\label{MC_av}
-<U> = \frac{ \int \mathrm{e}^{-\frac{U(\boldsymbol{r}^N)}{k_bT}} U(\boldsymbol{r}^N) d\boldsymbol{r}^N}{\int \mathrm{e}^{-\frac{U(\boldsymbol{r}^N)}{k_bT}} d\boldsymbol{r}^N}  = \frac{  \int \mathrm{e}^{-\frac{U(\boldsymbol{r}^N)}{k_bT}} U(\boldsymbol{r}^N) d\boldsymbol{r}^N}{Z_{NVT}} ,
+<U> = \frac{ \int \mathrm{e}^{-\frac{U(\boldsymbol{r}^N)}{k_bT}} U(\boldsymbol{r}^N) \mathrm{d}\boldsymbol{r}^N}{\int \mathrm{e}^{-\frac{U(\boldsymbol{r}^N)}{k_bT}} \mathrm{d}\boldsymbol{r}^N}  = \frac{  \int \mathrm{e}^{-\frac{U(\boldsymbol{r}^N)}{k_bT}} U(\boldsymbol{r}^N) \mathrm{d}\boldsymbol{r}^N}{Z_{NVT}} ,
 \end{equation}
 where $U(\mathbf{r}^N)$ is the potential energy of the system which depends upon the position, $\boldsymbol{r}$, of the $N$ interacting ions in the system and $Z_{NVT}$ is the configurational integral \cite{Lesar3}.
 %\begin{equation}\label{MC_prob}
 %p(\mathbf{r}^N) = \frac{  e^{-\frac{U(\mathbf{r}^N)}{k_bT}} }{\int %e^{-\frac{U(\mathbf{r}^N)}{k_bT}} d\mathbf{r}^N}  = \frac{  e^{-\frac{U(\mathbf{r}^N)}%{k_bT}}}{Z_{NVT}} 
 %\end{equation}
 The configurational integral is over the three coordinates of each ion
-\begin{equation}d \boldsymbol{r}^N = \mathrm{d}x_1 \mathrm{d}y_1 \mathrm{d}z_1 \mathrm{d}x_2 \mathrm{d}y_2 \mathrm{d}z_2... \mathrm{d}x_N \mathrm{d}y_N \mathrm{d}z_N.\end{equation}\label{dr}
+\begin{equation}\mathrm{d}\boldsymbol{r}^N = \mathrm{d}x_1 \mathrm{d}y_1 \mathrm{d}z_1 \mathrm{d}x_2 \mathrm{d}y_2 \mathrm{d}z_2... \mathrm{d}x_N \mathrm{d}y_N \mathrm{d}z_N.\end{equation}\label{dr}
 There are therefore $3N$ coordinates that define all possible configurations of the system.
 
 For a system containing several hundred ions this would be a several-hundred dimensional integral over the configuration space, which would be impractical to carry out by the usual numerical methods. The Monte Carlo method for many-dimensional integrals is used for this purpose \cite{Metropolis}. It is conceptually easiest to think about this method for a one-dimensional integral. This method involves sampling a large number of random points within a region defined by the limits of the integral. The integrated function is then the fraction of points that fall below the curve of the function multiplied by the area of the sampled region. The value obtained becomes a better approximation to the actual value of the integral as the number of random numbers, called Monte Carlo steps (MCS), used to sample the integration region increases. \cite{Lesar3}.
 
 
 \subsubsection{Monte Carlo simulation with the Metropolis Algorithm }
-The Standard MC method for our system would involve placing each of the $N$ ions at random positions in the lattice to define a random point in the $3N$-dimensional configuration space. The energy of the system would then be calculated using Eq.~\ref{pot_E} and the configuration would then be weighted using $/mathrm{e}^{-\frac{U(\mathbf{r}^N)}{k_bT}}$ when obtaining the equilibrium value of U. However, many configurations are very improbable so performing this calculation for every possible configuration would be inefficient and unnecessary to sufficiently evaluate the ensemble. The custom MC code in this study makes use of the Metropolis modified MC scheme \cite{Metropolis}. In this implementation of the MC method, instead of choosing configurations randomly and then weighting them, the Metropolis algorithm considers the relative probability of a system being in a new configuration, $\beta$, to that of being in the current configuration, $\alpha$
+The Standard MC method for our system would involve placing each of the $N$ ions at random positions in the lattice to define a random point in the $3N$-dimensional configuration space. The energy of the system would then be calculated using Eq.~\ref{pot_E} and the configuration would then be weighted using $\mathrm{e}^{-\frac{U(\mathbf{r}^N)}{k_bT}}$ when obtaining the equilibrium value of U. However, many configurations are very improbable so performing this calculation for every possible configuration would be inefficient and unnecessary to sufficiently evaluate the ensemble. The custom MC code in this study makes use of the Metropolis modified MC scheme \cite{Metropolis}. In this implementation of the MC method, instead of choosing configurations randomly and then weighting them, the Metropolis algorithm considers the relative probability of a system being in a new configuration, $\beta$, to that of being in the current configuration, $\alpha$
 \begin{equation}\label{relative_prob}
 \frac{p_\beta}{p_\alpha} = \frac{  \mathrm{e}^{-\frac{E_\alpha}{k_bT}} }{Z} \frac{Z}{  \mathrm{e}^{-\frac{E_\alpha}{k_bT}} } = \mathrm{e}^{- \frac{E_\beta - E_\alpha}{k_BT}},
 \end{equation}
@@ -1275,7 +1275,7 @@ and if
 \Delta E = E_{\beta} - E_{\alpha} > 0   \quad   then   \quad   \frac{p_{\beta}}{p_{\alpha}} < 1 .
 \end{equation}
 
-The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration. In the case of the study presented in section \ref{CZTS_MC} \cite{eris_paper} this would be a substitution between a Cu and a Zn ion in an on-lattice model of {\CZTS}. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. As shown above, the relative probabilities of two states are determined by their energy difference. In the case of the on-lattice model of {\CZTS}, the change in lattice energy before and after a proposed Cu/ Zn substitution is evaluated for every trial MC move. If the relative probability is  $\geq$ 1, as shown in Eq.~\ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $e^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}. Provided a sufficiently large number of trial moves have been made, from this procedure it is possible to obtain equilibrium disordered configurations for the ions in {\CZTS} at various simulation temperatures. The model developed for {\CZTS} is discussed further in the section \ref{Eris}.
+The Metropolis algorithm creates a list of configurations through configuration space that has the correct probability distribution. This list is called a trajectory through configuration space. The approach involves making a trial move of the system to a new configuration. In the case of the study presented in section \ref{CZTS_MC} \cite{eris_paper} this would be a substitution between a Cu and a Zn ion in an on-lattice model of {\CZTS}. It is then decided if this new configuration should be added to the trajectory or not based on the probability of the new configuration relative to the current configuration. As shown above, the relative probabilities of two states are determined by their energy difference. In the case of the on-lattice model of {\CZTS}, the change in lattice energy before and after a proposed Cu/ Zn substitution is evaluated for every trial MC move. If the relative probability is  $\geq$ 1, as shown in Eq.~\ref{met}, then the move is accepted and added to the trajectory. However, if the relative probability is $<$ 1 then the move will only be accepted if $\mathrm{e}^{-\frac{\Delta E}{k_BT}} \ge$ a random number generated between 0 and 1 \cite{Lesar3}. Provided a sufficiently large number of trial moves have been made, from this procedure it is possible to obtain equilibrium disordered configurations for the ions in {\CZTS} at various simulation temperatures. The model developed for {\CZTS} is discussed further in the section \ref{Eris}.
 
 
 
@@ -1365,7 +1365,7 @@ As the defect pair is charge neutral, we were able to use Eq.~\ref{defect_neutra
   \label{Cu-Zn_eqm_conc}
 \end{figure}
 
-When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting \cite{Stoneham_defect_lim}. Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects ($n$) as a function of temperature can be obtained as \cite{thermodynamics}
+When defect concentrations are less than 1\%, it is usually assumed that the system is in the dilute defect limit where defects can be considered to be non-interacting \cite{Stoneham_defect_lim}. Using statistical thermodynamics for point defects, an expression for the equilibrium concentration of point defects, $n$, as a function of temperature can be obtained as \cite{thermodynamics}
 \begin{equation} \label{defect_conc}
 n = N\mathrm{e}^{\frac{-\Delta H}{k_BT}},
 \end{equation}
@@ -1436,7 +1436,7 @@ In this study we consider 2D Cu/ Zn disorder, involving just substitutions among
 Previous experimental studies have suggested that 2D Cu/ Zn disorder is the dominant disorder mechanism for the Cu/ Zn order-disorder transition (ODT) and that disorder on Cu 2\textit{a} sites only occurs after the ODT \cite{disorder_july}. However, more recent studies have suggested that this disorder mechanism is a part of the ODT \cite{Cu2a_expt, Cu2a_theory}.
 We extract the critical temperatures, T$_C$, for the Cu/ Zn ODT for these two Cu/ Zn disorder mechanisms. We find that defects are less concentrated in Cu-Sn (001) planes but that Zn ions readily substitute into Cu-Sn planes even before the ODT and present spatial distributions of antisites from thermodynamic Cu/ Zn disorder in our model.
 
-The following paper has been reproduced from Journal of Materials Chemistry A, 2019, DOI: 10.1039/C8TA04812F with permission from the Royal Society of Chemistry. The supplemental material for this paper is included in Appendix \ref{eris1_appendix}.
+The following paper has been reproduced from Journal of Materials Chemistry A 7 (1), 312-321 (2019) with permission from the Royal Society of Chemistry. The supplemental material for this paper is included in Appendix \ref{eris1_appendix}.
 
 \includepdf[pages={1-},scale=1.0]{papers/Eris1_soa.pdf}
 
@@ -1539,7 +1539,7 @@ The top panel of Fig.~\ref{pot_dists} shows the change in the distribution of Sn
 
 %The results presented in this section are obtained with on-site electrostatic potentials calculated from our model using the bulk dielectric constant of {\CZTS} calculated in Ref.~\cite{Sunghyun_dielectric} to account for screening of bare formal charges of the ions by the surrounding material. However, to correctly represent the screening of charges in the lattice would require a description of the local response of the electron density to an inhomogeneity in the lattice. The results are therefore just preliminary and further work is required to obtain a quantitative description of on-site potentials in the system.
 
-Fig.~\ref{spatial_pot_fluc_Cu-Sn} shows the on-site electrostatic potentials of Cu and Sn in a (001) Cu-Sn plane minus the average on-site potential for each species within the same plane in our {\CZTS} lattice model for complete ($S=0$) equilibrium thermodynamic Cu/ Zn disorder at 950K. In Fig.~\ref{spatial_pot_fluc_Cu-Sn}a, a region with a clustering of $Zn_{Cu}^{+}$ antisites is indicated and Fig.~\ref{spatial_pot_fluc_Cu-Sn}b shows a corresponding increase in the local electrostatic potential of neighbouring Sn ions in the same plane. This is consistent with observations of clusters of $Zn_{Cu}^{+}$ antisites from scanning transmission electron microscopy with associated band bending from local increases in the electrostatic potential in Ref.~\citenum{CZTS_TEM}, implying qualitative agreement between our model and experimental observations.
+Fig.~\ref{spatial_pot_fluc_Cu-Sn} shows the on-site electrostatic potentials of Cu and Sn in a (001) Cu-Sn plane minus the average on-site potential for each species within the same plane in our {\CZTS} lattice model for complete ($S=0$) equilibrium thermodynamic Cu/ Zn disorder at 950K. In Fig.~\ref{spatial_pot_fluc_Cu-Sn}a, a region with a clustering of $\mathrm{Zn_{Cu}^{+}}$ antisites is indicated and Fig.~\ref{spatial_pot_fluc_Cu-Sn}b shows a corresponding increase in the local electrostatic potential of neighbouring Sn ions in the same plane. This is consistent with observations of clusters of $\mathrm{Zn_{Cu}^{+}}$ antisites from scanning transmission electron microscopy with associated band bending from local increases in the electrostatic potential in Ref.~\citenum{CZTS_TEM}, implying qualitative agreement between our model and experimental observations.
 
 
 
@@ -1603,7 +1603,7 @@ In the following study, the optoelectronic properties of the candidate materials
 
 %Additionally, cation disorder (as investigated for {\CZTS}) could be expected to be less prevalent in these materials due to the materials containing less chemically similar components, as has been demonstrated when substituting with Ag \cite{Gerschon_AZTSe} or Ba \cite{distant_cations, Tong_Ba-CZTS} into {\CZTS} (or similarly, into the corresponding selenide or sulfo-selenide alloy).
 
-The following article is open access, licensed under a Creative Commons Attribution 3.0 Unported Licence. The supplemental material for this paper is included in Appendix \ref{App_sulfosalts1}
+The following article is open access, licensed under a Creative Commons Attribution 3.0 Unported Licence. The supplemental material for this paper is included in Appendix \ref{App_sulfosalts1}.
 
 \includepdf[pages={1-},scale=1.0]{papers/SulfosaltsPaper1_soa.pdf}
 
@@ -1661,7 +1661,7 @@ To develop a high-performance solar cell device, the full device architecture mu
  The study presented here aims to use theory to accelerate device optimisation for two of the candidate absorber layers identified in \autoref{chap:screening} by providing suggestions for suitable solar cell heterojunction partners. 
 Although it may be possible to achieve photovoltaic energy conversion without a solar cell junction for photoferroic absorbers, as described in section \ref{ferroPVsection}, a solar cell junction is likely to still be beneficial to provide a global driving force for carrier separation with internal electric fields allowing for improved local carrier separation. The following work is a data mining procedure to determine suitable junction partners for two of the candidate absorber materials from \autoref{chap:screening}. Insights for optimal electronic band offsets for a solar cell heterojunction are based on studies performed for PV absorbers CdTe \cite{CdTe_spike}, CIGS \cite{p-type_spike} and ZnSnN$_2$ \cite{Elisabetta}.
 
-The following paper has been reproduced with permission from AIP Publishing. The supplemental material for this work is included in Appendix \ref{jp_appendix}
+The following paper has been reproduced with permission from AIP Publishing. The supplemental material for this work is included in Appendix \ref{jp_appendix}.
 
 %**Add statement of authorship form as pdf**
 \includepdf[pages={1-},scale=1.0]{papers/JunctionPartners_soa.pdf}
